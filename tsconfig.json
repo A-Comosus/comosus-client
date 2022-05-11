@@ -5,9 +5,12 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "paths": {
-      "@src/*": ["./src/*"]
+      "@src/*": ["./*"],
+      "@pages/*": ["src/pages/*"],
+      "@common/*": ["./common/*"],
+      "@modules/*": ["./modules/*"]
     },
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
