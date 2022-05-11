@@ -17,7 +17,7 @@ export const Code = styled.code`
     Bitstream Vera Sans Mono, Courier New, monospace;
 `;
 
-export const Link = styled.a`
+export const Link = styled.span`
   color: #0070f3;
   text-decoration: none;
   &:hover,
