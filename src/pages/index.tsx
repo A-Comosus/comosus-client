@@ -5,8 +5,8 @@ import { Container, Footer } from '@common/components';
 import {
   Title,
   Description,
-  Grid,
-} from '@modules/next-template/sections/index';
+  NextInformation,
+} from '@modules/next-template/sections';
 
 const Home: NextPage = () => {
   const cards: Card[] = [
@@ -44,9 +44,8 @@ const Home: NextPage = () => {
       <Container type="main">
         <Title />
         <Description />
-        <Grid cards={cards} />
+        <NextInformation cards={cards} />
       </Container>
-
       <Footer />
     </Container>
   );
