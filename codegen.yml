@@ -1,8 +1,8 @@
 overwrite: true
-schema: 'https://spacexdata.herokuapp.com/graphql'
-documents: './src/**/*.ts'
+schema: 'https://api.spacex.land/graphql/'
+documents: './src/**/*.gql'
 generates:
-  ./src/_generated/graphql.type.d.ts:
+  ./src/_generated/graphql.queries.ts:
     plugins:
       - typescript
       - typescript-operations

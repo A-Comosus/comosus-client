@@ -8,7 +8,7 @@
     "baseUrl": "./src",
     "paths": {
       "@src/*": ["./*"],
-      "@generated": ["./_generated"],
+      "@generated/*": ["./_generated/*"],
       "@pages/*": ["./pages/*"],
       "@common/*": ["./common/*"],
       "@modules/*": ["./modules/*"]
