@@ -1,11 +1,19 @@
 import React, { useMemo } from 'react';
 import _ from 'lodash';
-import { gql, GraphQLClient } from 'graphql-request';
+import { GraphQLClient } from 'graphql-request';
 import axios, { AxiosInstance } from 'axios';
 
 // TODO: Fetch this from process.env
-const API_CLIENT_DEFAULT_HOST = 'https://api.spacex.land/graphql/';
-
+const apiEndpoint = {
+  gql:
+    process.env.GRAPHQL_ENDPOINT ??
+    process.env.DEFAULT_ENDPOINT ??
+    'https://api.spacex.land/graphql/',
+  rest:
+    process.env.REST_ENDPOINT ??
+    process.env.DEFAULT_ENDPOINT ??
+    'https://api.spacex.land/graphql/',
+};
 type ApiClientContextType = {
   gqlClient: GraphQLClient;
   restClient: AxiosInstance;
@@ -24,6 +32,7 @@ export function useApiClient() {
 
 export function ApiClientProvider({ children }: ApiClientProviderProps) {
   // Common header
+  // AuthOption 1: Insert Auth Token here with axios.interceptors.request
   const headers = {
     'Content-Type': 'application/json',
     Accept: 'application/json',
@@ -31,9 +40,11 @@ export function ApiClientProvider({ children }: ApiClientProviderProps) {
 
   // Create an instance of GraphQLClient
   const gqlClient = useMemo(() => {
-    const client = new GraphQLClient(API_CLIENT_DEFAULT_HOST, {
+    const client = new GraphQLClient(apiEndpoint.gql, {
       headers,
     });
+
+    // AuthOption 2: Insert Auth Token here with axios.interceptors.request
 
     return client;
   }, []);
@@ -41,9 +52,11 @@ export function ApiClientProvider({ children }: ApiClientProviderProps) {
   // Create an instance of RestClient because why not
   const restClient = useMemo(() => {
     const client = axios.create({
-      baseURL: API_CLIENT_DEFAULT_HOST,
+      baseURL: apiEndpoint.rest,
       headers,
     });
+
+    // AuthOption 2: Insert Auth Token here with axios.interceptors.request
 
     return client;
   }, []);

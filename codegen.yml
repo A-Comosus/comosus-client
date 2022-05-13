@@ -1,11 +1,11 @@
 overwrite: true
 schema: 'https://spacexdata.herokuapp.com/graphql'
-documents: './src/components/**/*.{ts,tsx}'
+documents: './src/**/*.ts'
 generates:
-  ./src/generated/graphql.type.d.ts:
+  ./src/_generated/graphql.type.d.ts:
     plugins:
       - typescript
       - typescript-operations
-      - typed-document-node
+      - typescript-react-query
     config:
-      withHooks: true
+      fetcher: graphql-request
