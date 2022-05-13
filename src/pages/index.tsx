@@ -7,6 +7,7 @@ import {
   Description,
   NextInformation,
 } from '@modules/next-template/sections';
+import { SpaceX } from '@modules/index';
 
 const Home: NextPage = () => {
   const cards: Card[] = [
@@ -46,6 +47,9 @@ const Home: NextPage = () => {
         <Description />
         <NextInformation cards={cards} />
       </Container>
+
+      <SpaceX />
+
       <Footer />
     </Container>
   );
