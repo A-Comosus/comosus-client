@@ -1,5 +1,7 @@
 import React, { useMemo } from 'react';
 import _ from 'lodash';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import { GraphQLClient } from 'graphql-request';
 import axios, { AxiosInstance } from 'axios';
 
@@ -61,9 +63,21 @@ export function ApiClientProvider({ children }: ApiClientProviderProps) {
     return client;
   }, []);
 
+  const queryStaleTime = parseInt(process.env.QUERY_STALE_TIME ?? '1', 10);
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: queryStaleTime * 1000,
+      },
+    },
+  });
+
   return (
     <ApiClientContext.Provider value={{ gqlClient, restClient }}>
-      {children}
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools initialIsOpen={false} />
+        {children}
+      </QueryClientProvider>
     </ApiClientContext.Provider>
   );
 }
