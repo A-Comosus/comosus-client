@@ -4,20 +4,20 @@ import styled from 'styled-components';
 
 import { Card } from '../components';
 
-const StyledGrid = styled.section`
+const Grid = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   max-width: 800px;
 `;
-type GridProps = {
+type NextInformationProps = {
   cards: Card[];
 };
 
-export default function Grid({ cards }: GridProps) {
+export default function NextInformation({ cards }: NextInformationProps) {
   return (
-    <StyledGrid>
+    <Grid>
       {cards &&
         cards.map(({ href, title, description }, index) => (
           <Card
@@ -27,6 +27,6 @@ export default function Grid({ cards }: GridProps) {
             description={description}
           />
         ))}
-    </StyledGrid>
+    </Grid>
   );
 }
