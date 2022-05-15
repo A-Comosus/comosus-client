@@ -2,38 +2,9 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import { Container, Footer } from '@common/components';
-import {
-  Title,
-  Description,
-  NextInformation,
-} from '@modules/next-template/sections';
-import { SpaceX } from '@modules/index';
+import { NextTemplate, SpaceX } from '@src/modules';
 
 const Home: NextPage = () => {
-  const cards: Card[] = [
-    {
-      href: 'https://nextjs.org/docs',
-      title: `Documentation`,
-      description: 'Find in-depth information about Next.js features and API.',
-    },
-    {
-      href: 'https://nextjs.org/learn',
-      title: `Learn`,
-      description: 'Learn about Next.js in an interactive course with quizzes!',
-    },
-    {
-      href: 'https://github.com/vercel/next.js/tree/canary/examples',
-      title: `Examples`,
-      description: 'Discover and deploy boilerplate example Next.js projects.',
-    },
-    {
-      href: 'https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app',
-      title: `Deploy`,
-      description:
-        'Instantly deploy your Next.js site to a public URL with Vercel.',
-    },
-  ];
-
   return (
     <Container>
       <Head>
@@ -42,12 +13,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Container type="main">
-        <Title />
-        <Description />
-        <NextInformation cards={cards} />
-      </Container>
-
+      <NextTemplate />
       <SpaceX />
 
       <Footer />

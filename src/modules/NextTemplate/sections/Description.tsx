@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Text } from '@src/common/components';
+import { useLocalisation } from '@src/common/context';
 
 const StyledDescription = styled.div`
   margin: 4rem 0;
@@ -10,10 +11,15 @@ const StyledDescription = styled.div`
 `;
 
 export default function Description() {
+  const { t } = useLocalisation();
+
   return (
     <StyledDescription>
       <Text type="p">
-        Get started by editing <Text type="code">pages/index.tsx</Text>
+        <>
+          {t('getStarted')}
+          <Text type="code">src/pages/index.tsx</Text>
+        </>
       </Text>
     </StyledDescription>
   );
