@@ -1,12 +1,13 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-
-import { ApiClientProvider } from '@common/contexts';
+import { ApiClientProvider, LocalisationProvider } from '@common/contexts';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ApiClientProvider>
-      <Component {...pageProps} />
+      <LocalisationProvider>
+        <Component {...pageProps} />
+      </LocalisationProvider>
     </ApiClientProvider>
   );
 }
