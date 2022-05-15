@@ -48,3 +48,19 @@ root/
     pages/ // @pages/* - Not sure why I have this but you never know 😎
     styles/
 ```
+
+## 🥞 What is your tech stack?
+
+| Category           | Packages                                       |
+| ------------------ | ---------------------------------------------- |
+| Framework          | `next`                                         |
+| BootStrapper       | `create-next-app`                              |
+| Scripting Language | `typescript`                                   |
+| ApiClient          | `graphql-request`, `axios`,`react-query`       |
+| Styling            | `styled-components`, `Material-UI`             |
+| State-Management   | `React Context API`                            |
+| Testing            | `cypress`, `react-testing-library`, `jest`     |
+| Localisation       | `i18next`                                      |
+| Code Control       | `eslint`, `prettier`, `eslint-plugin-prettier` |
+| CI/CD              | `GitHub Actions`                               |
+| `undefined`        | `lodash`, `react-hook-form`                    |
