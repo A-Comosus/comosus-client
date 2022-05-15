@@ -1,7 +1,7 @@
 import React from 'react';
+import { useLocalisation } from '@common/contexts';
 
-import { Link, Text } from '@src/common/components';
-import { useLocalisation } from '@src/common/context';
+import { Link, Text } from '@common/components';
 
 export default function Title() {
   const { t } = useLocalisation();

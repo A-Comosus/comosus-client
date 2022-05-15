@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useLocalisation } from '@common/contexts';
 
-import { Text } from '@src/common/components';
-import { useLocalisation } from '@src/common/context';
+import { Text } from '@common/components';
 
 const StyledDescription = styled.div`
   margin: 4rem 0;

@@ -1,6 +1,7 @@
-import { Container } from '@src/common/components';
-import { useLocalisation } from '@src/common/context';
 import React, { useState } from 'react';
+import { useLocalisation } from '@common/contexts';
+
+import { Container } from '@common/components';
 import { Description, NextInformation, Title } from './sections';
 
 export default function NextTemplate() {
