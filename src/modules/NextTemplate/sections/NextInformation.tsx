@@ -1,4 +1,4 @@
-import { Link, Text } from '@src/common/components';
+import { Link, Text } from '@common/components';
 import React from 'react';
 import styled from 'styled-components';
 
