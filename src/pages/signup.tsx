@@ -1,4 +1,4 @@
-import SignupForm from '@src/modules/next-template/components/SignupForm';
+import SignupForm from '@src/modules/auth/SignupForm';
 import Navlogo from '@src/modules/next-template/components/Navlogo';
 import styled from 'styled-components';
 

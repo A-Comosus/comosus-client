@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Input from './Input';
-import Button from './Button';
+import Input from '../next-template/components/Input';
+import Button from '../next-template/components/Button';
 import Link from 'next/link';
 
 function SignupForm() {
@@ -78,7 +78,7 @@ const InputContainer = styled.div`
 `;
 
 const ButtonContainer = styled.div`
-  margin: 1rem 0 0 0;
+  margin: 3rem 0 0 0;
   width: 100%
   display: flex;
   align-items:center;
