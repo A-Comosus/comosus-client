@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
-import { useLocalisation } from '@common/contexts';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 import { Container } from '@common/components';
 import { Description, NextInformation, Title } from './sections';
 
 export default function NextTemplate() {
-  const { t, changeLanguage, setDefaultNamespace } = useLocalisation();
-  const [language, setLanguage] = useState('cn');
-  setDefaultNamespace('nextTemplate');
+  const router = useRouter();
+  const { t } = useTranslation('nextTemplate');
+  const [language, setLanguage] = useState(router.locale);
 
   const handleChangeLanguage = (event: any) => {
     event.preventDefault();
-    changeLanguage(event.target.value);
     setLanguage(event.target.value);
+    router.push(`/`, undefined, { locale: event.target.value });
   };
 
   const cards: Card[] = [

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useLocalisation } from '@common/contexts';
+import { useTranslation } from 'next-i18next';
 
 import { Text } from '@common/components';
 
@@ -11,7 +12,7 @@ const StyledDescription = styled.div`
 `;
 
 export default function Description() {
-  const { t } = useLocalisation();
+  const { t } = useTranslation('nextTemplate');
 
   return (
     <StyledDescription>

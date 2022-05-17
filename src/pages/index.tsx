@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { Container, Footer } from '@common/components';
 import { NextTemplate, SpaceX } from '@src/modules';
@@ -20,5 +21,11 @@ const Home: NextPage = () => {
     </Container>
   );
 };
+
+export const getStaticProps = async ({ locale }: any) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ['common', 'nextTemplate'])),
+  },
+});
 
 export default Home;
