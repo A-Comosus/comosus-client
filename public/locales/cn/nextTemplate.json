@@ -1,0 +1,23 @@
+{
+  "appName": "下一个.JS",
+  "title": "欢迎使用 ",
+  "getStarted": "让我们从编辑这个文件开始👉",
+  "cards": [
+    {
+      "title": "官方文档📃",
+      "description": "进一步的了解关于Next.js的功能以及API ♂️♀️"
+    },
+    {
+      "title": "活到老学到老",
+      "description": "通过👶互动性课程以及测试来学习Next.js"
+    },
+    {
+      "title": "案例",
+      "description": "探索（复制）和发现（黏贴）程序猿🐵的精髓"
+    },
+    {
+      "title": "部署上线",
+      "description": "使用Vercel来实现部署上线摆烂瞬间完成"
+    }
+  ]
+}
