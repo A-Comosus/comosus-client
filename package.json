@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watch",
-    "test:coverage": "jest --watchAll --coverage"
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "axios": "^0.27.2",
