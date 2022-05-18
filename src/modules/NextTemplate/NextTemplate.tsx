@@ -4,6 +4,7 @@ import { useTranslation } from 'next-i18next';
 
 import { Container } from '@common/components';
 import { Description, NextInformation, Title } from './sections';
+import { ThemeToggleButton } from '@src/common/contexts';
 
 export default function NextTemplate() {
   const router = useRouter();
@@ -48,6 +49,7 @@ export default function NextTemplate() {
         <option value="cn">{option1}</option>
         <option value="en">{option2}</option>
       </select>
+      <ThemeToggleButton />
       <Description />
       <NextInformation cards={cards} />
     </Container>
