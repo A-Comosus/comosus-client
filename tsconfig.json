@@ -11,7 +11,8 @@
       "@generated/*": ["./_generated/*"],
       "@pages/*": ["./pages/*"],
       "@common/*": ["./common/*"],
-      "@modules/*": ["./modules/*"]
+      "@modules/*": ["./modules/*"],
+      "@utils/*": ["./utils/*"]
     },
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
