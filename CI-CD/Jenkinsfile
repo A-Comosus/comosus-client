@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+    stages {
+        stage('Git check out') {
+            steps{
+                echo 'Git check out...'
+                // Get source code from a GitHub repository
+                git branch:'main', url:'https://github.com/A-Comosus/comosus-client.git'
+            }
+        }
+        stage('Install dependencies') {
+            steps {
+                echo 'Install dependencies...'
+                sh 'yarn install'
+            }
+        }
+
+        /*stage('Test') {
+            steps {
+                echo 'Testing..'
+                sh 'yarn test'
+            }
+        }*/
+        stage('Checking for linter error') {
+            steps {
+                echo 'Checking for linter error....'
+                sh 'yarn lint'
+            }
+        }
+         stage('Build') {
+            steps {
+                echo 'Building....'
+                sh 'yarn codegen'
+                sh 'yarn build'
+            }
+        }
+    }
+}
