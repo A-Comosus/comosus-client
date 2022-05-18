@@ -2,7 +2,7 @@ import React from 'react';
 
 type LinkProps = {
   children: React.ReactNode;
-  testid: string;
+  testid?: string;
   href: string;
   target?: '_blank' | '_parent';
   rel?: string;
