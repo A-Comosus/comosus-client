@@ -5,7 +5,7 @@ pipeline {
             steps{
                 echo 'Git check out...'
                 // Get source code from a GitHub repository
-                git branch:'main', url:'https://github.com/A-Comosus/comosus-client.git'
+                git branch: env.BRANCH_NAME, url:'https://github.com/A-Comosus/comosus-client.git'
             }
         }
         stage('Install dependencies') {
