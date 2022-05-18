@@ -1,7 +1,7 @@
 import React from 'react';
 import { CompanyQuery } from '@src/_generated/graphql.queries';
 
-import { Text } from '@src/common/components';
+import { Text } from '@common/components';
 
 type CompanyInfoProps = {
   data?: CompanyQuery;

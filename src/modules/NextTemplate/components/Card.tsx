@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Link, Text } from '@src/common/components';
+import { Link, Text } from '@common/components';
 
 const StyledCard = styled.div`
   margin: 1rem;

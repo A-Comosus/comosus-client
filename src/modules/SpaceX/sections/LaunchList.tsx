@@ -2,7 +2,7 @@ import React from 'react';
 import { isNil } from 'lodash';
 import { LaunchListQuery } from '@src/_generated/graphql.queries';
 
-import { Text } from '@src/common/components';
+import { Text } from '@common/components';
 
 type LaunchListProps = {
   data?: LaunchListQuery;

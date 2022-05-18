@@ -1,4 +1,3 @@
-import { Link, Text } from '@src/common/components';
 import React from 'react';
 import styled from 'styled-components';
 

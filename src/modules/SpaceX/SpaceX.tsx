@@ -5,9 +5,9 @@ import {
   useCompanyQuery,
   useLaunchListQuery,
 } from '@generated/graphql.queries';
-import { useApiClient } from '@src/common/contexts';
+import { useApiClient } from '@common/contexts';
 
-import { Container, Text } from '@src/common/components';
+import { Container, Text } from '@common/components';
 import LaunchList from './sections/LaunchList';
 import CompanyInfo from './sections/CompanyInfo';
 
