@@ -21,7 +21,7 @@ jobs:
       - run: echo "🧪 Workflow will be running tests available in this branch."
 
       - name: Checking pull request for test
-        run: yarn test
+        run: yarn test:coverage
       - run: echo "🧪 Testing completes!"
       - run: echo "📝 Workflow will now run a linter check."
 
