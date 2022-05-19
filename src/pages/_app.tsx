@@ -1,14 +1,14 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { appWithTranslation } from 'next-i18next';
-import { ApiClientProvider, ThemeProvider } from '@common/contexts';
+import { ApiClientProvider, ThemeContextProvider } from '@common/contexts';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ApiClientProvider>
-      <ThemeProvider>
+      <ThemeContextProvider>
         <Component {...pageProps} />
-      </ThemeProvider>
+      </ThemeContextProvider>
     </ApiClientProvider>
   );
 }
