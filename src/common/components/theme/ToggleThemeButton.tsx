@@ -2,8 +2,7 @@ import React from 'react';
 import { Theme, useTheme } from '@src/common/contexts';
 
 const ToggleThemeButton: React.FC = () => {
-  const theme = useTheme();
-  const { themeMode, toggleTheme } = theme;
+  const { themeMode, toggleTheme } = useTheme();
 
   return (
     <div>
