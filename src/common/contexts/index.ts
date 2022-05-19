@@ -1,6 +1,6 @@
 export { ApiClientProvider, useApiClient } from './ApiClient';
 export {
   Theme,
-  ThemeContext,
+  useTheme,
   ThemeContextProvider,
 } from './themeContext/ThemeProvider';
