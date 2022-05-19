@@ -1,5 +1,5 @@
 import SignupForm from '@src/modules/auth/SignupForm';
-import Navlogo from '@src/modules/next-template/components/Navlogo';
+import NavLogo from '@src/modules/next-template/components/Navlogo';
 import styled from 'styled-components';
 
 const MainContainer = styled.div`
@@ -10,7 +10,7 @@ const MainContainer = styled.div`
 export default function SignUp() {
   return (
     <>
-      <Navlogo />
+      <NavLogo />
       <MainContainer>
         <SignupForm />
       </MainContainer>
