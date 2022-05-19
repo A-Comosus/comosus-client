@@ -40,7 +40,7 @@ type CardProps = Card;
  */
 export default function Card({ href, title, description }: CardProps) {
   return (
-    <Link href={href}>
+    <Link testid="next-template-card" href={href}>
       <StyledCard>
         <Text type="h2">{`${title} \u2192`}</Text>
         <Text>{description}</Text>
