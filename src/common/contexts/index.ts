@@ -1,2 +1,6 @@
 export { ApiClientProvider, useApiClient } from './ApiClient';
-export { ThemeProvider, ThemeToggleButton } from './ThemeProvider';
+export {
+  Theme,
+  ThemeContext,
+  ThemeContextProvider,
+} from './themeContext/ThemeProvider';
