@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
-import { Theme, ThemeContext } from '@src/common/contexts';
+import React from 'react';
+import { Theme, useTheme } from '@src/common/contexts';
 
 const ToggleThemeButton: React.FC = () => {
-  const { themeMode, toggleTheme } = useContext(ThemeContext);
+  const theme = useTheme();
+  const { themeMode, toggleTheme } = theme;
 
   return (
     <div>
