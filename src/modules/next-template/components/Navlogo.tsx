@@ -10,7 +10,7 @@ const Nav = styled.nav`
   cursor: pointer;
 `;
 
-function Navlogo() {
+function NavLogo() {
   return (
     <Link href="/" passHref>
       <Nav>
@@ -22,4 +22,4 @@ function Navlogo() {
   );
 }
 
-export default Navlogo;
+export default NavLogo;
