@@ -19,12 +19,18 @@ yarn codegen
 Then you can start the app simply by:
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 🧪 How to test this app?
+
+Simple! Just run this and you are good to go!
+
+```bash
+yarn test
+```
 
 ## File Structure
 
@@ -33,6 +39,7 @@ Files are structured based on this [Guide](https://dev.to/vadorequest/a-2021-gui
 ```js
 root/
   src/ // @src/* - Convenient backup path to bubble up to src directory
+    __test__
     _generated/ // @generated/* - graphql-codegen generated graphql schema
     common/ // @common/* -  Files that will be used throughout the project
       components/
@@ -44,6 +51,7 @@ root/
           index
         sections/
           index
+    utils/ // @utils/* - All the utilities we need for this project?
 
     pages/ // @pages/* - Not sure why I have this but you never know 😎
     styles/

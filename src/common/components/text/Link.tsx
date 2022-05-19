@@ -1,7 +1,8 @@
-import React, { AnchorHTMLAttributes } from 'react';
+import React from 'react';
 
 type LinkProps = {
   children: React.ReactNode;
+  testid?: string;
   href: string;
   target?: '_blank' | '_parent';
   rel?: string;
@@ -9,12 +10,13 @@ type LinkProps = {
 
 export default function Link({
   children,
+  testid,
   href,
   target = '_blank',
   rel = 'noopener noreferrer',
 }: LinkProps) {
   return (
-    <a href={href} target={target} rel={rel}>
+    <a data-testid={testid} href={href} target={target} rel={rel}>
       {children}
     </a>
   );
