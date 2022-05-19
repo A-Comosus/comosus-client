@@ -1,21 +1,73 @@
 import React from 'react';
 import styled from 'styled-components';
-import Input from '../next-template/components/Input';
 import Button from '../next-template/components/Button';
 import Link from 'next/link';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
-function SignupForm() {
+interface IFormInputs {
+  name: string;
+  email: string;
+  password: string;
+}
+
+const schema = yup.object().shape({
+  name: yup.string().required('Please enter a username'),
+  email: yup.string().email().required('Please enter your email'),
+  password: yup.string().min(4).max(15).required('Please enter a password'),
+});
+
+export default function SignupForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormInputs>({
+    resolver: yupResolver(schema),
+  });
+  console.log(errors);
+
+  const onSubmit = (data: IFormInputs) => {
+    console.log(data);
+  };
+
   return (
     <MainContainer>
       <Title>
         Create an account for free
         <SubTitle>Free forever. No Payment needed</SubTitle>
       </Title>
-      <Form>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <InputContainer>
-          <Input type="text" placeholder="Username" />
-          <Input type="email" placeholder="Email address" />
-          <Input type="password" placeholder="Create Password" />
+          <Input
+            type="text"
+            placeholder="Username"
+            {...register('name', {
+              minLength: {
+                value: 4,
+                message: 'Min length is 4',
+              },
+            })}
+          />
+          <Paragraph>{errors.name?.message}</Paragraph>
+          <Input
+            type="email"
+            placeholder="Email address"
+            {...register('email')}
+          />
+          <Paragraph>{errors.email?.message}</Paragraph>
+          <Input
+            type="password"
+            placeholder="Create Password"
+            {...register('password', {
+              minLength: {
+                value: 6,
+                message: 'Min length is 6',
+              },
+            })}
+          />
+          <Paragraph>{errors.password?.message}</Paragraph>
         </InputContainer>
         <Conditions>
           <Term>
@@ -57,6 +109,9 @@ const Title = styled.div`
   color: #fff;
 `;
 
+const Paragraph = styled.p`
+  color: #f6486c;
+`;
 const SubTitle = styled.div`
   padding-top: 1rem;
   font-size: 1rem;
@@ -75,6 +130,22 @@ const InputContainer = styled.div`
   display: grid;
   gap: 12px;
   padding-bottom: 28px;
+`;
+
+const Input = styled.input`
+  background: #f5f6f8;
+  border-radius: 0.7rem;
+  height: 3rem;
+  padding: 1rem;
+  border: none;
+  outline: none;
+  margin-bottom: 12px;
+  &:focus {
+    display: inline-block;
+    box-shadow: 0 0 0 0.14rem #000;
+    backdrop-filter: blur(12rem);
+    border-radius: 0.7rem;
+  }
 `;
 
 const ButtonContainer = styled.div`
@@ -135,5 +206,3 @@ const AlreadyHaveAccount = styled.div`
     text-decoration: underline;
   }
 `;
-
-export default SignupForm;
