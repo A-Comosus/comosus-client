@@ -8,6 +8,8 @@ const StyledDescription = styled.div`
   margin: 4rem 0;
   line-height: 1.5;
   font-size: 1.5rem;
+  /* here is an example of how to use colors defined in the themes */
+  background-color: ${({ theme }) => theme.primary};
 `;
 
 export default function Description() {
