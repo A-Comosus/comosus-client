@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Container } from '@common/components';
 import { Description, NextInformation, Title } from './sections';
 import { ToggleThemeButton } from '@common/components';
+import Link from 'next/link';
 
 export default function NextTemplate() {
   const router = useRouter();
@@ -49,6 +50,7 @@ export default function NextTemplate() {
         <option value="cn">{option1}</option>
         <option value="en">{option2}</option>
       </select>
+      <Link href="/login">Go To Login</Link>
       <ToggleThemeButton />
       <Description />
       <NextInformation cards={cards} />
