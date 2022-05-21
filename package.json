@@ -12,7 +12,12 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.0.2",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "@fontsource/montserrat": "^4.5.10",
     "axios": "^0.27.2",
+    "framer-motion": "^6",
     "graphql": "^16.5.0",
     "graphql-request": "^4.2.0",
     "i18next": "^21.8.3",

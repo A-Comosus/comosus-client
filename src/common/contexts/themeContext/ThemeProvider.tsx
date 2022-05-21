@@ -1,37 +1,41 @@
-import React, { useEffect, useState } from 'react';
-import { ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme } from './themes';
-import GlobalStyle from './global';
+import React from 'react';
+import {
+  ChakraProvider,
+  extendTheme,
+  theme as chakraCreatedTheme,
+} from '@chakra-ui/react';
+
+import '@fontsource/montserrat';
 
 export enum Theme {
   Light = 'light',
   Dark = 'dark',
 }
-type ThemeContext = { themeMode?: any; toggleTheme: () => void };
+
+type ThemeContextType = {};
+const ThemeContext = React.createContext<ThemeContextType>(
+  {} as ThemeContextType,
+);
+export const useTheme = () => React.useContext(ThemeContext);
+
 type ThemeProviderProps = {
   children: React.ReactNode;
 };
-
-const ThemeContext = React.createContext<ThemeContext>({} as ThemeContext);
-export const useTheme = () => {
-  return React.useContext(ThemeContext);
-};
-
 export const ThemeContextProvider = ({ children }: ThemeProviderProps) => {
-  const [themeMode, setThemeMode] = useState(Theme.Light);
-
-  const toggleTheme = () => {
-    themeMode === Theme.Light
-      ? setThemeMode(Theme.Dark)
-      : setThemeMode(Theme.Light);
+  const chakraTheme = {
+    fonts: {
+      body: 'Montserrat, sans-serif',
+    },
+    config: {
+      initialColorMode: 'system',
+    },
   };
 
   return (
-    <ThemeContext.Provider value={{ themeMode, toggleTheme }}>
-      <ThemeProvider theme={themeMode === Theme.Dark ? darkTheme : lightTheme}>
-        <GlobalStyle />
+    <ThemeContext.Provider value={{}}>
+      <ChakraProvider resetCSS={true} theme={extendTheme(chakraTheme)}>
         {children}
-      </ThemeProvider>
+      </ChakraProvider>
     </ThemeContext.Provider>
   );
 };
