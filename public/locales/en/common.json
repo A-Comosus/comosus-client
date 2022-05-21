@@ -2,5 +2,8 @@
   "languages": {
     "cn": "Chinese",
     "en": "English"
+  },
+  "login": {
+    "title": "Just Login"
   }
 }
