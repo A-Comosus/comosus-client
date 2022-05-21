@@ -7,7 +7,7 @@ import {
   NextInformation,
 } from '@modules/NextTemplate/sections';
 
-jest.mock('next-i18next', (): any => ({
+jest.mock('react-i18next', (): any => ({
   useTranslation: (): any => ({
     t: (key: string): string => key.toUpperCase(),
   }),
