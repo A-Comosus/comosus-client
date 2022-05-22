@@ -14,12 +14,6 @@ jest.mock('react-i18next', (): any => ({
 }));
 
 describe('Next Template Modules', () => {
-  let expectedRouterLocale;
-
-  beforeEach(() => {
-    expectedRouterLocale = 'en';
-  });
-
   it('should renders a title', () => {
     const { getByText } = render(<Title />);
     const title = getByText(/title/i);

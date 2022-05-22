@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import _ from 'lodash';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { GraphQLClient } from 'graphql-request';

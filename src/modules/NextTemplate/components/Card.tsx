@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { LinkBox, LinkOverlay } from '@chakra-ui/react';
-import { Link, Text } from '@common/components';
+import { Text } from '@common/components';
 
 const StyledCard = styled.div`
   margin: 1rem;

@@ -1,6 +1,4 @@
-import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-// pages/_app.tsx
 import { appWithI18Next } from 'ni18n';
 import { ni18nConfig } from '../ni18n.config';
 
