@@ -1,7 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # graphql-codegen
-src/_generated
+/_generated
 
 # dependencies
 /node_modules
