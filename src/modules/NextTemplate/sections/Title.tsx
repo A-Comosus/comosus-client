@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Text, Link } from '@common/components';
 
 export default function Title() {
-  const { t } = useTranslation('nextTemplate');
+  const { t } = useTranslation('next-template');
 
   return (
     <Text type="h1">

@@ -10,7 +10,7 @@ import {
 } from '@modules/NextTemplate/sections';
 
 const Home: NextPage = () => {
-  const { t } = useTranslation('nextTemplate');
+  const { t } = useTranslation('next-template');
   const head = {
     title: 'Create Next App',
     metas: [
