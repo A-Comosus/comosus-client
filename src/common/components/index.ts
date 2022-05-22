@@ -2,6 +2,7 @@
 export { default as AppContainer } from './containers/AppContainer';
 
 // Generic Components
+export { default as Logo } from './generics/Logo';
 export { default as NavBar } from './generics/NavBar';
 export { default as Footer } from './generics/Footer';
 export { default as SelectLanguage } from './generics/SelectLanguage';
