@@ -2,6 +2,7 @@
 export { default as Footer } from './Footer';
 
 // Generic Components
+export { default as NavBar } from './generics/NavBar';
 export { default as Footer } from './generics/Footer';
 export { default as SelectLanguage } from './generics/SelectLanguage';
 export { default as ToggleThemeButton } from './generics/ToggleThemeButton';
