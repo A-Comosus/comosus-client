@@ -12,7 +12,14 @@ export default function SelectLanguage() {
   const handleChangeLanguage = (event: any) => {
     event.preventDefault();
     setLanguage(event.target.value);
-    router.push(`/`, undefined, { locale: event.target.value });
+    router.push(
+      {
+        route: router.pathname,
+        query: router.query,
+      },
+      router.asPath,
+      { locale: event.target.value },
+    );
   };
 
   return (
