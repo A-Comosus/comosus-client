@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Link, Text } from '@common/components';
+import { Text, Link } from '@common/components';
 
 export default function Title() {
   const { t } = useTranslation('nextTemplate');
@@ -9,9 +9,7 @@ export default function Title() {
   return (
     <Text type="h1">
       {t('title')}
-      <Link href="https://nextjs.org">
-        <Text type="a">{t('appName')}</Text>
-      </Link>
+      <Link href="https://nextjs.org">{t('appName')}</Link>
     </Text>
   );
 }

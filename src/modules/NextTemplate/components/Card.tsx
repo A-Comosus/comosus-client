@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { LinkBox, LinkOverlay } from '@chakra-ui/react';
 import { Link, Text } from '@common/components';
 
 const StyledCard = styled.div`
@@ -40,11 +41,13 @@ type CardProps = Card;
  */
 export default function Card({ href, title, description }: CardProps) {
   return (
-    <Link testid="next-template-card" href={href}>
+    <LinkBox data-testid="next-template-card">
       <StyledCard>
-        <Text type="h2">{`${title} \u2192`}</Text>
+        <LinkOverlay href={href}>
+          <Text type="h2">{`${title} \u2192`}</Text>
+        </LinkOverlay>
         <Text>{description}</Text>
       </StyledCard>
-    </Link>
+    </LinkBox>
   );
 }
