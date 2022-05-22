@@ -22,6 +22,7 @@ const customJestConfig = {
     '^@common/(.*)$': ['<rootDir>/src/common/$1'],
     '^@modules/(.*)$': ['<rootDir>/src/modules/$1'],
     '^@utils/(.*)$': ['<rootDir>/src/utils/$1'],
+    '@fontsource/*': ['<rootDir>/src/utils/__mock__/font-source.mock.js'],
   },
   collectCoverage: true,
   collectCoverageFrom: ['<rootDir>/src/**/*.{ts,tsx}'],
