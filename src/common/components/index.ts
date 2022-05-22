@@ -1,7 +1,8 @@
 // Common Components
 export { default as Footer } from './Footer';
 
-// Layout Components
+// Generic Components
+export { default as Footer } from './generics/Footer';
 
 export { default as Container } from './layout/Container';
 
