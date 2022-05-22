@@ -1,6 +1,6 @@
-### Provide screenshoot or video that the function is working.
+### Provide screenshots or videos that the function is working.
 
-### Provide screenshot of no warning, error in console.
+### Provide screenshots of no warning, error in console.
 
 - [ ] No merge conflict with `develop` branch.
 - [ ] Check PR title is correct, (i.e `[AC-xx: Feature] Create pull request template`).
