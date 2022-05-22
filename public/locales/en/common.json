@@ -1,4 +1,11 @@
 {
+  "button": {
+    "disabled": "Disabled"
+  },
+  "nav": {
+    "home": "Home",
+    "space-x": "Space-X"
+  },
   "languages": {
     "cn": "Chinese",
     "en": "English"

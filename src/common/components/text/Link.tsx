@@ -1,23 +1,15 @@
 import React from 'react';
 
+import { Link as CKLink, LinkProps as CKLinkProps } from '@chakra-ui/react';
+
 type LinkProps = {
   children: React.ReactNode;
-  testid?: string;
-  href: string;
-  target?: '_blank' | '_parent';
-  rel?: string;
-};
+} & CKLinkProps;
 
-export default function Link({
-  children,
-  testid,
-  href,
-  target = '_blank',
-  rel = 'noopener noreferrer',
-}: LinkProps) {
+export default function Link({ children, ...props }: LinkProps) {
   return (
-    <a data-testid={testid} href={href} target={target} rel={rel}>
+    <CKLink color="#0070f3" {...props}>
       {children}
-    </a>
+    </CKLink>
   );
 }

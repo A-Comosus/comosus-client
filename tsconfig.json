@@ -7,8 +7,8 @@
     "strict": true,
     "baseUrl": "./src",
     "paths": {
+      "@generated/*": ["../_generated/*"],
       "@src/*": ["./*"],
-      "@generated/*": ["./_generated/*"],
       "@pages/*": ["./pages/*"],
       "@common/*": ["./common/*"],
       "@modules/*": ["./modules/*"],

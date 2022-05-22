@@ -13,7 +13,7 @@ const StyledDescription = styled.div`
 `;
 
 export default function Description() {
-  const { t } = useTranslation('nextTemplate');
+  const { t } = useTranslation('next-template');
 
   return (
     <StyledDescription>
