@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Heading1, Heading2, Code, Link } from './_styled';
+import { Heading as CKHeading, Text as CKText, Code } from '@chakra-ui/react';
 
-export type TextTypes = 'h1' | 'h2' | 'p' | 'a' | 'code' | 'span';
+export type TextTypes = 'h1' | 'h2' | 'p' | 'code' | 'span';
 
 type TextProps = {
   children: React.ReactNode;
@@ -13,12 +13,19 @@ export default function Text({ children, type = 'p' }: TextProps) {
   // TODO: Add localization logic here
 
   const types = {
-    h1: <Heading1>{children}</Heading1>,
-    h2: <Heading2>{children}</Heading2>,
-    p: <p>{children}</p>,
-    a: <Link>{children}</Link>,
-    code: <Code>{children}</Code>,
-    span: <span>{children}</span>,
+    h1: (
+      <CKHeading as="h1" fontSize="4rem">
+        {children}
+      </CKHeading>
+    ),
+    h2: <CKHeading as="h2">{children}</CKHeading>,
+    p: <CKText as="p">{children}</CKText>,
+    code: (
+      <Code borderRadius="5px" p="0.75rem" fontSize="1.1rem">
+        {children}
+      </Code>
+    ),
+    span: <CKText as="span">{children}</CKText>,
   };
 
   return types[type];
