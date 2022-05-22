@@ -1,5 +1,5 @@
-// Common Components
-export { default as Footer } from './Footer';
+// Container Components
+export { default as AppContainer } from './containers/AppContainer';
 
 // Generic Components
 export { default as NavBar } from './generics/NavBar';
