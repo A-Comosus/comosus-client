@@ -10,8 +10,6 @@ type TextProps = {
 };
 
 export default function Text({ children, type = 'p' }: TextProps) {
-  // TODO: Add localization logic here
-
   const types = {
     h1: (
       <CKHeading as="h1" fontSize="4rem">
