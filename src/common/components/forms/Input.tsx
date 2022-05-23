@@ -11,7 +11,6 @@ import {
   FormErrorMessage,
   VStack,
   FormControl,
-  HStack,
 } from '@chakra-ui/react';
 
 type InputProps = {
@@ -36,11 +35,24 @@ export default function Input({
         <FormControl id={name} isInvalid={invalid}>
           <VStack>
             <InputGroup>
-              {leftElement && <InputLeftElement children={leftElement} />}
+              {leftElement && (
+                <InputLeftElement
+                  children={leftElement}
+                  color={`${error ? 'red' : 'auto'}`}
+                />
+              )}
               <CKInput
                 border="0px"
                 borderRadius="0"
-                borderBottom="1px solid grey"
+                borderBottom="1px solid #ADB2C6"
+                _placeholder={{ color: '#ffffff50' }}
+                _focus={{
+                  borderBottom: '1px solid',
+                  borderColor: '#819CFF',
+                }}
+                _invalid={{
+                  borderBottom: '1px solid #FB446C',
+                }}
                 id={name}
                 {...props}
                 {...field}
