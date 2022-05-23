@@ -1,22 +1,43 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useApiClient } from '@common/contexts';
+import { useLoginMutation } from '@generated/graphql.queries';
 
 import { VStack } from '@chakra-ui/react';
 import { AppContainer } from '@src/common/components';
 import { LoginForm } from '@src/modules/auth';
+import { isNil } from 'lodash';
 
 export default function Login() {
   const { t } = useTranslation('auth');
   const head = { title: t('login.title') };
+  const { gqlClient } = useApiClient();
+  const {
+    mutate: login,
+    error,
+    isLoading: isLoggingIn,
+  } = useLoginMutation(gqlClient, {
+    onSettled: (data, error) => {
+      if (error) {
+        // @ts-ignore
+        console.error(error.message);
+      }
+      // @TODO: Navigate to editor panel
+    },
+  });
 
-  const onSubmit = () => {
-    console.log('submitting form');
+  const onSubmit = (value: LoginFormTypes) => {
+    login({ payload: value });
   };
 
   return (
     <AppContainer head={head}>
       <VStack justify="center">
-        <LoginForm onSubmit={onSubmit} />
+        <LoginForm
+          onSubmit={onSubmit}
+          isLoading={isLoggingIn}
+          isInvalid={!isNil(error)}
+        />
       </VStack>
     </AppContainer>
   );
