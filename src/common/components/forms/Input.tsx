@@ -2,16 +2,15 @@
 import React from 'react';
 import { Controller, Control } from 'react-hook-form';
 
-import { MdError } from 'react-icons/md';
 import {
   InputGroup,
   InputLeftElement,
   Input as CKInput,
   InputProps as CKInputProps,
-  FormErrorMessage,
   VStack,
   FormControl,
 } from '@chakra-ui/react';
+import { FormErrorMessage } from '@common/components';
 
 type InputProps = {
   name: string;
@@ -55,12 +54,7 @@ export default function Input({
               />
               {rightElement && <InputLeftElement children={rightElement} />}
             </InputGroup>
-            {error && (
-              <FormErrorMessage flex={1} alignSelf="flex-start" gap="5px">
-                <MdError />
-                {error.message}
-              </FormErrorMessage>
-            )}
+            {error && <FormErrorMessage error={error.message} />}
           </VStack>
         </FormControl>
       )}
