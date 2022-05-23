@@ -15,12 +15,13 @@ pipeline {
             }
         }
 
-        /*stage('Test') {
+        stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'yarn test'
+                sh 'yarn test:coverage'
             }
-        }*/
+        }
+        
         stage('Checking for linter error') {
             steps {
                 echo 'Checking for linter error....'
