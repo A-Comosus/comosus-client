@@ -1,11 +1,9 @@
 import React, { useMemo } from 'react';
-import _ from 'lodash';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { GraphQLClient } from 'graphql-request';
 import axios, { AxiosInstance } from 'axios';
 
-// TODO: Fetch this from process.env
 const apiEndpoint = {
   gql:
     process.env.GRAPHQL_ENDPOINT ??
@@ -21,8 +19,9 @@ type ApiClientContextType = {
   restClient: AxiosInstance;
 };
 
-// @ts-ignore
-const ApiClientContext = React.createContext<ApiClientContextType>({});
+const ApiClientContext = React.createContext<ApiClientContextType>(
+  {} as ApiClientContextType,
+);
 
 type ApiClientProviderProps = {
   children: React.ReactNode;

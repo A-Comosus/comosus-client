@@ -1,6 +1,16 @@
 {
+  "button": {
+    "disabled": "不给点"
+  },
+  "nav": {
+    "home": "主页",
+    "space-x": "Space-X"
+  },
   "languages": {
     "cn": "中文",
     "en": "英文"
+  },
+  "login": {
+    "title": "来啊，造啊！"
   }
 }

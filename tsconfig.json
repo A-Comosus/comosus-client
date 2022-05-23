@@ -7,8 +7,8 @@
     "strict": true,
     "baseUrl": "./src",
     "paths": {
+      "@generated/*": ["../_generated/*"],
       "@src/*": ["./*"],
-      "@generated/*": ["./_generated/*"],
       "@pages/*": ["./pages/*"],
       "@common/*": ["./common/*"],
       "@modules/*": ["./modules/*"],
@@ -24,6 +24,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next-i18next.config.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

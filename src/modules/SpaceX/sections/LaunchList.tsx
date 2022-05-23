@@ -1,6 +1,6 @@
 import React from 'react';
 import { isNil } from 'lodash';
-import { LaunchListQuery } from '@src/_generated/graphql.queries';
+import { LaunchListQuery } from '@generated/graphql.queries';
 
 import { Text } from '@common/components';
 

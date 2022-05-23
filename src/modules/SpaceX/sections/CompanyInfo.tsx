@@ -1,5 +1,5 @@
 import React from 'react';
-import { CompanyQuery } from '@src/_generated/graphql.queries';
+import { CompanyQuery } from '@generated/graphql.queries';
 
 import { Text } from '@common/components';
 

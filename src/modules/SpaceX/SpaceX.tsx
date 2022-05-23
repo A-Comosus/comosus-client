@@ -7,7 +7,8 @@ import {
 } from '@generated/graphql.queries';
 import { useApiClient } from '@common/contexts';
 
-import { Container, Text } from '@common/components';
+import { VStack } from '@chakra-ui/react';
+import { Text } from '@common/components';
 import LaunchList from './sections/LaunchList';
 import CompanyInfo from './sections/CompanyInfo';
 
@@ -22,11 +23,11 @@ export default function SpaceX() {
   >(gqlClient);
 
   return (
-    <Container type="main">
+    <VStack px="2rem" gap="2rem">
       <Text type="h1">About SpaceX</Text>
       {/* TODO: need to investigate return type of graphql queries */}
       <CompanyInfo data={companyQueryData} />
       <LaunchList data={launchListQueryData} />
-    </Container>
+    </VStack>
   );
 }
