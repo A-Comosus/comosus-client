@@ -33,7 +33,7 @@ export default function Input({
       control={control}
       render={({ field, fieldState: { invalid, error } }) => (
         <FormControl id={name} isInvalid={invalid}>
-          <VStack>
+          <VStack gap="30px">
             <InputGroup>
               {leftElement && (
                 <InputLeftElement
@@ -45,11 +45,7 @@ export default function Input({
                 border="0px"
                 borderRadius="0"
                 borderBottom="1px solid #ADB2C6"
-                _placeholder={{ color: '#ffffff50' }}
-                _focus={{
-                  borderBottom: '1px solid',
-                  borderColor: '#819CFF',
-                }}
+                _focus={{}}
                 _invalid={{
                   borderBottom: '1px solid #FB446C',
                 }}
