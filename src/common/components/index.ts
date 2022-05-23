@@ -9,6 +9,7 @@ export { default as SelectLanguage } from './generics/SelectLanguage';
 export { default as ToggleThemeButton } from './generics/ToggleThemeButton';
 
 // Form Components
+export { default as Button } from './forms/Button';
 export { default as Input } from './forms/Input';
 
 // Text Components
