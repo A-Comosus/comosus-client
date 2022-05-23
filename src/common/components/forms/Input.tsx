@@ -5,27 +5,27 @@ import { Controller, Control } from 'react-hook-form';
 import {
   InputGroup,
   InputLeftElement,
-  Input as CKInput,
-  InputProps as CKInputProps,
+  Input,
+  InputProps,
   VStack,
   FormControl,
 } from '@chakra-ui/react';
 import { FormErrorMessage } from '@common/components';
 
-type InputProps = {
+type CustomInputProps = {
   name: string;
   control: Control<any, any>;
   leftElement?: React.ReactNode;
   rightElement?: React.ReactNode;
-} & CKInputProps;
+} & InputProps;
 
-export default function Input({
+export default function CustomInput({
   name,
   control,
   leftElement,
   rightElement,
   ...props
-}: InputProps) {
+}: CustomInputProps) {
   return (
     <Controller
       name={name}
@@ -40,7 +40,7 @@ export default function Input({
                   color={`${error ? 'red' : 'auto'}`}
                 />
               )}
-              <CKInput
+              <Input
                 border="0px"
                 borderRadius="0"
                 borderBottom="1px solid #ADB2C6"
