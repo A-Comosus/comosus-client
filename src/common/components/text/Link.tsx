@@ -2,19 +2,41 @@ import React from 'react';
 import { UrlObject } from 'url';
 
 import NextLink from 'next/link';
-import { Link as CKLink, LinkProps as CKLinkProps } from '@chakra-ui/react';
+import { Link, LinkProps } from '@chakra-ui/react';
 
-type LinkProps = {
+type CustomLinkProps = {
   children: React.ReactNode;
+  highlight?: boolean;
   href: string | UrlObject;
-} & CKLinkProps;
+} & LinkProps;
 
-export default function Link({ children, href, ...props }: LinkProps) {
-  return (
-    <NextLink href={href} passHref>
-      <CKLink color="#0070f3" {...props}>
-        {children}
-      </CKLink>
-    </NextLink>
-  );
+export default function CustomLink({
+  children,
+  highlight,
+  href,
+  ...props
+}: CustomLinkProps) {
+  const variants = {
+    default: (
+      <NextLink href={href} passHref>
+        <Link color="#FB446C" {...props}>
+          {children}
+        </Link>
+      </NextLink>
+    ),
+    highlight: (
+      <NextLink href={href} passHref>
+        <Link
+          color="#FB446C"
+          fontWeight={700}
+          textDecoration="underline"
+          {...props}
+        >
+          {children}
+        </Link>
+      </NextLink>
+    ),
+  };
+
+  return highlight ? variants.highlight : variants.default;
 }
