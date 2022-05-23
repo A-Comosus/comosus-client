@@ -8,11 +8,11 @@ const apiEndpoint = {
   gql:
     process.env.GRAPHQL_ENDPOINT ??
     process.env.DEFAULT_ENDPOINT ??
-    'https://api.spacex.land/graphql/',
+    'http://localhost:3100/graphql/',
   rest:
     process.env.REST_ENDPOINT ??
     process.env.DEFAULT_ENDPOINT ??
-    'https://api.spacex.land/graphql/',
+    'http://localhost:3100/graphql/',
 };
 type ApiClientContextType = {
   gqlClient: GraphQLClient;
