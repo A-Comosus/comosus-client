@@ -14,7 +14,7 @@ export default function SelectLanguage() {
     setLanguage(event.target.value);
     router.push(
       {
-        route: router.pathname,
+        pathname: router.pathname,
         query: router.query,
       },
       router.asPath,
