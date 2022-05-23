@@ -19,6 +19,10 @@ export default function NavBar() {
       content: t('nav.space-x'),
     },
     {
+      href: '/login',
+      content: t('auth:login.title'),
+    },
+    {
       href: '/',
       content: t('button.disabled'),
       isDisabled: true,
