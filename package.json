@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "codegen": "graphql-codegen --config codegen.yml",
+    "codegen": "graphql-codegen --config codegen.yml -r dotenv/config",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -18,6 +18,7 @@
     "@fontsource/montserrat": "^4.5.10",
     "@hookform/resolvers": "^2.8.10",
     "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
     "framer-motion": "^6",
     "graphql": "^16.5.0",
     "graphql-request": "^4.2.0",
