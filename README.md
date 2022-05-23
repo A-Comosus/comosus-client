@@ -59,16 +59,16 @@ root/
 
 ## 🥞 What is your tech stack?
 
-| Category           | Packages                                       |
-| ------------------ | ---------------------------------------------- |
-| Framework          | `next`                                         |
-| BootStrapper       | `create-next-app`                              |
-| Scripting Language | `typescript`                                   |
-| ApiClient          | `graphql-request`, `axios`,`react-query`       |
-| Styling            | `styled-components`, `Material-UI`             |
-| State-Management   | `React Context API`                            |
-| Testing            | `cypress`, `react-testing-library`, `jest`     |
-| Localisation       | `i18next`                                      |
-| Code Control       | `eslint`, `prettier`, `eslint-plugin-prettier` |
-| CI/CD              | `GitHub Actions`                               |
-| `undefined`        | `lodash`, `react-hook-form`                    |
+| Category           | Packages                                                        |
+| ------------------ | --------------------------------------------------------------- |
+| Framework          | `next`                                                          |
+| BootStrapper       | `create-next-app`                                               |
+| Scripting Language | `typescript`                                                    |
+| ApiClient          | `graphql-request`, `axios`,`react-query`, `graphql-codegen`     |
+| Styling            | `styled-components`, `chakra-ui`, `framer-motion`, `fontsource` |
+| State-Management   | `React Context API`                                             |
+| Testing            | `cypress`, `react-testing-library`, `jest`                      |
+| Localisation       | `react-i18next`, `ni18n`                                        |
+| Code Control       | `eslint`, `prettier`, `eslint-plugin-prettier`                  |
+| CI/CD              | `GitHub Actions`                                                |
+| `undefined`        | `lodash`, `react-hook-form`, `yup`                              |
