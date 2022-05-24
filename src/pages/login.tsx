@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useApiClient } from '@common/contexts';
+import { useAuth, useApiClient } from '@common/contexts';
 import { useLoginMutation } from '@generated/graphql.queries';
 
 import { VStack } from '@chakra-ui/react';
@@ -11,6 +11,8 @@ import { isNil } from 'lodash';
 export default function Login() {
   const { t } = useTranslation('auth');
   const head = { title: t('login.title') };
+
+  const { setAccessToken } = useAuth();
   const { gqlClient } = useApiClient();
   const {
     mutate: login,
@@ -22,7 +24,11 @@ export default function Login() {
         // @ts-ignore
         console.error(error.message);
       }
-      // @TODO: Navigate to editor panel
+
+      if (data) {
+        setAccessToken(data.login.accessToken);
+        // @TODO: Navigate to editor panel
+      }
     },
   });
 
