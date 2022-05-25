@@ -21,6 +21,7 @@ jobs:
       - run: echo "🧪 Workflow will be running tests available in this branch."
 
   run-test:
+    runs-on: ubuntu-latest
     needs: set-up-runner
     steps:
       - name: Checking pull request for test
@@ -29,6 +30,7 @@ jobs:
       - run: echo "📝 Workflow will now run a linter check."
 
   run-linter:
+    runs-on: ubuntu-latest
     needs: run-linter
     steps:
       - name: Checking for linter error
