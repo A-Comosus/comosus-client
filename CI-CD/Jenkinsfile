@@ -11,28 +11,28 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 echo 'Install dependencies...'
-                sh 'yarn install'
+                sh 'npm install'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'yarn test:coverage'
+                sh 'npm run test:coverage'
             }
         }
         
         stage('Checking for linter error') {
             steps {
                 echo 'Checking for linter error....'
-                sh 'yarn lint'
+                sh 'npm run lint'
             }
         }
          stage('Build') {
             steps {
                 echo 'Building....'
-                sh 'yarn codegen'
-                sh 'yarn build'
+                sh 'npm run codegen'
+                sh 'npm run build'
             }
         }
     }
