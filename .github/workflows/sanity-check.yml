@@ -16,7 +16,7 @@ jobs:
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
 
       - name: Install dependencies
-        run: yarn install
+        run: npm install
       - run: echo "🚚 All dependencies listed has been installed on the runner."
       - run: echo "🧪 Workflow will be running tests available in this branch."
 
@@ -25,7 +25,7 @@ jobs:
     needs: set-up-runner
     steps:
       - name: Checking pull request for test
-        run: yarn test:coverage
+        run: npm test:coverage
       - run: echo "🧪 Testing completes!"
       - run: echo "📝 Workflow will now run a linter check."
 
@@ -34,7 +34,7 @@ jobs:
     needs: run-test
     steps:
       - name: Checking for linter error
-        run: yarn lint
+        run: npm lint
       - run: echo "📝 Linter check completes!"
 
       - run: echo "🍏 This job has finished with status - ${{ job.status }}."
