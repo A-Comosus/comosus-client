@@ -22,6 +22,7 @@ jobs:
 
   run-test:
     needs: set-up-runner
+    steps:
       - name: Checking pull request for test
         run: yarn test:coverage
       - run: echo "🧪 Testing completes!"
@@ -29,6 +30,7 @@ jobs:
 
   run-linter:
     needs: run-linter
+    steps:
       - name: Checking for linter error
         run: yarn lint
       - run: echo "📝 Linter check completes!"
