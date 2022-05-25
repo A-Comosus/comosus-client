@@ -3,7 +3,7 @@ name: Sanity Check
 on: [pull_request]
 
 jobs:
-  set-up-runner:
+  test-&-lint:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -20,19 +20,11 @@ jobs:
       - run: echo "🚚 All dependencies listed has been installed on the runner."
       - run: echo "🧪 Workflow will be running tests available in this branch."
 
-  run-test:
-    runs-on: ubuntu-latest
-    needs: set-up-runner
-    steps:
       - name: Checking pull request for test
         run: yarn test:coverage
       - run: echo "🧪 Testing completes!"
       - run: echo "📝 Workflow will now run a linter check."
 
-  run-linter:
-    runs-on: ubuntu-latest
-    needs: run-test
-    steps:
       - name: Checking for linter error
         run: yarn lint
       - run: echo "📝 Linter check completes!"
