@@ -1,5 +1,4 @@
 import React from 'react';
-import { isNil } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';

@@ -6,7 +6,10 @@ type CustomButtonProps = {
   children: React.ReactNode;
 } & ButtonProps;
 
-function CustomButton({ children, ...props }: ButtonProps) {
+export default function CustomButton({
+  children,
+  ...props
+}: CustomButtonProps) {
   return (
     <Button
       borderRadius="15px"
@@ -19,5 +22,3 @@ function CustomButton({ children, ...props }: ButtonProps) {
     </Button>
   );
 }
-
-export default CustomButton;
