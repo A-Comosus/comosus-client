@@ -3,7 +3,7 @@
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "test-frontend-fargate",
+          "awslogs-group": "/ecs/test-frontend-fargate",
           "awslogs-region": "ap-southeast-2",
           "awslogs-stream-prefix": "ecs"
         }
@@ -18,16 +18,6 @@
       "cpu": 256,
       "memory": 512,
       "image": "",
-      "healthCheck": {
-        "retries": 3,
-        "command": [
-          "CMD-SHELL",
-          "curl -f http://localhost:8081/actuator/health || exit 1"
-        ],
-        "timeout": 5,
-        "interval": 30,
-        "startPeriod": 60
-      },
       "name": "test-frontend"
     }
 ]
