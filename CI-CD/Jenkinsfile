@@ -97,10 +97,7 @@ pipeline {
                         docker.build("${AWS_ECR_URL}:${IMAGE_VERSION}")
                     }
                 }
-            }
-            
 
-            steps {
                 echo 'upload to ECR'
                 withCredentials([string(credentialsId: 'AWS_REPOSITORY_URL_SECRET', variable: 'AWS_ECR_URL')]) {
                     withAWS(region: "${AWS_ECR_REGION}", credentials: 'personal-aws-ecr') {
@@ -115,7 +112,7 @@ pipeline {
         }
 
         stage('Deploy to ECS service') {
-            
+
             when {
                 branch 'CI-CD'
             }
