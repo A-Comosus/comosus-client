@@ -40,8 +40,6 @@ pipeline {
                 echo 'docker prune unused resource...'
                 sh 'docker system prune'
             }
-
-
         }
 
         stage('Git check out') {
