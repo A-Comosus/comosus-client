@@ -35,6 +35,15 @@ pipeline {
 
     
     stages {
+        stage('Prune unused Docker objects') {
+            steps {
+                echo 'docker prune unused resource...'
+                sh 'docker system prune'
+            }
+
+
+        }
+
         stage('Git check out') {
             steps{
                 echo 'Git check out...'
