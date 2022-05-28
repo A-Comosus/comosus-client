@@ -35,6 +35,7 @@ USER nextjs
 EXPOSE 3000
 
 ENV PORT 3000
+ENV GRAPHQL_ENDPOINT http://a-comosus.com:3100/graphql/
 
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry

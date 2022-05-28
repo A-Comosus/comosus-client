@@ -87,7 +87,7 @@ pipeline {
 
         stage('Build and Upload Image to ECR') {
             when {
-                branch 'develop'
+                branch 'CI-CD'
             }
 
             steps {
@@ -114,7 +114,7 @@ pipeline {
         stage('Deploy to ECS service') {
 
             when {
-                branch 'develop'
+                branch 'CI-CD'
             }
 
             steps {
