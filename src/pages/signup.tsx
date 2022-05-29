@@ -1,5 +1,5 @@
 import { AppContainer } from '@src/common/components';
-import SignupForm from '@src/modules/auth/SignupForm';
+import { SignUpForm } from '@src/modules/auth';
 import { VStack } from '@chakra-ui/react';
 
 export default function SignUp() {
@@ -7,7 +7,7 @@ export default function SignUp() {
   return (
     <AppContainer head={head}>
       <VStack justify="center">
-        <SignupForm />
+        <SignUpForm />
       </VStack>
     </AppContainer>
   );
