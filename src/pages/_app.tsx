@@ -1,14 +1,17 @@
-import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import { appWithTranslation } from 'next-i18next';
-import { ApiClientProvider } from '@common/contexts';
+import { appWithI18Next } from 'ni18n';
+import { ni18nConfig } from '../ni18n.config';
+
+import { ApiClientProvider, ThemeContextProvider } from '@common/contexts';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ApiClientProvider>
-      <Component {...pageProps} />
+      <ThemeContextProvider>
+        <Component {...pageProps} />
+      </ThemeContextProvider>
     </ApiClientProvider>
   );
 }
 
-export default appWithTranslation(MyApp);
+export default appWithI18Next(MyApp, ni18nConfig);

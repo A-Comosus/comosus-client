@@ -3,7 +3,8 @@ name: Sanity Check
 on: [pull_request]
 
 jobs:
-  build:
+  test_lint:
+    name: Run test and check for linter error
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -11,28 +12,22 @@ jobs:
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
 
       - name: Check out repository code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
 
       - name: Install dependencies
         run: yarn install
       - run: echo "🚚 All dependencies listed has been installed on the runner."
-      # - run: echo "🧪 Workflow will be running tests available in this branch."
+      - run: echo "🧪 Workflow will be running tests available in this branch."
 
-      # - name: Checking pull request for test
-      #   run: yarn test
-      # - run: echo "🧪 Testing completes!"
+      - name: Checking pull request for test
+        run: yarn test:coverage
+      - run: echo "🧪 Testing completes!"
       - run: echo "📝 Workflow will now run a linter check."
 
       - name: Checking for linter error
         run: yarn lint
       - run: echo "📝 Linter check completes!"
-      - run: echo "🏭 Workflow will now attempts build your branch."
-
-      - name: Checking pull request for production error
-        run: yarn codegen
-      - run: yarn build
-      - run: echo "🏭 Build complete!"
 
       - run: echo "🍏 This job has finished with status - ${{ job.status }}."

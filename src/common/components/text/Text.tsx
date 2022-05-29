@@ -1,24 +1,48 @@
 import React from 'react';
 
-import { Heading1, Heading2, Code, Link } from './_styled';
+import {
+  Heading as CKHeading,
+  HeadingProps,
+  Text as CKText,
+  TextProps as CKTextProps,
+  Code,
+} from '@chakra-ui/react';
 
-export type TextTypes = 'h1' | 'h2' | 'p' | 'a' | 'code' | 'span';
+export type TextTypes = 'h1' | 'h2' | 'p' | 'code' | 'span';
 
 type TextProps = {
   children: React.ReactNode;
   type?: TextTypes;
-};
+} & HeadingProps &
+  CKTextProps;
 
-export default function Text({ children, type = 'p' }: TextProps) {
-  // TODO: Add localization logic here
-
+export default function Text({ children, type = 'p', ...props }: TextProps) {
   const types = {
-    h1: <Heading1>{children}</Heading1>,
-    h2: <Heading2>{children}</Heading2>,
-    p: <p>{children}</p>,
-    a: <Link>{children}</Link>,
-    code: <Code>{children}</Code>,
-    span: <span>{children}</span>,
+    h1: (
+      <CKHeading as="h1" fontSize="4rem" {...props}>
+        {children}
+      </CKHeading>
+    ),
+    h2: (
+      <CKHeading as="h2" {...props}>
+        {children}
+      </CKHeading>
+    ),
+    p: (
+      <CKText as="p" {...props}>
+        {children}
+      </CKText>
+    ),
+    code: (
+      <Code borderRadius="5px" p="0.75rem" fontSize="1.1rem">
+        {children}
+      </Code>
+    ),
+    span: (
+      <CKText as="span" {...props}>
+        {children}
+      </CKText>
+    ),
   };
 
   return types[type];

@@ -1,28 +1,30 @@
 import React, { useMemo } from 'react';
-import _ from 'lodash';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { GraphQLClient } from 'graphql-request';
 import axios, { AxiosInstance } from 'axios';
 
-// TODO: Fetch this from process.env
+import useStorage from '@src/utils/hooks/useStorage';
+import { AuthKey, StorageType } from '@src/constants/StorageKey';
+
 const apiEndpoint = {
   gql:
     process.env.GRAPHQL_ENDPOINT ??
     process.env.DEFAULT_ENDPOINT ??
-    'https://api.spacex.land/graphql/',
+    'http://localhost:3100/graphql/',
   rest:
     process.env.REST_ENDPOINT ??
     process.env.DEFAULT_ENDPOINT ??
-    'https://api.spacex.land/graphql/',
+    'http://localhost:3100/graphql/',
 };
 type ApiClientContextType = {
   gqlClient: GraphQLClient;
   restClient: AxiosInstance;
 };
 
-// @ts-ignore
-const ApiClientContext = React.createContext<ApiClientContextType>({});
+const ApiClientContext = React.createContext<ApiClientContextType>(
+  {} as ApiClientContextType,
+);
 
 type ApiClientProviderProps = {
   children: React.ReactNode;
@@ -33,12 +35,20 @@ export function useApiClient() {
 }
 
 export function ApiClientProvider({ children }: ApiClientProviderProps) {
+  const { accessToken } = useAuth();
+
   // Common header
   // AuthOption 1: Insert Auth Token here with axios.interceptors.request
-  const headers = {
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
-  };
+  const headers = useMemo(() => {
+    const _header = {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    };
+
+    if (accessToken) {
+      return { ..._header, Authorization: 'Bearer ' + accessToken };
+    } else return _header;
+  }, [accessToken]);
 
   // Create an instance of GraphQLClient
   const gqlClient = useMemo(() => {
@@ -49,7 +59,7 @@ export function ApiClientProvider({ children }: ApiClientProviderProps) {
     // AuthOption 2: Insert Auth Token here with axios.interceptors.request
 
     return client;
-  }, []);
+  }, [headers]);
 
   // Create an instance of RestClient because why not
   const restClient = useMemo(() => {
@@ -61,7 +71,7 @@ export function ApiClientProvider({ children }: ApiClientProviderProps) {
     // AuthOption 2: Insert Auth Token here with axios.interceptors.request
 
     return client;
-  }, []);
+  }, [headers]);
 
   const queryStaleTime = parseInt(process.env.QUERY_STALE_TIME ?? '1', 10);
   const queryClient = new QueryClient({
@@ -80,4 +90,12 @@ export function ApiClientProvider({ children }: ApiClientProviderProps) {
       </QueryClientProvider>
     </ApiClientContext.Provider>
   );
+}
+
+export function useAuth() {
+  const [accessToken, setAccessToken] = useStorage(
+    AuthKey.AccessToken,
+    StorageType.Session,
+  );
+  return { accessToken, setAccessToken };
 }

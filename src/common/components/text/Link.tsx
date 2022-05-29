@@ -1,21 +1,42 @@
-import React, { AnchorHTMLAttributes } from 'react';
+import React from 'react';
+import { UrlObject } from 'url';
 
-type LinkProps = {
+import NextLink from 'next/link';
+import { Link, LinkProps } from '@chakra-ui/react';
+
+type CustomLinkProps = {
   children: React.ReactNode;
-  href: string;
-  target?: '_blank' | '_parent';
-  rel?: string;
-};
+  highlight?: boolean;
+  href: string | UrlObject;
+} & LinkProps;
 
-export default function Link({
+export default function CustomLink({
   children,
+  highlight,
   href,
-  target = '_blank',
-  rel = 'noopener noreferrer',
-}: LinkProps) {
-  return (
-    <a href={href} target={target} rel={rel}>
-      {children}
-    </a>
-  );
+  ...props
+}: CustomLinkProps) {
+  const variants = {
+    default: (
+      <NextLink href={href} passHref>
+        <Link color="#FB446C" {...props}>
+          {children}
+        </Link>
+      </NextLink>
+    ),
+    highlight: (
+      <NextLink href={href} passHref>
+        <Link
+          color="#FB446C"
+          fontWeight={700}
+          textDecoration="underline"
+          {...props}
+        >
+          {children}
+        </Link>
+      </NextLink>
+    ),
+  };
+
+  return highlight ? variants.highlight : variants.default;
 }

@@ -1,6 +1,15 @@
 {
+  "button": {
+    "disabled": "Disabled"
+  },
+  "nav": {
+    "home": "Home"
+  },
   "languages": {
     "cn": "Chinese",
     "en": "English"
+  },
+  "login": {
+    "title": "Just Login"
   }
 }

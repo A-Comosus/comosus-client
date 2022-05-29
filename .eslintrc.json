@@ -1,3 +1,16 @@
 {
-  "extends": ["next/core-web-vitals", "plugin:prettier/recommended"]
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "ignorePatterns": ["**/*.d.ts"],
+  "rules": {
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "@typescript-eslint/ban-ts-comment": [1],
+    "@typescript-eslint/no-unused-vars": [2]
+  }
 }
