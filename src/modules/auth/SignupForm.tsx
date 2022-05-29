@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { useRegisterMutation } from '@generated/graphql.queries';
+import { Logo } from '@src/common/components';
 
 interface IFormInputs {
   name: string;
@@ -34,8 +36,9 @@ export default function SignupForm() {
 
   return (
     <MainContainer>
+      <Logo />
       <Title>
-        Create an account for free
+        Create an acSubTitlr free
         <SubTitle>Free forever. No Payment needed</SubTitle>
       </Title>
       <Form onSubmit={handleSubmit(onSubmit)}>

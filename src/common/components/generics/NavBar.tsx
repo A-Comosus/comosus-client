@@ -17,6 +17,10 @@ export default function NavBar() {
       content: t('auth:login.title'),
     },
     {
+      href: '/signup',
+      content: 'signup',
+    },
+    {
       href: '/',
       content: t('button.disabled'),
       isDisabled: true,

@@ -1,19 +1,11 @@
+import { AppContainer } from '@src/common/components';
 import SignupForm from '@src/modules/auth/SignupForm';
-import NavLogo from '@src/modules/next-template/components/NavLogo';
-import styled from 'styled-components';
-
-const MainContainer = styled.div`
-  max-width: 785px;
-  margin: 0px auto;
-`;
 
 export default function SignUp() {
+  const head = { title: 'signup' };
   return (
-    <>
-      <NavLogo />
-      <MainContainer>
-        <SignupForm />
-      </MainContainer>
-    </>
+    <AppContainer head={head}>
+      <SignupForm />
+    </AppContainer>
   );
 }
