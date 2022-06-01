@@ -102,7 +102,7 @@ pipeline {
             steps {
                 echo 'build image with ecr tage...'
                 withCredentials([string(credentialsId: 'AWS_REPOSITORY_URL_SECRET', variable: 'AWS_ECR_URL')]) {
-                    sh "docker build --build-arg N_G_ENDPOINT=${N_G_ENDPOINT} --build-arg G_ENDPOINT=${G_ENDPOINT} -t ${AWS_ECR_URL}:${IMAGE_VERSION}"
+                    sh "docker build --build-arg N_G_ENDPOINT=${N_G_ENDPOINT} --build-arg G_ENDPOINT=${G_ENDPOINT} -t ${AWS_ECR_URL}:${IMAGE_VERSION} ."
                 }
 
                 echo 'upload to ECR'
