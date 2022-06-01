@@ -11,10 +11,17 @@ RUN yarn install --frozen-lockfile
 # Rebuild the source code only when needed
 FROM node:alpine AS builder
 WORKDIR /app
-ENV GRAPHQL_ENDPOINT http://a-comosus.com:3100/graphql/
+ 
+ARG G_ENDPOINT 
+ARG N_G_ENDPOINT 
+
+
+ENV GRAPHQL_ENDPOINT ${G_ENDPOINT} 
+ENV NEXT_PUBLIC_GRAPHQL_ENDPOINT ${N_G_ENDPOINT}
+
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
-RUN yarn codegen && yarn build && yarn install --production --ignore-scripts --prefer-offline
+RUN  yarn codegen && yarn install && yarn build
 
 # Production image, copy all the files and run next
 FROM node:alpine AS runner
@@ -39,7 +46,6 @@ USER nextjs
 
 EXPOSE 3000
 
-ENV NEXT_PUBLIC_GRAPHQL_ENDPOINT http://frontend-service.local:3100/graphql/
 ENV PORT 3000
 
 # Next.js collects completely anonymous telemetry data about general usage.
