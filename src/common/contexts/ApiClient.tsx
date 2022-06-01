@@ -9,7 +9,7 @@ import { AuthKey, StorageType } from '@src/constants/StorageKey';
 
 const apiEndpoint = {
   gql:
-    process.env.GRAPHQL_ENDPOINT ??
+    process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ??
     process.env.DEFAULT_ENDPOINT ??
     'http://localhost:3100/graphql/',
   rest:
@@ -52,6 +52,7 @@ export function ApiClientProvider({ children }: ApiClientProviderProps) {
 
   // Create an instance of GraphQLClient
   const gqlClient = useMemo(() => {
+    // @ts-ignore
     const client = new GraphQLClient(apiEndpoint.gql, {
       headers,
     });

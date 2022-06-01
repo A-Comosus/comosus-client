@@ -6,12 +6,22 @@ WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
 
+
+
 # Rebuild the source code only when needed
 FROM node:alpine AS builder
 WORKDIR /app
+ 
+ARG G_ENDPOINT 
+ARG N_G_ENDPOINT 
+
+
+ENV GRAPHQL_ENDPOINT ${G_ENDPOINT} 
+ENV NEXT_PUBLIC_GRAPHQL_ENDPOINT ${N_G_ENDPOINT}
+
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
-RUN yarn codegen && yarn build && yarn install --production --ignore-scripts --prefer-offline
+RUN  yarn codegen && yarn install && yarn build
 
 # Production image, copy all the files and run next
 FROM node:alpine AS runner
@@ -29,6 +39,8 @@ COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
+
+
 
 USER nextjs
 
