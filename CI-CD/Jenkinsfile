@@ -19,6 +19,8 @@ pipeline {
     }
 
     environment {
+        N_G_ENDPOINT = 'http://a-comosus.com:3100/graphql/'
+        G_ENDPOINT = 'http://a-comosus.com:3100/graphql/'
         IMAGE_VERSION = "${env.BUILD_ID}"
         AWS_ECR_REGION = 'ap-southeast-2'
         AWS_ECS_SERVICE = 'test'
@@ -100,9 +102,7 @@ pipeline {
             steps {
                 echo 'build image with ecr tage...'
                 withCredentials([string(credentialsId: 'AWS_REPOSITORY_URL_SECRET', variable: 'AWS_ECR_URL')]) {
-                    script {
-                        docker.build("${AWS_ECR_URL}:${IMAGE_VERSION}")
-                    }
+                    sh "docker build --build-arg N_G_ENDPOINT=${N_G_ENDPOINT} --build-arg G_ENDPOINT=${G_ENDPOINT} -t ${AWS_ECR_URL}:${IMAGE_VERSION}"
                 }
 
                 echo 'upload to ECR'
