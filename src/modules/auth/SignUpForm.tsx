@@ -1,10 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { useRegisterMutation } from '@generated/graphql.queries';
+
 import {
   Link,
   FormErrorMessage,
@@ -13,19 +12,12 @@ import {
   Button,
   Policy,
 } from '@src/common/components';
-import { useState } from 'react';
 import { FormControl, VStack, Text } from '@chakra-ui/react';
 import { AiOutlineMail, AiOutlineUser } from 'react-icons/ai';
 import { RiLockPasswordLine } from 'react-icons/ri';
 
-interface IFormInputs {
-  name: string;
-  email: string;
-  password: string;
-}
-
 type SignUpFormProps = {
-  onSubmit: () => void;
+  onSubmit: (values: any) => void;
   isInvalid: boolean;
   isLoading: boolean;
 };
@@ -85,8 +77,6 @@ export default function SignUpForm({
     resolver: yupResolver(formValues.schema),
     reValidateMode: 'onBlur',
   });
-
-  console.log(errors);
 
   return (
     <VStack maxW="480px" align="stretch" gap="60px">
