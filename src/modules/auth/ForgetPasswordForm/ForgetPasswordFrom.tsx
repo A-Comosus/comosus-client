@@ -9,7 +9,7 @@ import {
   Button,
   FormErrorMessage,
   FormSuccessMessage,
-  InputOutline,
+  Input,
 } from '@common/components';
 
 type ForgetPasswordFormProps = {
@@ -64,7 +64,7 @@ export default function ForgetPasswordForm({
           </Text>
           <VStack align="stretch" gap="30px">
             {formValues.inputs.map(({ type, name, placeholder }, index) => (
-              <InputOutline
+              <Input
                 key={index}
                 type={type}
                 name={name}
@@ -74,7 +74,7 @@ export default function ForgetPasswordForm({
             ))}
             <FormErrorMessage error={t('forget-password.error')} />
             <FormSuccessMessage message={successMessage} />
-            <Button gray type="submit" isLoading={isLoading}>
+            <Button type="submit" isLoading={isLoading}>
               {t('forget-password.button')}
             </Button>
           </VStack>
