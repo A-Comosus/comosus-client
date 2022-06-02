@@ -87,7 +87,10 @@ export default function LoginForm({
             <Button type="submit" isLoading={isLoading}>
               {t('login.button')}
             </Button>
-            <Link href="/" textAlign="center">
+            <Link
+              href="http://localhost:3000/forget-password"
+              textAlign="center"
+            >
               {t('login.forget-password')}
             </Link>
           </VStack>
