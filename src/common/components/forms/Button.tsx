@@ -4,16 +4,16 @@ import { Button, ButtonProps, Text } from '@chakra-ui/react';
 
 type CustomButtonProps = {
   children: React.ReactNode;
-  gray?: boolean;
+  highlight?: boolean;
 } & ButtonProps;
 
 export default function CustomButton({
   children,
-  gray,
+  highlight,
   ...props
 }: CustomButtonProps) {
   const variants = {
-    default: (
+    highlight: (
       <Button
         borderRadius="15px"
         py="20px"
@@ -24,11 +24,11 @@ export default function CustomButton({
         <Text color="#fff">{children}</Text>
       </Button>
     ),
-    gray: (
+    default: (
       <Button borderRadius="15px" py="20px" bg="#55698C" {...props}>
         <Text color="#fff">{children}</Text>
       </Button>
     ),
   };
-  return gray ? variants.gray : variants.default;
+  return highlight ? variants.highlight : variants.default;
 }
