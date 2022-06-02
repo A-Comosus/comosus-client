@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useApiClient } from '@common/contexts';
-import { useForgetPasswordMutation } from '@generated/graphql.queries';
 
 import { HStack, VStack } from '@chakra-ui/react';
 import { AppContainer, Logo } from '@src/common/components';
 import { ForgetPasswordForm } from '@src/modules/auth';
 import { isNil } from 'lodash';
+import { useForgetPasswordMutation } from '@generated/graphql.queries';
 
 export default function ForgetPassword() {
   const { t } = useTranslation('auth');

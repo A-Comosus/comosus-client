@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { VStack, FormControl, Heading, Text } from '@chakra-ui/react';
 import {
-  ButtonGray,
+  Button,
   FormErrorMessage,
   FormSuccessMessage,
   InputOutline,
@@ -74,9 +74,9 @@ export default function ForgetPasswordForm({
             ))}
             <FormErrorMessage error={t('forget-password.error')} />
             <FormSuccessMessage message={successMessage} />
-            <ButtonGray type="submit" isLoading={isLoading}>
+            <Button gray type="submit" isLoading={isLoading}>
               {t('forget-password.button')}
-            </ButtonGray>
+            </Button>
           </VStack>
         </FormControl>
       </form>
