@@ -1,5 +1,6 @@
 overwrite: true
 schema: ${GRAPHQL_ENDPOINT}
+
 documents: './src/**/*.gql'
 generates:
   ./_generated/graphql.queries.ts:
