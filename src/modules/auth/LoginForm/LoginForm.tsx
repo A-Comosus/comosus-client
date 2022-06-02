@@ -74,6 +74,7 @@ export default function LoginForm({
             {formValues.inputs.map(
               ({ type, name, placeholder, leftElement }, index) => (
                 <Input
+                  isUnderline
                   key={index}
                   type={type}
                   name={name}
@@ -84,7 +85,7 @@ export default function LoginForm({
               ),
             )}
             <FormErrorMessage error={t('login.error')} />
-            <Button type="submit" isLoading={isLoading}>
+            <Button highlight type="submit" isLoading={isLoading}>
               {t('login.button')}
             </Button>
             <Link
