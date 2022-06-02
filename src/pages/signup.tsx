@@ -24,7 +24,6 @@ export default function SignUp() {
   });
 
   const onSubmit = (value: SignUpFormTypes) => {
-    console.log('onSubmit');
     register({ payload: value });
   };
 

@@ -53,7 +53,7 @@ export default function SignUpForm({
       username: '',
       email: '',
       password: '',
-      checkbox: false,
+      acceptPolicy: false,
     },
     schema: yup
       .object({
@@ -63,16 +63,12 @@ export default function SignUpForm({
           .min(6, t('signup.username.error.min-length')),
         email: yup.string().email().required(t('signup.email.error.required')),
         password: yup.string().required(t('signup.password.error.required')),
-        checkbox: yup.boolean().isTrue(t('signup.policy.error.required')),
+        acceptPolicy: yup.boolean().isTrue(t('signup.policy.error.required')),
       })
       .required(),
   };
 
-  const {
-    handleSubmit,
-    formState: { errors },
-    control,
-  } = useForm({
+  const { handleSubmit, control } = useForm({
     defaultValues: formValues.defaultValues,
     resolver: yupResolver(formValues.schema),
     reValidateMode: 'onBlur',
@@ -99,9 +95,8 @@ export default function SignUpForm({
               },
             )}
 
-            <Policy name="checkbox" control={control} />
-            <FormErrorMessage error={'Error'} />
-
+            <Policy name="acceptPolicy" control={control} />
+            <FormErrorMessage error={t('signup.user-exist')} />
             <Button type="submit" isLoading={isLoading}>
               {t('signup.button')}
             </Button>
