@@ -38,7 +38,10 @@ export default function ForgetPasswordForm({
       email: '',
     },
     schema: yup.object({
-      email: yup.string().email().required(t('forget-password.email.schema')),
+      email: yup
+        .string()
+        .email(t('forget-password.email.schema.valid-email'))
+        .required(t('forget-password.email.schema.required')),
     }),
   };
 
@@ -53,9 +56,9 @@ export default function ForgetPasswordForm({
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl isInvalid={isInvalid}>
           <Heading as="h1" size="lg" fontWeight="500" mb={1}>
-            {t('forget-password.page-title')}
+            {t('forget-password.page.title')}
           </Heading>
-          <Text mb={10}>{t('forget-password.page-subtitle')}</Text>
+          <Text mb={10}>{t('forget-password.page.subtitle')}</Text>
           <Text fontWeight="600" mb={2}>
             {t('forget-password.email.label')}
           </Text>

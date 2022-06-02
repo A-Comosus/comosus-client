@@ -25,9 +25,7 @@ export default function ForgetPassword() {
         setSuccessMessage('');
       }
       if (data) {
-        setSuccessMessage(
-          'We have received your request, please check your email!',
-        );
+        setSuccessMessage(t('forget-password.success'));
       }
     },
   });
