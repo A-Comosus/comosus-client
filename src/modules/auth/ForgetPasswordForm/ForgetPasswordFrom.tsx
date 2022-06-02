@@ -40,8 +40,8 @@ export default function ForgetPasswordForm({
     schema: yup.object({
       email: yup
         .string()
-        .email(t('forget-password.email.schema.valid-email'))
-        .required(t('forget-password.email.schema.required')),
+        .email(t('forget-password.email.error.invalid-email'))
+        .required(t('forget-password.email.error.required')),
     }),
   };
 
