@@ -96,7 +96,7 @@ export default function SignUpForm({
             )}
 
             <Policy name="acceptPolicy" control={control} />
-            <FormErrorMessage error={t('signup.user-exist')} />
+            <FormErrorMessage error={t('signup.error.user-exist')} />
             <Button type="submit" isLoading={isLoading}>
               {t('signup.button')}
             </Button>
