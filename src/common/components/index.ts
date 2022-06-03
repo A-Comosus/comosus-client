@@ -12,6 +12,7 @@ export { default as ToggleThemeButton } from './generics/ToggleThemeButton';
 export { default as Button } from './forms/Button';
 export { default as Input } from './forms/Input';
 export { default as FormErrorMessage } from './forms/FormErrorMessage';
+export { default as FormSuccessMessage } from './forms/FormSuccessMessage';
 
 // Text Components
 export { default as Text } from './text/Text';
