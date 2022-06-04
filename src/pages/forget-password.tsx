@@ -11,6 +11,7 @@ import { useForgetPasswordMutation } from '@generated/graphql.queries';
 export default function ForgetPassword() {
   const { t } = useTranslation('auth');
   const head = { title: t('forget-password.title') };
+
   const [successMessage, setSuccessMessage] = useState('');
   const { gqlClient } = useApiClient();
   const {

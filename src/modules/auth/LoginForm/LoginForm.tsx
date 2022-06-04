@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { AuthRoute } from '@src/constants/PageRoutes';
 
 import { VStack, FormControl } from '@chakra-ui/react';
 import { AiOutlineUser } from 'react-icons/ai';
@@ -15,7 +16,6 @@ import {
   Link,
   FormErrorMessage,
 } from '@common/components';
-import { AuthRoute } from '@src/constants/PageRoutes';
 
 type LoginFormProps = {
   onSubmit: (values: LoginFormTypes) => void;
@@ -97,7 +97,7 @@ export default function LoginForm({
       </form>
       <Text textAlign="center">
         {t('login.no-account.description')}
-        <Link highlight href="/">
+        <Link highlight href={AuthRoute.SignUp}>
           {t('login.no-account.action')}
         </Link>
       </Text>

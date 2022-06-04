@@ -1,0 +1,5 @@
+mutation Register($payload: RegisterDetailInput!) {
+  register(detail: $payload) {
+    id
+  }
+}

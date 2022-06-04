@@ -52,7 +52,7 @@ export default function ForgetPasswordForm({
   });
 
   return (
-    <VStack flex={1} justifyContent="center">
+    <VStack flex={1} minW="480px" justify="center" align="stretch">
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl isInvalid={isInvalid}>
           <Heading as="h1" size="lg" fontWeight="500" mb={1}>
