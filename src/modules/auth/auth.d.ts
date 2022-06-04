@@ -9,3 +9,7 @@ type SignUpFormTypes = {
   password: string;
   acceptPolicy: number;
 };
+
+type ForgetPasswordFormTypes = {
+  email: string;
+};
