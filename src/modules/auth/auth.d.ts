@@ -7,4 +7,5 @@ type SignUpFormTypes = {
   username: string;
   email: string;
   password: string;
+  acceptPolicy: boolean;
 };

@@ -10,11 +10,11 @@ import {
   Logo,
   Input,
   Button,
-  Policy,
 } from '@src/common/components';
 import { FormControl, VStack, Text } from '@chakra-ui/react';
 import { AiOutlineMail, AiOutlineUser } from 'react-icons/ai';
 import { RiLockPasswordLine } from 'react-icons/ri';
+import Policy from './Policy';
 
 type SignUpFormProps = {
   onSubmit: (values: any) => void;
