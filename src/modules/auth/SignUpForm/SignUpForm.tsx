@@ -34,19 +34,19 @@ export default function SignUpForm({
       {
         type: 'text',
         name: 'username',
-        placeholder: t('signup.username.placeholder'),
+        placeholder: t('sign-up.username.placeholder'),
         leftElement: <AiOutlineUser />,
       },
       {
         type: 'email',
         name: 'email',
-        placeholder: t('signup.email.placeholder'),
+        placeholder: t('sign-up.email.placeholder'),
         leftElement: <AiOutlineMail />,
       },
       {
         type: 'password',
         name: 'password',
-        placeholder: t('signup.password.placeholder'),
+        placeholder: t('sign-up.password.placeholder'),
         leftElement: <RiLockPasswordLine />,
       },
     ],
@@ -60,11 +60,11 @@ export default function SignUpForm({
       .object({
         username: yup
           .string()
-          .required(t('signup.username.error.required'))
-          .min(6, t('signup.username.error.min-length')),
-        email: yup.string().email().required(t('signup.email.error.required')),
-        password: yup.string().required(t('signup.password.error.required')),
-        acceptPolicy: yup.boolean().isTrue(t('signup.policy.error.required')),
+          .required(t('sign-up.username.error.required'))
+          .min(6, t('sign-up.username.error.min-length')),
+        email: yup.string().email().required(t('sign-up.email.error.required')),
+        password: yup.string().required(t('sign-up.password.error.required')),
+        acceptPolicy: yup.boolean().isTrue(t('sign-up.policy.error.required')),
       })
       .required(),
   };
@@ -97,17 +97,17 @@ export default function SignUpForm({
             )}
 
             <Policy name="acceptPolicy" control={control} />
-            <FormErrorMessage error={t('signup.error.user-exist')} />
+            <FormErrorMessage error={t('sign-up.error.user-exist')} />
             <Button type="submit" isLoading={isLoading}>
-              {t('signup.button')}
+              {t('sign-up.button')}
             </Button>
           </VStack>
         </FormControl>
       </form>
       <Text textAlign="center">
-        {t('signup.no-account.description')}
+        {t('sign-up.no-account.description')}
         <Link highlight href="/">
-          {t('signup.no-account.action')}
+          {t('sign-up.no-account.action')}
         </Link>
       </Text>
     </VStack>

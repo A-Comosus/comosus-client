@@ -17,8 +17,8 @@ export default function NavBar() {
       content: t('auth:login.title'),
     },
     {
-      href: '/signup',
-      content: t('auth:signup.title'),
+      href: '/sign-up',
+      content: t('auth:sign-up.title'),
     },
     {
       href: '/',

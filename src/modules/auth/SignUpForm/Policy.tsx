@@ -18,7 +18,7 @@ export default function Policy({ name, control }: PolicyProps) {
         <FormControl id={name} isInvalid={invalid}>
           <HStack alignItems="flex-start">
             <Checkbox mt="4px" {...field} />
-            <Text>{t('signup.policy.description')}</Text>
+            <Text>{t('sign-up.policy.description')}</Text>
           </HStack>
           {error && <FormErrorMessage error={error.message} />}
         </FormControl>
