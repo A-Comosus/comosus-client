@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { AuthRoute } from '@src/constants/PageRoutes';
 
 import {
   Link,
@@ -106,9 +107,9 @@ export default function SignUpForm({
         </FormControl>
       </form>
       <Text textAlign="center">
-        {t('sign-up.no-account.description')}
-        <Link highlight href="/">
-          {t('sign-up.no-account.action')}
+        {t('sign-up.have-account.description')}
+        <Link highlight href={AuthRoute.Login}>
+          {t('sign-up.have-account.action')}
         </Link>
       </Text>
     </VStack>
