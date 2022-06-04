@@ -53,7 +53,7 @@ export default function SignUpForm({
       username: '',
       email: '',
       password: '',
-      acceptPolicy: false,
+      acceptPolicy: 0,
     },
     schema: yup
       .object({

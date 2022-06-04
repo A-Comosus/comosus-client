@@ -24,7 +24,12 @@ export default function SignUp() {
   });
 
   const onSubmit = (value: SignUpFormTypes) => {
-    register({ payload: value });
+    register({
+      payload: {
+        ...value,
+        acceptPolicy: value.acceptPolicy ? true : false,
+      },
+    });
   };
 
   return (
