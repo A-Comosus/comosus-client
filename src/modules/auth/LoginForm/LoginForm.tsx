@@ -15,6 +15,7 @@ import {
   Link,
   FormErrorMessage,
 } from '@common/components';
+import { AuthRoute } from '@src/constants/PageRoutes';
 
 type LoginFormProps = {
   onSubmit: (values: LoginFormTypes) => void;
@@ -74,6 +75,7 @@ export default function LoginForm({
             {formValues.inputs.map(
               ({ type, name, placeholder, leftElement }, index) => (
                 <Input
+                  isUnderline
                   key={index}
                   type={type}
                   name={name}
@@ -84,10 +86,10 @@ export default function LoginForm({
               ),
             )}
             <FormErrorMessage error={t('login.error')} />
-            <Button type="submit" isLoading={isLoading}>
+            <Button highlight type="submit" isLoading={isLoading}>
               {t('login.button')}
             </Button>
-            <Link href="/" textAlign="center">
+            <Link href={AuthRoute.forgetPassword} textAlign="center">
               {t('login.forget-password')}
             </Link>
           </VStack>
