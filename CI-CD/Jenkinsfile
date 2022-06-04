@@ -19,8 +19,8 @@ pipeline {
     }
 
     environment {
-        N_G_ENDPOINT = 'http://a-comosus.com:3100/graphql/'
-        G_ENDPOINT = 'http://a-comosus.com:3100/graphql/'
+        N_G_ENDPOINT = 'https://a-comosus.com:3100/graphql/'
+        G_ENDPOINT = 'https://a-comosus.com:3100/graphql/'
         IMAGE_VERSION = "${env.BUILD_ID}"
         AWS_ECR_REGION = 'ap-southeast-2'
         AWS_ECS_SERVICE = 'test'
