@@ -1,15 +1,18 @@
-import { AppContainer } from '@src/common/components';
-import { SignUpForm } from '@src/modules/auth';
-import { VStack } from '@chakra-ui/react';
-import { useTranslation } from 'react-i18next';
-import { useRegisterMutation } from '@generated/graphql.queries';
-import { useApiClient } from '@common/contexts';
+import React from 'react';
 import { isNil } from 'lodash';
+import { useTranslation } from 'react-i18next';
+import { useApiClient } from '@common/contexts';
+import { useRegisterMutation } from '@generated/graphql.queries';
+
+import { AppContainer } from '@src/common/components';
+import { VStack } from '@chakra-ui/react';
+import { SignUpForm } from '@src/modules/auth';
 
 export default function SignUp() {
-  const { gqlClient } = useApiClient();
   const { t } = useTranslation('auth');
   const head = { title: t('signup.title') };
+
+  const { gqlClient } = useApiClient();
   const {
     mutate: register,
     error,

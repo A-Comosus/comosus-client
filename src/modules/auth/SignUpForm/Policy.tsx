@@ -3,12 +3,12 @@ import { FormErrorMessage } from '@src/common/components';
 import { Control, Controller } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-type Policy = {
+type PolicyProps = {
   name: keyof SignUpFormTypes;
   control: Control<SignUpFormTypes, any>;
 };
 
-export default function Policy({ name, control }: Policy) {
+export default function Policy({ name, control }: PolicyProps) {
   const { t } = useTranslation('auth');
   return (
     <Controller

@@ -17,7 +17,7 @@ import { RiLockPasswordLine } from 'react-icons/ri';
 import Policy from './Policy';
 
 type SignUpFormProps = {
-  onSubmit: (values: any) => void;
+  onSubmit: (values: SignUpFormTypes) => void;
   isInvalid: boolean;
   isLoading: boolean;
 };
@@ -28,6 +28,7 @@ export default function SignUpForm({
   isLoading,
 }: SignUpFormProps) {
   const { t } = useTranslation('auth');
+
   const formValues = {
     inputs: [
       {
