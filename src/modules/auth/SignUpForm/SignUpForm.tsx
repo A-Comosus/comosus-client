@@ -85,6 +85,7 @@ export default function SignUpForm({
               ({ type, name, placeholder, leftElement }, index) => {
                 return (
                   <Input
+                    isUnderline
                     key={index}
                     type={type}
                     name={name}
@@ -98,7 +99,7 @@ export default function SignUpForm({
 
             <Policy name="acceptPolicy" control={control} />
             <FormErrorMessage error={t('sign-up.error.user-exist')} />
-            <Button type="submit" isLoading={isLoading}>
+            <Button highlight type="submit" isLoading={isLoading}>
               {t('sign-up.button')}
             </Button>
           </VStack>
