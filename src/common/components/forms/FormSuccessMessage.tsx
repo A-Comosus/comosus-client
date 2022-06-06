@@ -8,7 +8,7 @@ export default function FormSuccessMessage({
   message,
 }: FormSuccessMessageProps) {
   return (
-    <Text flex={1} alignSelf="flex-start" gap="5px" color="#FB446C">
+    <Text flex={1} alignSelf="flex-start" gap="5px">
       {message}
     </Text>
   );
