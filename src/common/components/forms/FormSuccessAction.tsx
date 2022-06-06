@@ -18,7 +18,7 @@ export default function FormSuccessAction({
       fontWeight={700}
       color="#FB446C"
     >
-      {action} now !
+      {action}
     </Link>
   );
 }
