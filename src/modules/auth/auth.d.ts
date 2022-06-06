@@ -13,3 +13,8 @@ type SignUpFormTypes = {
 type ForgetPasswordFormTypes = {
   email: string;
 };
+
+type ResetPasswordFormTypes = {
+  password: string;
+  resetToken: string;
+};
