@@ -41,7 +41,7 @@ export default function ResetPasswordForm({
       {
         type: 'password',
         name: 'confirmPassword',
-        placeholder: 'confirm your password',
+        placeholder: t('reset-password.form.confirm-password.placeholder'),
       },
     ],
     defaultValues: {
