@@ -38,14 +38,27 @@ export default function ResetPasswordForm({
         name: 'password',
         placeholder: t('reset-password.form.password.placeholder'),
       },
+      {
+        type: 'password',
+        name: 'confirmPassword',
+        placeholder: 'confirm your password',
+      },
     ],
     defaultValues: {
       password: '',
+      confirmPassword: '',
     },
     schema: yup.object({
       password: yup
         .string()
         .required(t('reset-password.form.password.error.required')),
+      confirmPassword: yup
+        .string()
+        .required(t('reset-password.form.confirm-password.error.required'))
+        .oneOf(
+          [yup.ref('password'), null],
+          t('reset-password.form.confirm-password.error.match'),
+        ),
     }),
   };
 
@@ -63,9 +76,9 @@ export default function ResetPasswordForm({
             {t('reset-password.page.title')}
           </Heading>
           <Text mb={10}>{t('reset-password.page.subtitle')}</Text>
-          <Text fontWeight="600" mb={2}>
+          {/* <Text fontWeight="600" mb={2}>
             {t('reset-password.form.password.label')}
-          </Text>
+          </Text> */}
           <VStack align="stretch" gap="30px">
             {formValues.inputs.map(({ type, name, placeholder }, index) => (
               <Input

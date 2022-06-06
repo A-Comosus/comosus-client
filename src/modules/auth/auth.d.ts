@@ -16,5 +16,6 @@ type ForgetPasswordFormTypes = {
 
 type ResetPasswordFormTypes = {
   password: string;
+  confirmPassword: string;
   resetToken: string;
 };
