@@ -43,7 +43,9 @@ export default function ResetPasswordForm({
       password: '',
     },
     schema: yup.object({
-      password: yup.string().required('required'),
+      password: yup
+        .string()
+        .required(t('reset-password.form.password.error.required')),
     }),
   };
 
