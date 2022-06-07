@@ -8,6 +8,7 @@ import { VStack } from '@chakra-ui/react';
 import { AppContainer } from '@src/common/components';
 import { LoginForm } from '@src/modules/auth';
 import { isNil } from 'lodash';
+import { AppRoute } from '@src/constants/PageRoutes';
 
 export default function Login() {
   const { t } = useTranslation('auth');
@@ -29,7 +30,7 @@ export default function Login() {
 
       if (data) {
         setAccessToken(data.login.accessToken);
-        router.push('/admin');
+        router.push(AppRoute.Admin);
       }
     },
   });
