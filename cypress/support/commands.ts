@@ -11,9 +11,14 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
+Cypress.Commands.add('login', (username: string, password: string) => {
+  cy.visit('http://localhost:3000/login');
+  cy.get('form').within(() => {
+    cy.get('[id="username"]').type(username);
+    cy.get('[id="password"]').type(`${password}{enter}`);
+  });
+});
+
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 //
