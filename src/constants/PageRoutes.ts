@@ -3,3 +3,7 @@ export enum AuthRoute {
   Login = '/login',
   forgetPassword = '/forget-password',
 }
+
+export enum AppRoute {
+  Admin = '/admin',
+}
