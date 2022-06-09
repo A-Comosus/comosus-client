@@ -1,0 +1,119 @@
+.sidebar {
+  min-width: 10rem;
+  height: 90%;
+  align-items: center;
+  margin: 10px;
+  backdrop-filter: blur(5.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(179deg, #465d78, #4a4050);
+  color: #fff;
+  text-shadow: none;
+  position: fixed;
+  border: none;
+}
+.lines_icon {
+  display: flex;
+  align-self: flex-end;
+  border-radius: 5px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  height: 2.6rem;
+  padding-top: 4rem;
+  padding-left: 1.5rem;
+}
+.profile {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+.logo_title {
+  margin-left: 0.3rem;
+  font-size: 1rem;
+}
+
+.profile > img {
+  width: 30%;
+  border-radius: 50%;
+}
+
+.sidebar ul {
+  position: relative;
+  padding-left: 1rem;
+  display: block;
+}
+.sidebar ul li {
+  position: relative;
+  text-align: left;
+  list-style: none;
+  width: 100%;
+  display: flex;
+  text-align: center;
+  height: 3.5rem;
+}
+.sidebar ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+}
+.sidebar ul li a .icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 0.8rem;
+}
+.sidebar ul li a .title {
+  position: relative;
+  display: flex;
+  padding-left: 10px;
+  font-size: 1rem;
+  white-space: normal;
+  align-items: center;
+}
+.sidebar ul li.active {
+  background: #fff;
+}
+.sidebar ul li.active a {
+  color: black;
+}
+.sidebar ul li:hover {
+  transition: 0.4s;
+  letter-spacing: 0.2px;
+}
+.sidebar ul li a:hover {
+  background: #fff;
+  color: black;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: -20px;
+  border-bottom-right-radius: -20px;
+}
+.sidebar ul li a:hover:before {
+  position: absolute;
+  content: '';
+  height: 30px;
+  width: 30px;
+  background: transparent;
+  right: 0;
+  bottom: 100%;
+  border-bottom-right-radius: 18px;
+  box-shadow: 0 17px 0 #fff;
+}
+.sidebar ul li a:hover:after {
+  position: absolute;
+  content: '';
+  height: 50px;
+  width: 30px;
+  background: transparent;
+  right: 0;
+  top: 100%;
+  border-top-right-radius: 18px;
+  box-shadow: 0 -17px 0 #fff;
+}
