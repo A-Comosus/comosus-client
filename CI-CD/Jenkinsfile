@@ -132,8 +132,10 @@ pipeline {
                 echo 'Update EKS through terraform....'
 
                 echo 'inital terraform'
-                dir("kubernetes-config") {
-                    sh 'terraform init'
+                withAWS(region: "${AWS_ECR_REGION}", credentials:'eks-jenkins-update-account') {
+                    dir("kubernetes-config") {
+                        sh 'terraform init'
+                    }
                 }
                 
                 echo 'terraform apply'
