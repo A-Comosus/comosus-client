@@ -8,7 +8,6 @@ import { TbColorSwatch } from 'react-icons/tb';
 import { BsMegaphone } from 'react-icons/bs';
 import { Image } from '@chakra-ui/react';
 import MenuItem from './MenuItem';
-
 import styles from './Sidebar.module.scss';
 
 function Sidebar() {
