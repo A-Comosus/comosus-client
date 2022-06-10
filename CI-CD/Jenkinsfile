@@ -135,18 +135,18 @@ pipeline {
                 dir("kubernetes-config") {
                     sh 'terraform init'
                 }
-                /*
+                
                 echo 'terraform apply'
                 withCredentials([string(credentialsId: 'AWS_REPOSITORY_URL_SECRET', variable: 'AWS_ECR_URL')]) {
                     withAWS(region: "${AWS_ECR_REGION}", credentials: '	eks-jenkins-update-account') {
                         dir("kubernetes-config") {
                            script { 
-                              sh("terraform apply -var=\'frontend-image=${AWS_ECR_URL}:${IMAGE_VERSION}\' --auto-approve") 
+                              sh("terraform apply -var=\'frontend-image=${AWS_ECR_URL}:3\' --auto-approve") 
                            }
                         }
                     }
                 }
-                */
+                
             }
         }
     }
