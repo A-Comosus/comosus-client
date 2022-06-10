@@ -7,72 +7,57 @@ import { BsChatSquareDots } from 'react-icons/bs';
 import { TbColorSwatch } from 'react-icons/tb';
 import { BsMegaphone } from 'react-icons/bs';
 import { Image } from '@chakra-ui/react';
+import MenuItem from './MenuItem';
 
-import styles from './Sidebar.module.css';
+import styles from './Sidebar.module.scss';
 
 function Sidebar() {
+  const navItems = [
+    {
+      href: '/',
+      content: 'Links',
+      icon: <IoLinkSharp />,
+    },
+    {
+      href: '/',
+      content: 'Appearance',
+      icon: <TbColorSwatch />,
+    },
+    {
+      href: '/',
+      content: 'Settings',
+      icon: <BsGear />,
+    },
+    {
+      href: '/',
+      content: 'Analytics',
+      icon: <SiGoogleanalytics />,
+    },
+    {
+      href: '/',
+      content: 'Upgrade',
+      icon: <BiUpload />,
+    },
+    {
+      href: '/',
+      content: 'Support',
+      icon: <BsChatSquareDots />,
+    },
+    {
+      href: '/',
+      content: "What's new",
+      icon: <BsMegaphone />,
+    },
+  ];
   return (
     <div className={styles.sidebar}>
       <div className={styles.profile}>
         <Image src="/assets/avatar.png" alt="avatar" />
       </div>
       <ul>
-        <li>
-          <a href="#">
-            <span className={styles.icon}>
-              <IoLinkSharp name="Links"></IoLinkSharp>
-            </span>
-            <span className={styles.title}>Links</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span className={styles.icon}>
-              <TbColorSwatch name="Appearance"></TbColorSwatch>
-            </span>
-            <span className={styles.title}>Appearance</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span className={styles.icon}>
-              <BsGear name="Settings"></BsGear>
-            </span>
-            <span className={styles.title}>Settings</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span className={styles.icon}>
-              <SiGoogleanalytics name="Analytics"></SiGoogleanalytics>
-            </span>
-            <span className={styles.title}>Analytics</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span className={styles.icon}>
-              <BiUpload name="Upgrade"></BiUpload>
-            </span>
-            <span className={styles.title}>Upgrade</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span className={styles.icon}>
-              <BsChatSquareDots name="Support"></BsChatSquareDots>
-            </span>
-            <span className={styles.title}>Support</span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span className={styles.icon}>
-              <BsMegaphone name="News"></BsMegaphone>
-            </span>
-            <span className={styles.title}>What&apos;s new</span>
-          </a>
-        </li>
+        {navItems.map(({ href, content, icon }, index) => (
+          <MenuItem key={index} href={href} content={content} icon={icon} />
+        ))}
       </ul>
       <div className={styles.logo}>
         <Image src="/assets/logo.png" alt="a-comusus logo" alignSelf="center" />
