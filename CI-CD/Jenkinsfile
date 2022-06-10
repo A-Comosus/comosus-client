@@ -36,7 +36,7 @@ pipeline {
             }
         }
 
-       /* stage('Git check out') {
+        stage('Git check out') {
             steps{
                 echo 'Git check out...'
                 // Get source code from a GitHub repository
@@ -113,7 +113,7 @@ pipeline {
                 }
             }
         }
-        */
+        
         stage('Deploy to EKS') {
 
             when {
@@ -143,7 +143,7 @@ pipeline {
                     withAWS(region: "${AWS_ECR_REGION}", credentials:'eks-jenkins-update-account') {
                         dir("kubernetes-config") {
                            script { 
-                              sh("terraform apply -var=\'frontend-image=${AWS_ECR_URL}:3\' --auto-approve") 
+                              sh("terraform apply -var=\'frontend-image=${AWS_ECR_URL}:${IMAGE_VERSION}\' --auto-approve") 
                            }
                         }
                     }
