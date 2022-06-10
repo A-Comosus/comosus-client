@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/router';
 import { useAuth, useApiClient } from '@common/contexts';
 import { useLoginMutation } from '@generated/graphql.queries';
 
@@ -7,9 +8,11 @@ import { VStack } from '@chakra-ui/react';
 import { AppContainer } from '@src/common/components';
 import { LoginForm } from '@src/modules/auth';
 import { isNil } from 'lodash';
+import { AppRoute } from '@src/constants/PageRoutes';
 
 export default function Login() {
   const { t } = useTranslation('auth');
+  const router = useRouter();
   const head = { title: t('login.title') };
 
   const { setAccessToken } = useAuth();
@@ -27,7 +30,7 @@ export default function Login() {
 
       if (data) {
         setAccessToken(data.login.accessToken);
-        // @TODO: Navigate to editor panel
+        router.push(AppRoute.Admin);
       }
     },
   });

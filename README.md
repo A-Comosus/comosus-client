@@ -32,6 +32,20 @@ Simple! Just run this and you are good to go!
 yarn test
 ```
 
+To run e2e test with cypress, if you have the next server spinning already, then you can just run.
+
+```bash
+yarn e2e
+# cypress run
+```
+
+However, there's also a command that allows you to start the server and run test at once.
+
+```bash
+yarn e2e:start-server
+# start-server-and-test dev 3000 cypress run
+```
+
 ## File Structure
 
 Files are structured based on this [Guide](https://dev.to/vadorequest/a-2021-guide-about-structuring-your-next-js-project-in-a-flexible-and-efficient-way-472), but in a nutshell 🥜🥜.
