@@ -78,8 +78,6 @@ pipeline {
                 sh 'npm run e2e:start-server:record'
             }
         }
-
-        /*
        
 
         // stage ('Container Integrated Test') {
@@ -154,7 +152,6 @@ pipeline {
                 
             }
         }
-        */
     }
 
     post {
