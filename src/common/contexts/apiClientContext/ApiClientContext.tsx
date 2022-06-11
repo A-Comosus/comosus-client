@@ -1,11 +1,9 @@
 import React, { useMemo } from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
+import { useAuth } from '@common/contexts';
 import { GraphQLClient } from 'graphql-request';
 import axios, { AxiosInstance } from 'axios';
-
-import useStorage from '@src/utils/hooks/useStorage';
-import { AuthKey, StorageType } from '@src/constants/StorageKey';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 
 const apiEndpoint = {
   gql:
@@ -17,11 +15,11 @@ const apiEndpoint = {
     process.env.DEFAULT_ENDPOINT ??
     'http://localhost:3100/graphql/',
 };
+
 type ApiClientContextType = {
   gqlClient: GraphQLClient;
   restClient: AxiosInstance;
 };
-
 const ApiClientContext = React.createContext<ApiClientContextType>(
   {} as ApiClientContextType,
 );
@@ -29,16 +27,9 @@ const ApiClientContext = React.createContext<ApiClientContextType>(
 type ApiClientProviderProps = {
   children: React.ReactNode;
 };
-
-export function useApiClient() {
-  return React.useContext(ApiClientContext);
-}
-
 export function ApiClientProvider({ children }: ApiClientProviderProps) {
   const { accessToken } = useAuth();
 
-  // Common header
-  // AuthOption 1: Insert Auth Token here with axios.interceptors.request
   const headers = useMemo(() => {
     const _header = {
       'Content-Type': 'application/json',
@@ -56,9 +47,6 @@ export function ApiClientProvider({ children }: ApiClientProviderProps) {
     const client = new GraphQLClient(apiEndpoint.gql, {
       headers,
     });
-
-    // AuthOption 2: Insert Auth Token here with axios.interceptors.request
-
     return client;
   }, [headers]);
 
@@ -68,9 +56,6 @@ export function ApiClientProvider({ children }: ApiClientProviderProps) {
       baseURL: apiEndpoint.rest,
       headers,
     });
-
-    // AuthOption 2: Insert Auth Token here with axios.interceptors.request
-
     return client;
   }, [headers]);
 
@@ -93,10 +78,6 @@ export function ApiClientProvider({ children }: ApiClientProviderProps) {
   );
 }
 
-export function useAuth() {
-  const [accessToken, setAccessToken] = useStorage(
-    AuthKey.AccessToken,
-    StorageType.Session,
-  );
-  return { accessToken, setAccessToken };
+export function useApiClient() {
+  return React.useContext(ApiClientContext);
 }
