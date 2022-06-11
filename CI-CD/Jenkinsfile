@@ -23,6 +23,7 @@ pipeline {
         G_ENDPOINT = 'https://staging.a-comosus.com/graphql/'
         IMAGE_VERSION = "${env.BUILD_ID}"
         AWS_ECR_REGION = 'ap-southeast-2'
+        CYPRESS_RECORD_KEY = credentials('cypress-record-key')
     }
 
 
@@ -46,38 +47,38 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 echo 'Install dependencies...'
-                sh 'npm install'
+                sh 'yarn install'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'npm run test:coverage'
+                sh 'yarn test:coverage'
             }
         }
         
         stage('Checking for linter error') {
             steps {
                 echo 'Checking for linter error....'
-                sh 'npm run lint'
+                sh 'yarn lint'
             }
         }
-
-        // stage ('Integrated Test') {
-        //     steps {
-        //         echo 'Integrated Test....'
-        //         sh
-        //     }
-        // }
 
         stage('Build') {
             steps {
                 echo 'Building....'
-                sh 'npm run codegen'
-                sh 'npm run build'
+                sh 'yarn build:with-codegen'
             }
         }
+
+        stage ('Integrated Test') {
+            steps {
+                echo 'Integrated Test....'
+                sh 'yarn e2e:start-server:record'
+            }
+        }
+       
 
         // stage ('Container Integrated Test') {
         //     steps {
@@ -85,7 +86,7 @@ pipeline {
         //         sh
         //     }
         // }
-
+        
         stage('Build and Upload Image to ECR') {
             
             when {
