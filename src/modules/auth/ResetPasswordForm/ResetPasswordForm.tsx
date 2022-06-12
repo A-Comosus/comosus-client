@@ -89,7 +89,10 @@ export default function ResetPasswordForm({
                 placeholder={placeholder}
               />
             ))}
-            <FormErrorMessage error={t('reset-password.error')} />
+            <FormErrorMessage
+              testId="reset-password.error"
+              error={t('reset-password.error')}
+            />
             <VStack>
               <FormSuccessMessage message={successMessage} />
               <FormSuccessAction
