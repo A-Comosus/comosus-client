@@ -20,7 +20,9 @@ export default function Policy({ name, control }: PolicyProps) {
             <Checkbox mt="4px" {...field} />
             <Text>{t('sign-up.policy.description')}</Text>
           </HStack>
-          {error && <FormErrorMessage error={error.message} />}
+          {error && (
+            <FormErrorMessage testId={`error-${name}`} error={error.message} />
+          )}
         </FormControl>
       )}
     />

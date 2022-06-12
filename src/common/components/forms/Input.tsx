@@ -68,7 +68,12 @@ export default function CustomInput({
                 : variants(name, field, props).default}
               {rightElement && <InputLeftElement children={rightElement} />}
             </InputGroup>
-            {error && <FormErrorMessage error={error.message} />}
+            {error && (
+              <FormErrorMessage
+                testId={`error-${name}`}
+                error={error.message}
+              />
+            )}
           </VStack>
         </FormControl>
       )}

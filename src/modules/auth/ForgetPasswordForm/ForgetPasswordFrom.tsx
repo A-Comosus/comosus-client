@@ -72,7 +72,10 @@ export default function ForgetPasswordForm({
                 placeholder={placeholder}
               />
             ))}
-            <FormErrorMessage error={t('forget-password.error')} />
+            <FormErrorMessage
+              testId="forget-password.error"
+              error={t('forget-password.error')}
+            />
             <FormSuccessMessage message={successMessage} />
             <Button type="submit" isLoading={isLoading}>
               {t('forget-password.button')}

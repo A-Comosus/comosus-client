@@ -85,7 +85,7 @@ export default function LoginForm({
                 />
               ),
             )}
-            <FormErrorMessage error={t('login.error')} />
+            <FormErrorMessage testId="login.error" error={t('login.error')} />
             <Button highlight type="submit" isLoading={isLoading}>
               {t('login.button')}
             </Button>
