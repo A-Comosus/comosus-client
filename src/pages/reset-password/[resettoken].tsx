@@ -24,7 +24,6 @@ export default function ForgetPassword() {
   useEffect(() => {
     !isNil(token) && setResetToken(token);
   }, [token]);
-  // console.log(typeof resetToken, resetToken);
 
   const {
     mutate: resetPassword,
