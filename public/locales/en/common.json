@@ -11,5 +11,14 @@
   },
   "login": {
     "title": "Just Login"
+  },
+  "sidebar": {
+    "link": "Links",
+    "appearance": "Appearance",
+    "settings": "Settings",
+    "analytics": "Analytics",
+    "upgrade": "Upgrade",
+    "support": "Support",
+    "new": "What's new"
   }
 }

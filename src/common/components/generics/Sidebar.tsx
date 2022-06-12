@@ -9,42 +9,44 @@ import { BsMegaphone } from 'react-icons/bs';
 import { Image } from '@chakra-ui/react';
 import MenuItem from './MenuItem';
 import styles from './Sidebar.module.scss';
+import { useTranslation } from 'react-i18next';
 
 function Sidebar() {
+  const { t } = useTranslation();
   const navItems = [
     {
       href: '/',
-      content: 'Links',
+      content: t('sidebar.link'),
       icon: <IoLinkSharp />,
     },
     {
       href: '/',
-      content: 'Appearance',
+      content: t('sidebar.appearance'),
       icon: <TbColorSwatch />,
     },
     {
       href: '/',
-      content: 'Settings',
+      content: t('sidebar.settings'),
       icon: <BsGear />,
     },
     {
       href: '/',
-      content: 'Analytics',
+      content: t('sidebar.analytics'),
       icon: <SiGoogleanalytics />,
     },
     {
       href: '/',
-      content: 'Upgrade',
+      content: t('sidebar.upgrade'),
       icon: <BiUpload />,
     },
     {
       href: '/',
-      content: 'Support',
+      content: t('sidebar.support'),
       icon: <BsChatSquareDots />,
     },
     {
       href: '/',
-      content: "What's new",
+      content: t('sidebar.new'),
       icon: <BsMegaphone />,
     },
   ];
