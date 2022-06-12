@@ -5,7 +5,7 @@ interface MenuInfo {
   content: string;
   icon: any;
 }
-const MenuItem = (props: MenuInfo) => {
+export default function MenuItem(props: MenuInfo) {
   const { href, content, icon } = props;
   return (
     <li>
@@ -15,6 +15,4 @@ const MenuItem = (props: MenuInfo) => {
       </a>
     </li>
   );
-};
-
-export default MenuItem;
+}
