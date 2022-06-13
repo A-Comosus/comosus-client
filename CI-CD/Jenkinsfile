@@ -67,10 +67,10 @@ pipeline {
         stage('Checking for linter error') {
             steps {
                 echo 'Checking for linter error....'
-                sh 'npm run lint'
+                sh 'yarn lint'
             }
         }
-
+        /*
         stage('Build') {
             steps {
                 echo 'Building....'
@@ -84,7 +84,7 @@ pipeline {
                 sh 'npm run e2e:start-server:record'
             }
         }
-       
+       */
 
         // stage ('Container Integrated Test') {
         //     steps {
