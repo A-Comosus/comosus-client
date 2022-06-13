@@ -160,7 +160,7 @@ pipeline {
         }
     }
 
-    post {
+    //post {
         //always {
                 //deleteDir()
             /* cleanWs(cleanWhenNotBuilt: false,
@@ -170,5 +170,5 @@ pipeline {
                     patterns: [[pattern: '.gitignore', type: 'INCLUDE'],
                                [pattern: '.propsfile', type: 'EXCLUDE']])*/
         //}
-    }
+    //}
 }
