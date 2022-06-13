@@ -31,18 +31,22 @@
   }
 }
 .sidebar {
+  display: flex;
+  flex-direction: column;
   min-width: 10rem;
+  position: absolute;
+  left: 0;
   height: 90%;
-  align-items: center;
   margin: 10px;
+  gap: 1rem;
   backdrop-filter: blur(5.5px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   background: linear-gradient(179deg, #465d78, #4a4050);
   color: #fff;
   text-shadow: none;
-  position: fixed;
   border: none;
+  gap: 1rem 0px;
   &__menu {
     position: relative;
     padding-left: 1rem;
@@ -89,8 +93,8 @@
   display: flex;
   align-items: center;
   height: 2.6rem;
-  padding-top: 4rem;
   padding-left: 1.5rem;
+  margin-bottom: 2rem;
   &__title {
     margin-left: 0.3rem;
     font-size: 1rem;
@@ -100,10 +104,9 @@
   display: flex;
   position: relative;
   justify-content: center;
-  margin-bottom: 1rem;
   margin-top: 1rem;
   &__avatar {
-    width: 30%;
+    width: 40%;
     border-radius: 50%;
   }
 }

@@ -6,6 +6,8 @@ import { BiUpload } from 'react-icons/bi';
 import { BsChatSquareDots } from 'react-icons/bs';
 import { TbColorSwatch } from 'react-icons/tb';
 import { BsMegaphone } from 'react-icons/bs';
+import { MdOutlineAccountCircle } from 'react-icons/md';
+import { MdLogout } from 'react-icons/md';
 import { Image } from '@chakra-ui/react';
 import MenuItem from './MenuItem';
 import styles from './Sidebar.module.scss';
@@ -48,6 +50,16 @@ function Sidebar() {
       href: '/',
       content: t('sidebar.new'),
       icon: <BsMegaphone />,
+    },
+    {
+      href: '/',
+      content: t('sidebar.my-account'),
+      icon: <MdOutlineAccountCircle />,
+    },
+    {
+      href: '/',
+      content: t('sidebar.logout'),
+      icon: <MdLogout />,
     },
   ];
   return (
