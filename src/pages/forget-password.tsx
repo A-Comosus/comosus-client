@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useApiClient } from '@common/contexts';
 
 import { HStack, VStack } from '@chakra-ui/react';
-import { AppContainer, Logo } from '@src/common/components';
+import { PageContainer, Logo } from '@src/common/components';
 import { ForgetPasswordForm } from '@src/modules/auth';
 import { isNil } from 'lodash';
 import { useForgetPasswordMutation } from '@generated/graphql.queries';
@@ -35,7 +35,7 @@ export default function ForgetPassword() {
   };
 
   return (
-    <AppContainer head={head}>
+    <PageContainer head={head}>
       <VStack flex={1} padding="1rem">
         <HStack width="100%">
           <Logo height="5rem" />
@@ -47,6 +47,6 @@ export default function ForgetPassword() {
           successMessage={successMessage}
         />
       </VStack>
-    </AppContainer>
+    </PageContainer>
   );
 }

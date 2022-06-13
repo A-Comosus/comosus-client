@@ -1,5 +1,5 @@
 // Container Components
-export { default as AppContainer } from './containers/AppContainer';
+export { default as PageContainer } from './containers/PageContainer';
 
 // Generic Components
 export { default as Logo } from './generics/Logo';
