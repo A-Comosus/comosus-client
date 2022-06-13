@@ -19,6 +19,8 @@
     "analytics": "分析",
     "upgrade": "升级",
     "support": "支持",
-    "new": "新消息"
+    "new": "新消息",
+    "my-account": "我的账户",
+    "logout": "注销账户"
   }
 }
