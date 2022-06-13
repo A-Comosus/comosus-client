@@ -37,9 +37,9 @@ pipeline {
                 echo 'Cleanup docker space'
                 sh 'docker system prune -f'
                  // Clean before build
-                // cleanWs()
+                cleanWs()
                 // We need to explicitly checkout from SCM here
-                // checkout scm
+                checkout scm
             }
         }
 
@@ -53,7 +53,7 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 echo 'Install dependencies...'
-                sh 'yarn install'
+                sh 'npm install'
             }
         }
 
@@ -67,7 +67,7 @@ pipeline {
         stage('Checking for linter error') {
             steps {
                 echo 'Checking for linter error....'
-                sh 'yarn lint'
+                sh 'npm lint'
             }
         }
         /*
@@ -160,15 +160,14 @@ pipeline {
         }
     }
 
-    //post {
-        //always {
-                //deleteDir()
-            /* cleanWs(cleanWhenNotBuilt: false,
+    post {
+        always {
+            cleanWs(cleanWhenNotBuilt: false,
                     deleteDirs: true,
                     disableDeferredWipeout: true,
                     notFailBuild: true,
                     patterns: [[pattern: '.gitignore', type: 'INCLUDE'],
-                               [pattern: '.propsfile', type: 'EXCLUDE']])*/
-        //}
-    //}
+                               [pattern: '.propsfile', type: 'EXCLUDE']])
+        }
+    }
 }
