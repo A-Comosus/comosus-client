@@ -53,35 +53,35 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 echo 'Install dependencies...'
-                sh 'yarn install'
+                sh 'npm install'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'yarn test:coverage'
+                sh 'npm run test:coverage'
             }
         }
         
         stage('Checking for linter error') {
             steps {
                 echo 'Checking for linter error....'
-                sh 'yarn lint'
+                sh 'npm run lint'
             }
         }
 
         stage('Build') {
             steps {
                 echo 'Building....'
-                sh 'yarn build:with-codegen'
+                sh 'npm run build:with-codegen'
             }
         }
 
         stage ('Integrated Test') {
             steps {
                 echo 'Integrated Test....'
-                sh 'yarn e2e:start-server:record'
+                sh 'npm run e2e:start-server:record'
             }
         }
        
