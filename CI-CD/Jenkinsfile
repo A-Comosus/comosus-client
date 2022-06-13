@@ -162,7 +162,7 @@ pipeline {
 
     post {
         always {
-                deleteDir()
+                //deleteDir()
             /* cleanWs(cleanWhenNotBuilt: false,
                     deleteDirs: true,
                     disableDeferredWipeout: true,
