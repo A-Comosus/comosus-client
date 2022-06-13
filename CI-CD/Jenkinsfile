@@ -37,9 +37,9 @@ pipeline {
                 echo 'Cleanup docker space'
                 sh 'docker system prune -f'
                  // Clean before build
-                cleanWs()
+                // cleanWs()
                 // We need to explicitly checkout from SCM here
-                checkout scm
+                // checkout scm
             }
         }
 
@@ -165,12 +165,12 @@ pipeline {
             withCredentials([string(credentialsId: 'AWS_REPOSITORY_URL_SECRET', variable: 'AWS_ECR_URL')]) {
                 deleteDir()
             }
-             cleanWs(cleanWhenNotBuilt: false,
+            /* cleanWs(cleanWhenNotBuilt: false,
                     deleteDirs: true,
                     disableDeferredWipeout: true,
                     notFailBuild: true,
                     patterns: [[pattern: '.gitignore', type: 'INCLUDE'],
-                               [pattern: '.propsfile', type: 'EXCLUDE']])
+                               [pattern: '.propsfile', type: 'EXCLUDE']])*/
         }
     }
 }
