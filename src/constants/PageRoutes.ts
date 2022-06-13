@@ -1,3 +1,7 @@
+export enum GlobalRoute {
+  Root = '/',
+}
+
 export enum AuthRoute {
   SignUp = '/sign-up',
   Login = '/login',

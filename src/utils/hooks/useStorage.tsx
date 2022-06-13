@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { StorageType } from '@src/constants/StorageKey';
 
 type useStorageReturnType = [
   string | undefined | null,
-  (value: string) => void,
+  (value: string | null) => void,
 ];
 
 export default function useStorage(
@@ -13,21 +13,19 @@ export default function useStorage(
 ): useStorageReturnType {
   const [value, setValue] = useState<string | null>();
 
-  const storeValue = (value: string) => {
-    if (type === StorageType.Session) {
-      window.sessionStorage.setItem(key, value);
-    }
-    window.localStorage.setItem(key, value);
+  const storeValue = (value: string | null) => {
+    if (type === StorageType.Session)
+      window.sessionStorage.setItem(key, value ?? '');
+    else window.localStorage.setItem(key, value ?? '');
+    setValue(value);
   };
 
   useEffect(() => {
     if (defaultValue) setValue(defaultValue);
 
-    if (type === StorageType.Session) {
+    if (type === StorageType.Session)
       setValue(window.sessionStorage.getItem(key));
-    }
-
-    setValue(window.localStorage.getItem(key));
+    else setValue(window.localStorage.getItem(key));
   }, [defaultValue, key, type]);
 
   return [value, storeValue];
