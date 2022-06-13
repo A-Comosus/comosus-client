@@ -67,7 +67,7 @@ pipeline {
         stage('Checking for linter error') {
             steps {
                 echo 'Checking for linter error....'
-                sh 'npm lint'
+                sh 'npm run lint'
             }
         }
         /*
