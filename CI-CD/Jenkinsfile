@@ -18,6 +18,7 @@ pipeline {
 
     tools {
         dockerTool 'docker-latest'
+        node.js '16.15.1'
     }
 
     environment {
@@ -60,7 +61,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'npm run test:coverage'
+                sh 'yarn test:coverage'
             }
         }
         
@@ -162,12 +163,7 @@ pipeline {
 
     post {
         always {
-            cleanWs(cleanWhenNotBuilt: false,
-                    deleteDirs: true,
-                    disableDeferredWipeout: true,
-                    notFailBuild: true,
-                    patterns: [[pattern: '.gitignore', type: 'INCLUDE'],
-                               [pattern: '.propsfile', type: 'EXCLUDE']])
+            deleteDir()
         }
     }
 }
