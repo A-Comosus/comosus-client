@@ -4,3 +4,4 @@ export {
   useApiClient,
 } from './apiClientContext/ApiClientContext';
 export { AuthProvider, useAuth } from './AuthContext';
+export { UserProvider, useUser } from './userContext/UserContext';
