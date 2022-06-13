@@ -18,7 +18,6 @@ pipeline {
 
     tools {
         dockerTool 'docker-latest'
-        nodejs '16.15.1'
     }
 
     environment {
@@ -54,21 +53,21 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 echo 'Install dependencies...'
-                sh 'yarn install'
+                sh 'npm install'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'yarn test:coverage'
+                sh 'npm run test:coverage'
             }
         }
         
         stage('Checking for linter error') {
             steps {
                 echo 'Checking for linter error....'
-                sh 'yarn lint'
+                sh 'npm run lint'
             }
         }
         /*
