@@ -3,11 +3,13 @@ import { useApiClient } from '@common/contexts';
 import { useGetServerInfoQuery } from '@generated/graphql.queries';
 
 import { AppContainer } from '@modules/admin/components';
-import { HStack } from '@chakra-ui/react';
+import { HStack, VStack } from '@chakra-ui/react';
 import { Text } from '@common/components';
+import { useTranslation } from 'react-i18next';
 
 export default function Admin() {
-  const head = { title: 'A-Comosus Admin' };
+  const { t } = useTranslation('admin');
+  const head = { title: t('admin.title') };
 
   const { gqlClient } = useApiClient();
   const { data: serverData } = useGetServerInfoQuery(gqlClient);
@@ -15,8 +17,10 @@ export default function Admin() {
   return (
     <AppContainer head={head}>
       <HStack>
-        <Text type="h2">Admin Panel</Text>
-        <Text>{JSON.stringify(serverData, null, 2)}</Text>
+        <VStack>
+          <Text type="h2">{t('admin.title')}</Text>
+          <Text>{JSON.stringify(serverData, null, 2)}</Text>
+        </VStack>
       </HStack>
     </AppContainer>
   );
