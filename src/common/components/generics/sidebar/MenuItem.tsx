@@ -8,10 +8,12 @@ interface MenuInfo {
 export default function MenuItem(props: MenuInfo) {
   const { href, content, icon } = props;
   return (
-    <li>
-      <a href={href}>
-        <span className={styles.icon}>{icon}</span>
-        <span className={styles.title}>{content}</span>
+    <li className={styles.sidebar__menu__item}>
+      <a className={styles.sidebar__menu__item__link} href={href}>
+        <span className={styles.sidebar__menu__item__link__icon}>{icon}</span>
+        <span className={styles.sidebar__menu__item__link__title}>
+          {content}
+        </span>
       </a>
     </li>
   );

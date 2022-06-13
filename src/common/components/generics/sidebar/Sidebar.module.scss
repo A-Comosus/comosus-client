@@ -1,3 +1,35 @@
+@mixin sidebarItem {
+  &:hover {
+    background: #fff;
+    color: black;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: -20px;
+    border-bottom-right-radius: -20px;
+    &:before {
+      position: absolute;
+      content: '';
+      height: 30px;
+      width: 30px;
+      background: transparent;
+      right: 0;
+      bottom: 100%;
+      border-bottom-right-radius: 18px;
+      box-shadow: 0 17px 0 #fff;
+    }
+    &:after {
+      position: absolute;
+      content: '';
+      height: 50px;
+      width: 30px;
+      background: transparent;
+      right: 0;
+      top: 100%;
+      border-top-right-radius: 18px;
+      box-shadow: 0 -17px 0 #fff;
+    }
+  }
+}
 .sidebar {
   min-width: 10rem;
   height: 90%;
@@ -11,11 +43,11 @@
   text-shadow: none;
   position: fixed;
   border: none;
-  ul {
+  &__menu {
     position: relative;
     padding-left: 1rem;
     display: block;
-    li {
+    &__item {
       position: relative;
       text-align: left;
       list-style: none;
@@ -23,26 +55,20 @@
       display: flex;
       text-align: center;
       height: 3.5rem;
-      .active {
-        background: #fff;
-        a {
-          color: black;
-        }
-      }
-      a {
+      &__link {
         position: relative;
         display: block;
         width: 100%;
         text-decoration: none;
         color: #fff;
         display: flex;
-        .icon {
+        &__icon {
           position: relative;
           display: flex;
           align-items: center;
           margin-left: 0.8rem;
         }
-        .title {
+        &__title {
           position: relative;
           display: flex;
           padding-left: 10px;
@@ -50,48 +76,14 @@
           white-space: normal;
           align-items: center;
         }
-        &:hover {
-          background: #fff;
-          color: black;
-          border-top-left-radius: 20px;
-          border-bottom-left-radius: 20px;
-          border-top-right-radius: -20px;
-          border-bottom-right-radius: -20px;
-          &:before {
-            position: absolute;
-            content: '';
-            height: 30px;
-            width: 30px;
-            background: transparent;
-            right: 0;
-            bottom: 100%;
-            border-bottom-right-radius: 18px;
-            box-shadow: 0 17px 0 #fff;
-          }
-          &:after {
-            position: absolute;
-            content: '';
-            height: 50px;
-            width: 30px;
-            background: transparent;
-            right: 0;
-            top: 100%;
-            border-top-right-radius: 18px;
-            box-shadow: 0 -17px 0 #fff;
-          }
-        }
-      }
-      &:hover {
-        transition: 0.4s;
-        letter-spacing: 0.2px;
+        @include sidebarItem;
       }
     }
+    &:hover {
+      transition: 0.4s;
+      letter-spacing: 0.2px;
+    }
   }
-}
-.lines_icon {
-  display: flex;
-  align-self: flex-end;
-  border-radius: 5px;
 }
 .logo {
   display: flex;
@@ -99,10 +91,10 @@
   height: 2.6rem;
   padding-top: 4rem;
   padding-left: 1.5rem;
-}
-.logo_title {
-  margin-left: 0.3rem;
-  font-size: 1rem;
+  &__title {
+    margin-left: 0.3rem;
+    font-size: 1rem;
+  }
 }
 .profile {
   display: flex;
@@ -110,7 +102,7 @@
   justify-content: center;
   margin-bottom: 1rem;
   margin-top: 1rem;
-  > img {
+  &__avatar {
     width: 30%;
     border-radius: 50%;
   }

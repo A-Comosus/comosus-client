@@ -53,16 +53,20 @@ function Sidebar() {
   return (
     <div className={styles.sidebar}>
       <div className={styles.profile}>
-        <Image src="/assets/avatar.png" alt="avatar" />
+        <Image
+          className={styles.profile__avatar}
+          src="/assets/avatar.png"
+          alt="avatar"
+        />
       </div>
-      <ul>
+      <ul className={styles.sidebar__menu}>
         {navItems.map(({ href, content, icon }, index) => (
           <MenuItem key={index} href={href} content={content} icon={icon} />
         ))}
       </ul>
       <div className={styles.logo}>
         <Image src="/assets/logo.png" alt="a-comusus logo" alignSelf="center" />
-        <p className={styles.logo_title}> A-Comosus</p>
+        <p className={styles.logo__title}> A-Comosus</p>
       </div>
     </div>
   );
