@@ -18,7 +18,7 @@ pipeline {
 
     tools {
         dockerTool 'docker-latest'
-        node.js '16.15.1'
+        nodejs '16.15.1'
     }
 
     environment {
