@@ -34,23 +34,17 @@
   display: flex;
   flex-direction: column;
   min-width: 10rem;
-  position: absolute;
-  left: 0;
-  height: 90%;
   margin: 10px;
-  gap: 1rem;
-  backdrop-filter: blur(5.5px);
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  align-items: stretch;
   background: linear-gradient(179deg, #465d78, #4a4050);
   color: #fff;
-  text-shadow: none;
-  border: none;
   gap: 1rem 0px;
   &__menu {
     position: relative;
     padding-left: 1rem;
-    display: block;
+    display: flex;
+    flex-direction: column;
     &__item {
       position: relative;
       text-align: left;
