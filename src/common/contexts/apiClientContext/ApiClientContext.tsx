@@ -1,9 +1,10 @@
 import React, { useMemo } from 'react';
-import { useAuth } from '@common/contexts';
 import { GraphQLClient } from 'graphql-request';
 import axios, { AxiosInstance } from 'axios';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
+
+import { useAuth } from '@common/contexts';
 
 const apiEndpoint = {
   gql:
@@ -19,6 +20,7 @@ const apiEndpoint = {
 type ApiClientContextType = {
   gqlClient: GraphQLClient;
   restClient: AxiosInstance;
+  queryClient: QueryClient;
 };
 const ApiClientContext = React.createContext<ApiClientContextType>(
   {} as ApiClientContextType,
@@ -59,17 +61,20 @@ export function ApiClientProvider({ children }: ApiClientProviderProps) {
     return client;
   }, [headers]);
 
-  const queryStaleTime = parseInt(process.env.QUERY_STALE_TIME ?? '1', 10);
+  const queryStaleTime = parseInt(
+    process.env.NEXT_PUBLIC_QUERY_STALE_TIME_IN_MINUTES ?? '900',
+    10,
+  );
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        staleTime: queryStaleTime * 1000,
+        staleTime: queryStaleTime * 60 * 1000,
       },
     },
   });
 
   return (
-    <ApiClientContext.Provider value={{ gqlClient, restClient }}>
+    <ApiClientContext.Provider value={{ gqlClient, restClient, queryClient }}>
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
         {children}
