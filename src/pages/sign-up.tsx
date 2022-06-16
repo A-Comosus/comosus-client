@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useApiClient } from '@common/contexts';
 import { useRegisterMutation } from '@generated/graphql.queries';
 
-import { AppContainer } from '@src/common/components';
+import { PageContainer } from '@src/common/components';
 import { VStack } from '@chakra-ui/react';
 import { SignUpForm } from '@src/modules/auth';
 
@@ -36,7 +36,7 @@ export default function SignUp() {
   };
 
   return (
-    <AppContainer head={head}>
+    <PageContainer head={head}>
       <VStack justify="center">
         <SignUpForm
           onSubmit={onSubmit}
@@ -44,6 +44,6 @@ export default function SignUp() {
           isLoading={isRegistering}
         />
       </VStack>
-    </AppContainer>
+    </PageContainer>
   );
 }

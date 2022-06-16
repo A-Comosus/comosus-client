@@ -1,0 +1,28 @@
+mutation CreateNewLink($payload: CreateLinkInput!) {
+  createLink(data: $payload) {
+    id
+  }
+}
+
+query FindLinksOfUserByUserId($payload: FindLinksOfUserByUserIdInput!) {
+  findLinksOfUserByUserId(data: $payload) {
+    id
+    isDraft
+    isVisible
+    title
+    url
+  }
+}
+
+mutation UpdateLink($payload: UpdateLinkInput!) {
+  updateLink(data: $payload) {
+    id
+    isVisible
+    title
+    url
+  }
+}
+
+mutation DeleteLinkById($payload: DeleteLinkInput!) {
+  deleteLinkById(data: $payload)
+}
