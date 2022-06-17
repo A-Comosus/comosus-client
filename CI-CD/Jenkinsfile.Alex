@@ -54,6 +54,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
+                sh 'npm run codegen' 
                 sh 'npm run test:coverage'
             }
         }
@@ -68,7 +69,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building....'
-                sh 'npm run build:with-codegen'
+                sh 'npm run build'
             }
         }
 
