@@ -13,6 +13,8 @@ import MenuItem from './MenuItem';
 import styles from './Sidebar.module.scss';
 import { useTranslation } from 'react-i18next';
 
+import { Logo } from '@common/components';
+
 function Sidebar() {
   const { t } = useTranslation();
   const navItems = [
@@ -62,6 +64,7 @@ function Sidebar() {
       icon: <MdLogout />,
     },
   ];
+
   return (
     <div className={styles.sidebar}>
       <div className={styles.profile}>
@@ -76,10 +79,8 @@ function Sidebar() {
           <MenuItem key={index} href={href} content={content} icon={icon} />
         ))}
       </ul>
-      <div className={styles.logo}>
-        <Image src="/assets/logo.png" alt="a-comusus logo" alignSelf="center" />
-        <p className={styles.logo__title}> A-Comosus</p>
-      </div>
+
+      <Logo variant="inline" />
     </div>
   );
 }
