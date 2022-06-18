@@ -19,7 +19,7 @@ function Sidebar() {
   const { t } = useTranslation();
   const navItems = [
     {
-      href: '/',
+      href: '/admin',
       content: t('sidebar.link'),
       icon: <IoLinkSharp />,
     },

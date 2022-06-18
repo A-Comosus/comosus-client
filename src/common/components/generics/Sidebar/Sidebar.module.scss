@@ -1,33 +1,31 @@
 @mixin sidebarItem {
-  &:hover {
-    background: #fff;
-    color: black;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+  background: #fff;
+  color: black;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 
-    &:before {
-      position: absolute;
-      content: '';
-      height: 30px;
-      width: 30px;
-      background: transparent;
-      right: 0;
-      bottom: 100%;
-      border-bottom-right-radius: 18px;
-      box-shadow: 0 17px 0 #fff;
-    }
+  &:before {
+    position: absolute;
+    content: '';
+    height: 30px;
+    width: 30px;
+    background: transparent;
+    right: 0;
+    bottom: 100%;
+    border-bottom-right-radius: 18px;
+    box-shadow: 0 17px 0 #fff;
+  }
 
-    &:after {
-      position: absolute;
-      content: '';
-      height: 50px;
-      width: 30px;
-      background: transparent;
-      right: 0;
-      top: 100%;
-      border-top-right-radius: 18px;
-      box-shadow: 0 -17px 0 #fff;
-    }
+  &:after {
+    position: absolute;
+    content: '';
+    height: 50px;
+    width: 30px;
+    background: transparent;
+    right: 0;
+    top: 100%;
+    border-top-right-radius: 18px;
+    box-shadow: 0 -17px 0 #fff;
   }
 }
 
@@ -66,7 +64,13 @@
         gap: 10px;
         padding: 10px 20px;
 
-        @include sidebarItem;
+        &:hover {
+          @include sidebarItem;
+        }
+
+        &_active {
+          @include sidebarItem;
+        }
       }
     }
 
