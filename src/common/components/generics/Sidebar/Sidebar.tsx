@@ -8,7 +8,7 @@ import { TbColorSwatch } from 'react-icons/tb';
 import { BsMegaphone } from 'react-icons/bs';
 import { MdOutlineAccountCircle } from 'react-icons/md';
 import { MdLogout } from 'react-icons/md';
-import { Image } from '@chakra-ui/react';
+import { Image, VStack } from '@chakra-ui/react';
 import MenuItem from './MenuItem';
 import styles from './Sidebar.module.scss';
 import { useTranslation } from 'react-i18next';
@@ -66,22 +66,22 @@ function Sidebar() {
   ];
 
   return (
-    <div className={styles.sidebar}>
-      <div className={styles.profile}>
+    <nav className={styles.sidebar}>
+      <VStack flex={1} gap={10}>
         <Image
-          className={styles.profile__avatar}
+          className={styles.sidebar__avatar}
           src="/assets/avatar.png"
           alt="avatar"
         />
-      </div>
-      <ul className={styles.sidebar__menu}>
-        {navItems.map(({ href, content, icon }, index) => (
-          <MenuItem key={index} href={href} content={content} icon={icon} />
-        ))}
-      </ul>
+        <ul className={styles.sidebar__menu}>
+          {navItems.map(({ href, content, icon }, index) => (
+            <MenuItem key={index} href={href} content={content} icon={icon} />
+          ))}
+        </ul>
+      </VStack>
 
-      <Logo variant="inline" />
-    </div>
+      <Logo w="160px" />
+    </nav>
   );
 }
 
