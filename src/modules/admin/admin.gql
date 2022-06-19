@@ -26,3 +26,17 @@ mutation UpdateLink($payload: UpdateLinkInput!) {
 mutation DeleteLinkById($payload: DeleteLinkInput!) {
   deleteLinkById(data: $payload)
 }
+
+query FindUserByUsername($payload: FindByUsernameArgs!) {
+  findUserByUsername(username: $payload) {
+    id
+    email
+    username
+    links {
+      id
+      title
+      url
+      logoUrl
+    }
+  }
+}

@@ -26,7 +26,7 @@ export default function LinkEditor() {
     );
 
   return (
-    <VStack flex={1} borderRight="1px solid #E7E8EE">
+    <VStack flex={2} borderRight="1px solid #E7E8EE">
       <VStack minW="600px" align="stretch">
         <LinkEditorMenu />
 
