@@ -2,7 +2,8 @@ import React from 'react';
 import { UserProvider } from '@common/contexts';
 
 import Head from 'next/head';
-import { Box, ColorModeScript, Flex } from '@chakra-ui/react';
+import { ColorModeScript, Flex } from '@chakra-ui/react';
+import { Sidebar } from '@common/components';
 
 type PageContainerProps = {
   children: React.ReactNode;
@@ -14,7 +15,7 @@ export default function PageContainer({ children, head }: PageContainerProps) {
 
   return (
     <UserProvider>
-      <Flex minH="100vh" align="stretch">
+      <Flex h="100vh" align="stretch" overflow="hidden" bg="#F5F6F8">
         <Head>
           <title>{title}</title>
           {metas &&
@@ -26,22 +27,10 @@ export default function PageContainer({ children, head }: PageContainerProps) {
               <link key={index} rel={rel} href={href} />
             ))}
         </Head>
-
         <ColorModeScript />
-        <SideBar />
+        <Sidebar />
         {children}
       </Flex>
     </UserProvider>
   );
 }
-
-const SideBar = () => {
-  return (
-    <Box
-      borderRadius="10px"
-      m="10px"
-      minW="210px"
-      bgGradient={'linear-gradient(180deg, #465E79 0%, #4B3F4F 97.92%);'}
-    />
-  );
-};

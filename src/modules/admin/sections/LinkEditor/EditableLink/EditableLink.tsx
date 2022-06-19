@@ -100,13 +100,12 @@ export default function EditableLink({ link }: EditableLinkProps) {
     <HStack
       align="stretch"
       gap={5}
-      maxW="555px"
       borderRadius={4}
       p={[5, 10, 4, 4]}
       bg="white"
     >
       <Image
-        src="assets/icons/drag-handle.svg"
+        src="/assets/icons/drag-handle.svg"
         alt="drag-handle"
         pr={4}
         borderRight="1px solid #ADB2C6"

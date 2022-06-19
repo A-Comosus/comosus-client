@@ -26,17 +26,29 @@ export default function LinkEditor() {
     );
 
   return (
-    <VStack minW="515px" align="stretch">
-      <LinkEditorMenu />
+    <VStack flex={1} borderRight="1px solid #E7E8EE">
+      <VStack minW="600px" align="stretch">
+        <LinkEditorMenu />
 
-      <VStack gap={5} align="stretch" overflow="scroll">
-        {isLoadingLinks ? (
-          <Spinner />
-        ) : _.isNil(links) ? (
-          <>Create your first</>
-        ) : (
-          links.map((link, index) => <EditableLink key={index} link={link} />)
-        )}
+        <VStack
+          gap={5}
+          align="stretch"
+          overflowY="auto"
+          __css={{
+            '&::-webkit-scrollbar': { width: '3px' },
+            '&::-webkit-scrollbar-thumb': {
+              background: '#ADB2C6',
+            },
+          }}
+        >
+          {isLoadingLinks ? (
+            <Spinner />
+          ) : _.isNil(links) ? (
+            <>Create your first</>
+          ) : (
+            links.map((link, index) => <EditableLink key={index} link={link} />)
+          )}
+        </VStack>
       </VStack>
     </VStack>
   );
