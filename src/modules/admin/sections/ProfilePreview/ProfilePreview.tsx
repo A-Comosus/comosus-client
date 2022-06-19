@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useApiClient, useUser } from '@src/common/contexts';
 import { useFindUserByUsernameQuery } from '@generated/graphql.queries';
@@ -8,17 +8,23 @@ import { Logo, Text } from '@src/common/components';
 import ProfilePreviewLink from './ProfilePreview.Link';
 import { BsShareFill } from 'react-icons/bs';
 import { FaShareSquare } from 'react-icons/fa';
+import _ from 'lodash';
 
 export default function ProfilePreview() {
   const { t } = useTranslation('admin');
   const {
     user: { username },
   } = useUser();
+
+  const enabled = useMemo(() => {
+    return !_.isNil(username);
+  }, [username]);
   const { gqlClient } = useApiClient();
   const { data: userData, isLoading } = useFindUserByUsernameQuery(
     gqlClient,
     { payload: { username } },
     {
+      enabled,
       select: (data) => data.findUserByUsername,
     },
   );
