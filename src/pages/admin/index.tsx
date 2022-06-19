@@ -16,9 +16,9 @@ export default function Admin() {
 
   return (
     <AppContainer head={head}>
-      <HStack align="stretch">
+      <HStack flex={1} align="stretch">
         <LinkEditor />
-        <VStack>
+        <VStack flex={1}>
           <Text type="h2">{t('admin.title')}</Text>
           <Text>{JSON.stringify(serverData, null, 2)}</Text>
         </VStack>

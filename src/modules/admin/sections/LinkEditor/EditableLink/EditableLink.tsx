@@ -100,7 +100,6 @@ export default function EditableLink({ link }: EditableLinkProps) {
     <HStack
       align="stretch"
       gap={5}
-      maxW="555px"
       borderRadius={4}
       p={[5, 10, 4, 4]}
       bg="white"
