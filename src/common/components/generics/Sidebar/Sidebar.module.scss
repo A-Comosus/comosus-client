@@ -1,0 +1,70 @@
+@mixin sidebarItem {
+  background: #f5f6f8;
+  color: black;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+
+  &:before {
+    position: absolute;
+    content: '';
+    height: 30px;
+    width: 30px;
+    background: transparent;
+    right: 0;
+    bottom: 100%;
+    border-bottom-right-radius: 18px;
+    box-shadow: 0 17px 0 #f5f6f8;
+  }
+
+  &:after {
+    position: absolute;
+    content: '';
+    height: 50px;
+    width: 30px;
+    background: transparent;
+    right: 0;
+    top: 100%;
+    border-top-right-radius: 18px;
+    box-shadow: 0 -17px 0 #f5f6f8;
+  }
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 1rem 0px;
+  min-width: 210px;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 40px 0 60px 0;
+  background: linear-gradient(179deg, #465d78, #4a4050);
+  color: #fff;
+
+  &__menu {
+    align-self: stretch;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-left: 20px;
+    list-style: none;
+
+    &__item {
+      position: relative;
+
+      &:hover {
+        @include sidebarItem;
+      }
+
+      &_active {
+        @include sidebarItem;
+      }
+    }
+
+    &:hover {
+      transition: 0.4s;
+    }
+  }
+}
