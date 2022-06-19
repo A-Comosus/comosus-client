@@ -70,6 +70,7 @@ export default function EditableLink({ link }: EditableLinkProps) {
     onSettled: (data) => {
       if (data) {
         queryClient.invalidateQueries(LinkQueries.FindAllOfAnUser);
+        queryClient.invalidateQueries(LinkQueries.FindByUsername);
       }
     },
   });
@@ -90,6 +91,7 @@ export default function EditableLink({ link }: EditableLinkProps) {
           // TODO: handle deletion error
         } else {
           queryClient.invalidateQueries(LinkQueries.FindAllOfAnUser);
+          queryClient.invalidateQueries(LinkQueries.FindByUsername);
         }
       },
     });
