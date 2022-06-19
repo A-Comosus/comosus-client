@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import styles from './onboarding.module.scss';
 import {
   InputGroup,
   Input,
@@ -9,6 +10,7 @@ import {
   FormErrorMessage,
 } from '@chakra-ui/react';
 import { AppContainer, Button, Text } from '@src/common/components';
+import { CFormCheck } from '@coreui/react';
 export default function Onboarding() {
   const { t } = useTranslation('auth');
   const head = { title: t('sign-up.title') };
@@ -29,7 +31,18 @@ export default function Onboarding() {
     '🖥Tech',
     '✈️Travel & Tourism',
   ];
-  const listItems = tags.map((tag) => <li>{tag}</li>);
+  const listItems = tags.map((tag) => (
+    // eslint-disable-next-line react/jsx-key
+    <CFormCheck
+      className="singleTag"
+      button={{ color: 'secondary' }}
+      type="radio"
+      name="options-outlined"
+      id={tag}
+      autoComplete="off"
+      label={tag}
+    />
+  ));
   return (
     <AppContainer head={head}>
       <VStack justify="center">
@@ -54,9 +67,9 @@ export default function Onboarding() {
               borderRadius={15}
             />
             {isActive ? (
-              <FormHelperText>Your name is too short!</FormHelperText>
+              <FormHelperText>Enter your name please</FormHelperText>
             ) : (
-              <FormErrorMessage>Name is required.</FormErrorMessage>
+              <FormErrorMessage>Name is required!</FormErrorMessage>
             )}
           </FormControl>
           <Button
@@ -68,10 +81,17 @@ export default function Onboarding() {
           >
             Continue
           </Button>
+          <Text
+            mt="60px"
+            fontWeight="bold"
+            fontSize={15}
+            letterSpacing="-1.5%"
+            pb="18px"
+          >
+            Select one category that best descrbes your A-Comosus:
+          </Text>
+          <div className={styles.interestsTags}>{listItems}</div>
         </InputGroup>
-        <div>
-          <ul>{listItems}</ul>
-        </div>
       </VStack>
     </AppContainer>
   );

@@ -1,6 +1,8 @@
 import type { AppProps } from 'next/app';
 import { appWithI18Next } from 'ni18n';
 import { ni18nConfig } from '../ni18n.config';
+import '@coreui/coreui/dist/css/coreui.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { ApiClientProvider, ThemeContextProvider } from '@common/contexts';
 
