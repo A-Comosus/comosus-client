@@ -5,8 +5,11 @@ import { LinkQueries } from '@src/constants';
 
 import { HStack } from '@chakra-ui/react';
 import { Button } from '@common/components';
+import { useTranslation } from 'react-i18next';
 
 export default function LinkEditorMenu() {
+  const { t } = useTranslation('admin');
+
   const {
     user: { id: userId },
   } = useUser();
@@ -26,10 +29,10 @@ export default function LinkEditorMenu() {
   return (
     <HStack justify="space-around" pt={20} px={6} gap={5}>
       <Button flex={1} onClick={handleAddNewLink} isLoading={isAddingNewLink}>
-        Add New Link
+        {t('link.editor.menu.add-new-link')}
       </Button>
       <Button isDisabled flex={1}>
-        Explore
+        {t('link.editor.menu.explore')}
       </Button>
     </HStack>
   );

@@ -1,5 +1,13 @@
 {
   "admin": {
     "title": "A-Comosus 🍍 Admin"
+  },
+  "link": {
+    "editor": {
+      "menu": {
+        "add-new-link": "Add New Link",
+        "explore": "Explore"
+      }
+    }
   }
 }
