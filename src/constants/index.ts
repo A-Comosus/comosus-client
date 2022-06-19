@@ -1,0 +1,1 @@
+export { LinkQueries } from './QueryKey';
