@@ -26,10 +26,20 @@ export default function LinkEditor() {
     );
 
   return (
-    <VStack minW="515px" align="stretch">
+    <VStack minW="515px" align="stretch" borderRight="1px solid #E7E8EE">
       <LinkEditorMenu />
 
-      <VStack gap={5} align="stretch" overflow="scroll">
+      <VStack
+        gap={5}
+        align="stretch"
+        overflowY="auto"
+        __css={{
+          '&::-webkit-scrollbar': { width: '3px' },
+          '&::-webkit-scrollbar-thumb': {
+            background: '#ADB2C6',
+          },
+        }}
+      >
         {isLoadingLinks ? (
           <Spinner />
         ) : _.isNil(links) ? (

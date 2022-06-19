@@ -15,7 +15,7 @@ export default function PageContainer({ children, head }: PageContainerProps) {
 
   return (
     <UserProvider>
-      <Flex minH="100vh" align="stretch">
+      <Flex h="100vh" align="stretch" overflow="hidden">
         <Head>
           <title>{title}</title>
           {metas &&
