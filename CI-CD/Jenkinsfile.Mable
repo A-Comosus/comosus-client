@@ -10,14 +10,12 @@ pipeline {
 		cluster = "ComosusClient"
         service = "ComosusClientAppSVC"
 	}
-	stages {
-		
+
+	stages {	
 		stage('Clear space'){
 		  steps {
 			    echo 'Cleanup docker space'
                 sh 'docker system prune -f'
-                 // Clean before build
-                cleanWs()
 		  }
 		}
 		
@@ -29,9 +27,7 @@ pipeline {
 		
 		stage('Install and Build'){
 		  steps {
-		    sh 'yarn install'
-		    sh 'yarn codegen'
-			sh 'yarn build'
+		    sh 'yarn install && yarn codegen && yarn build'
 		  }
 		}
 
@@ -42,10 +38,10 @@ pipeline {
 		}
 		
 		stage('Build App Image') {
-		   steps {      
-			 script {
-					dockerImage = docker.build( appRegistry + ":$BUILD_NUMBER", "-f Dockerfile.Mable .")
-				 }
+		   steps {
+            script {
+				dockerImage = docker.build( appRegistry + ":$BUILD_NUMBER", "-f Dockerfile.Mable .")
+			}
 		 }
 		}
 
@@ -62,10 +58,10 @@ pipeline {
 		
 		stage('Deploy to ecs') {
           steps {
-        withAWS(credentials: 'awscreds', region: 'us-east-1') {
-          sh 'aws ecs update-service --cluster ${cluster} --service ${service} --force-new-deployment'
-        }
-      }
+            withAWS(credentials: 'awscreds', region: 'us-east-1') {
+                sh 'aws ecs update-service --cluster ${cluster} --service ${service} --force-new-deployment'
+            }
+        } 
      }
   }
 }
