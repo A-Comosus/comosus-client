@@ -40,18 +40,19 @@ pipeline {
             }
         }
 
-        stage('E2E testing...') {
-            steps {
-                sh 'yarn e2e:start-server:record'
-            }
-        }
-
         stage('Building...') {
             steps {
                 sh 'yarn build'
             }
         }
 
+        stage('E2E testing...') {
+            steps {
+                sh 'yarn e2e:start-server:record'
+            }
+        }
+
+        
         // stage('Building docker image...') {
         //     todo...
         // }
