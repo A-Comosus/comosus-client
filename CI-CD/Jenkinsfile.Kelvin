@@ -13,6 +13,10 @@ pipeline {
     }
 
     stages {
+        stage('Clean workspace...') {
+            cleanWs()
+            checkout scm
+        }
 
         stage('Download dependencies...') {
             steps {
