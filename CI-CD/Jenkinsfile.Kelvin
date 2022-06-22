@@ -49,7 +49,6 @@ pipeline {
 
         stage('E2E testing...') {
             steps {
-                sh 'cypress cache path'
                 sh 'npm run e2e:start-server:record'
             }
         }
