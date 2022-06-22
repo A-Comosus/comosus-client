@@ -1,10 +1,6 @@
 pipeline {
     
-    agent {
-        docker {
-            image 'cypress/base:12'
-        }
-    }
+    agent any
     
     options { 
         disableConcurrentBuilds() 
@@ -14,6 +10,7 @@ pipeline {
     environment {
         N_G_ENDPOINT = 'https://staging.a-comosus.com/graphql/'
         G_ENDPOINT = 'https://staging.a-comosus.com/graphql/'
+        CYPRESS_RECORD_KEY = credentials('cypress-record-key')
     }
 
     stages {
