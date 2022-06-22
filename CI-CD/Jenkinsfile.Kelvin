@@ -10,7 +10,7 @@ pipeline {
     environment {
         N_G_ENDPOINT = 'https://staging.a-comosus.com/graphql/'
         G_ENDPOINT = 'https://staging.a-comosus.com/graphql/'
-        CYPRESS_RECORD_KEY = credentials('cypress-record-key')
+        CYPRESS_RECORD_KEY = credentials('CYPRESS_RECORD_KEY')
     }
 
     stages {
