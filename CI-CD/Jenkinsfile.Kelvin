@@ -23,33 +23,33 @@ pipeline {
 
         stage('Download dependencies...') {
             steps {
-                sh 'yarn'
+                sh 'npm install'
             }
         }
 
         stage('Unit testing...') {
             steps {
-                sh 'yarn codegen'
-                sh 'yarn test:coverage'
+                sh 'npm run codegen'
+                sh 'npm run test:coverage'
             }
         }
 
         stage('Linting...') {
             steps {
-                sh 'yarn lint'
+                sh 'npm run lint'
 
             }
         }
 
         stage('Building...') {
             steps {
-                sh 'yarn build'
+                sh 'npm run build'
             }
         }
 
         stage('E2E testing...') {
             steps {
-                sh 'yarn e2e:start-server:record'
+                sh 'npm run e2e:start-server:record'
             }
         }
 
