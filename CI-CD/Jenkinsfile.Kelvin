@@ -1,0 +1,55 @@
+pipeline {
+    
+    agent any
+    
+    options { 
+        disableConcurrentBuilds() 
+        timeout(time: 1, unit: 'HOURS')
+    }
+    
+    environment {
+        N_G_ENDPOINT = 'https://staging.a-comosus.com/graphql/'
+        G_ENDPOINT = 'https://staging.a-comosus.com/graphql/'
+    }
+
+    stages {
+
+        stage('Download dependencies...') {
+            steps {
+                sh 'yarn'
+            }
+        }
+
+        stage('Unit testing...') {
+            steps {
+                sh 'yarn codegen'
+                sh 'yarn test:coverage'
+            }
+        }
+
+        stage('Linting...') {
+            steps {
+                sh 'yarn lint'
+
+            }
+        }
+
+        stage('E2E testing...') {
+            steps {
+                sh 'yarn e2e:start-server:record'
+            }
+        }
+
+        stage('Building...') {
+            steps {
+                sh 'yarn build'
+            }
+        }
+
+        // stage('Building docker image...') {
+        //     todo...
+        // }
+    }
+
+
+}
