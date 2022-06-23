@@ -6,7 +6,7 @@ import { useRegisterMutation } from '@generated/graphql.queries';
 import { useRouter } from 'next/router';
 
 import { PageContainer } from '@src/common/components';
-import { VStack } from '@chakra-ui/react';
+import { useToast, VStack } from '@chakra-ui/react';
 import { SignUpForm } from '@src/modules/auth';
 import { AuthRoute } from '@src/constants/PageRoutes';
 
@@ -14,6 +14,7 @@ export default function SignUp() {
   const { t } = useTranslation('auth');
   const head = { title: t('sign-up.title') };
 
+  const toast = useToast();
   const router = useRouter();
   const { gqlClient } = useApiClient();
   const {
@@ -26,6 +27,11 @@ export default function SignUp() {
         // @ts-ignore
         console.error(error.message);
       } else if (data) {
+        toast({
+          status: 'success',
+          description: t('sign-up.success.message'),
+          variant: 'subtle',
+        });
         router.push(AuthRoute.Login);
       }
     },
