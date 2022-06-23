@@ -10,7 +10,6 @@ import {
   FormErrorMessage,
 } from '@chakra-ui/react';
 import { AppContainer, Button, Text } from '@src/common/components';
-import { CFormCheck } from '@coreui/react';
 export default function Onboarding() {
   const { t } = useTranslation('auth');
   const head = { title: t('sign-up.title') };
@@ -31,17 +30,15 @@ export default function Onboarding() {
     '🖥Tech',
     '✈️Travel & Tourism',
   ];
+  <style>{`
+        .selected {background: pink}
+        .unselect {background: grey}
+      `}</style>;
   const listItems = tags.map((tag) => (
     // eslint-disable-next-line react/jsx-key
-    <CFormCheck
-      className="singleTag"
-      button={{ color: 'secondary' }}
-      type="radio"
-      name="options-outlined"
-      id={tag}
-      autoComplete="off"
-      label={tag}
-    />
+    <Button variant="solid" size="md" mt="60px" borderRadius={15}>
+      {tag}
+    </Button>
   ));
   return (
     <AppContainer head={head}>
@@ -90,7 +87,7 @@ export default function Onboarding() {
           >
             Select one category that best descrbes your A-Comosus:
           </Text>
-          <div className={styles.interestsTags}>{listItems}</div>
+          <div>{listItems}</div>
         </InputGroup>
       </VStack>
     </AppContainer>
