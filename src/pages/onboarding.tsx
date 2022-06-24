@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './onboarding.module.scss';
 import {
@@ -10,11 +10,14 @@ import {
   FormErrorMessage,
 } from '@chakra-ui/react';
 import { AppContainer, Button, Text } from '@src/common/components';
+import $ from 'jquery';
 export default function Onboarding() {
   const { t } = useTranslation('auth');
   const head = { title: t('sign-up.title') };
   const handleInputChange = (e) => setInput(e.target.value);
   const [input, setInput] = useState('');
+  const [showResults, setShowResults] = useState(false);
+  const Continue = () => setShowResults(true);
   const isActive = input.length < 3;
   const tags = [
     '🏢Business',
@@ -30,16 +33,47 @@ export default function Onboarding() {
     '🖥Tech',
     '✈️Travel & Tourism',
   ];
-  <style>{`
-        .selected {background: pink}
-        .unselect {background: grey}
-      `}</style>;
+
+  // const AddActiveClass = () => {
+  //   $(document).ready(function () {
+  //     $('.tags').click(function () {
+  //       $('.tags').removeClass('active');
+  //       // $(".tab").addClass("active"); // instead of this do the below
+  //       $(this).addClass('active');
+  //     });
+  //   });
+  // };
+  // const [active, setIsActive] = useState(false);
+  const AddActiveClass = (event) => {
+    event.currentTarget.style.backgroundColor = '#FB446C';
+  };
   const listItems = tags.map((tag) => (
     // eslint-disable-next-line react/jsx-key
-    <Button variant="solid" size="md" mt="60px" borderRadius={15}>
+    <Button
+      variant="solid"
+      className={tag}
+      size="md"
+      mt="60px"
+      borderRadius={15}
+      onClick={AddActiveClass}
+    >
       {tag}
     </Button>
   ));
+  const TagChoices = () => (
+    <div>
+      <Text
+        mt="60px"
+        fontWeight="bold"
+        fontSize={15}
+        letterSpacing="-1.5%"
+        pb="18px"
+      >
+        Select one category that best descrbes your A-Comosus:
+      </Text>
+      <div>{listItems}</div>
+    </div>
+  );
   return (
     <AppContainer head={head}>
       <VStack justify="center">
@@ -75,19 +109,11 @@ export default function Onboarding() {
             mt="60px"
             isActive={isActive}
             borderRadius={15}
+            onClick={Continue}
           >
             Continue
           </Button>
-          <Text
-            mt="60px"
-            fontWeight="bold"
-            fontSize={15}
-            letterSpacing="-1.5%"
-            pb="18px"
-          >
-            Select one category that best descrbes your A-Comosus:
-          </Text>
-          <div>{listItems}</div>
+          {showResults ? <TagChoices /> : null}
         </InputGroup>
       </VStack>
     </AppContainer>
