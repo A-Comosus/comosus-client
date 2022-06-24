@@ -25,7 +25,7 @@ ARG N_G_ENDPOINT
 
 ENV NEXT_PUBLIC_GRAPHQL_ENDPOINT ${N_G_ENDPOINT}
 
-RUN yarn build
+RUN yarn codegen && yarn build
 
 # If using npm comment out above and use below instead
 # RUN npm run build
