@@ -16,13 +16,8 @@ pipeline {
         timestamps()
     }
 
-    tools {
-        dockerTool 'docker-latest'
-    }
-
     environment {
-        N_G_ENDPOINT = 'https://staging.a-comosus.com/graphql/'
-        G_ENDPOINT = 'https://staging.a-comosus.com/graphql/'
+        N_G_ENDPOINT = 'https://api.uat.a-comosus.link/graphql/'
         IMAGE_VERSION = "${env.BUILD_ID}"
         AWS_ECR_REGION = 'ap-southeast-2'
         CYPRESS_RECORD_KEY = credentials('cypress-record-key')
@@ -71,7 +66,7 @@ pipeline {
                 sh 'npm run lint'
             }
         }
-        /*
+        
         stage('Build') {
             steps {
                 echo 'Building....'
@@ -85,7 +80,6 @@ pipeline {
                 sh 'npm run e2e:start-server:record'
             }
         }
-       */
 
         // stage ('Container Integrated Test') {
         //     steps {
