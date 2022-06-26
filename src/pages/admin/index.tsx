@@ -1,18 +1,20 @@
 import React from 'react';
-import { useApiClient } from '@common/contexts';
-import { useGetServerInfoQuery } from '@generated/graphql.queries';
+import { useTranslation } from 'react-i18next';
 
-import { VStack } from '@chakra-ui/react';
-import { Text } from '@common/components';
+import { AppContainer } from '@modules/admin/components';
+import { HStack } from '@chakra-ui/react';
+import { LinkEditor, ProfilePreview } from '@modules/admin/sections';
 
 export default function Admin() {
-  const { gqlClient } = useApiClient();
-  const { data: serverData } = useGetServerInfoQuery(gqlClient);
+  const { t } = useTranslation('admin');
+  const head = { title: t('admin.title') };
 
   return (
-    <VStack minH="100vh" justify="center">
-      <Text type="h2">Admin Panel</Text>
-      <Text>{JSON.stringify(serverData, null, 2)}</Text>
-    </VStack>
+    <AppContainer head={head}>
+      <HStack flex={1} align="stretch">
+        <LinkEditor />
+        <ProfilePreview />
+      </HStack>
+    </AppContainer>
   );
 }

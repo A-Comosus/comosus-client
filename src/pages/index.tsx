@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import { useTranslation } from 'react-i18next';
 
 import { VStack } from '@chakra-ui/react';
-import { AppContainer } from '@src/common/components';
+import { PageContainer } from '@src/common/components';
 import {
   Title,
   Description,
@@ -51,14 +51,14 @@ const Home: NextPage = () => {
   ];
 
   return (
-    <AppContainer head={head}>
+    <PageContainer head={head}>
       <VStack flex={1} justify="center" align="center" gap="2rem">
         <Title />
 
         <Description />
         <NextInformation cards={cards} />
       </VStack>
-    </AppContainer>
+    </PageContainer>
   );
 };
 

@@ -12,11 +12,8 @@ RUN yarn install --frozen-lockfile
 FROM node:alpine AS builder
 WORKDIR /app
  
-ARG G_ENDPOINT 
 ARG N_G_ENDPOINT 
 
-
-ENV GRAPHQL_ENDPOINT ${G_ENDPOINT} 
 ENV NEXT_PUBLIC_GRAPHQL_ENDPOINT ${N_G_ENDPOINT}
 
 COPY . .

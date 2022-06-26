@@ -2,6 +2,8 @@ pipeline {
     agent any
 
     options {
+        // This is required if you want to clean before build
+        skipDefaultCheckout(true)
         //  Specifying how many artifacts and logs we want to persist. 
         //  In this case we are going to persist the last 10 builds.
         buildDiscarder(logRotator(numToKeepStr: '10'))
@@ -34,6 +36,10 @@ pipeline {
             steps {
                 echo 'Cleanup docker space'
                 sh 'docker system prune -f'
+                 // Clean before build
+                cleanWs()
+                // We need to explicitly checkout from SCM here
+                checkout scm
             }
         }
 
@@ -47,38 +53,39 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 echo 'Install dependencies...'
-                sh 'yarn install'
+                sh 'npm install'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh 'yarn test:coverage'
+                sh 'npm run codegen' 
+                sh 'npm run test:coverage'
             }
         }
         
         stage('Checking for linter error') {
             steps {
                 echo 'Checking for linter error....'
-                sh 'yarn lint'
+                sh 'npm run lint'
             }
         }
-
+        /*
         stage('Build') {
             steps {
                 echo 'Building....'
-                sh 'yarn build:with-codegen'
+                sh 'npm run build'
             }
         }
 
         stage ('Integrated Test') {
             steps {
                 echo 'Integrated Test....'
-                sh 'yarn e2e:start-server:record'
+                sh 'npm run e2e:start-server:record'
             }
         }
-       
+       */
 
         // stage ('Container Integrated Test') {
         //     steps {
@@ -99,7 +106,7 @@ pipeline {
             steps {
                 echo 'build image with ecr tage...'
                 withCredentials([string(credentialsId: 'AWS_REPOSITORY_URL_SECRET', variable: 'AWS_ECR_URL')]) {
-                    sh "docker build --build-arg N_G_ENDPOINT=${N_G_ENDPOINT} --build-arg G_ENDPOINT=${G_ENDPOINT} -t ${AWS_ECR_URL}:${IMAGE_VERSION} ."
+                    sh "docker build --build-arg N_G_ENDPOINT=${N_G_ENDPOINT} -t ${AWS_ECR_URL}:${IMAGE_VERSION} -f Dockerfile.Alex ."
                 }
 
                 echo 'upload to ECR'
@@ -156,9 +163,7 @@ pipeline {
 
     post {
         always {
-            withCredentials([string(credentialsId: 'AWS_REPOSITORY_URL_SECRET', variable: 'AWS_ECR_URL')]) {
-                deleteDir()
-            }
+            deleteDir()
         }
     }
 }

@@ -17,7 +17,7 @@ const customJestConfig = {
   testEnvironment: 'jest-environment-jsdom',
   moduleNameMapper: {
     '^@src/(.*)$': ['<rootDir>/src/$1'],
-    '^@generated/(.*)$': ['<rootDir>/src/_generated/$1'],
+    '^@generated/(.*)$': ['<rootDir>/_generated/$1'],
     '^@pages/(.*)$': ['<rootDir>/src/pages/$1'],
     '^@common/(.*)$': ['<rootDir>/src/common/$1'],
     '^@modules/(.*)$': ['<rootDir>/src/modules/$1'],
