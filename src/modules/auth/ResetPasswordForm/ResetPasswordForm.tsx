@@ -5,29 +5,17 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { VStack, FormControl, Heading, Text } from '@chakra-ui/react';
-import {
-  Button,
-  FormErrorMessage,
-  FormSuccessAction,
-  FormSuccessMessage,
-  Input,
-} from '@common/components';
+import { Button, FormErrorMessage, Input } from '@common/components';
 
 type ResetPasswordFormProps = {
   onSubmit: (values: ResetPasswordFormTypes) => void;
   isLoading: boolean;
   isInvalid: boolean;
-  successMessage: string;
-  successAction: string;
-  successActionLink: string;
 };
 export default function ResetPasswordForm({
   onSubmit,
   isLoading,
   isInvalid,
-  successMessage,
-  successAction,
-  successActionLink,
 }: ResetPasswordFormProps) {
   const { t } = useTranslation('auth');
 
@@ -93,13 +81,6 @@ export default function ResetPasswordForm({
               testId="reset-password.error"
               error={t('reset-password.error')}
             />
-            <VStack>
-              <FormSuccessMessage message={successMessage} />
-              <FormSuccessAction
-                action={successAction}
-                actionLink={successActionLink}
-              />
-            </VStack>
             <Button type="submit" isLoading={isLoading}>
               {t('reset-password.button')}
             </Button>
