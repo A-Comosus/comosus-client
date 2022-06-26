@@ -7,7 +7,6 @@ import { VStack } from '@chakra-ui/react';
 export default function Onboarding() {
   const { t } = useTranslation('auth');
   const head = { title: t('onboarding.pageTitle') };
-  // const [currentTag, setCurrentTag] = useState('');
   return (
     <AppContainer head={head}>
       <VStack justify="center">
