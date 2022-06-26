@@ -4,15 +4,21 @@ import { ni18nConfig } from '../ni18n.config';
 import '@coreui/coreui/dist/css/coreui.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { ApiClientProvider, ThemeContextProvider } from '@common/contexts';
+import {
+  ApiClientProvider,
+  AuthProvider,
+  ThemeContextProvider,
+} from '@common/contexts';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ApiClientProvider>
-      <ThemeContextProvider>
-        <Component {...pageProps} />
-      </ThemeContextProvider>
-    </ApiClientProvider>
+    <AuthProvider>
+      <ApiClientProvider>
+        <ThemeContextProvider>
+          <Component {...pageProps} />
+        </ThemeContextProvider>
+      </ApiClientProvider>
+    </AuthProvider>
   );
 }
 

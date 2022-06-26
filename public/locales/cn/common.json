@@ -1,4 +1,7 @@
 {
+  "site": {
+    "title": "凤梨酥 🍍"
+  },
   "button": {
     "disabled": "不给点"
   },
@@ -11,5 +14,16 @@
   },
   "login": {
     "title": "来啊，造啊！"
+  },
+  "sidebar": {
+    "link": "链接",
+    "appearance": "外观",
+    "settings": "设置",
+    "analytics": "分析",
+    "upgrade": "升级",
+    "support": "支持",
+    "new": "新消息",
+    "my-account": "我的账户",
+    "logout": "注销账户"
   }
 }

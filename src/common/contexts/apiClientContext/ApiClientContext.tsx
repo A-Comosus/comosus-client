@@ -1,11 +1,10 @@
 import React, { useMemo } from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
 import { GraphQLClient } from 'graphql-request';
 import axios, { AxiosInstance } from 'axios';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 
-import useStorage from '@src/utils/hooks/useStorage';
-import { AuthKey, StorageType } from '@src/constants/StorageKey';
+import { useAuth } from '@common/contexts';
 
 const apiEndpoint = {
   gql:
@@ -17,11 +16,12 @@ const apiEndpoint = {
     process.env.DEFAULT_ENDPOINT ??
     'http://localhost:3100/graphql/',
 };
+
 type ApiClientContextType = {
   gqlClient: GraphQLClient;
   restClient: AxiosInstance;
+  queryClient: QueryClient;
 };
-
 const ApiClientContext = React.createContext<ApiClientContextType>(
   {} as ApiClientContextType,
 );
@@ -29,16 +29,9 @@ const ApiClientContext = React.createContext<ApiClientContextType>(
 type ApiClientProviderProps = {
   children: React.ReactNode;
 };
-
-export function useApiClient() {
-  return React.useContext(ApiClientContext);
-}
-
 export function ApiClientProvider({ children }: ApiClientProviderProps) {
   const { accessToken } = useAuth();
 
-  // Common header
-  // AuthOption 1: Insert Auth Token here with axios.interceptors.request
   const headers = useMemo(() => {
     const _header = {
       'Content-Type': 'application/json',
@@ -56,9 +49,6 @@ export function ApiClientProvider({ children }: ApiClientProviderProps) {
     const client = new GraphQLClient(apiEndpoint.gql, {
       headers,
     });
-
-    // AuthOption 2: Insert Auth Token here with axios.interceptors.request
-
     return client;
   }, [headers]);
 
@@ -68,23 +58,23 @@ export function ApiClientProvider({ children }: ApiClientProviderProps) {
       baseURL: apiEndpoint.rest,
       headers,
     });
-
-    // AuthOption 2: Insert Auth Token here with axios.interceptors.request
-
     return client;
   }, [headers]);
 
-  const queryStaleTime = parseInt(process.env.QUERY_STALE_TIME ?? '1', 10);
+  const queryStaleTime = parseInt(
+    process.env.NEXT_PUBLIC_QUERY_STALE_TIME_IN_MINUTES ?? '900',
+    10,
+  );
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        staleTime: queryStaleTime * 1000,
+        staleTime: queryStaleTime * 60 * 1000,
       },
     },
   });
 
   return (
-    <ApiClientContext.Provider value={{ gqlClient, restClient }}>
+    <ApiClientContext.Provider value={{ gqlClient, restClient, queryClient }}>
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
         {children}
@@ -93,10 +83,6 @@ export function ApiClientProvider({ children }: ApiClientProviderProps) {
   );
 }
 
-export function useAuth() {
-  const [accessToken, setAccessToken] = useStorage(
-    AuthKey.AccessToken,
-    StorageType.Session,
-  );
-  return { accessToken, setAccessToken };
+export function useApiClient() {
+  return React.useContext(ApiClientContext);
 }
