@@ -19,11 +19,6 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - run: echo "🚚 All dependencies listed has been installed on the runner."
-      - run: echo "🤖 The workflow will now generate api hooks from the backend server."
-
-      - name: Generate query hooks based on backend graphql schema
-        run: yarn codegen
-      - run: echo "🤖 All query hooks has been generated."
       - run: echo "🧪 Workflow will be running tests available in this branch."
 
       - name: Checking pull request for test

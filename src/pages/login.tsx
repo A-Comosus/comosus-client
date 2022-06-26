@@ -5,7 +5,7 @@ import { useAuth, useApiClient } from '@common/contexts';
 import { useLoginMutation } from '@generated/graphql.queries';
 
 import { VStack } from '@chakra-ui/react';
-import { PageContainer } from '@src/common/components';
+import { AppContainer } from '@src/common/components';
 import { LoginForm } from '@src/modules/auth';
 import { isNil } from 'lodash';
 import { AppRoute } from '@src/constants/PageRoutes';
@@ -40,7 +40,7 @@ export default function Login() {
   };
 
   return (
-    <PageContainer head={head}>
+    <AppContainer head={head}>
       <VStack justify="center">
         <LoginForm
           onSubmit={onSubmit}
@@ -48,6 +48,6 @@ export default function Login() {
           isInvalid={!isNil(error)}
         />
       </VStack>
-    </PageContainer>
+    </AppContainer>
   );
 }

@@ -3,19 +3,15 @@ import { isNil } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import { useApiClient } from '@common/contexts';
 import { useRegisterMutation } from '@generated/graphql.queries';
-import { useRouter } from 'next/router';
 
-import { PageContainer } from '@src/common/components';
-import { useToast, VStack } from '@chakra-ui/react';
+import { AppContainer } from '@src/common/components';
+import { VStack } from '@chakra-ui/react';
 import { SignUpForm } from '@src/modules/auth';
-import { AuthRoute } from '@src/constants/PageRoutes';
 
 export default function SignUp() {
   const { t } = useTranslation('auth');
   const head = { title: t('sign-up.title') };
 
-  const toast = useToast();
-  const router = useRouter();
   const { gqlClient } = useApiClient();
   const {
     mutate: register,
@@ -26,13 +22,6 @@ export default function SignUp() {
       if (error) {
         // @ts-ignore
         console.error(error.message);
-      } else if (data) {
-        toast({
-          status: 'success',
-          description: t('sign-up.success.message'),
-          variant: 'subtle',
-        });
-        router.push(AuthRoute.Login);
       }
     },
   });
@@ -47,7 +36,7 @@ export default function SignUp() {
   };
 
   return (
-    <PageContainer head={head}>
+    <AppContainer head={head}>
       <VStack justify="center">
         <SignUpForm
           onSubmit={onSubmit}
@@ -55,6 +44,6 @@ export default function SignUp() {
           isLoading={isRegistering}
         />
       </VStack>
-    </PageContainer>
+    </AppContainer>
   );
 }

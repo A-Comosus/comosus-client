@@ -4,12 +4,22 @@ import Head from 'next/head';
 import { ColorModeScript, Flex } from '@chakra-ui/react';
 import { Footer, NavBar } from '@common/components';
 
-type PageContainerProps = {
+type AppContainerProps = {
   children: React.ReactNode;
-  head: Head;
+  head: {
+    title: string;
+    metas?: {
+      name: string;
+      content: string;
+    }[];
+    links?: {
+      rel: string;
+      href: string;
+    }[];
+  };
 };
 
-export default function PageContainer({ children, head }: PageContainerProps) {
+export default function AppContainer({ children, head }: AppContainerProps) {
   const { title, metas, links } = head;
 
   return (
