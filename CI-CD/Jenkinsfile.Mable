@@ -56,7 +56,7 @@ pipeline {
 		  }
 		}
 
-		tage('Deploy to EKS'){
+		stage('Deploy to EKS'){
             steps {
                  sh 'kubectl apply -f deployment.yml'
             }
