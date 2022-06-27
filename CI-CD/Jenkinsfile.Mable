@@ -45,7 +45,7 @@ pipeline {
 		 }
 		}
 
-		stage('Upload App Image') {
+		stage('Upload App Image to ECR') {
 		  steps{
 			script {
 			  docker.withRegistry(comosusClientRegistry, registryCredential ) {
@@ -55,13 +55,19 @@ pipeline {
 			}
 		  }
 		}
-		
-		stage('Deploy to ecs') {
-          steps {
-            withAWS(credentials: 'awscreds', region: 'us-east-1') {
-                sh 'aws ecs update-service --cluster ${cluster} --service ${service} --force-new-deployment'
+
+		tage('Deploy to EKS'){
+            steps {
+                 sh 'kubectl apply -f deployment.yml'
             }
-        } 
+        }
+		
+		// stage('Deploy to ecs') {
+        //   steps {
+        //     withAWS(credentials: 'awscreds', region: 'us-east-1') {
+        //         sh 'aws ecs update-service --cluster ${cluster} --service ${service} --force-new-deployment'
+        //     }
+        // } 
      }
   }
 }
