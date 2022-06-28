@@ -1,12 +1,16 @@
 name: Deploy to ECR
 
 on:
-  workflow_run:
-    workflows: [Cypress Tests]
-    types: [completed]
+  push:
     branches:
     - 'develop'
     - 'ci-cd/*Alex'
+  #workflow_run:
+  #  workflows: [Cypress Tests]
+  #  types: [completed]
+  #  branches:
+  #  - 'develop'
+  #  - 'ci-cd/*Alex'
 
 jobs:
   
