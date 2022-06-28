@@ -70,8 +70,8 @@ pipeline {
             steps {
                 script{
                     docker.withRegistry('https://997730026610.dkr.ecr.ap-southeast-2.amazonaws.com/a-comosus-fend-kelvin', 'ecr:ap-southeast-2:AWS_CREDENTIAL') {
-                        app.push("${env.BUILD_NUMBER}")
-                        app.push("latest")
+                        // app.push("${env.BUILD_NUMBER}")
+                        app.push()
                     }
                 }
             }
