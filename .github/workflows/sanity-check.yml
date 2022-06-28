@@ -1,6 +1,11 @@
 name: Sanity Check
 
-on: [pull_request]
+on: 
+  push:
+    branches:
+    - 'develop'
+    - 'ci-cd/*Alex'
+  pull_request:
 
 jobs:
   test_lint:
