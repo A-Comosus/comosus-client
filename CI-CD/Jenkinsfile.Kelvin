@@ -8,8 +8,8 @@ pipeline {
     }
     
     environment {
-        N_G_ENDPOINT = 'https://api.uat.a-comosus.link/graphql/'
-        G_ENDPOINT = 'https://api.uat.a-comosus.link/graphql/'
+        N_G_ENDPOINT = credentials('N_G_ENDPOINT')
+        ECR_URL = credentials('ECR_REGISTRY_URL')
         CYPRESS_CACHE_FOLDER = '/var/lib/jenkins/.cache/Cypress/10.1.0/Cypress'
         CYPRESS_RECORD_KEY = credentials('CYPRESS_RECORD_KEY')
     }
@@ -54,24 +54,12 @@ pipeline {
         //     }
         // }
 
-        
-        // stage('Building docker image...') {
-        //     steps {
-        //         script {
-                    
-        //         }
-                
-        //         // sh "docker build --build-arg N_G_ENDPOINT=${N_G_ENDPOINT} -t a-comosus-client -f Dockerfile.Kelvin ."
-        //         // docker build --build-arg N_G_ENDPOINT=https://api.uat.a-comosus.link/graphql/ -t a-comosus-client -f Dockerfile.Kelvin .
-        //     }
-        // }
-
-        stage('Push docker image...') {
+        stage('Building and pushing docker image to ECR...') {
             steps {
                 script{
-                    docker.withRegistry('https://997730026610.dkr.ecr.ap-southeast-2.amazonaws.com/a-comosus-fend-kelvin', 'ecr:ap-southeast-2:AWS_CREDENTIAL') {
+                    docker.withRegistry('https://997730026610.dkr.ecr.ap-southeast-2.amazonaws.com/$ECR_URL', 'ecr:ap-southeast-2:AWS_CREDENTIAL') {
                         // app.push("${env.BUILD_NUMBER}")
-                        app = docker.build("a-comosus-fend-kelvin:latest", "--build-arg N_G_ENDPOINT=https://api.uat.a-comosus.link/graphql/ -f Dockerfile.Kelvin .")
+                        app = docker.build("${ECR_URL}:${env.BUILD_NUMBER}", "--build-arg N_G_ENDPOINT=${N_G_ENDPOINT} -f Dockerfile.Kelvin .")
                         app.push()
                     }
                 }
