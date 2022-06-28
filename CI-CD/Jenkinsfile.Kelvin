@@ -25,22 +25,22 @@ pipeline {
         stage('Download dependencies...') {
             steps {
                 sh 'yarn'
-            }
-        }
-
-        stage('Unit testing...') {
-            steps {
                 sh 'yarn codegen'
-                sh 'yarn test:coverage'
             }
         }
 
-        stage('Linting...') {
-            steps {
-                sh 'yarn lint'
+        // stage('Unit testing...') {
+        //     steps {
+        //         sh 'yarn test:coverage'
+        //     }
+        // }
 
-            }
-        }
+        // stage('Linting...') {
+        //     steps {
+        //         sh 'yarn lint'
+
+        //     }
+        // }
 
         stage('Building...') {
             steps {
@@ -48,11 +48,11 @@ pipeline {
             }
         }
 
-        stage('E2E testing...') {
-            steps {
-                sh 'yarn e2e:start-server:record'
-            }
-        }
+        // stage('E2E testing...') {
+        //     steps {
+        //         sh 'yarn e2e:start-server:record'
+        //     }
+        // }
 
         
         stage('Building docker image...') {
