@@ -1,11 +1,6 @@
 name: Deploy to ECR
 
 on:
-  push:
-    branches:
-    - 'develop'
-    - 'ci-cd/*Alex'
-  pull_request:
   workflow_run:
     workflows:
       - Cypress Tests
