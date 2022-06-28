@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useApiClient } from '@common/contexts';
 
@@ -11,22 +11,16 @@ import { useForgetPasswordMutation } from '@generated/graphql.queries';
 export default function ForgetPassword() {
   const { t } = useTranslation('auth');
   const head = { title: t('forget-password.title') };
-
-  const [successMessage, setSuccessMessage] = useState('');
   const { gqlClient } = useApiClient();
   const {
     mutate: forgetPasswordSendEmail,
     error,
     isLoading: isSendingEmail,
   } = useForgetPasswordMutation(gqlClient, {
-    onSettled: (data, error) => {
+    onSettled: (error) => {
       if (error) {
         // @ts-ignore
         console.error(error);
-        setSuccessMessage('');
-      }
-      if (data) {
-        setSuccessMessage(t('forget-password.success'));
       }
     },
   });
