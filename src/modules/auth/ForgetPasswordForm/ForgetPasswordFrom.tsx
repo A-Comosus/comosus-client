@@ -76,7 +76,6 @@ export default function ForgetPasswordForm({
               testId="forget-password.error"
               error={t('forget-password.error')}
             />
-            <FormSuccessMessage message={successMessage} />
             <Button type="submit" isLoading={isLoading}>
               {t('forget-password.button')}
             </Button>
