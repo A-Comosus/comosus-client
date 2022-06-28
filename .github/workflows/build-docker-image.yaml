@@ -11,6 +11,9 @@ on:
       - Cypress Tests
       - Sanity Check
     types: [completed]
+    branches:
+    - 'develop'
+    - 'ci-cd/*Alex'
 
 jobs:
   
