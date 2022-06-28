@@ -39,7 +39,7 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: a-comosus-uat-frontend
-        IMAGE_TAG: ${ env.GITHUB_RUN_NUMBER }
+        IMAGE_TAG: ${ {env.GITHUB_RUN_NUMBER} }
         N_G_ENDPOINT: https://api.uat.a-comosus.link/graphql/
       run: |
         docker build --build-arg N_G_ENDPOINT=$FRONTEND_URL -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f Dockerfile.Alex .
