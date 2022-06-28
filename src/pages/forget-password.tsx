@@ -44,7 +44,6 @@ export default function ForgetPassword() {
           onSubmit={onSubmit}
           isLoading={isSendingEmail}
           isInvalid={!isNil(error)}
-          successMessage={successMessage}
         />
       </VStack>
     </PageContainer>
