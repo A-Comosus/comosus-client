@@ -13,7 +13,6 @@ on:
   #  - 'ci-cd/*Alex'
 
 jobs:
-  
   build:
     environment: uat-deployment
     
