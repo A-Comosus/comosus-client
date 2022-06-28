@@ -1,0 +1,7 @@
+name: Deploy to ECR
+
+on:
+  push:
+    branches:
+    - 'develop'
+    - 'ci-cd/*Alex'
