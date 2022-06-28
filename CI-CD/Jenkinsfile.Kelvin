@@ -59,7 +59,7 @@ pipeline {
         stage('Building and pushing docker image to ECR...') {
             steps {
                 script{
-                    docker.withRegistry('https://$ECR_ID', 'ecr:ap-southeast-2:AWS_CREDENTIAL') {
+                    docker.withRegistry('https://$(ECR_ID)', 'ecr:ap-southeast-2:AWS_CREDENTIAL') {
                         app = docker.build("${ECR_URL}:${env.BUILD_NUMBER}", "--build-arg N_G_ENDPOINT=${N_G_ENDPOINT} -f Dockerfile.Kelvin .")
                         app.push()
                     }
