@@ -9,7 +9,7 @@ pipeline {
     
     environment {
         N_G_ENDPOINT = 'https://api.uat.a-comosus.link/graphql/'
-        // G_ENDPOINT = 'https://staging.a-comosus.com/graphql/'
+        G_ENDPOINT = 'https://api.uat.a-comosus.link/graphql/'
         CYPRESS_CACHE_FOLDER = '/var/lib/jenkins/.cache/Cypress/10.1.0/Cypress'
         CYPRESS_RECORD_KEY = credentials('CYPRESS_RECORD_KEY')
     }
