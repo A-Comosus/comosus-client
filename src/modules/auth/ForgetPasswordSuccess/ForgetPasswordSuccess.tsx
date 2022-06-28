@@ -1,22 +1,27 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { VStack, Text } from '@chakra-ui/react';
+import { GlobalRoute } from '@src/constants/PageRoutes';
+import { VStack, Text, Link } from '@chakra-ui/react';
 import { Button } from '@common/components';
 
 export default function ForgetPasswordSuccess() {
   const { t } = useTranslation('auth');
 
   return (
-    <VStack minW="567px" justify="center" align="stretch">
-      <Text fontSize="30px" fontWeight="400">
-        Success🎉
-      </Text>
-      <Text fontSize="15px" fontWeight="400">
-        We have sent an email to your emailbox, please check and reset your
-        password!
-      </Text>
-      <Button type="button">Homepage</Button>
+    <VStack minW="567px" minH="280px" gap="60px" align="center">
+      <VStack align="stretch">
+        <Text fontSize="30px" fontWeight="400">
+          {t('forget-password-success.page.title')}
+        </Text>
+        <Text fontSize="15px" fontWeight="400">
+          {t('forget-password-success.page.subtitle')}
+        </Text>
+      </VStack>
+      <Button type="button">
+        <Link href={GlobalRoute.Root}>
+          {t('forget-password-success.button')}
+        </Link>
+      </Button>
     </VStack>
   );
 }
