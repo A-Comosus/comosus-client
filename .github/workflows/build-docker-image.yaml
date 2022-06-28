@@ -2,9 +2,7 @@ name: Deploy to ECR
 
 on:
   workflow_run:
-    workflows:
-      - Cypress Tests
-      - Sanity Check
+    workflows: [Cypress Tests]
     types: [completed]
     branches:
     - 'develop'
