@@ -71,7 +71,7 @@ pipeline {
                 script{
                     docker.withRegistry('https://997730026610.dkr.ecr.ap-southeast-2.amazonaws.com/a-comosus-fend-kelvin', 'ecr:ap-southeast-2:AWS_CREDENTIAL') {
                         // app.push("${env.BUILD_NUMBER}")
-                        app = docker.build("a-comsus-client:latest", "--build-arg N_G_ENDPOINT=https://api.uat.a-comosus.link/graphql/ -f Dockerfile.Kelvin .")
+                        app = docker.build("a-comosus-fend-kelvin:latest", "--build-arg N_G_ENDPOINT=https://api.uat.a-comosus.link/graphql/ -f Dockerfile.Kelvin .")
                         app.push()
                     }
                 }
