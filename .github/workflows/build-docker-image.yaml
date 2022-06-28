@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     #if:  github.event.workflow_run.conclusion == 'success'
     steps:
-      - run: echo ${env.GITHUB_RUN_NUMBER}
+      - run: echo "${env.GITHUB_RUN_NUMBER}"
 
     # - name: Check out code
     #   uses: actions/checkout@v3
