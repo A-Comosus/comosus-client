@@ -3,8 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useRouter } from 'next/router';
-import { AuthRoute } from '@src/constants/PageRoutes';
 import { VStack, FormControl, Heading, Text } from '@chakra-ui/react';
 import { Button, FormErrorMessage, Input } from '@common/components';
 
@@ -12,20 +10,13 @@ type ForgetPasswordFormProps = {
   onSubmit: (values: ForgetPasswordFormTypes) => void;
   isLoading: boolean;
   isInvalid: boolean;
-  emailCheck: boolean;
 };
 export default function ForgetPasswordForm({
   onSubmit,
   isLoading,
   isInvalid,
-  emailCheck,
 }: ForgetPasswordFormProps) {
   const { t } = useTranslation('auth');
-
-  const router = useRouter();
-  const goToForgetPasswordSuccess = () => {
-    router.push(AuthRoute.forgetPasswordSuccess);
-  };
 
   const formValues = {
     inputs: [
@@ -77,11 +68,7 @@ export default function ForgetPasswordForm({
               testId="forget-password.error"
               error={t('forget-password.error')}
             />
-            <Button
-              type="submit"
-              onClick={emailCheck ? goToForgetPasswordSuccess : undefined}
-              isLoading={isLoading}
-            >
+            <Button type="submit" isLoading={isLoading}>
               {t('forget-password.button')}
             </Button>
           </VStack>
