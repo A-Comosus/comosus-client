@@ -20,7 +20,7 @@ export default function ForgetPassword() {
     error,
     isLoading: isSendingEmail,
   } = useForgetPasswordMutation(gqlClient, {
-    onSettled: (error, data) => {
+    onSettled: (data, error) => {
       if (error) {
         // @ts-ignore
         console.error(error);
