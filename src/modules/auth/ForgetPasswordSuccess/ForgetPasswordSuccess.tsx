@@ -7,9 +7,7 @@ import { Button } from '@common/components';
 
 export default function ForgetPasswordSuccess() {
   const { t } = useTranslation('auth');
-
   const router = useRouter();
-  const backToHome = () => router.push(GlobalRoute.Root);
 
   return (
     <VStack minW="567px" minH="280px" gap="60px" align="stretch">
@@ -21,7 +19,7 @@ export default function ForgetPasswordSuccess() {
           {t('forget-password-success.page.subtitle')}
         </Text>
       </VStack>
-      <Button type="button" onClick={backToHome}>
+      <Button type="button" onClick={() => router.push(GlobalRoute.Root)}>
         {t('forget-password-success.button')}
       </Button>
     </VStack>
