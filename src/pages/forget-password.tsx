@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useApiClient } from '@common/contexts';
-
+import { useRouter } from 'next/router';
+import { AuthRoute } from '@src/constants/PageRoutes';
 import { HStack, VStack } from '@chakra-ui/react';
 import { PageContainer, Logo } from '@src/common/components';
 import { ForgetPasswordForm } from '@src/modules/auth';
@@ -11,8 +12,8 @@ import { useForgetPasswordMutation } from '@generated/graphql.queries';
 export default function ForgetPassword() {
   const { t } = useTranslation('auth');
   const head = { title: t('forget-password.title') };
+  const router = useRouter();
 
-  const [successMessage, setSuccessMessage] = useState('');
   const { gqlClient } = useApiClient();
   const {
     mutate: forgetPasswordSendEmail,
@@ -23,10 +24,9 @@ export default function ForgetPassword() {
       if (error) {
         // @ts-ignore
         console.error(error);
-        setSuccessMessage('');
       }
       if (data) {
-        setSuccessMessage(t('forget-password.success'));
+        router.push(AuthRoute.forgetPasswordSuccess);
       }
     },
   });
@@ -44,7 +44,6 @@ export default function ForgetPassword() {
           onSubmit={onSubmit}
           isLoading={isSendingEmail}
           isInvalid={!isNil(error)}
-          successMessage={successMessage}
         />
       </VStack>
     </PageContainer>
