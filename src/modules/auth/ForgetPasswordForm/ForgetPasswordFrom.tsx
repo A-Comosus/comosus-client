@@ -12,17 +12,20 @@ type ForgetPasswordFormProps = {
   onSubmit: (values: ForgetPasswordFormTypes) => void;
   isLoading: boolean;
   isInvalid: boolean;
+  emailCheck: boolean;
 };
 export default function ForgetPasswordForm({
   onSubmit,
   isLoading,
   isInvalid,
+  emailCheck,
 }: ForgetPasswordFormProps) {
   const { t } = useTranslation('auth');
 
   const router = useRouter();
-  const forgetPasswordSuccess = () =>
+  const goToForgetPasswordSuccess = () => {
     router.push(AuthRoute.forgetPasswordSuccess);
+  };
 
   const formValues = {
     inputs: [
@@ -76,7 +79,7 @@ export default function ForgetPasswordForm({
             />
             <Button
               type="submit"
-              onClick={forgetPasswordSuccess}
+              onClick={emailCheck ? goToForgetPasswordSuccess : undefined}
               isLoading={isLoading}
             >
               {t('forget-password.button')}
