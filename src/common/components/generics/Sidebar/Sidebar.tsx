@@ -27,7 +27,7 @@ function Sidebar() {
       icon: <IoLinkSharp />,
     },
     {
-      href: '/',
+      href: AppRoute.Appearance,
       content: t('sidebar.appearance'),
       icon: <TbColorSwatch />,
     },
