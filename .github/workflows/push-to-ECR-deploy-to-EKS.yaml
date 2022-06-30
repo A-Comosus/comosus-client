@@ -1,4 +1,4 @@
-name: Build and push image to ECR
+name: Push image to ECR and deploy to EKS
 
 on:
   push:
