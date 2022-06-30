@@ -85,15 +85,13 @@ export default function AppearanceProfile() {
         <Text fontSize="12px" fontWeight="400">
           {t('appearance.profile.bio')}
         </Text>
-        {isLoading ? (
-          <Textarea minHeight="111" borderRadius="5" placeholder="..." />
-        ) : (
-          <Textarea
-            minHeight="111"
-            borderRadius="5"
-            placeholder={t('appearance.profile.bio-placeholder')}
-          />
-        )}
+        <Textarea
+          variant="unstyled"
+          border="1px solid #ADB2C6"
+          minHeight="111"
+          borderRadius="5"
+          placeholder={t('appearance.profile.bio-placeholder')}
+        />
       </VStack>
     </VStack>
   );
