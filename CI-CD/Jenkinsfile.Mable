@@ -1,0 +1,73 @@
+pipeline {
+	agent any
+	
+	tools { nodejs "node" }
+	
+	environment {
+		registryCredential = 'ecr:us-east-1:awscreds'
+		appRegistry = "947036392937.dkr.ecr.us-east-1.amazonaws.com/comosus-client-img"
+		comosusClientRegistry = "https://947036392937.dkr.ecr.us-east-1.amazonaws.com"
+		cluster = "ComosusClient"
+        service = "ComosusClientAppSVC"
+	}
+
+	stages {	
+		stage('Clear space'){
+		  steps {
+			    echo 'Cleanup docker space'
+                sh 'docker system prune -f'
+		  }
+		}
+		
+		stage('Fetch code'){
+		  steps {
+			git branch: 'develop', url: 'https://github.com/mable-pmyip/comosus-client.git'
+		  }
+		}
+		
+		stage('Install and Build'){
+		  steps {
+		    sh 'yarn install && yarn codegen && yarn build'
+		  }
+		}
+
+		stage('Test'){
+		  steps {
+			sh 'echo unit testing'
+		  }
+		}
+		
+		stage('Build App Image') {
+		   steps {
+            script {
+				dockerImage = docker.build( appRegistry + ":$BUILD_NUMBER", "-f Dockerfile.Mable .")
+			}
+		 }
+		}
+
+		stage('Upload App Image to ECR') {
+		  steps{
+			script {
+			  docker.withRegistry(comosusClientRegistry, registryCredential ) {
+				dockerImage.push("$BUILD_NUMBER")
+				dockerImage.push('latest')
+			  }
+			}
+		  }
+		}
+
+		stage('Deploy to EKS'){
+            steps {
+                 sh 'kubectl apply -f deployment.yml'
+            }
+        }
+		
+	// 	stage('Deploy to ecs') {
+    //       steps {
+    //         withAWS(credentials: 'awscreds', region: 'us-east-1') {
+    //             sh 'aws ecs update-service --cluster ${cluster} --service ${service} --force-new-deployment'
+    //         }
+    //     } 
+    //  }
+  }
+}
