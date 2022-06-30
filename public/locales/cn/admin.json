@@ -16,7 +16,10 @@
   "appearance": {
     "profile": {
       "pick-an-image": "选择图像",
-      "remove": "移除"
+      "remove": "移除",
+      "profile-title": "标题",
+      "bio": "简介",
+      "bio-placeholder": "输入个人简介以显示在您的个人资料中"
     }
   }
 }
