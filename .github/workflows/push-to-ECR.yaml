@@ -13,28 +13,28 @@ jobs:
     name: Build Image
     runs-on: ubuntu-latest
     steps:
-     - name: Check out code
-       uses: actions/checkout@v3
+    #  - name: Check out code
+    #    uses: actions/checkout@v3
     
-     - name: Configure AWS credentials
-       uses: aws-actions/configure-aws-credentials@v1
-       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ap-southeast-2
+    #  - name: Configure AWS credentials
+    #    uses: aws-actions/configure-aws-credentials@v1
+    #    with:
+    #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+    #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    #     aws-region: ap-southeast-2
 
-     - name: Login to Amazon ECR
-       id: login-ecr
-       uses: aws-actions/amazon-ecr-login@v1
+    #  - name: Login to Amazon ECR
+    #    id: login-ecr
+    #    uses: aws-actions/amazon-ecr-login@v1
 
-     - name: Build, tag, and push image to Amazon ECR
-       env:
-         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-         ECR_REPOSITORY: a-comosus-uat-frontend
-         N_G_ENDPOINT: ${{ secrets.N_G_ENDPOINT }}
-       run: |
-         docker build --build-arg N_G_ENDPOINT=$N_G_ENDPOINT -t $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_RUN_NUMBER -f Dockerfile.Alex .
-         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_RUN_NUMBER
+    #  - name: Build, tag, and push image to Amazon ECR
+    #    env:
+    #      ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+    #      ECR_REPOSITORY: a-comosus-uat-frontend
+    #      N_G_ENDPOINT: ${{ secrets.N_G_ENDPOINT }}
+    #    run: |
+    #      docker build --build-arg N_G_ENDPOINT=$N_G_ENDPOINT -t $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_RUN_NUMBER -f Dockerfile.Alex .
+    #      docker push $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_RUN_NUMBER
 
      - name: Check out code  
        uses: actions/checkout@v3
@@ -52,7 +52,7 @@ jobs:
 
      - name: Terraform apply
        working-directory: ./kubernetes-frontend
-       run: terraform apply -var='frontend-image-tage=${GITHUB_RUN_NUMBER}'  -auto-approve
+       run: terraform apply -var="frontend-image-tage=${GITHUB_RUN_NUMBER}"  -auto-approve
 
 
        
