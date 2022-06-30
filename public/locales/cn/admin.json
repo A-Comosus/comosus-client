@@ -12,5 +12,11 @@
     "preview": {
       "share": "分享你的凤梨酥吧!"
     }
+  },
+  "appearance": {
+    "profile": {
+      "pick-an-image": "选择图像",
+      "remove": "移除"
+    }
   }
 }

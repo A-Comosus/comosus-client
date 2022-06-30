@@ -12,5 +12,11 @@
     "preview": {
       "share": "Share your A-Comosus"
     }
+  },
+  "appearance": {
+    "profile": {
+      "pick-an-image": "Pick an image",
+      "remove": "Remove"
+    }
   }
 }
