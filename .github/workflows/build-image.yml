@@ -1,0 +1,35 @@
+name: build docker image
+
+on:
+  workflow_run:
+    workflows: [Cypress Tests]
+    types:
+      - completed
+
+jobs:
+  docker:
+    environment: uat-deployment
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      -
+        name: Build and push
+        env:
+          N_G_ENDPOINT: ${{ secrets.N_G_ENDPOINT }}
+        uses: docker/build-push-action@v3
+        with:
+          build-args: |
+            N_G_ENDPOINT=$N_G_ENDPOINT
+          context: .
+          file: Dockerfile.Alex
+          push: false
+          tags: uat-frontend:latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - run: echo 'Skip docker build due to end-to-end test failed'
