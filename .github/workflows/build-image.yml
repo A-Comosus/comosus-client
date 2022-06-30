@@ -30,6 +30,8 @@ jobs:
           file: Dockerfile.Alex
           push: false
           tags: uat-frontend:latest
+  on-failure:
+    runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
     steps:
-      - run: echo 'Skip docker build due to end-to-end test failed'
+      - run:  echo 'Skip docker build due to end-to-end test failed'
