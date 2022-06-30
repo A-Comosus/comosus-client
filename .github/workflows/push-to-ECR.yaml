@@ -52,7 +52,7 @@ jobs:
 
      - name: Terraform apply
        working-directory: ./kubernetes-frontend
-       run: terraform apply -var='frontend-image-tage=39'  -auto-approve
+       run: terraform apply -var='frontend-image-tage=$GITHUB_RUN_NUMBER'  -auto-approve
 
 
        
