@@ -6,6 +6,7 @@ export default function Appearance() {
   return (
     <VStack flex={2} borderRight="1px solid #E7E8EE" pt="80px" spacing={25}>
       <AppearanceProfile />
+      {/* <AppearanceTheme /> */}
     </VStack>
   );
 }
