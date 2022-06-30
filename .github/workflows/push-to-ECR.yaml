@@ -35,3 +35,23 @@ jobs:
        run: |
          docker build --build-arg N_G_ENDPOINT=$N_G_ENDPOINT -t $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_RUN_NUMBER -f Dockerfile.Alex .
          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_RUN_NUMBER
+
+     - name: Check out code  
+       uses: actions/checkout@v3
+       with:
+         repository: A-Comosus/comosus-uat-tf
+
+     - name: HashiCorp - Setup Terraform
+       uses: hashicorp/setup-terraform@v2.0.0
+    
+     - name: Terraform init && apply
+       working-directory: ./kubernetes-frontend
+       run: terraform init
+
+     - name: Terraform apply
+       working-directory: ./kubernetes-frontend
+       run: terraform apply -var='frontend-image-tage=$GITHUB_RUN_NUMBER'  -auto-approve
+
+
+       
+
