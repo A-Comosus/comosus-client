@@ -17,9 +17,9 @@ pipeline {
     }
 
     environment {
-        N_G_ENDPOINT = 'https://api.uat.a-comosus.link/graphql/'
-        IMAGE_VERSION = "${env.BUILD_ID}"
-        AWS_ECR_REGION = 'ap-southeast-2'
+        N_G_ENDPOINT       = 'https://api.uat.a-comosus.link/graphql/'
+        IMAGE_VERSION      = "${env.BUILD_ID}"
+        AWS_ECR_REGION     = 'ap-southeast-2'
         CYPRESS_RECORD_KEY = credentials('cypress-record-key')
     }
 
@@ -81,13 +81,6 @@ pipeline {
             }
         }
 
-        // stage ('Container Integrated Test') {
-        //     steps {
-        //         echo 'Container Integrated Test....'
-        //         sh
-        //     }
-        // }
-        
         stage('Build and Upload Image to ECR') {
             
             when {
