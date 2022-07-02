@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Avatar, HStack, VStack, Input, Textarea } from '@chakra-ui/react';
 import { useUser } from '@src/common/contexts';
 
-export default function AppearanceProfile() {
+export default function ProfileEditor() {
   const { t } = useTranslation('admin');
   const {
     user: { username },
