@@ -3,7 +3,16 @@ import { useUser } from '@src/common/contexts';
 import { useTranslation } from 'react-i18next';
 
 import { Text, Button } from '@common/components';
-import { Avatar, HStack, VStack, Input, Textarea } from '@chakra-ui/react';
+import {
+  Avatar,
+  HStack,
+  VStack,
+  Input,
+  Textarea,
+  Box,
+  SkeletonCircle,
+  SkeletonText,
+} from '@chakra-ui/react';
 
 export default function ProfileEditor() {
   const { t } = useTranslation('admin');
@@ -15,6 +24,14 @@ export default function ProfileEditor() {
   useEffect(() => {
     setProfileTitile(username);
   }, [username]);
+
+  if (!profileTitle)
+    return (
+      <Box minWidth="670px" padding="6" boxShadow="lg" bg="white">
+        <SkeletonCircle size="10" />
+        <SkeletonText mt="4" noOfLines={4} spacing="4" />
+      </Box>
+    );
 
   return (
     <VStack
