@@ -1,36 +1,19 @@
-import React, { useMemo } from 'react';
-import { Button } from '@common/components';
+import React, { useEffect, useState } from 'react';
+import { Text, Button } from '@common/components';
 import { useTranslation } from 'react-i18next';
-import {
-  Avatar,
-  HStack,
-  VStack,
-  Text,
-  Input,
-  Textarea,
-} from '@chakra-ui/react';
-import { useApiClient, useUser } from '@src/common/contexts';
-import { useFindUserByUsernameQuery } from '@generated/graphql.queries';
-import _ from 'lodash';
+import { Avatar, HStack, VStack, Input, Textarea } from '@chakra-ui/react';
+import { useUser } from '@src/common/contexts';
 
 export default function AppearanceProfile() {
   const { t } = useTranslation('admin');
   const {
     user: { username },
   } = useUser();
-
-  const enabled = useMemo(() => {
-    return !_.isNil(username);
+  const [profileTitle, setProfileTitile] = useState('');
+  const [bio, setBio] = useState('');
+  useEffect(() => {
+    setProfileTitile(username);
   }, [username]);
-  const { gqlClient } = useApiClient();
-  const { data: userData, isLoading } = useFindUserByUsernameQuery(
-    gqlClient,
-    { payload: { username } },
-    {
-      enabled,
-      select: (data) => data.findUserByUsername,
-    },
-  );
 
   return (
     <VStack
@@ -64,21 +47,14 @@ export default function AppearanceProfile() {
         <Text fontSize="12px" fontWeight="400">
           {t('appearance.profile.profile-title')}
         </Text>
-        {isLoading ? (
-          <Input
-            variant="unstyled"
-            borderBottom="1px solid #ADB2C6"
-            borderRadius="0"
-            placeholder="..."
-          />
-        ) : (
-          <Input
-            variant="unstyled"
-            borderBottom="1px solid #ADB2C6"
-            borderRadius="0"
-            placeholder={userData?.username}
-          />
-        )}
+        <Input
+          variant="unstyled"
+          borderBottom="1px solid #ADB2C6"
+          borderRadius="0"
+          defaultValue={profileTitle}
+          placeholder={t('appearance.profile.profile-title')}
+          onBlur={(e) => setProfileTitile(e.target.value)}
+        />
       </VStack>
 
       <VStack width="100%" align="start">
@@ -90,7 +66,9 @@ export default function AppearanceProfile() {
           border="1px solid #ADB2C6"
           minHeight="111"
           borderRadius="5"
+          defaultValue={bio}
           placeholder={t('appearance.profile.bio-placeholder')}
+          onBlur={(e) => setBio(e.target.value)}
         />
       </VStack>
     </VStack>
