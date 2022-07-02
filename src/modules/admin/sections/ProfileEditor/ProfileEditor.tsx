@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Text, Button } from '@common/components';
-import { useTranslation } from 'react-i18next';
-import { Avatar, HStack, VStack, Input, Textarea } from '@chakra-ui/react';
 import { useUser } from '@src/common/contexts';
+import { useTranslation } from 'react-i18next';
+
+import { Text, Button } from '@common/components';
+import { Avatar, HStack, VStack, Input, Textarea } from '@chakra-ui/react';
 
 export default function ProfileEditor() {
   const { t } = useTranslation('admin');
@@ -17,27 +18,20 @@ export default function ProfileEditor() {
 
   return (
     <VStack
-      px={35}
-      py={25}
+      px="2.2rem"
+      py="1.6rem"
       backgroundColor="#FFFFFF"
       borderRadius="15px"
-      width="670px"
-      justify="center"
-      align="center"
-      spacing={25}
+      minWidth="670px"
+      spacing="1.6rem"
     >
-      <HStack justifyContent="space-between" width="100%" spacing="63px">
-        <Avatar
-          marginLeft="35px"
-          height="100px"
-          width="100px"
-          src="https://picsum.photos/200"
-        />
-        <HStack spacing="40px">
-          <Button width="181px" borderRadius="10px">
+      <HStack width="100%">
+        <Avatar size="xl" mx="2rem" src="https://picsum.photos/200" />
+        <HStack flex={1} spacing="1rem">
+          <Button flex={1} borderRadius="10px">
             {t('appearance.profile.pick-an-image')}
           </Button>
-          <Button width="181px" borderRadius="10px">
+          <Button flex={1} borderRadius="10px">
             {t('appearance.profile.remove')}
           </Button>
         </HStack>
