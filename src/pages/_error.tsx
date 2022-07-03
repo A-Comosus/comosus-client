@@ -4,7 +4,7 @@ import { HStack, VStack } from '@chakra-ui/react';
 import { PageContainer, Logo } from '@src/common/components';
 import { ErrorPage } from '@src/modules/auth';
 
-export default function NotifyForgetPasswordSuccess() {
+export default function CustomErrorPage() {
   const { t } = useTranslation('auth');
   const head = { title: t('error-page.title') };
 
