@@ -67,7 +67,14 @@ pipeline {
             }
         }
 
-        
+        stage ('Deploying to EKS...') {
+                kubernetesDeploy(
+                    configs: 'CI-CD/kel-eks.yaml',
+                    kubeconfigId: 'K8S',
+                    enableConfigSubstitution: true
+                )               
+            }
+
     }
 
 
