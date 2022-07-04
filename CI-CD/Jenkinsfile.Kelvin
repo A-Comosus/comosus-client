@@ -1,6 +1,6 @@
 pipeline {
     
-    agent { label 'ecsAgent' }
+    agent any
     
     options { 
         disableConcurrentBuilds() 
