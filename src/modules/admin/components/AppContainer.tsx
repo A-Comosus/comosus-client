@@ -9,13 +9,13 @@ import { ProfilePreview } from '../sections';
 type PageContainerProps = {
   children: React.ReactNode;
   head: Head;
-  includeProfilePreview?: boolean;
+  disableProfilePreview?: boolean;
 };
 
 export default function PageContainer({
   children,
   head,
-  includeProfilePreview,
+  disableProfilePreview,
 }: PageContainerProps) {
   const { title, metas, links } = head;
 
@@ -36,7 +36,7 @@ export default function PageContainer({
         <ColorModeScript />
         <Sidebar />
         {children}
-        {includeProfilePreview ? <ProfilePreview /> : null}
+        {disableProfilePreview ? null : <ProfilePreview />}
       </Flex>
     </UserProvider>
   );

@@ -10,7 +10,7 @@ export default function Admin() {
   const head = { title: t('admin.title') };
 
   return (
-    <AppContainer head={head} includeProfilePreview={true}>
+    <AppContainer head={head}>
       <HStack flex={1} align="stretch">
         <LinkEditor />
       </HStack>

@@ -10,7 +10,7 @@ export default function Appearance() {
   const head = { title: t('admin.title') };
 
   return (
-    <AppContainer head={head} includeProfilePreview={true}>
+    <AppContainer head={head}>
       <HStack flex={1} align="stretch">
         <VStack flex={2} gap="1.6rem" borderRight="1px solid #E7E8EE" pt="5rem">
           <ProfileEditor />
