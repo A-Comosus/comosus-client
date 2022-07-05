@@ -2,7 +2,7 @@ import React from 'react';
 import { UserProvider } from '@common/contexts';
 
 import Head from 'next/head';
-import { ColorModeScript, Flex } from '@chakra-ui/react';
+import { ColorModeScript, Flex, HStack } from '@chakra-ui/react';
 import { Sidebar } from '@common/components';
 import { ProfilePreview } from '../sections';
 
@@ -35,8 +35,10 @@ export default function PageContainer({
         </Head>
         <ColorModeScript />
         <Sidebar />
-        {children}
-        {disableProfilePreview ? null : <ProfilePreview />}
+        <HStack flex={1} align="stretch">
+          {children}
+          {disableProfilePreview ? null : <ProfilePreview />}
+        </HStack>
       </Flex>
     </UserProvider>
   );
