@@ -15,6 +15,7 @@
   },
   "appearance": {
     "profile": {
+      "title": "Profile",
       "pick-an-image": "Pick an image",
       "remove": "Remove",
       "profile-title": "Profile Title",

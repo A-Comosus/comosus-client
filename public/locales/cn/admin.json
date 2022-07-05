@@ -15,6 +15,7 @@
   },
   "appearance": {
     "profile": {
+      "title": "资料",
       "pick-an-image": "选择图像",
       "remove": "移除",
       "profile-title": "标题",
