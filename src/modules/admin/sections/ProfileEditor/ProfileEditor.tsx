@@ -55,9 +55,13 @@ export default function ProfileEditor() {
             variant="unstyled"
             borderBottom="1px solid #ADB2C6"
             borderRadius="0"
-            defaultValue={profileTitle}
             placeholder={t('appearance.profile.profile-title')}
-            onBlur={(e) => setProfileTitile(e.target.value)}
+            value={profileTitle}
+            onChange={(e) => setProfileTitile(e.target.value)}
+            onBlur={() =>
+              // eslint-disable-next-line no-console
+              console.debug('Submitting profileTitle: ', profileTitle)
+            }
           />
         </VStack>
 
@@ -66,9 +70,11 @@ export default function ProfileEditor() {
             {t('appearance.profile.bio')}
           </Text>
           <Textarea
-            defaultValue={bio}
             placeholder={t('appearance.profile.bio-placeholder')}
-            onBlur={(e) => setBio(e.target.value)}
+            value={bio}
+            onChange={(e) => setBio(e.target.value)}
+            // eslint-disable-next-line no-console
+            onBlur={() => console.debug('Submitting bio: ', bio)}
           />
         </VStack>
       </VStack>
