@@ -34,7 +34,7 @@ export default function ProfileEditor() {
 
   return (
     <VStack>
-      <Text fontSize="20px" fontWeight="600" alignSelf="flex-start">
+      <Text type="h3" alignSelf="flex-start">
         {t('appearance.profile.title')}
       </Text>
       <VStack
@@ -48,7 +48,7 @@ export default function ProfileEditor() {
       >
         <ProfileEditorAvatar />
         <VStack>
-          <Text fontSize="12px" fontWeight="400" alignSelf="flex-start">
+          <Text type="p" alignSelf="flex-start">
             {t('appearance.profile.profile-title')}
           </Text>
           <Input
@@ -62,7 +62,7 @@ export default function ProfileEditor() {
         </VStack>
 
         <VStack>
-          <Text fontSize="12px" fontWeight="400" alignSelf="flex-start">
+          <Text type="p" alignSelf="flex-start">
             {t('appearance.profile.bio')}
           </Text>
           <Textarea
