@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 import { Text, Button, Textarea } from '@common/components';
 import {
   Avatar,
-  Stack,
   HStack,
   VStack,
   Input,
@@ -25,30 +24,32 @@ export default function ProfileEditor() {
     setProfileTitile(username);
   }, [username]);
 
-  if (!profileTitle)
+  if (!profileTitle) {
     return (
       <Box minWidth="670px" padding="6" boxShadow="lg" bg="white">
         <SkeletonCircle size="10" />
-        <SkeletonText mt="4" noOfLines={4} spacing="4" />
+        <SkeletonText mt="4" noOfLines={4} gap="4" />
       </Box>
     );
+  }
 
   return (
-    <Stack>
+    <VStack>
       <Text fontSize="20px" fontWeight="600" alignSelf="flex-start">
         {t('appearance.profile.title')}
       </Text>
       <VStack
+        align="stretch"
+        gap="1.6rem"
+        borderRadius="15px"
         px="2.2rem"
         py="1.6rem"
-        backgroundColor="#FFFFFF"
-        borderRadius="15px"
         minWidth="670px"
-        spacing="1.6rem"
+        backgroundColor="#FFFFFF"
       >
-        <HStack width="100%">
+        <HStack>
           <Avatar size="xl" mx="2rem" src="https://picsum.photos/200" />
-          <HStack flex={1} spacing="1rem">
+          <HStack flex={1} gap="1rem">
             <Button flex={1} borderRadius="10px">
               {t('appearance.profile.pick-an-image')}
             </Button>
@@ -58,8 +59,8 @@ export default function ProfileEditor() {
           </HStack>
         </HStack>
 
-        <VStack width="100%" align="start">
-          <Text fontSize="12px" fontWeight="400">
+        <VStack>
+          <Text fontSize="12px" fontWeight="400" alignSelf="flex-start">
             {t('appearance.profile.profile-title')}
           </Text>
           <Input
@@ -72,8 +73,8 @@ export default function ProfileEditor() {
           />
         </VStack>
 
-        <VStack width="100%" align="start">
-          <Text fontSize="12px" fontWeight="400">
+        <VStack>
+          <Text fontSize="12px" fontWeight="400" alignSelf="flex-start">
             {t('appearance.profile.bio')}
           </Text>
           <Textarea
@@ -83,6 +84,6 @@ export default function ProfileEditor() {
           />
         </VStack>
       </VStack>
-    </Stack>
+    </VStack>
   );
 }
