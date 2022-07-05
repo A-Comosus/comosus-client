@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useUser } from '@src/common/contexts';
 import { useTranslation } from 'react-i18next';
 
-import { Text, Button } from '@common/components';
+import { Text, Button, Textarea } from '@common/components';
 import {
   Avatar,
   HStack,
   VStack,
   Input,
-  Textarea,
   Box,
   SkeletonCircle,
   SkeletonText,
@@ -73,10 +72,6 @@ export default function ProfileEditor() {
           {t('appearance.profile.bio')}
         </Text>
         <Textarea
-          variant="unstyled"
-          border="1px solid #ADB2C6"
-          minHeight="111"
-          borderRadius="5"
           defaultValue={bio}
           placeholder={t('appearance.profile.bio-placeholder')}
           onBlur={(e) => setBio(e.target.value)}
