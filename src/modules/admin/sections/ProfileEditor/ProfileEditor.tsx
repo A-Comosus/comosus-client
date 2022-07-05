@@ -26,7 +26,7 @@ export default function ProfileEditor() {
     setProfileTitile(username);
   }, [username]);
 
-  if (!profileTitle) {
+  if (!username) {
     return (
       <Box minWidth="670px" padding="6" boxShadow="lg" bg="white">
         <SkeletonCircle size="10" />
