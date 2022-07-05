@@ -1,20 +1,34 @@
 import React from 'react';
 
-import { Textarea, TextareaProps } from '@chakra-ui/react';
+import { Text } from '@common/components/';
+import { VStack, Textarea, TextareaProps } from '@chakra-ui/react';
 
-type CustomTextareaProps = TextareaProps;
+export type variantTypes = 'default';
 
-export default function CustomTextarea({ ...props }: CustomTextareaProps) {
+type CustomTextareaProps = {
+  label: string;
+  variantType?: variantTypes;
+} & TextareaProps;
+
+export default function CustomTextarea({
+  label,
+  variantType = 'default',
+  ...props
+}: CustomTextareaProps) {
   const variants = {
     default: (
-      <Textarea
-        variant="unstyled"
-        border="1px solid #ADB2C6"
-        minHeight="111"
-        borderRadius="5"
-        {...props}
-      />
+      <VStack>
+        <Text type="p" alignSelf="flex-start">
+          {label}
+        </Text>
+        <Textarea
+          border="1px solid #ADB2C6"
+          minHeight="111"
+          borderRadius="5"
+          {...props}
+        />
+      </VStack>
     ),
   };
-  return variants.default;
+  return variants[variantType];
 }

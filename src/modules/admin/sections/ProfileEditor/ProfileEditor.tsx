@@ -65,18 +65,14 @@ export default function ProfileEditor() {
           />
         </VStack>
 
-        <VStack>
-          <Text type="p" alignSelf="flex-start">
-            {t('appearance.profile.bio')}
-          </Text>
-          <Textarea
-            placeholder={t('appearance.profile.bio-placeholder')}
-            value={bio}
-            onChange={(e) => setBio(e.target.value)}
-            // eslint-disable-next-line no-console
-            onBlur={() => console.debug('Submitting bio: ', bio)}
-          />
-        </VStack>
+        <Textarea
+          label={t('appearance.profile.bio')}
+          placeholder={t('appearance.profile.bio-placeholder')}
+          value={bio}
+          onChange={(e) => setBio(e.target.value)}
+          // eslint-disable-next-line no-console
+          onBlur={() => console.debug('Submitting bio: ', bio)}
+        />
       </VStack>
     </VStack>
   );
