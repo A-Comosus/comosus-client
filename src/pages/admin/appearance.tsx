@@ -3,14 +3,14 @@ import { useTranslation } from 'react-i18next';
 
 import { AppContainer } from '@modules/admin/components';
 import { HStack, VStack } from '@chakra-ui/react';
-import { ProfileEditor, ProfilePreview } from '@modules/admin/sections';
+import { ProfileEditor } from '@modules/admin/sections';
 
 export default function Appearance() {
   const { t } = useTranslation('admin');
   const head = { title: t('admin.title') };
 
   return (
-    <AppContainer head={head}>
+    <AppContainer head={head} includeProfilePreview={true}>
       <HStack flex={1} align="stretch">
         <VStack
           flex={2}
@@ -20,7 +20,6 @@ export default function Appearance() {
         >
           <ProfileEditor />
         </VStack>
-        <ProfilePreview />
       </HStack>
     </AppContainer>
   );

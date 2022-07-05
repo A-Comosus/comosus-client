@@ -4,13 +4,19 @@ import { UserProvider } from '@common/contexts';
 import Head from 'next/head';
 import { ColorModeScript, Flex } from '@chakra-ui/react';
 import { Sidebar } from '@common/components';
+import { ProfilePreview } from '../sections';
 
 type PageContainerProps = {
   children: React.ReactNode;
   head: Head;
+  includeProfilePreview?: boolean;
 };
 
-export default function PageContainer({ children, head }: PageContainerProps) {
+export default function PageContainer({
+  children,
+  head,
+  includeProfilePreview,
+}: PageContainerProps) {
   const { title, metas, links } = head;
 
   return (
@@ -30,6 +36,7 @@ export default function PageContainer({ children, head }: PageContainerProps) {
         <ColorModeScript />
         <Sidebar />
         {children}
+        {includeProfilePreview ? <ProfilePreview /> : null}
       </Flex>
     </UserProvider>
   );
