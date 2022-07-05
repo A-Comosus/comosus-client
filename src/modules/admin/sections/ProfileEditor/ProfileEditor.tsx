@@ -18,7 +18,10 @@ export default function ProfileEditor() {
     user: { username },
   } = useUser();
   const [profileTitle, setProfileTitile] = useState('');
-  const [bio, setBio] = useState('');
+  const [bio, setBio] = useState({
+    bio: '',
+    wordCount: 0,
+  });
   useEffect(() => {
     setProfileTitile(username);
   }, [username]);
@@ -68,8 +71,14 @@ export default function ProfileEditor() {
         <Textarea
           label={t('appearance.profile.bio')}
           placeholder={t('appearance.profile.bio-placeholder')}
-          value={bio}
-          onChange={(e) => setBio(e.target.value)}
+          value={bio.bio}
+          wordCount={bio.wordCount}
+          onChange={(e) =>
+            setBio({
+              bio: e.target.value,
+              wordCount: e.target.value.split(' ').length,
+            })
+          }
           // eslint-disable-next-line no-console
           onBlur={() => console.debug('Submitting bio: ', bio)}
         />

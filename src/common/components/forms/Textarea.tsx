@@ -7,12 +7,14 @@ export type variantTypes = 'default';
 
 type CustomTextareaProps = {
   label: string;
+  wordCount?: number;
   variantType?: variantTypes;
 } & TextareaProps;
 
 export default function CustomTextarea({
   label,
   variantType = 'default',
+  wordCount,
   ...props
 }: CustomTextareaProps) {
   const variants = {
@@ -27,6 +29,9 @@ export default function CustomTextarea({
           borderRadius="5"
           {...props}
         />
+        <Text type="p" alignSelf="flex-end">
+          {`${wordCount}/100`}
+        </Text>
       </VStack>
     ),
   };
