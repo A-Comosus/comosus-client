@@ -27,7 +27,7 @@ mutation DeleteLinkById($payload: DeleteLinkInput!) {
   deleteLinkById(data: $payload)
 }
 
-query FindUserByUsername($payload: FindByUsernameArgs!) {
+query FindUserByUsername($payload: FindUserByUsernameInput!) {
   findUserByUsername(username: $payload) {
     id
     email
