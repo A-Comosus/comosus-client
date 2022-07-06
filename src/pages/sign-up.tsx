@@ -1,14 +1,14 @@
 import React from 'react';
 import { isNil } from 'lodash';
 import { useTranslation } from 'react-i18next';
-import { useApiClient } from '@common/contexts';
+import { useApiClient, useAuth } from '@common/contexts';
 import { useRegisterMutation } from '@generated/graphql.queries';
 import { useRouter } from 'next/router';
 
 import { PageContainer } from '@src/common/components';
 import { useToast, VStack } from '@chakra-ui/react';
 import { SignUpForm } from '@src/modules/auth';
-import { AuthRoute } from '@src/constants/PageRoutes';
+import { AppRoute } from '@src/constants';
 
 export default function SignUp() {
   const { t } = useTranslation('auth');
@@ -16,6 +16,7 @@ export default function SignUp() {
 
   const toast = useToast();
   const router = useRouter();
+  const { setAccessToken } = useAuth();
   const { gqlClient } = useApiClient();
   const {
     mutate: register,
@@ -32,7 +33,8 @@ export default function SignUp() {
           description: t('sign-up.success.message'),
           variant: 'subtle',
         });
-        router.push(AuthRoute.Login);
+        setAccessToken(data.register.accessToken);
+        router.push(AppRoute.Onboarding);
       }
     },
   });
