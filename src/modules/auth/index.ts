@@ -3,4 +3,3 @@ export { default as ForgetPasswordForm } from './ForgetPasswordForm/ForgetPasswo
 export { default as SignUpForm } from './SignUpForm/SignUpForm';
 export { default as ForgetPasswordSuccess } from './ForgetPasswordSuccess/ForgetPasswordSuccess';
 export { default as ResetPasswordForm } from './ResetPasswordForm/ResetPasswordForm';
-export { default as ErrorPage } from './ErrorPage/ErrorPage';

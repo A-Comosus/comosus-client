@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { VStack, Text, Link } from '@chakra-ui/react';
 
-export default function ErrorPage() {
+export default function Error404() {
   const { t } = useTranslation('auth');
 
   return (

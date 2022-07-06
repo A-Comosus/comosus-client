@@ -1,8 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { HStack, VStack } from '@chakra-ui/react';
-import { PageContainer, Logo } from '@src/common/components';
-import { ErrorPage } from '@src/modules/auth';
+import { PageContainer, Logo, Error404 } from '@src/common/components';
 
 export default function CustomErrorPage() {
   const { t } = useTranslation('auth');
@@ -14,7 +13,7 @@ export default function CustomErrorPage() {
         <HStack width="100%">
           <Logo height="5rem" />
         </HStack>
-        <ErrorPage />
+        <Error404 />
       </VStack>
     </PageContainer>
   );
