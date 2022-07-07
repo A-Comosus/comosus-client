@@ -1,7 +1,10 @@
 query FindUserById($payload: FindByIdInput!) {
   findUserById(data: $payload) {
     id
+    status
     username
     email
+    displayName
+    categoryId
   }
 }
