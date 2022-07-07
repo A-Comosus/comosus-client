@@ -1,0 +1,7 @@
+query FindAllCategory {
+  categories {
+    id
+    type
+  }
+}
+
