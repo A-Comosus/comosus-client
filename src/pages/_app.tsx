@@ -6,6 +6,7 @@ import {
   ApiClientProvider,
   AuthProvider,
   ThemeContextProvider,
+  UserProvider,
 } from '@common/contexts';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -13,7 +14,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <AuthProvider>
       <ApiClientProvider>
         <ThemeContextProvider>
-          <Component {...pageProps} />
+          <UserProvider>
+            <Component {...pageProps} />
+          </UserProvider>
         </ThemeContextProvider>
       </ApiClientProvider>
     </AuthProvider>
