@@ -34,7 +34,7 @@ export default function OnboardingForm({
   } = useForm({
     defaultValues: {
       displayName: '',
-      category: '',
+      categoryId: '',
     },
     mode: 'onBlur',
     resolver: yupResolver(
@@ -43,7 +43,7 @@ export default function OnboardingForm({
           .string()
           .required(t('display-name.error.required'))
           .matches(/[a-z]/gi, t('display-name.error.invalid')),
-        category: yup.string().required(),
+        categoryId: yup.string().required(),
       }),
     ),
   });
@@ -68,9 +68,9 @@ export default function OnboardingForm({
         {isDisplayNameFilled && (
           <>
             <Category
-              value={watch('category')}
+              value={watch('categoryId')}
               onChange={(value) =>
-                setValue('category', value, { shouldValidate: true })
+                setValue('categoryId', value, { shouldValidate: true })
               }
             />
             <Button

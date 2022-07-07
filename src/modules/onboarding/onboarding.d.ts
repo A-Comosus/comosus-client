@@ -1,4 +1,4 @@
 type OnboardingFormValues = {
   displayName: string;
-  category: string;
+  categoryId: string;
 };
