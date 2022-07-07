@@ -17,13 +17,13 @@ export default function ProfileEditor() {
   const {
     user: { username },
   } = useUser();
-  const [profileTitle, setProfileTitile] = useState('');
+  const [profileTitle, setProfileTitle] = useState('');
   const [bio, setBio] = useState({
     description: '',
     characters: 0,
   });
   useEffect(() => {
-    setProfileTitile(username);
+    setProfileTitle(username);
   }, [username]);
 
   if (!username) {
@@ -60,7 +60,7 @@ export default function ProfileEditor() {
             borderRadius="0"
             placeholder={t('appearance.profile.profile-title')}
             value={profileTitle}
-            onChange={(e) => setProfileTitile(e.target.value)}
+            onChange={(e) => setProfileTitle(e.target.value)}
             onBlur={() =>
               // eslint-disable-next-line no-console
               console.debug('Submitting profileTitle: ', profileTitle)
