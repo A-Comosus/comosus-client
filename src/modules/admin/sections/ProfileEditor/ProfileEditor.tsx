@@ -10,10 +10,12 @@ import {
   Box,
   SkeletonCircle,
   SkeletonText,
+  useToast,
 } from '@chakra-ui/react';
 
 export default function ProfileEditor() {
   const { t } = useTranslation('admin');
+  const toast = useToast();
   const {
     user: { username },
   } = useUser();
@@ -59,8 +61,11 @@ export default function ProfileEditor() {
             value={profileTitle}
             onChange={(e) => setProfileTitle(e.target.value)}
             onBlur={() =>
-              // eslint-disable-next-line no-console
-              console.debug('Submitting profileTitle: ', profileTitle)
+              toast({
+                status: 'success',
+                title: `Submitting Profile Title: ${profileTitle}`,
+                variant: 'subtle',
+              })
             }
           />
         </VStack>
@@ -71,8 +76,13 @@ export default function ProfileEditor() {
           value={bio}
           maxLength={100}
           onChange={(e) => setBio(e.target.value)}
-          // eslint-disable-next-line no-console
-          onBlur={() => console.debug('Submitting bio: ', bio)}
+          onBlur={() =>
+            toast({
+              status: 'success',
+              title: `Submitting Bio Description: ${bio}`,
+              variant: 'subtle',
+            })
+          }
         />
       </VStack>
     </VStack>
