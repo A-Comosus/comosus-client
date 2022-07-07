@@ -23,12 +23,7 @@ export default function CustomTextarea({
         <Text type="p" alignSelf="flex-start">
           {label}
         </Text>
-        <Textarea
-          border="1px solid #ADB2C6"
-          minHeight="111"
-          borderRadius="5"
-          {...props}
-        />
+        <Textarea border="1px solid #ADB2C6" borderRadius="5" {...props} />
         <Text type="p" alignSelf="flex-end">
           {`${wordCount}/100`}
         </Text>
