@@ -7,14 +7,16 @@ export type variantTypes = 'default';
 
 type CustomTextareaProps = {
   label: string;
-  wordCount?: number;
+  value: string;
+  maxLength?: number;
   variantType?: variantTypes;
 } & TextareaProps;
 
 export default function CustomTextarea({
   label,
+  value,
+  maxLength = 100,
   variantType = 'default',
-  wordCount,
   ...props
 }: CustomTextareaProps) {
   const variants = {
@@ -23,9 +25,14 @@ export default function CustomTextarea({
         <Text type="p" alignSelf="flex-start">
           {label}
         </Text>
-        <Textarea border="1px solid #ADB2C6" borderRadius="5" {...props} />
+        <Textarea
+          border="1px solid #ADB2C6"
+          borderRadius="5"
+          maxLength={maxLength}
+          {...props}
+        />
         <Text type="p" alignSelf="flex-end">
-          {`${wordCount}/100`}
+          {`${value.length}/${maxLength}`}
         </Text>
       </VStack>
     ),
