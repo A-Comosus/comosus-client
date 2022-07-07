@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/router';
-import { useAuth, useApiClient } from '@common/contexts';
+import { useAuth, useApiClient, useUser } from '@common/contexts';
 import { useLoginMutation } from '@generated/graphql.queries';
 
 import { VStack } from '@chakra-ui/react';
@@ -15,6 +15,7 @@ export default function Login() {
   const router = useRouter();
   const head = { title: t('login.title') };
 
+  const { user } = useUser();
   const { setAccessToken } = useAuth();
   const { gqlClient } = useApiClient();
   const {
@@ -30,7 +31,8 @@ export default function Login() {
 
       if (data) {
         setAccessToken(data.login.accessToken);
-        router.push(AppRoute.Admin);
+        if (user?.status === 'onboarded') router.push(AppRoute.Admin);
+        router.push(AppRoute.Onboarding);
       }
     },
   });
