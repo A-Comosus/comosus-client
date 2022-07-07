@@ -1,4 +1,9 @@
 {
+  "title": "Onboarding⛵",
+  "heading": {
+    "main": "Tell us about yourself",
+    "sub": "Free forever, no string attached"
+  },
   "display-name": {
     "label": "Your display name",
     "placeholder": "Display Name",
@@ -25,5 +30,10 @@
       "travel": "✈️ Travel"
     }
   },
-  "continue": "Continue"
+  "continue": "Continue",
+  "api": {
+    "success": {
+      "message": "You can start creating your a-comosus now"
+    }
+  }
 }

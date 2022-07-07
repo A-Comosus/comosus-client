@@ -5,3 +5,12 @@ query FindAllCategory {
   }
 }
 
+mutation OnboardUser($payload: OnboardUserInput!) {
+  onboardUser(data: $payload) {
+    id
+    status
+    username
+    displayName
+    categoryId
+  }
+}

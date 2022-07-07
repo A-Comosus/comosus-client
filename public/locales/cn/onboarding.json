@@ -1,4 +1,9 @@
 {
+  "title": "注册用户信息",
+  "heading": {
+    "main": "来，了解一下。",
+    "sub": "永久免费，绝不收费"
+  },
   "display-name": {
     "label": "你的凤梨酥叫什么呢？",
     "placeholder": "显示名",
@@ -25,5 +30,10 @@
       "travel": "✈️诗和远方"
     }
   },
-  "continue": "下一步"
+  "continue": "下一步",
+  "api": {
+    "success": {
+      "message": "你可以开始创造你的凤梨酥啦~"
+    }
+  }
 }
