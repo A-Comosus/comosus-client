@@ -9,13 +9,16 @@ import { PageContainer } from '@src/common/components';
 import { LoginForm } from '@src/modules/auth';
 import { isNil } from 'lodash';
 import { AppRoute } from '@src/constants/PageRoutes';
+import { UserStatus } from '@src/constants';
 
 export default function Login() {
   const { t } = useTranslation('auth');
   const router = useRouter();
   const head = { title: t('login.title') };
 
-  const { user } = useUser();
+  const {
+    user: { status },
+  } = useUser();
   const { setAccessToken } = useAuth();
   const { gqlClient } = useApiClient();
   const {
@@ -31,8 +34,9 @@ export default function Login() {
 
       if (data) {
         setAccessToken(data.login.accessToken);
-        if (user?.status === 'onboarded') router.push(AppRoute.Admin);
-        router.push(AppRoute.Onboarding);
+        status === UserStatus.Registered
+          ? router.push(AppRoute.Onboarding)
+          : router.push(AppRoute.Admin);
       }
     },
   });
