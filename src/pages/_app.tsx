@@ -14,6 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <AuthProvider>
       <ApiClientProvider>
         <ThemeContextProvider>
+          {/* UserProvider should be converted using a different state manager later */}
           <UserProvider>
             <Component {...pageProps} />
           </UserProvider>

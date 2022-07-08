@@ -16,7 +16,9 @@ export default function Onboarding() {
   const toast = useToast();
   const router = useRouter();
 
-  const { user } = useUser();
+  const {
+    user: { id },
+  } = useUser();
   const { gqlClient } = useApiClient();
   const { mutate: onboardUser, isLoading: isOnboarding } =
     useOnboardUserMutation(gqlClient, {
@@ -33,7 +35,7 @@ export default function Onboarding() {
   const onSubmit = (values: OnboardingFormValues) => {
     onboardUser({
       payload: {
-        id: user?.id ?? '',
+        id,
         ...values,
       },
     });
