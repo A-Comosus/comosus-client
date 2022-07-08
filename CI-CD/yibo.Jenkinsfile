@@ -21,16 +21,19 @@ pipeline {
         IMAGE_VERSION = "${env.BUILD_ID}"
         AWS_REGION = 'ap-southeast-2'
         CYPRESS_RECORD_KEY = credentials('cypress-record-key')
+        N_G_ENDPOINT = credentials('N_G_ENDPOINT')
+        ECR_URL = credentials('ECR_REGISTRY_URL')
+        AWS_ECR_URL = credentials('AWS_ECR_URL')
     }
 
 
 
     
     stages {
-        stage('Cleanup docker space') {
+        stage('Cleanup Worker space') {
             steps {
-                echo 'Cleanup docker space'
-                sh 'docker system prune -f'
+                cleanWs()
+                checkout scm
             }
         }
 
@@ -44,7 +47,8 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 echo 'Install dependencies...'
-                sh 'yarn install'
+                sh 'yarn'
+                sh 'yarn codegen'
             }
         }
 
@@ -52,6 +56,7 @@ pipeline {
             steps {
                 echo 'Testing..'
                 sh 'yarn test:coverage'
+                sh 'yarn e2e:start-server:record'
             }
         }
         
@@ -75,15 +80,7 @@ pipeline {
                 sh 'yarn e2e:start-server:record'
             }
         }
-       
-
-        // stage ('Container Integrated Test') {
-        //     steps {
-        //         echo 'Container Integrated Test....'
-        //         sh
-        //     }
-        // }
-        
+               
         stage('Build and Upload Image to ECR') {
             
             when {
@@ -94,62 +91,14 @@ pipeline {
             }
 
             steps {
-                echo 'build image with ecr tage...'
-                withCredentials([string(credentialsId: 'AWS_REPOSITORY_URL_SECRET', variable: 'AWS_ECR_URL')]) {
-                    sh "docker build --build-arg N_G_ENDPOINT=${N_G_ENDPOINT} --build-arg G_ENDPOINT=${G_ENDPOINT} -t ${AWS_ECR_URL}:${IMAGE_VERSION} ."
-                }
-
-                echo 'upload to ECR'
-                withCredentials([string(credentialsId: 'AWS_REPOSITORY_URL_SECRET', variable: 'AWS_ECR_URL')]) {
-                    withAWS(region: "${AWS_ECR_REGION}", credentials: 'AWS_Credentials') {
-                        script {
-                            def login = ecrLogin()
-                            sh('#!/bin/sh -e\n' + "${login}") // hide logging
-                            docker.image("${AWS_ECR_URL}:${IMAGE_VERSION}").push()
-                        }
+               script{
+                    docker.withRegistry("https://${AWS_ECR_URL}", 'ecr:ap-southeast-2:AWS_CREDENTIAL') {
+                        app = docker.build("${ECR_URL}:${env.BUILD_NUMBER}", "--build-arg N_G_ENDPOINT=${N_G_ENDPOINT} -f Dockerfile.yibo .")
+                        app.push()
                     }
                 }
-            }
+            } 
         }
-        
-        stage('Deploy to EKS') {
-
-            when {
-                anyOf {
-                    branch 'develop'
-                    branch 'CI-CD'
-                }
-            }
-
-            steps {
-                echo 'Git check out terrafom repo...'
-                // Get source code from a GitHub repository
-                git branch: 'master',credentialsId:'Terraform-repo-access' ,url:'git@github.com:A-Comosus/a-comosus-terraform.git'
-            
-
-                echo 'Update EKS through terraform....'
-
-                echo 'inital terraform'
-                withAWS(region: "${AWS_ECR_REGION}", credentials:'eks-jenkins-update-account') {
-                    dir("kubernetes-config") {
-                        sh 'terraform init'
-                    }
-                }
-                
-                echo 'terraform apply'
-                withCredentials([string(credentialsId: 'AWS_REPOSITORY_URL_SECRET', variable: 'AWS_ECR_URL')]) {
-                    withAWS(region: "${AWS_ECR_REGION}", credentials:'eks-jenkins-update-account') {
-                        dir("kubernetes-config") {
-                           script { 
-                              sh("terraform apply -var=\'frontend-image=${AWS_ECR_URL}:${IMAGE_VERSION}\' --auto-approve") 
-                           }
-                        }
-                    }
-                }
-                
-            }
-        }
-    }
 
     post {
         always {
