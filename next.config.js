@@ -4,9 +4,8 @@ const nextConfig = {
     dirs: ['src'],
   },
   i18n: {
-    defaultLocale: 'cn',
+    defaultLocale: 'en',
     locales: ['cn', 'en'],
-    localeDetection: false,
   },
   reactStrictMode: true,
   compiler: {
