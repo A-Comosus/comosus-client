@@ -57,27 +57,53 @@ pipeline {
         // }
 
         // stage('Building and pushing docker image to ECR...') {
+        //     when {
+        //         anyOf {
+        //             branch 'develop'
+        //             branch 'ci-cd/*'
+        //         }
+        //     }
+
         //     steps {
         //         script{
         //             docker.withRegistry("https://${AWS_ECR_URL}", 'ecr:ap-southeast-2:AWS_CREDENTIAL') {
         //                 app = docker.build("${ECR_URL}:${env.BUILD_NUMBER}", "--build-arg N_G_ENDPOINT=${N_G_ENDPOINT} -f Dockerfile.Kelvin .")
-        //                 app.push()
+        //                 app.push("latest")
         //             }
         //         }
         //     }
         // }
 
-        stage ('Deploying to EKS...') {
-                steps {
-                    kubernetesDeploy(
-                        configs: 'CI-CD/kel-eks.yaml',
-                        kubeconfigId: 'K8S',
-                        enableConfigSubstitution: true
-                    )   
-                }              
+        // stage ('Deploying to EKS...') {
+        //     when {
+        //         anyOf {
+        //             branch 'develop'
+        //             branch 'ci-cd/*'
+        //         }
+        //     }
+
+        //     steps {
+        //         kubernetesDeploy(
+        //             configs: 'CI-CD/kel-eks.yaml',
+        //             kubeconfigId: 'K8S',
+        //             enableConfigSubstitution: true
+        //         )
+        //     }
+        // }
+
+        stage ('Deploying to ECS...') {
+            when {
+                anyOf {
+                    branch 'develop'
+                    branch 'ci-cd/*'
+                }
             }
 
-    }
+            steps {
+                
+            }
+        }
 
+    }
 
 }
