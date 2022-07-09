@@ -3,7 +3,7 @@ mutation Login($payload: LoginDetailInput!) {
     accessToken
     user {
       id
-      username
+      status
     }
   }
 }
