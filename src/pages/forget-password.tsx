@@ -1,13 +1,14 @@
 import React from 'react';
+import { isNil } from 'lodash';
+import { useForgetPasswordMutation } from '@generated/graphql.queries';
+import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
 import { useApiClient } from '@common/contexts';
-import { useRouter } from 'next/router';
 import { AuthRoute } from '@src/constants/PageRoutes';
+
 import { VStack } from '@chakra-ui/react';
 import { PageContainer } from '@src/common/components';
 import { ForgetPasswordForm } from '@src/modules/auth';
-import { isNil } from 'lodash';
-import { useForgetPasswordMutation } from '@generated/graphql.queries';
 
 export default function ForgetPassword() {
   const { t } = useTranslation('auth');
