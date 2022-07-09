@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useOnboardUserMutation } from '@generated/graphql.queries';
 import { useApiClient } from '@src/common/contexts';
 import { useRouter } from 'next/router';
-import { AppRoute } from '@src/constants';
+import { AppRoute, GlobalRoute } from '@src/constants';
 
 import { VStack } from '@chakra-ui/react';
 import { PageContainer } from '@src/common/components';
@@ -29,6 +29,11 @@ export default function Onboarding() {
         }
       },
     });
+
+  if (typeof id !== 'string') {
+    router.push(GlobalRoute.Error);
+    return;
+  }
 
   const onSubmit = (values: OnboardingFormValues) => {
     onboardUser({
