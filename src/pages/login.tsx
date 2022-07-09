@@ -33,13 +33,16 @@ export default function Login() {
         const {
           login: {
             accessToken,
-            user: { status },
+            user: { id, status },
           },
         } = data;
 
         setAccessToken(accessToken);
         status === UserStatus.Registered
-          ? router.push(AppRoute.Onboarding)
+          ? router.push({
+              pathname: AppRoute.Onboarding,
+              query: { id },
+            })
           : router.push(AppRoute.Admin);
       }
     },

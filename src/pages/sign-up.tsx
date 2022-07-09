@@ -28,13 +28,17 @@ export default function SignUp() {
         // @ts-ignore
         console.error(error.message);
       } else if (data) {
+        const {
+          register: { id, accessToken },
+        } = data;
+
         toast({
           status: 'success',
           description: t('sign-up.success.message'),
           variant: 'subtle',
         });
-        setAccessToken(data.register.accessToken);
-        router.push(AppRoute.Onboarding);
+        setAccessToken(accessToken);
+        router.push({ pathname: AppRoute.Onboarding, query: { id } });
       }
     },
   });

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useOnboardUserMutation } from '@generated/graphql.queries';
-import { useApiClient, useUser } from '@src/common/contexts';
+import { useApiClient } from '@src/common/contexts';
 import { useRouter } from 'next/router';
 import { AppRoute } from '@src/constants';
 
@@ -15,10 +15,8 @@ export default function Onboarding() {
 
   const toast = useToast();
   const router = useRouter();
+  const { id } = router.query;
 
-  const {
-    user: { id },
-  } = useUser();
   const { gqlClient } = useApiClient();
   const { mutate: onboardUser, isLoading: isOnboarding } =
     useOnboardUserMutation(gqlClient, {
@@ -35,7 +33,8 @@ export default function Onboarding() {
   const onSubmit = (values: OnboardingFormValues) => {
     onboardUser({
       payload: {
-        id,
+        // @TODO: Casting the route query feels wrong and could lead to error, need to fix this later
+        id: id as string,
         ...values,
       },
     });
