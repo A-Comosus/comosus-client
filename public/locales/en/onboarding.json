@@ -31,9 +31,11 @@
     }
   },
   "continue": "Continue",
-  "api": {
-    "success": {
-      "message": "You can start creating your a-comosus now"
-    }
+  "onboarded": {
+    "heading": {
+      "main": "Thanks for signing up! 🥳",
+      "sub": "To verify your account, click on the link sent to your inbox, after that, you can start creating your a-comosus! ({{email}})"
+    },
+    "continue": "Start Building ⚒️"
   }
 }

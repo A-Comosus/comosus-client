@@ -9,7 +9,7 @@ mutation OnboardUser($payload: OnboardUserInput!) {
   onboardUser(data: $payload) {
     id
     status
-    username
+    email
     displayName
     categoryId
   }

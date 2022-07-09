@@ -7,10 +7,11 @@ import { useForm } from 'react-hook-form';
 import { useToggle } from '@src/utils/hooks';
 
 import { FormControl, VStack } from '@chakra-ui/react';
-import { Button } from '@src/common/components';
+import { Button, Text } from '@src/common/components';
 
 import Category from './OnboardingForm.Category';
 import DisplayName from './OnboardingForm.DisplayName';
+import ReCaptcha from './OnboardingForm.ReCaptcha';
 
 type OnboardingFormProps = {
   onSubmit: (value: OnboardingFormValues) => void;
@@ -35,6 +36,7 @@ export default function OnboardingForm({
     defaultValues: {
       displayName: '',
       categoryId: '',
+      recaptcha: false,
     },
     mode: 'onBlur',
     resolver: yupResolver(
@@ -44,6 +46,7 @@ export default function OnboardingForm({
           .required(t('display-name.error.required'))
           .matches(/[a-z]/gi, t('display-name.error.invalid')),
         categoryId: yup.string().required(),
+        recaptcha: yup.boolean().isTrue(),
       }),
     ),
   });
@@ -51,6 +54,11 @@ export default function OnboardingForm({
   return (
     <FormControl as="form" onSubmit={handleSubmit(onSubmit)}>
       <VStack align="stretch" gap="60px">
+        <VStack align="flex-start" gap={3}>
+          <Text type="h1">{t('heading.main')}</Text>
+          <Text type="h2">{t('heading.sub')}</Text>
+        </VStack>
+
         <DisplayName name="displayName" control={control} />
 
         {!isDisplayNameFilled && (
@@ -73,6 +81,9 @@ export default function OnboardingForm({
                 setValue('categoryId', value, { shouldValidate: true })
               }
             />
+
+            <ReCaptcha onChange={() => setValue('recaptcha', true)} />
+
             <Button
               isDisabled={!isValid}
               isLoading={isOnboarding}
