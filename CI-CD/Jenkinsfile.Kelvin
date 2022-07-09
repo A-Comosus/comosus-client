@@ -103,7 +103,7 @@ pipeline {
 
             steps {
                 withAWS(credentials: 'AWS_CREDENTIAL', region: 'ap-southeast-2') {
-                    sh 'aws ecs update-service --cluster ${cluster} --service ${service} --force-new-deployment'
+                    sh 'aws ecs update-service --cluster ${ECS_CLUSTER} --service ${ECS_SERVICE} --force-new-deployment'
                 } 
             }
         }
