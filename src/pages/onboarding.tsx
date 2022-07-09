@@ -43,11 +43,6 @@ export default function Onboarding() {
   return (
     <PageContainer head={head}>
       <VStack alignSelf="center" width="670px" align="stretch" gap="60px">
-        <VStack align="flex-start" gap={3}>
-          <Text type="h1">{t('heading.main')}</Text>
-          <Text type="h2">{t('heading.sub')}</Text>
-        </VStack>
-
         <OnboardingForm onSubmit={onSubmit} isOnboarding={isOnboarding} />
       </VStack>
     </PageContainer>
