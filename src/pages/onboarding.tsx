@@ -1,32 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useToggle } from '@src/utils/hooks';
 import { useTranslation } from 'react-i18next';
 import { useOnboardUserMutation } from '@generated/graphql.queries';
 import { useApiClient } from '@src/common/contexts';
 import { useRouter } from 'next/router';
 import { AppRoute } from '@src/constants';
 
-import { useToast, VStack } from '@chakra-ui/react';
-import { PageContainer, Text } from '@src/common/components';
-import { OnboardingForm } from '@src/modules/onboarding';
+import { VStack } from '@chakra-ui/react';
+import { PageContainer } from '@src/common/components';
+import { OnboardedMessage, OnboardingForm } from '@src/modules/onboarding';
 
 export default function Onboarding() {
   const { t } = useTranslation('onboarding');
   const head = { title: t('title') };
 
-  const toast = useToast();
   const router = useRouter();
   const { id } = router.query;
 
   const { gqlClient } = useApiClient();
+  const [email, setEmail] = useState('');
+  const [isOnboarded, toggleIsOnboarded] = useToggle();
   const { mutate: onboardUser, isLoading: isOnboarding } =
     useOnboardUserMutation(gqlClient, {
-      onSettled: () => {
-        toast({
-          status: 'success',
-          description: t('api.success.message'),
-          variant: 'subtle',
-        });
-        router.push(AppRoute.Admin);
+      onSettled: (data) => {
+        if (data) {
+          setEmail(data.onboardUser.email);
+          toggleIsOnboarded();
+        }
       },
     });
 
@@ -40,10 +40,18 @@ export default function Onboarding() {
     });
   };
 
+  const onContinue = () => {
+    router.push(AppRoute.Admin);
+  };
+
   return (
     <PageContainer head={head}>
       <VStack alignSelf="center" width="670px" align="stretch" gap="60px">
-        <OnboardingForm onSubmit={onSubmit} isOnboarding={isOnboarding} />
+        {isOnboarded ? (
+          <OnboardedMessage onContinue={onContinue} email={email} />
+        ) : (
+          <OnboardingForm onSubmit={onSubmit} isOnboarding={isOnboarding} />
+        )}
       </VStack>
     </PageContainer>
   );
