@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useToggle } from '@src/utils/hooks';
 import { useTranslation } from 'react-i18next';
 import { useOnboardUserMutation } from '@generated/graphql.queries';
@@ -30,16 +30,15 @@ export default function Onboarding() {
       },
     });
 
-  if (typeof id !== 'string') {
-    router.push(GlobalRoute.Error);
-    return;
-  }
+  useEffect(() => {
+    if (id !== 'string') router.push(GlobalRoute.Error);
+  }, [id]);
 
   const onSubmit = (values: OnboardingFormValues) => {
     const { recaptcha, ...payload } = values;
     onboardUser({
       payload: {
-        id,
+        id: id as string,
         ...payload,
       },
     });
