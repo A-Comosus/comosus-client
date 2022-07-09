@@ -6,7 +6,7 @@ import { User, useFindUserByIdQuery } from '@generated/graphql.queries';
 import { parseJwt } from '@src/utils/parse-jwt';
 
 type UserContextValueType = {
-  user: User;
+  user: User | undefined;
 };
 const UserContext = React.createContext<UserContextValueType>(
   {} as UserContextValueType,
@@ -35,18 +35,8 @@ export function UserProvider({ children }: UserProdiverProps) {
     },
   );
 
-  const emptyUser = {
-    id: '',
-    name: '',
-    email: '',
-    status: '',
-    username: '',
-  };
-
   return (
-    <UserContext.Provider value={{ user: user ?? emptyUser }}>
-      {children}
-    </UserContext.Provider>
+    <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
   );
 }
 
