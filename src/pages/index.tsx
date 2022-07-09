@@ -52,7 +52,7 @@ const Home: NextPage = () => {
 
   return (
     <PageContainer head={head}>
-      <VStack flex={1} justify="center" align="center" gap="2rem">
+      <VStack flex={1} justify="center" gap="2rem">
         <Title />
 
         <Description />

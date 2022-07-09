@@ -1,0 +1,39 @@
+{
+  "title": "注册用户信息",
+  "heading": {
+    "main": "来，了解一下。",
+    "sub": "永久免费，绝不收费"
+  },
+  "display-name": {
+    "label": "你的凤梨酥叫什么呢？",
+    "placeholder": "显示名",
+    "error": {
+      "required": "Ummmmm, 我们需要知道你的凤梨酥要叫什么。",
+      "invalid": "看来你的名字里有我们不认识的特殊字符啊。😅"
+    }
+  },
+  "category": {
+    "label": "你觉得以下哪个类别最符合你的凤梨酥？",
+    "option": {
+      "businese": "🏢商务黑丝",
+      "creative": "🎨创造力爆棚",
+      "game": "🎮游戏人生",
+      "food": "🍕吃货",
+      "education": "📚教育的小皮鞭",
+      "non-profit": "💗视金钱为闰土",
+      "entertainment": "🎶开开心心娱乐一下",
+      "fashion": "👗靓仔靓女",
+      "government": "⚖️妄议国事",
+      "health": "🍎保温杯里泡枸杞",
+      "other": "💗还有谁？",
+      "tech": "🖥第一生产力",
+      "travel": "✈️诗和远方"
+    }
+  },
+  "continue": "下一步",
+  "api": {
+    "success": {
+      "message": "你可以开始创造你的凤梨酥啦~"
+    }
+  }
+}
