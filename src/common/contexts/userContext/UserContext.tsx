@@ -1,4 +1,4 @@
-import React, { useMemo, useRef } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import * as _ from 'lodash';
 import { useApiClient, useAuth } from '@common/contexts';
 
@@ -6,7 +6,7 @@ import { User, useFindUserByIdQuery } from '@generated/graphql.queries';
 import { parseJwt } from '@src/utils/parse-jwt';
 
 type UserContextValueType = {
-  user: User | undefined;
+  user: User;
 };
 const UserContext = React.createContext<UserContextValueType>(
   {} as UserContextValueType,
@@ -18,6 +18,7 @@ type UserProdiverProps = {
 export function UserProvider({ children }: UserProdiverProps) {
   const { accessToken } = useAuth();
   const { gqlClient } = useApiClient();
+  const [user, setUser] = useState<User>({} as User);
 
   const payload = useRef({ id: '' });
   const enabled = useMemo(() => {
@@ -25,13 +26,19 @@ export function UserProvider({ children }: UserProdiverProps) {
     payload.current = { id: parseJwt(accessToken).sub };
     return true;
   }, [accessToken]);
-
-  const { data: user } = useFindUserByIdQuery(
+  useFindUserByIdQuery(
     gqlClient,
     { payload: payload.current },
     {
       enabled,
-      select: (data) => data.findUserById,
+      onSettled: (data, error) => {
+        if (error) {
+          // TODO: handle this error
+        } else if (data) {
+          const { findUserById: userData } = data;
+          setUser((preValue) => ({ ...preValue, ...userData }));
+        }
+      },
     },
   );
 
