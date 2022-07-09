@@ -11,6 +11,7 @@ import { Button, Text } from '@src/common/components';
 
 import Category from './OnboardingForm.Category';
 import DisplayName from './OnboardingForm.DisplayName';
+import ReCaptcha from './OnboardingForm.ReCaptcha';
 
 type OnboardingFormProps = {
   onSubmit: (value: OnboardingFormValues) => void;
@@ -35,6 +36,7 @@ export default function OnboardingForm({
     defaultValues: {
       displayName: '',
       categoryId: '',
+      recaptcha: false,
     },
     mode: 'onBlur',
     resolver: yupResolver(
@@ -44,6 +46,7 @@ export default function OnboardingForm({
           .required(t('display-name.error.required'))
           .matches(/[a-z]/gi, t('display-name.error.invalid')),
         categoryId: yup.string().required(),
+        recaptcha: yup.boolean().isTrue(),
       }),
     ),
   });
@@ -78,6 +81,9 @@ export default function OnboardingForm({
                 setValue('categoryId', value, { shouldValidate: true })
               }
             />
+
+            <ReCaptcha onChange={() => setValue('recaptcha', true)} />
+
             <Button
               isDisabled={!isValid}
               isLoading={isOnboarding}

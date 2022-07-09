@@ -36,11 +36,11 @@ export default function Onboarding() {
   }
 
   const onSubmit = (values: OnboardingFormValues) => {
+    const { recaptcha, ...payload } = values;
     onboardUser({
       payload: {
-        // @TODO: Casting the route query feels wrong and could lead to error, need to fix this later
-        id: id as string,
-        ...values,
+        id,
+        ...payload,
       },
     });
   };
