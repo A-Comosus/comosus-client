@@ -50,7 +50,7 @@ export default function Onboarding() {
   };
 
   return (
-    <PageContainer head={head}>
+    <PageContainer head={head} disableNavOptions>
       <VStack alignSelf="center" width="670px" align="stretch" gap="60px">
         {isOnboarded ? (
           <OnboardedMessage onContinue={onContinue} email={email} />

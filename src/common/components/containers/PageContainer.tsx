@@ -2,14 +2,18 @@ import React from 'react';
 
 import Head from 'next/head';
 import { ColorModeScript, Flex } from '@chakra-ui/react';
-import { Footer, NavBar } from '@common/components';
+import { Footer, NavBar, NavBarProps } from '@common/components';
 
 type PageContainerProps = {
   children: React.ReactNode;
   head: Head;
-};
+} & NavBarProps;
 
-export default function PageContainer({ children, head }: PageContainerProps) {
+export default function PageContainer({
+  children,
+  head,
+  disableNavOptions,
+}: PageContainerProps) {
   const { title, metas, links } = head;
 
   return (
@@ -27,7 +31,7 @@ export default function PageContainer({ children, head }: PageContainerProps) {
       </Head>
 
       <ColorModeScript />
-      <NavBar />
+      <NavBar disableNavOptions={disableNavOptions} />
       {children}
       <Footer />
     </Flex>
