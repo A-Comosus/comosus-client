@@ -6,7 +6,6 @@ import {
   ApiClientProvider,
   AuthProvider,
   ThemeContextProvider,
-  UserProvider,
 } from '@common/contexts';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -14,10 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <AuthProvider>
       <ApiClientProvider>
         <ThemeContextProvider>
-          {/* UserProvider should be converted using a different state manager later */}
-          <UserProvider>
-            <Component {...pageProps} />
-          </UserProvider>
+          <Component {...pageProps} />
         </ThemeContextProvider>
       </ApiClientProvider>
     </AuthProvider>
