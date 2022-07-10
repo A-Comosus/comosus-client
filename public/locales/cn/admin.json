@@ -12,5 +12,15 @@
     "preview": {
       "share": "分享你的凤梨酥吧!"
     }
+  },
+  "appearance": {
+    "profile": {
+      "title": "资料",
+      "pick-an-image": "选择图像",
+      "remove": "移除",
+      "profile-title": "标题",
+      "bio": "简介",
+      "bio-placeholder": "输入个人简介以显示在您的个人资料中"
+    }
   }
 }
