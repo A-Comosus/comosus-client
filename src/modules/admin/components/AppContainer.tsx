@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserProvider } from '@common/contexts';
+import { UserProvider } from '@src/common/contexts';
 
 import Head from 'next/head';
 import { ColorModeScript, Flex } from '@chakra-ui/react';

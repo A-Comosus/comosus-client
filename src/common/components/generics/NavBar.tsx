@@ -2,9 +2,17 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { HStack, Button } from '@chakra-ui/react';
-import { Link, SelectLanguage, ToggleThemeButton } from '@common/components';
+import {
+  Logo,
+  Link,
+  SelectLanguage,
+  ToggleThemeButton,
+} from '@common/components';
 
-export default function NavBar() {
+export type NavBarProps = {
+  disableNavOptions?: boolean;
+};
+export default function NavBar({ disableNavOptions }: NavBarProps) {
   const { t } = useTranslation();
 
   const navItems = [
@@ -28,13 +36,16 @@ export default function NavBar() {
   ];
 
   return (
-    <HStack justify="space-between" borderBottom="1px solid #eaeaea" p="1rem">
-      <HStack>
-        {navItems.map(({ href, content, isDisabled }, index) => (
-          <Link key={index} href={href}>
-            <Button isDisabled={isDisabled}>{content}</Button>
-          </Link>
-        ))}
+    <HStack justify="space-between" p="1rem">
+      <HStack gap={4}>
+        <Logo height="5rem" />
+
+        {!disableNavOptions &&
+          navItems.map(({ href, content, isDisabled }, index) => (
+            <Link key={index} href={href}>
+              <Button isDisabled={isDisabled}>{content}</Button>
+            </Link>
+          ))}
       </HStack>
 
       <HStack gap="2rem">

@@ -1,0 +1,41 @@
+{
+  "title": "Onboarding⛵",
+  "heading": {
+    "main": "Tell us about yourself",
+    "sub": "Free forever, no string attached"
+  },
+  "display-name": {
+    "label": "Your display name",
+    "placeholder": "Display Name",
+    "error": {
+      "required": "Hmmm, we need something to show on your profile.",
+      "invalid": "Looks like your display name contain charaters we can't recognise. 😅"
+    }
+  },
+  "category": {
+    "label": "Select one category that best descrbes your A-Comosus:",
+    "option": {
+      "businese": "🏢 Business",
+      "creative": "🎨 Creative",
+      "game": "🎮 Gamer",
+      "food": "🍕 Foodie",
+      "education": "📚 Education",
+      "non-profit": "💗 Non-profit",
+      "entertainment": "🎶 Entertainment",
+      "fashion": "👗 Fashion",
+      "government": "⚖️ Government",
+      "health": "🍎 Health",
+      "other": "💗 Other",
+      "tech": "🖥 Tech",
+      "travel": "✈️ Travel"
+    }
+  },
+  "continue": "Continue",
+  "onboarded": {
+    "heading": {
+      "main": "Thanks for signing up! 🥳",
+      "sub": "To verify your account, click on the link sent to your inbox, after that, you can start creating your a-comosus! ({{email}})"
+    },
+    "continue": "Start Building ⚒️"
+  }
+}
