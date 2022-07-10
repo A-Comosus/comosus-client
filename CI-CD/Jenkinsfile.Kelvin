@@ -59,12 +59,12 @@ pipeline {
         }
 
         stage('Building and pushing docker image to ECR...') {
-            // when {
-            //     anyOf {
-            //         branch 'develop'
-            //         branch 'ci-cd/*'
-            //     }
-            // }
+            when {
+                anyOf {
+                    branch 'develop'
+                    branch 'ci-cd/*'
+                }
+            }
 
             steps {
                 script{
@@ -77,12 +77,12 @@ pipeline {
         }
 
         stage ('Deploying to ECS...') {
-            // when {
-            //     anyOf {
-            //         branch 'develop'
-            //         branch 'ci-cd/*'
-            //     }
-            // }
+            when {
+                anyOf {
+                    branch 'develop'
+                    branch 'ci-cd/*'
+                }
+            }
 
             steps {
                 withAWS(credentials: 'AWS_CREDENTIAL', region: 'ap-southeast-2') {
