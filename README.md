@@ -4,7 +4,16 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## 🏃‍♂️ How to run this project?
 
-First, you want to make sure you have downloaded all the dependencies used for this project,
+First, set up the development environment
+
+TL;DR You need to set up following environment variables.
+
+| name                             | description                           |
+| -------------------------------- | ------------------------------------- |
+| NEXT_PUBLIC_GRAPHQL_ENDPOINT     | URL to backend server                 |
+| \*NEXT_PUBLIC_RECAPTCHA_SITE_KEY | Access key to enable Google ReCaptcha |
+
+Then you want to make sure you have downloaded all the dependencies used for this project,
 
 ```bash
 yarn

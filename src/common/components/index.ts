@@ -3,8 +3,10 @@ export { default as PageContainer } from './containers/PageContainer';
 
 // Generic Components
 export { default as Logo } from './generics/Logo';
+export type { NavBarProps } from './generics/NavBar';
 export { default as NavBar } from './generics/NavBar';
 export { default as Footer } from './generics/Footer';
+export { default as Error404 } from './generics/Error404';
 export { default as SelectLanguage } from './generics/SelectLanguage';
 export { default as ToggleThemeButton } from './generics/ToggleThemeButton';
 export { default as Sidebar } from './generics/Sidebar/Sidebar';

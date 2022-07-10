@@ -1,5 +1,6 @@
 export enum GlobalRoute {
   Root = '/',
+  Error = '/error',
 }
 
 export enum AuthRoute {
@@ -10,6 +11,7 @@ export enum AuthRoute {
 }
 
 export enum AppRoute {
+  Onboarding = '/onboarding',
   Admin = '/admin',
   Appearance = '/admin/appearance',
 }

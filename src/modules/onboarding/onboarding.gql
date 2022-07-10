@@ -1,0 +1,16 @@
+query FindAllCategory {
+  categories {
+    id
+    type
+  }
+}
+
+mutation OnboardUser($payload: OnboardUserInput!) {
+  onboardUser(data: $payload) {
+    id
+    status
+    email
+    displayName
+    categoryId
+  }
+}
