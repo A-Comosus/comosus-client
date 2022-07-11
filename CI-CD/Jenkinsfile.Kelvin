@@ -19,8 +19,9 @@ pipeline {
     }
 
     stages {
-        stage('Clean workspace...') {
+        stage('Clean workspace and docker space...') {
             steps {
+                sh 'docker system prune -f'
                 cleanWs()
                 checkout scm
             }
