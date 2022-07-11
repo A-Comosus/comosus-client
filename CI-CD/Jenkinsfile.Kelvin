@@ -12,8 +12,8 @@ pipeline {
         N_G_ENDPOINT = credentials('N_G_ENDPOINT')
         ECR_URL = credentials('ECR_REGISTRY_URL')
         AWS_ECR_URL = credentials('AWS_ECR_URL')
-        ECS_CLUSTER = "a-comosus-client"
-        ECS_SERVICE = "client-ecs-service"
+        ECS_CLUSTER = "a-comosus"
+        ECS_SERVICE = "Client"
         
         CYPRESS_CACHE_FOLDER = '/var/lib/jenkins/.cache/Cypress/10.1.0/Cypress'
     }
