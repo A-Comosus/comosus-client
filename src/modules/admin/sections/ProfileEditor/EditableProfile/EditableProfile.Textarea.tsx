@@ -31,12 +31,13 @@ export default function EditableProfileTextarea({
       onBlur();
     }
   };
+
   return (
     <Textarea
       label={label}
       placeholder={placeholder}
       autoComplete="off"
-      value={value.toString()}
+      value={value}
       maxLength={maxLength}
       onChange={onChange}
       onBlur={handleOnBlur}

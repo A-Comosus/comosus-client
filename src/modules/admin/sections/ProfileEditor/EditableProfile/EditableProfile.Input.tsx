@@ -38,7 +38,7 @@ export default function EditableProfileInput({
       <Input
         placeholder={placeholder}
         autoComplete="off"
-        value={value.toString()}
+        value={value}
         onChange={onChange}
         onBlur={handleOnBlur}
         variant="unstyled"
