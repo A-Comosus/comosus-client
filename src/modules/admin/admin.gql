@@ -43,6 +43,6 @@ query FindUserByUsername($payload: FindUserByUsernameInput!) {
   }
 }
 
-mutation UpdateProfileByUsername($payload: UpdateProfileByUsernameInput!) {
+mutation UpdateProfile($payload: UpdateProfileInput!) {
   updateProfileByUsername(data: $payload)
 }
