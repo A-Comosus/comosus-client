@@ -19,7 +19,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const router = useRouter();
   const [accessToken, setAccessToken] = useStorage(
     AuthKey.AccessToken,
-    StorageType.Session,
+    StorageType.Local,
   );
 
   const logout = () => {
