@@ -10,6 +10,7 @@ export { default as Error404 } from './generics/Error404';
 export { default as SelectLanguage } from './generics/SelectLanguage';
 export { default as ToggleThemeButton } from './generics/ToggleThemeButton';
 export { default as Sidebar } from './generics/Sidebar/Sidebar';
+export { default as ProfileItem } from './generics/ProfileItem/ProfileItem';
 
 // Form Components
 export { default as Button } from './forms/Button';

@@ -1,14 +1,13 @@
 import React, { useMemo } from 'react';
+import _ from 'lodash';
 import { useTranslation } from 'react-i18next';
 import { useApiClient, useUser } from '@src/common/contexts';
 import { useFindUserByUsernameQuery } from '@generated/graphql.queries';
 
 import { Avatar, HStack, IconButton, Spinner, VStack } from '@chakra-ui/react';
-import { Logo, Text } from '@src/common/components';
-import ProfilePreviewLink from './ProfilePreview.Link';
+import { Logo, Text, ProfileItem } from '@src/common/components';
 import { BsShareFill } from 'react-icons/bs';
 import { FaShareSquare } from 'react-icons/fa';
-import _ from 'lodash';
 
 export default function ProfilePreview() {
   const { t } = useTranslation('admin');
@@ -66,7 +65,7 @@ export default function ProfilePreview() {
             <VStack alignSelf="stretch" align="stretch" gap={4}>
               {userData &&
                 userData.links.map((link, index) => {
-                  return <ProfilePreviewLink key={index} link={link} />;
+                  return <ProfileItem key={index} link={link} />;
                 })}
             </VStack>
           </VStack>
