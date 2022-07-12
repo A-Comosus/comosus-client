@@ -30,7 +30,7 @@ mutation DeleteLinkById($payload: DeleteLinkInput!) {
 query FindUserByUsername($payload: FindUserByUsernameInput!) {
   findUserByUsername(username: $payload) {
     id
-    email
+    displayName
     username
     links {
       id
