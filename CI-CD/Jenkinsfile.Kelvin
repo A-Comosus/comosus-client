@@ -63,7 +63,6 @@ pipeline {
             when {
                 anyOf {
                     branch 'develop'
-                    branch 'ci-cd/*'
                 }
             }
 
@@ -81,7 +80,6 @@ pipeline {
             when {
                 anyOf {
                     branch 'develop'
-                    branch 'ci-cd/*'
                 }
             }
 
@@ -91,24 +89,16 @@ pipeline {
                 } 
             }
         }
-
-        // stage ('Deploying to EKS...') {
-        //     when {
-        //         anyOf {
-        //             branch 'develop'
-        //             branch 'ci-cd/*'
-        //         }
-        //     }
-
-        //     steps {
-        //         kubernetesDeploy(
-        //             configs: 'CI-CD/kel-eks.yaml',
-        //             kubeconfigId: 'K8S',
-        //             enableConfigSubstitution: true
-        //         )
-        //     }
-        // }
-            
+    
     }
+
+    post {  
+        success {  
+            echo 'All process done successfully!'  
+        }  
+        failure {  
+            mail bcc: '', body: "<b>Something went wrong...</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "Norris.wu.au@outlook.com";  
+        }  
+    }  
 
 }
