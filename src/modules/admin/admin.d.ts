@@ -11,3 +11,8 @@ type Link = {
   url: string;
   logoUrl?: string | null;
 };
+
+type EditableProfileFormType = {
+  displayName: string;
+  bio: string;
+};

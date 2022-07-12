@@ -44,5 +44,9 @@ query FindUserByUsername($payload: FindUserByUsernameInput!) {
 }
 
 mutation UpdateProfile($payload: UpdateProfileInput!) {
-  updateProfileByUsername(data: $payload)
+  updateProfile(data: $payload) {
+    username
+    displayName
+    bio
+  }
 }
