@@ -5,6 +5,7 @@ import { useApiClient, useUser } from '@src/common/contexts';
 import { useFindUserByUsernameQuery } from '@generated/graphql.queries';
 
 import { Avatar, HStack, IconButton, Spinner, VStack } from '@chakra-ui/react';
+import Link from 'next/link';
 import { Logo, Text, ProfileItem } from '@src/common/components';
 import { BsShareFill } from 'react-icons/bs';
 import { FaShareSquare } from 'react-icons/fa';
@@ -77,7 +78,11 @@ export default function ProfilePreview() {
       <HStack>
         <BsShareFill />
         <Text textDecoration="underline">
-          <a href="">{t('link.preview.share')}</a>
+          <Link href={`/${userData?.username}`} passHref>
+            <a target="_blank" rel="noreferrer">
+              {t('link.preview.share')}
+            </a>
+          </Link>
         </Text>
       </HStack>
     </VStack>
