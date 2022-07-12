@@ -32,6 +32,8 @@ query FindUserByUsername($payload: FindUserByUsernameInput!) {
     id
     email
     username
+    displayName
+    bio
     links {
       id
       title
@@ -39,4 +41,8 @@ query FindUserByUsername($payload: FindUserByUsernameInput!) {
       logoUrl
     }
   }
+}
+
+mutation UpdateProfileByUsername($payload: UpdateProfileByUsernameInput!) {
+  updateProfileByUsername(data: $payload)
 }
