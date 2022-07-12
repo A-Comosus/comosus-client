@@ -60,7 +60,14 @@ export default function ProfilePreview() {
 
             <VStack>
               <Avatar size="lg" src="https://picsum.photos/200" />
-              <Text color="white">{userData?.username}</Text>
+              {userData?.displayName ? (
+                <Text color="white">{userData?.displayName}</Text>
+              ) : (
+                <Text color="white">{userData?.username}</Text>
+              )}
+              {userData?.bio ? (
+                <Text color="white">{userData?.bio}</Text>
+              ) : null}
             </VStack>
 
             <VStack alignSelf="stretch" align="stretch" gap={4}>
