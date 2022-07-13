@@ -54,12 +54,15 @@ type PublicProfileProps = {
 };
 export default function PublicProfile({ userData }: PublicProfileProps) {
   return (
-    <VStack
-      p="10rem"
+    <Center
+      p={{
+        base: '2rem',
+      }}
       minH="100vh"
       bgGradient="linear-gradient(180deg, #465E79 0%, #4B3F4F 97.92%)"
+      alignItems="stretch"
     >
-      <VStack alignSelf="stretch" gap={5}>
+      <VStack flex={1} maxW="670px" gap={5}>
         <VStack>
           <Avatar size="lg" src="https://picsum.photos/200" />
           <Text color="white">
@@ -74,6 +77,6 @@ export default function PublicProfile({ userData }: PublicProfileProps) {
             })}
         </VStack>
       </VStack>
-    </VStack>
+    </Center>
   );
 }
