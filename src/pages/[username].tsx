@@ -1,7 +1,7 @@
 import React from 'react';
 import { request } from 'graphql-request';
 
-import { Avatar, VStack } from '@chakra-ui/react';
+import { Avatar, Center, VStack } from '@chakra-ui/react';
 import { Text, ProfileItem } from '@src/common/components';
 
 type ServerSideContextType = { query: { username: string } };
@@ -9,29 +9,35 @@ export async function getServerSideProps(context: ServerSideContextType) {
   const { username } = context.query;
 
   const gqlEndpoint = process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT ?? '';
-  const { findUserByUsername } = await request(
-    gqlEndpoint,
-    `
-    query FindByUsername($payload: FindUserByUsernameInput!) {
-      findUserByUsername(username: $payload) {
-        id
-        displayName
-        username
-        links {
+
+  try {
+    const { findUserByUsername } = await request(
+      gqlEndpoint,
+      `
+      query FindByUsername($payload: FindUserByUsernameInput!) {
+        findUserByUsername(username: $payload) {
           id
-          title
-          url
-          logoUrl
+          displayName
+          username
+          links {
+            id
+            title
+            url
+            logoUrl
+          }
         }
       }
-    }
-    `,
-    { payload: { username } },
-  );
-
-  return {
-    props: { userData: findUserByUsername }, // will be passed to the page component as props
-  };
+      `,
+      { payload: { username } },
+    );
+    return {
+      props: { userData: findUserByUsername }, // will be passed to the page component as props
+    };
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  }
 }
 
 type PublicProfileProps = {
