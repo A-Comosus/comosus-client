@@ -13,4 +13,5 @@ export enum AuthRoute {
 export enum AppRoute {
   Onboarding = '/onboarding',
   Admin = '/admin',
+  Appearance = '/admin/appearance',
 }

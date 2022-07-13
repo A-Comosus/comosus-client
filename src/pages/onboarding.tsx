@@ -10,13 +10,21 @@ import { VStack } from '@chakra-ui/react';
 import { PageContainer } from '@src/common/components';
 import { OnboardedMessage, OnboardingForm } from '@src/modules/onboarding';
 
-export default function Onboarding() {
+type OnboardingStaticProps = {
+  query: { id: string };
+};
+export async function getServerSideProps(context: OnboardingStaticProps) {
+  return { props: { id: context.query.id } };
+}
+
+type OnboardingProps = {
+  id: string;
+};
+export default function Onboarding({ id }: OnboardingProps) {
   const { t } = useTranslation('onboarding');
   const head = { title: t('title') };
 
   const router = useRouter();
-  const { id } = router.query;
-
   const { gqlClient } = useApiClient();
   const [email, setEmail] = useState('');
   const [isOnboarded, toggleIsOnboarded] = useToggle();
@@ -31,7 +39,7 @@ export default function Onboarding() {
     });
 
   useEffect(() => {
-    if (id !== 'string') router.push(GlobalRoute.Error);
+    if (typeof id !== 'string') router.push(GlobalRoute.Error);
   }, [id]);
 
   const onSubmit = (values: OnboardingFormValues) => {
