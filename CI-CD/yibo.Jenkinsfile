@@ -73,13 +73,6 @@ pipeline {
                 sh 'yarn build:with-codegen'
             }
         }
-
-        stage ('Integrated Test') {
-            steps {
-                echo 'Integrated Test....'
-                sh 'yarn e2e:start-server:record'
-            }
-        }
                
         stage('Build and Upload Image to ECR') {
             
@@ -105,6 +98,14 @@ pipeline {
             withCredentials([string(credentialsId: 'AWS_REPOSITORY_URL_SECRET', variable: 'AWS_ECR_URL')]) {
                 deleteDir()
             }
+        }
+        success {  
+            echo 'Pipeline Successed :)'  
+        }
+        failure {  
+            mail to: 'Norris.wu.au@outlook.com',
+                 subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+                 body: "Project: ${env.JOB_NAME}, Build Number: ${env.BUILD_NUMBER}, Something is wrong with ${env.BUILD_URL}"
         }
     }
 }
