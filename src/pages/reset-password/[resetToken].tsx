@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/router';
 import { useApiClient } from '@common/contexts';
 
-import { HStack, VStack } from '@chakra-ui/react';
-import { PageContainer, Logo } from '@src/common/components';
+import { VStack } from '@chakra-ui/react';
+import { PageContainer } from '@src/common/components';
 import { ResetPasswordForm } from '@src/modules/auth';
 import { useResetPasswordMutation } from '@generated/graphql.queries';
 import { AuthRoute } from '@src/constants/PageRoutes';
@@ -48,9 +48,6 @@ export default function ForgetPassword() {
   return (
     <PageContainer head={head}>
       <VStack flex={1} padding="1rem">
-        <HStack width="100%">
-          <Logo height="5rem" />
-        </HStack>
         <ResetPasswordForm
           onSubmit={onSubmit}
           isLoading={isResetingEmail}

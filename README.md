@@ -10,6 +10,7 @@ TL;DR You need to set up following environment variables.
 
 | name                             | description                           |
 | -------------------------------- | ------------------------------------- |
+| NEXT_PUBLIC_CLIENT_BASE_URL      | Base URL of client                    |
 | NEXT_PUBLIC_GRAPHQL_ENDPOINT     | URL to backend server                 |
 | \*NEXT_PUBLIC_RECAPTCHA_SITE_KEY | Access key to enable Google ReCaptcha |
 

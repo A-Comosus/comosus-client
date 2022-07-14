@@ -11,6 +11,10 @@
     },
     "preview": {
       "share": "Share your A-Comosus"
+    },
+    "share": {
+      "heading": "Share Your 🍍",
+      "qr-code": "via QR Code"
     }
   },
   "appearance": {
