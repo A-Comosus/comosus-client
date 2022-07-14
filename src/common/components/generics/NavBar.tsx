@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { HStack, Button } from '@chakra-ui/react';
 import {
@@ -13,42 +12,57 @@ export type NavBarProps = {
   disableNavOptions?: boolean;
 };
 export default function NavBar({ disableNavOptions }: NavBarProps) {
-  const { t } = useTranslation();
-
   const navItems = [
     {
       href: '/',
-      content: t('nav.home'),
-    },
-    {
-      href: '/login',
-      content: t('auth:login.title'),
-    },
-    {
-      href: '/sign-up',
-      content: t('auth:sign-up.title'),
+      content: 'Comunity',
     },
     {
       href: '/',
-      content: t('button.disabled'),
-      isDisabled: true,
+      content: 'Our Team',
+    },
+    {
+      href: '/',
+      content: 'Our Github',
+    },
+  ];
+
+  const authItems = [
+    {
+      href: '/login',
+      content: 'Login',
+      color: '#fff',
+      bgColor: '#757E95',
+    },
+    {
+      href: '/sign-up',
+      content: 'Sign up',
+      color: '#55698C',
+      bgColor: 'rgba(173, 178, 198, 0.2)',
     },
   ];
 
   return (
-    <HStack justify="space-between" p="1rem">
+    <HStack justify="space-between" p="1rem" width="80%" borderRadius="999">
       <HStack gap={4}>
         <Logo height="5rem" />
 
         {!disableNavOptions &&
-          navItems.map(({ href, content, isDisabled }, index) => (
-            <Link key={index} href={href}>
-              <Button isDisabled={isDisabled}>{content}</Button>
+          navItems.map(({ href, content }, index) => (
+            <Link type="nav" key={index} href={href}>
+              {content}
             </Link>
           ))}
       </HStack>
 
-      <HStack gap="2rem">
+      <HStack gap="1rem">
+        {authItems.map(({ href, content, color, bgColor }, index) => (
+          <Link type="nav" key={index} href={href}>
+            <Button color={color} backgroundColor={bgColor}>
+              {content}
+            </Button>
+          </Link>
+        ))}
         <SelectLanguage />
         <ToggleThemeButton />
       </HStack>
