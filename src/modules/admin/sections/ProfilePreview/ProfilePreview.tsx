@@ -61,7 +61,7 @@ export default function ProfilePreview() {
             <VStack>
               <Avatar size="lg" src="https://picsum.photos/200" />
               <Text color="white">
-                {userData?.displayName ?? userData?.username}
+                {userData?.displayName || userData?.username}
               </Text>
               {userData?.bio && <Text color="white">{userData?.bio}</Text>}
             </VStack>
