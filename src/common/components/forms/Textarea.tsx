@@ -28,6 +28,7 @@ export default function CustomTextarea({
         <Textarea
           border="1px solid #ADB2C6"
           borderRadius="5"
+          value={value}
           maxLength={maxLength}
           {...props}
         />
