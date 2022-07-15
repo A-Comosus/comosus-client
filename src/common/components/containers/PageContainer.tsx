@@ -31,7 +31,12 @@ export default function PageContainer({
       </Head>
 
       <ColorModeScript />
-      <HStack flex={1} justify="center" marginTop="1rem">
+      <HStack
+        flex={1}
+        justify="center"
+        marginTop="1rem"
+        alignItems="flex-start"
+      >
         <NavBar disableNavOptions={disableNavOptions} />
       </HStack>
       {children}
