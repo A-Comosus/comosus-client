@@ -1,16 +1,11 @@
 import type { NextPage } from 'next';
+import { VStack, HStack } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-
-import { VStack } from '@chakra-ui/react';
-import { PageContainer } from '@src/common/components';
-import {
-  Title,
-  Description,
-  NextInformation,
-} from '@modules/NextTemplate/sections';
+import { Hero, HomepageContainer, NavBar } from '@src/common/components';
 
 const Home: NextPage = () => {
-  const { t } = useTranslation('next-template');
+  const { t } = useTranslation('homepage');
+
   const head = {
     title: 'Create Next App',
     metas: [
@@ -27,38 +22,76 @@ const Home: NextPage = () => {
     ],
   };
 
-  const cards: Card[] = [
+  const heros = [
     {
-      href: 'https://nextjs.org/docs',
-      title: t('cards.0.title'),
-      description: t('cards.0.description'),
+      title: t('banner.title'),
+      subtitle: t('banner.subtitle'),
+      cta: t('banner.cta'),
+      link: 'test',
+      src: 'assets/heros/shapes.svg',
+      alt: t('banner.alt'),
+      flexDirection: 'row',
     },
     {
-      href: 'https://nextjs.org/learn',
-      title: t('cards.1.title'),
-      description: t('cards.1.description'),
+      title: t('custome-profile.title'),
+      subtitle: t('custome-profile.subtitle'),
+      cta: t('custome-profile.cta'),
+      link: 'test',
+      src: 'assets/heros/phone.svg',
+      alt: t('custome-profile.alt'),
+      flexDirection: 'row-reverse',
     },
     {
-      href: 'https://github.com/vercel/next.js/tree/canary/examples',
-      title: t('cards.2.title'),
-      description: t('cards.2.description'),
+      title: t('game-status.title'),
+      subtitle: t('game-status.subtitle'),
+      cta: t('game-status.cta'),
+      link: 'test',
+      src: 'assets/heros/squares.svg',
+      alt: t('game-status.alt'),
+      flexDirection: 'row',
     },
     {
-      href: 'https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app',
-      title: t('cards.3.title'),
-      description: t('cards.3.description'),
+      title: t('share-anywhere.title'),
+      subtitle: t('share-anywhere.subtitle'),
+      cta: t('share-anywhere.cta'),
+      link: 'test',
+      src: 'assets/heros/shapes2.svg',
+      alt: t('share-anywhere.alt'),
+      flexDirection: 'row-reverse',
     },
   ];
 
   return (
-    <PageContainer head={head}>
-      <VStack flex={1} justify="center" gap="2rem">
-        <Title />
-
-        <Description />
-        <NextInformation cards={cards} />
+    <HomepageContainer head={head}>
+      <VStack flex={1} justify="center">
+        <HStack
+          flex={1}
+          width="100%"
+          position="fixed"
+          top="0"
+          left="0"
+          right="0"
+          padding="1rem 5rem"
+          zIndex="999"
+        >
+          <NavBar />
+        </HStack>
+        {heros.map((hero, index) => {
+          return (
+            <Hero
+              key={index}
+              flexDirection={hero.flexDirection}
+              title={hero.title}
+              subtitle={hero.subtitle}
+              cta={hero.cta}
+              link={hero.link}
+              src={hero.src}
+              alt={hero.alt}
+            />
+          );
+        })}
       </VStack>
-    </PageContainer>
+    </HomepageContainer>
   );
 };
 
