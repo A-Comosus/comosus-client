@@ -8,7 +8,15 @@ import {
   Code,
 } from '@chakra-ui/react';
 
-export type TextTypes = 'h1' | 'h2' | 'h3' | 'p' | 'label' | 'code' | 'span';
+export type TextTypes =
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'p'
+  | 'label'
+  | 'code'
+  | 'span';
 
 type TextProps = {
   children: React.ReactNode;
@@ -30,6 +38,11 @@ export default function Text({ children, type = 'p', ...props }: TextProps) {
     ),
     h3: (
       <CKHeading as="h3" {...props}>
+        {children}
+      </CKHeading>
+    ),
+    h4: (
+      <CKHeading as="h4" fontSize={16} {...props}>
         {children}
       </CKHeading>
     ),
