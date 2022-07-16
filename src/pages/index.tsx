@@ -8,6 +8,12 @@ import {
   Description,
   NextInformation,
 } from '@modules/NextTemplate/sections';
+import Web3 from 'web3';
+import { Web3ReactProvider } from '@web3-react/core';
+
+function getLibrary(provider) {
+  return new Web3(provider);
+}
 
 const Home: NextPage = () => {
   const { t } = useTranslation('next-template');
@@ -52,12 +58,13 @@ const Home: NextPage = () => {
 
   return (
     <PageContainer head={head}>
-      <VStack flex={1} justify="center" gap="2rem">
-        <Title />
-
-        <Description />
-        <NextInformation cards={cards} />
-      </VStack>
+      <Web3ReactProvider getLibrary={getLibrary}>
+        <VStack flex={1} justify="center" gap="2rem">
+          <Title />
+          <Description />
+          <NextInformation cards={cards} />
+        </VStack>
+      </Web3ReactProvider>
     </PageContainer>
   );
 };
