@@ -2,10 +2,10 @@ import React from 'react';
 
 import { Text, VStack } from '@chakra-ui/react';
 
-type ProfilePreviewLinkProps = {
-  link: Link;
+type ProfileItemProps = {
+  link: PublicLink;
 };
-export default function ProfilePreviewLink({ link }: ProfilePreviewLinkProps) {
+export default function ProfileItem({ link }: ProfileItemProps) {
   const { url, title } = link;
 
   return (
