@@ -14,6 +14,7 @@ import EditableProfileTextarea from './EditableProfile.Textarea';
 
 type EditableProfileProps = {
   profile: {
+    id: string;
     username: string;
     displayName?: string | null;
     bio?: string | null;
@@ -22,7 +23,7 @@ type EditableProfileProps = {
 
 export default function EditableProfile({ profile }: EditableProfileProps) {
   const { t } = useTranslation('admin');
-  const { username, displayName, bio } = profile;
+  const { id, username, displayName, bio } = profile;
   useEffect(() => {
     reset({
       displayName: displayName ?? '',
@@ -60,6 +61,7 @@ export default function EditableProfile({ profile }: EditableProfileProps) {
   const onSubmit = (data: EditableProfileFormType) => {
     updateProfile({
       payload: {
+        id,
         username,
         ...data,
       },

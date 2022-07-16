@@ -27,6 +27,7 @@ export default function ProfileEditor() {
     },
   );
   const profile = {
+    id: userData?.id,
     username: username,
     displayName: userData?.displayName,
     bio: userData?.bio,
