@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import * as _ from 'lodash';
 import {
   useFindLinksOfUserByUserIdQuery,
@@ -39,8 +39,6 @@ export default function LinkEditor() {
     useReorderLinksOfUserMutation(gqlClient, {
       onSettled: (data) => {
         if (data) {
-          // eslint-disable-next-line no-console
-          console.log('Fetched', data.reorderLinksOfUser);
           queryClient.invalidateQueries(LinkQueries.FindByUsername);
         }
       },
@@ -51,23 +49,11 @@ export default function LinkEditor() {
     if (!destination) return;
 
     const orderedLinks = reorder(links, source.index, destination.index);
-    // eslint-disable-next-line no-console
-    console.log(
-      'Ordered',
-      orderedLinks.map((link) => link.id),
-    );
-
     setLinks(orderedLinks);
     reorderLinks({
       payload: { userId, order: orderedLinks.map((link) => link.id) },
     });
   };
-
-  useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log(links);
-  }, [links]);
-
   return (
     <VStack flex={2} borderRight="1px solid #E7E8EE">
       <VStack minW="600px" align="stretch">
