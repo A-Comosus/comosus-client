@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: a-comosus-fend-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: a-comosus-fend
+  template:
+    metadata:
+      labels:
+        app: a-comosus-fend
+    spec:
+      containers:
+      - name: a-comosus-fend
+        image: 997730026610.dkr.ecr.ap-southeast-2.amazonaws.com/a-comosus-fend-kelvin:46
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+# service type loadbalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: a-comosus-fend-svc
+spec:
+  selector:
+    app: a-comosus-fend
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+  type: LoadBalancer

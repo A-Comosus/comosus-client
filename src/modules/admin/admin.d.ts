@@ -5,7 +5,15 @@ type EditableLinkFormType = {
 };
 
 // Best to have this managed by backend
-type Link = {
+type EditableLink = {
+  id: string;
+  isVisible: boolean;
+  title?: string | null;
+  url?: string | null;
+  logoUrl?: string | null;
+};
+
+type PublicLink = {
   id: string;
   title: string;
   url: string;
