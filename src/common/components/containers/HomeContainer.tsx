@@ -16,8 +16,6 @@ export default function HomeContainer({ children, head }: HomeContainerProps) {
       direction="column"
       minH="100vh"
       minW="100vw"
-      scrollSnapType="y mandatory"
-      overflowY="scroll"
       height="100vh"
       position="relative"
     >
