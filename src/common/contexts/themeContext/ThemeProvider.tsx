@@ -17,7 +17,6 @@ export const ThemeContextProvider = ({ children }: ThemeProviderProps) => {
       initialColorMode: 'system',
     },
   };
-
   return (
     <ChakraProvider resetCSS={true} theme={extendTheme(chakraTheme)}>
       {children}
