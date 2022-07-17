@@ -1,6 +1,7 @@
 // Container Components
 export { default as PageContainer } from './containers/PageContainer';
 export { default as HomeContainer } from './containers/HomeContainer';
+export { default as SectionHContainer } from './containers/SectionHContainer';
 
 // Generic Components
 export { default as Logo } from './generics/Logo';
@@ -20,10 +21,6 @@ export { default as FormErrorMessage } from './forms/FormErrorMessage';
 export { default as FormSuccessMessage } from './forms/FormSuccessMessage';
 export { default as FormSuccessAction } from './forms/FormSuccessAction';
 export { default as Textarea } from './forms/Textarea';
-
-// Section Components
-export { default as SectionContainer } from './sections/SectionContainer';
-export { default as SectionHWrapper } from './sections/SectionHWrapper';
 
 // Text Components
 export { default as Text } from './text/Text';
