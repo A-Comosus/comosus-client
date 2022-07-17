@@ -23,7 +23,14 @@ export default function SelectLanguage() {
   };
 
   return (
-    <Select flex={1} value={language} onChange={handleChangeLanguage}>
+    <Select
+      iconSize="0"
+      isFullWidth={false}
+      focusBorderColor="#fff"
+      value={language}
+      onChange={handleChangeLanguage}
+      border="0"
+    >
       <option value="cn">{t('languages.cn')}</option>
       <option value="en">{t('languages.en')}</option>
     </Select>
