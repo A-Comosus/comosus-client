@@ -1,29 +1,25 @@
 import React from 'react';
-
 import Head from 'next/head';
-import { ColorModeScript, Flex } from '@chakra-ui/react';
-import { NavBarProps } from '@common/components';
+import { ColorModeScript, Flex, HStack } from '@chakra-ui/react';
+import { NavBar } from '@src/common/components';
 
-type PageContainerProps = {
+type HomeContainerProps = {
   children: React.ReactNode;
   head: Head;
-} & NavBarProps;
+};
 
-export default function HomepageContainer({
-  children,
-  head,
-}: PageContainerProps) {
+export default function HomeContainer({ children, head }: HomeContainerProps) {
   const { title, metas, links } = head;
 
   return (
     <Flex
       direction="column"
-      justify="space-between"
       minH="100vh"
       minW="100vw"
       scrollSnapType="y mandatory"
       overflowY="scroll"
       height="100vh"
+      position="relative"
     >
       <Head>
         <title>{title}</title>
@@ -38,6 +34,19 @@ export default function HomepageContainer({
       </Head>
 
       <ColorModeScript />
+      <HStack
+        width="100vw"
+        justifyContent="center"
+        position="fixed"
+        top="0"
+        left="0"
+        right="0"
+        marginTop="1rem"
+      >
+        <HStack width="90%" maxWidth="1400px">
+          <NavBar />
+        </HStack>
+      </HStack>
       {children}
     </Flex>
   );
