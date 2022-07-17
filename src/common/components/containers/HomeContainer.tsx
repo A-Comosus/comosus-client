@@ -42,10 +42,9 @@ export default function HomeContainer({ children, head }: HomeContainerProps) {
         left="0"
         right="0"
         marginTop="1rem"
+        zIndex="999"
       >
-        <HStack width="90%" maxWidth="1400px">
-          <NavBar />
-        </HStack>
+        <NavBar />
       </HStack>
       {children}
     </Flex>
