@@ -35,10 +35,10 @@ export default function NavBar({ disableNavOptions }: NavBarProps) {
     <HStack
       justify="space-between"
       alignItems="center"
-      width="100%"
       borderRadius="999"
       backgroundColor="#fff"
       padding="0.25rem 2rem"
+      width="90%"
     >
       <HStack gap={4}>
         <Link href="/">
