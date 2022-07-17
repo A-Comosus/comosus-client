@@ -1,6 +1,6 @@
 // Container Components
 export { default as PageContainer } from './containers/PageContainer';
-export { default as HomepageContainer } from './containers/HomepageContainer';
+export { default as HomeContainer } from './containers/HomeContainer';
 
 // Generic Components
 export { default as Logo } from './generics/Logo';
@@ -11,7 +11,6 @@ export { default as Error404 } from './generics/Error404';
 export { default as SelectLanguage } from './generics/SelectLanguage';
 export { default as ToggleThemeButton } from './generics/ToggleThemeButton';
 export { default as Sidebar } from './generics/Sidebar/Sidebar';
-export { default as Hero } from './generics/Hero';
 export { default as ProfileItem } from './generics/ProfileItem/ProfileItem';
 
 // Form Components
@@ -21,6 +20,10 @@ export { default as FormErrorMessage } from './forms/FormErrorMessage';
 export { default as FormSuccessMessage } from './forms/FormSuccessMessage';
 export { default as FormSuccessAction } from './forms/FormSuccessAction';
 export { default as Textarea } from './forms/Textarea';
+
+// Section Components
+export { default as SectionContainer } from './sections/SectionContainer';
+export { default as SectionHWrapper } from './sections/SectionHWrapper';
 
 // Text Components
 export { default as Text } from './text/Text';
