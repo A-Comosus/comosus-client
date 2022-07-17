@@ -27,7 +27,6 @@ export default function Hero({
       gap="5rem"
       justifyContent="space-between"
       background="linear-gradient(180deg, #465E79 0%, #4B3F4F 97.92%)"
-      className="heroContainer"
       marginTop="0rem !important"
       padding="0 5rem"
       height="100vh"
