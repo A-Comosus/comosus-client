@@ -7,16 +7,16 @@ type ThemeProviderProps = {
   children: React.ReactNode;
 };
 
-export const ThemeContextProvider = ({ children }: ThemeProviderProps) => {
-  const chakraTheme = {
-    fonts: {
-      body: 'Montserrat, sans-serif',
-    },
-    config: {
-      initialColorMode: 'system',
-    },
-  };
+export const chakraTheme = {
+  fonts: {
+    body: 'Montserrat, sans-serif',
+  },
+  config: {
+    initialColorMode: 'system',
+  },
+};
 
+export const ThemeContextProvider = ({ children }: ThemeProviderProps) => {
   return (
     <ChakraProvider resetCSS={true} theme={extendTheme(chakraTheme)}>
       {children}
