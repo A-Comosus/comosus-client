@@ -21,6 +21,7 @@ export async function getServerSideProps(context: ServerSideContextType) {
           username
           links {
             id
+            type
             title
             url
             logoUrl
@@ -47,6 +48,7 @@ type PublicProfileProps = {
     username: string;
     links: {
       id: string;
+      type: string;
       title: string;
       url: string;
     }[];
@@ -56,7 +58,7 @@ export default function PublicProfile({ userData }: PublicProfileProps) {
   return (
     <Center
       p={{
-        base: '2rem',
+        base: '1rem 0.5rem',
       }}
       minH="100vh"
       bgGradient="linear-gradient(180deg, #465E79 0%, #4B3F4F 97.92%)"

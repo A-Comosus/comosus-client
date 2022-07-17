@@ -15,6 +15,7 @@ type EditableLink = {
 
 type PublicLink = {
   id: string;
+  type: string;
   title: string;
   url: string;
   logoUrl?: string | null;
