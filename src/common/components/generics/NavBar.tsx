@@ -8,40 +8,26 @@ import {
   SelectLanguage,
   ToggleThemeButton,
 } from '@common/components';
-
+import { GlobalRoute } from '@src/constants/PageRoutes';
+import { AuthRoute } from '@src/constants/PageRoutes';
 export type NavBarProps = {
   disableNavOptions?: boolean;
 };
 export default function NavBar({ disableNavOptions }: NavBarProps) {
-  const { t } = useTranslation('navbar');
+  const { t } = useTranslation('common');
 
   const navItems = [
     {
-      href: '/',
-      content: t('menu.community'),
+      href: GlobalRoute.Root,
+      content: t('nav.community'),
     },
     {
-      href: '/',
-      content: t('menu.team'),
+      href: GlobalRoute.Root,
+      content: t('nav.team'),
     },
     {
-      href: '/',
-      content: t('menu.github'),
-    },
-  ];
-
-  const authItems = [
-    {
-      href: '/login',
-      content: t('auth.login'),
-      color: '#fff',
-      bgColor: '#757E95',
-    },
-    {
-      href: '/sign-up',
-      content: t('auth.sign-up'),
-      color: '#55698C',
-      bgColor: 'rgba(173, 178, 198, 0.2)',
+      href: GlobalRoute.Root,
+      content: t('nav.github'),
     },
   ];
 
@@ -68,15 +54,16 @@ export default function NavBar({ disableNavOptions }: NavBarProps) {
       </HStack>
 
       <HStack gap="0.5rem">
-        {authItems.map(({ href, content, color, bgColor }, index) => (
-          <Link type="nav" key={index} href={href}>
-            <Button color={color} backgroundColor={bgColor}>
-              {content}
-            </Button>
-          </Link>
-        ))}
-        <SelectLanguage />
+        <Link type="nav" href={AuthRoute.Login}>
+          <Button>{t('nav.login')}</Button>
+        </Link>
+        <Link type="nav" href={AuthRoute.SignUp}>
+          <Button color="#fff" backgroundColor="#FB446C">
+            {t('nav.sign-up')}
+          </Button>
+        </Link>
         <ToggleThemeButton />
+        <SelectLanguage />
       </HStack>
     </HStack>
   );
