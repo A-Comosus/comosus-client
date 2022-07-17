@@ -1,23 +1,24 @@
 import React from 'react';
-
 import Head from 'next/head';
-import { HStack, ColorModeScript, Flex } from '@chakra-ui/react';
-import { Footer, NavBar, NavBarProps } from '@common/components';
+import { ColorModeScript, Flex, HStack } from '@chakra-ui/react';
+import { NavBar } from '@src/common/components';
 
-type PageContainerProps = {
+type HomeContainerProps = {
   children: React.ReactNode;
   head: Head;
-} & NavBarProps;
+};
 
-export default function PageContainer({
-  children,
-  head,
-  disableNavOptions,
-}: PageContainerProps) {
+export default function HomeContainer({ children, head }: HomeContainerProps) {
   const { title, metas, links } = head;
 
   return (
-    <Flex direction="column" justify="space-between" minH="100vh">
+    <Flex
+      direction="column"
+      minH="100vh"
+      minW="100vw"
+      height="100vh"
+      position="relative"
+    >
       <Head>
         <title>{title}</title>
         {metas &&
@@ -32,15 +33,18 @@ export default function PageContainer({
 
       <ColorModeScript />
       <HStack
-        flex={1}
-        justify="center"
+        width="100vw"
+        justifyContent="center"
+        position="fixed"
+        top="0"
+        left="0"
+        right="0"
         marginTop="1rem"
-        alignItems="flex-start"
+        zIndex="999"
       >
-        <NavBar disableNavOptions={disableNavOptions} />
+        <NavBar />
       </HStack>
       {children}
-      <Footer />
     </Flex>
   );
 }

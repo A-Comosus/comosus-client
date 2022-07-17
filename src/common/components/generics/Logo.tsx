@@ -20,7 +20,7 @@ export default function Logo({
   const variants = {
     block: (
       <Image
-        src="/assets/a-comosus-logo.svg"
+        src="/assets/a-comosus-logo.png"
         alt={siteTitle}
         alignSelf="center"
         height={height}
