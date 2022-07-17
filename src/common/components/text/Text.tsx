@@ -27,24 +27,24 @@ type TextProps = {
 export default function Text({ children, type = 'p', ...props }: TextProps) {
   const types = {
     h1: (
-      <CKHeading as="h1" fontSize={32} {...props}>
+      <CKHeading as="h1" fontSize={80} {...props}>
         {children}
       </CKHeading>
     ),
     h2: (
-      <CKHeading as="h2" fontSize={16} {...props}>
+      <CKHeading as="h2" fontSize={55} {...props}>
         {children}
       </CKHeading>
     ),
     h3: (
-      <CKHeading as="h3" {...props}>
+      <CKHeading as="h3" fontSize={36} {...props}>
         {children}
       </CKHeading>
     ),
     h4: (
-      <CKHeading as="h4" fontSize={16} {...props}>
+      <CKText as="h4" fontSize={18} {...props}>
         {children}
-      </CKHeading>
+      </CKText>
     ),
     p: (
       <CKText as="p" {...props}>
