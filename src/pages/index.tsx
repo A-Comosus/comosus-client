@@ -7,6 +7,7 @@ import {
   Title,
   Description,
   NextInformation,
+  ContactForm,
 } from '@modules/NextTemplate/sections';
 
 const Home: NextPage = () => {
@@ -54,9 +55,9 @@ const Home: NextPage = () => {
     <PageContainer head={head}>
       <VStack flex={1} justify="center" gap="2rem">
         <Title />
-
         <Description />
         <NextInformation cards={cards} />
+        <ContactForm />
       </VStack>
     </PageContainer>
   );
