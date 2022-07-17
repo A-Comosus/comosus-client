@@ -1,18 +1,18 @@
 import type { NextPage } from 'next';
-import { VStack } from '@chakra-ui/react';
+import { VStack, Image, Button } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import {
-  SectionContainer,
-  SectionHWrapper,
+  SectionHContainer,
   HomeContainer,
+  Text,
+  Link,
 } from '@src/common/components';
-import { Hero } from '@src/modules/Home/components';
 import { GlobalRoute } from '@src/constants/PageRoutes';
 
 const Home: NextPage = () => {
   const { t } = useTranslation('home');
   const head = {
-    title: 'Create Next App',
+    title: 'A-COMOSUS',
     metas: [
       {
         name: 'description',
@@ -67,22 +67,27 @@ const Home: NextPage = () => {
       <VStack flex={1} justify="center">
         {heros.map((hero, index) => {
           return (
-            <SectionContainer key={index}>
-              <SectionHWrapper
-                flexDirection={index % 2 === 0 ? 'row' : 'row-reverse'}
-              >
-                <Hero
-                  title={hero.title}
-                  subtitle={hero.subtitle}
-                  cta={hero.cta}
-                  link={hero.link}
-                  src={hero.src}
-                  alt={hero.alt}
-                  alignItems={index % 2 === 0 ? 'flex-end' : 'flex-start'}
-                  type={index === 0 ? 'h1' : 'h2'}
-                />
-              </SectionHWrapper>
-            </SectionContainer>
+            <SectionHContainer
+              key={index}
+              flexDirection={index % 2 === 0 ? 'row' : 'row-reverse'}
+            >
+              <VStack alignItems="flex-start" gap="1rem" width="65%">
+                <Text type={index === 0 ? 'h1' : 'h2'} color="#F0F435">
+                  {hero.title}
+                </Text>
+                <Text type="h4" color="#F0F435">
+                  {hero.subtitle}
+                </Text>
+                <Link href={hero.link} color="#fff">
+                  <Button background="linear-gradient(180deg, #FF3F66 0%, #E75784 100%)">
+                    {hero.cta}
+                  </Button>
+                </Link>
+              </VStack>
+              <VStack width="35%">
+                <Image src={hero.src} alt={hero.alt} />
+              </VStack>
+            </SectionHContainer>
           );
         })}
       </VStack>
