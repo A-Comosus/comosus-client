@@ -18,6 +18,7 @@ export async function getServerSideProps(context: ServerSideContextType) {
         findUserByUsername(username: $payload) {
           id
           displayName
+          bio
           username
           links {
             id
@@ -44,6 +45,7 @@ type PublicProfileProps = {
   userData: {
     id: string;
     displayName: string;
+    bio: string;
     username: string;
     links: {
       id: string;
@@ -68,6 +70,7 @@ export default function PublicProfile({ userData }: PublicProfileProps) {
           <Text color="white">
             {userData?.displayName ?? userData?.username}
           </Text>
+          {userData?.bio && <Text color="white">{userData?.bio}</Text>}
         </VStack>
 
         <VStack alignSelf="stretch" align="stretch" gap={4}>
