@@ -1,11 +1,16 @@
 import type { NextPage } from 'next';
-import { VStack, HStack } from '@chakra-ui/react';
+import { VStack } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import { Hero, HomepageContainer, NavBar } from '@src/common/components';
+import {
+  SectionContainer,
+  SectionHWrapper,
+  HomeContainer,
+} from '@src/common/components';
+import { Hero } from '@src/modules/Home/components';
+import { GlobalRoute } from '@src/constants/PageRoutes';
 
 const Home: NextPage = () => {
-  const { t } = useTranslation('homepage');
-
+  const { t } = useTranslation('home');
   const head = {
     title: 'Create Next App',
     metas: [
@@ -27,71 +32,61 @@ const Home: NextPage = () => {
       title: t('banner.title'),
       subtitle: t('banner.subtitle'),
       cta: t('banner.cta'),
-      link: '/',
+      link: GlobalRoute.Root,
       src: 'assets/heros/shapes.svg',
       alt: t('banner.alt'),
-      flexDirection: 'row',
     },
     {
       title: t('custome-profile.title'),
       subtitle: t('custome-profile.subtitle'),
       cta: t('custome-profile.cta'),
-      link: '/',
+      link: GlobalRoute.Root,
       src: 'assets/heros/phone.svg',
       alt: t('custome-profile.alt'),
-      flexDirection: 'row-reverse',
     },
     {
       title: t('game-status.title'),
       subtitle: t('game-status.subtitle'),
       cta: t('game-status.cta'),
-      link: '/',
+      link: GlobalRoute.Root,
       src: 'assets/heros/squares.svg',
       alt: t('game-status.alt'),
-      flexDirection: 'row',
     },
     {
       title: t('share-anywhere.title'),
       subtitle: t('share-anywhere.subtitle'),
       cta: t('share-anywhere.cta'),
-      link: '/',
+      link: GlobalRoute.Root,
       src: 'assets/heros/shapes2.svg',
       alt: t('share-anywhere.alt'),
-      flexDirection: 'row-reverse',
     },
   ];
 
   return (
-    <HomepageContainer head={head}>
+    <HomeContainer head={head}>
       <VStack flex={1} justify="center">
-        <HStack
-          flex={1}
-          width="100%"
-          position="fixed"
-          top="0"
-          left="0"
-          right="0"
-          padding="1rem 5rem"
-          zIndex="999"
-        >
-          <NavBar />
-        </HStack>
         {heros.map((hero, index) => {
           return (
-            <Hero
-              key={index}
-              flexDirection={hero.flexDirection}
-              title={hero.title}
-              subtitle={hero.subtitle}
-              cta={hero.cta}
-              link={hero.link}
-              src={hero.src}
-              alt={hero.alt}
-            />
+            <SectionContainer key={index}>
+              <SectionHWrapper
+                flexDirection={index % 2 === 0 ? 'row' : 'row-reverse'}
+              >
+                <Hero
+                  title={hero.title}
+                  subtitle={hero.subtitle}
+                  cta={hero.cta}
+                  link={hero.link}
+                  src={hero.src}
+                  alt={hero.alt}
+                  alignItems={index % 2 === 0 ? 'flex-end' : 'flex-start'}
+                  type={index === 0 ? 'h1' : 'h2'}
+                />
+              </SectionHWrapper>
+            </SectionContainer>
           );
         })}
       </VStack>
-    </HomepageContainer>
+    </HomeContainer>
   );
 };
 
