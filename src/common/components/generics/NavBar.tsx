@@ -62,8 +62,8 @@ export default function NavBar({ disableNavOptions }: NavBarProps) {
             {t('nav.sign-up')}
           </Button>
         </Link>
-        <ToggleThemeButton />
         <SelectLanguage />
+        <ToggleThemeButton />
       </HStack>
     </HStack>
   );

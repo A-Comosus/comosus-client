@@ -24,12 +24,10 @@ export default function SelectLanguage() {
 
   return (
     <Select
-      iconSize="0"
       isFullWidth={false}
       focusBorderColor="#fff"
       value={language}
       onChange={handleChangeLanguage}
-      border="0"
     >
       <option value="cn">{t('languages.cn')}</option>
       <option value="en">{t('languages.en')}</option>
