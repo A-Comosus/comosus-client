@@ -34,6 +34,22 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## 🅱️ How to start storybook?
+
+Alright, we have support for storybook now!
+
+To load the storybook when you are in developmetn mode, you can run the following command to spin up a storybook server at port 6006
+
+```sh
+yarn storybook
+```
+
+To build a static storybook website, you can run the following command
+
+```sh
+yarn build-storybook
+```
+
 ## 🧪 How to test this app?
 
 Simple! Just run this and you are good to go!
