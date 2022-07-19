@@ -111,7 +111,7 @@ export default function PublicProfile({ userData }: PublicProfileProps) {
           <ToggleThemeButton />
         </HStack>
 
-        <VStack flex={1} justify="space-between" maxW="670px">
+        <VStack flex={1} justify="space-between" gap="60px" maxW="670px">
           <VStack gap={5}>
             <VStack>
               <Avatar size="lg" src="https://picsum.photos/200" />
