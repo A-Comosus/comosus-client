@@ -43,8 +43,9 @@ mutation DeleteLinkById($payload: DeleteLinkInput!) {
 query FindUserByUsername($payload: FindUserByUsernameInput!) {
   findUserByUsername(username: $payload) {
     id
-    displayName
     username
+    displayName
+    bio
     links {
       id
       type
@@ -52,5 +53,13 @@ query FindUserByUsername($payload: FindUserByUsernameInput!) {
       url
       logoUrl
     }
+  }
+}
+
+mutation UpdateProfile($payload: UpdateProfileInput!) {
+  updateProfile(data: $payload) {
+    id
+    displayName
+    bio
   }
 }

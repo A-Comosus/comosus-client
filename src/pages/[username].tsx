@@ -1,14 +1,8 @@
 import React from 'react';
 import { request } from 'graphql-request';
 
-import { Avatar, Center, HStack, VStack } from '@chakra-ui/react';
-import {
-  Text,
-  ProfileItem,
-  ToggleThemeButton,
-  SelectLanguage,
-  Logo,
-} from '@src/common/components';
+import { Avatar, Center, VStack } from '@chakra-ui/react';
+import { Text, ProfileItem, Logo } from '@src/common/components';
 import Head from 'next/head';
 import { useTranslation } from 'react-i18next';
 
