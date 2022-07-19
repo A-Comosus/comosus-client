@@ -1,8 +1,9 @@
 import React from 'react';
 import { useToggle } from '@src/utils/hooks';
 
-import { AspectRatio, Box, CloseButton, Text, VStack } from '@chakra-ui/react';
+import { AspectRatio, CloseButton, Text, VStack } from '@chakra-ui/react';
 import ReactPlayer from 'react-player';
+import Dropdown from './ProfileItem.Dropdown';
 
 type VideoProps = {
   title: string;
@@ -15,7 +16,7 @@ export default function Video({ title, url }: VideoProps) {
     <VStack flex={1} align="stretch">
       {isVideoOpen ? (
         <>
-          <AspectRatio border="2px solid white" ratio={1.77}>
+          <AspectRatio border="2px solid white" ratio={1.77} bg="black">
             <ReactPlayer url={url} controls={true} width="100%" height="100%" />
           </AspectRatio>
           <CloseButton
@@ -25,17 +26,11 @@ export default function Video({ title, url }: VideoProps) {
           />
         </>
       ) : (
-        <Box
-          onClick={() => toggleVideoOpen()}
-          cursor="pointer"
-          borderRadius="10px"
-          p="10px"
-          bg="white"
-        >
+        <Dropdown toggle={toggleVideoOpen} isDropped={isVideoOpen}>
           <Text textAlign="center" fontSize={15} fontWeight={700}>
             {title}
           </Text>
-        </Box>
+        </Dropdown>
       )}
     </VStack>
   );
