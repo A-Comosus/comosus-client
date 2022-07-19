@@ -17,9 +17,11 @@ COPY . .
 # Learn more here: https://nextjs.org/telemetry
 
 
-ARG N_G_ENDPOINT 
+ARG N_G_ENDPOINT
+ARG N_R_SITE_KEY
 
 ENV NEXT_PUBLIC_GRAPHQL_ENDPOINT ${N_G_ENDPOINT}
+ENV NEXT_PUBLIC_RECAPTCHA_SITE_KEY ${N_R_SITE_KEY}
 
 RUN yarn codegen && yarn build
 
