@@ -1,6 +1,7 @@
 {
   "site": {
-    "title": "A-Comosus 🍍"
+    "title": "A-Comosus 🍍",
+    "description": "Share more with A-Comosus"
   },
   "button": {
     "disabled": "Disabled"
