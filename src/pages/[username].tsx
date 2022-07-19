@@ -106,11 +106,6 @@ export default function PublicProfile({ userData }: PublicProfileProps) {
         bgGradient="linear-gradient(180deg, #465E79 0%, #4B3F4F 97.92%)"
         alignItems="stretch"
       >
-        <HStack position="absolute" top="0" right="0" padding="20px">
-          <SelectLanguage />
-          <ToggleThemeButton />
-        </HStack>
-
         <VStack flex={1} justify="space-between" gap="60px" maxW="670px">
           <VStack gap={5}>
             <VStack>
