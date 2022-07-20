@@ -66,7 +66,7 @@ pipeline {
                 git branch:'client-ecr-Kelvin', credentialsId:'Github-Kel-credential', url:'https://github.com/A-Comosus/a-comosus-staging-terraform.git'
 
                 withAWS(region: "ap-southeast-2", credentials:'AWS_CREDENTIAL') {
-                    dir("kubernetes-frontend") {
+                    dir("ecs-server") {
                         sh 'terraform init'
                         sh 'terraform apply --auto-approve'
                     }
