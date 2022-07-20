@@ -18,9 +18,7 @@ export default function EditableLinkDelete({
       <HStack justify="center">
         <BiChevronUp />
       </HStack>
-      <Text mt="0" alignSelf="center">
-        Delete this forever?
-      </Text>
+      <Text alignSelf="center">Delete this forever?</Text>
       <HStack gap={5} px={10}>
         <Button
           flex={1}
