@@ -37,10 +37,8 @@ export default function ProfileEditor() {
   }
 
   return (
-    <VStack>
-      <Text type="h3" alignSelf="flex-start">
-        {t('appearance.profile.title')}
-      </Text>
+    <VStack align="flex-start">
+      <Text type="section.title">{t('appearance.profile.title')}</Text>
       <EditableProfile profile={userData} />
     </VStack>
   );

@@ -30,7 +30,7 @@ export default function Logo({
     inline: (
       <HStack gap={1} {...props}>
         <Image src="/assets/logo.png" alt={siteTitle} alignSelf="center" />
-        <Text>{siteTitle}</Text>
+        <Text color="white">{siteTitle}</Text>
       </HStack>
     ),
   };

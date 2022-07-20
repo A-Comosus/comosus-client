@@ -1,6 +1,8 @@
 import React from 'react';
-import { AspectRatio, Box, Button, Text, VStack } from '@chakra-ui/react';
 import { useToggle } from '@src/utils/hooks';
+
+import { AspectRatio, Button, Text, VStack } from '@chakra-ui/react';
+import Dropdown from './ProfileItem.Dropdown';
 
 type PinterestProps = {
   title: string;
@@ -13,19 +15,18 @@ export default function Pinterest({ title, url }: PinterestProps) {
 
   return (
     <VStack align="strech">
-      <Box
-        onClick={() => togglePinOpen()}
-        cursor="pointer"
-        borderRadius="10px"
-        p="10px"
-        bg="white"
-      >
+      <Dropdown toggle={togglePinOpen} isDropped={isPinOpen}>
         <Text textAlign="center" fontSize={15} fontWeight={700}>
           {title}
         </Text>
-      </Box>
+      </Dropdown>
       {isPinOpen && (
-        <VStack p="20px" bg="white">
+        <VStack
+          marginTop="0px !important"
+          borderRadius="0 0 10px 10px"
+          p="20px"
+          bg="white"
+        >
           <AspectRatio width="50%" ratio={0.4}>
             <iframe
               src={`https://assets.pinterest.com/ext/embed.html?id=${pinId}`}
