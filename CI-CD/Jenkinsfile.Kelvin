@@ -60,6 +60,21 @@ pipeline {
     //         }
     //     }
 
+        stage("Building infra through terraform...") {
+            steps {
+                echo 'Git check out terrafom repo...'
+                git branch:'client-ecr-Kelvin', credentialsId:'Github-Kel-credential', url:'https://github.com/A-Comosus/a-comosus-staging-terraform.git'
+
+                withAWS(region: "ap-southeast-2", credentials:'AWS_CREDENTIAL') {
+                    dir("kubernetes-frontend") {
+                        sh 'terraform init'
+                        sh 'terraform apply --auto-approve'
+                    }
+                }
+            }
+        }
+
+
         stage('Building and pushing docker image to ECR...') {
             // when {
             //     anyOf {
