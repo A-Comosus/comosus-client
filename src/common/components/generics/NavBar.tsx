@@ -2,12 +2,7 @@ import React from 'react';
 
 import { HStack, Button } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import {
-  Logo,
-  Link,
-  SelectLanguage,
-  ToggleThemeButton,
-} from '@common/components';
+import { Logo, Link, SelectLanguage } from '@common/components';
 import { GlobalRoute } from '@src/constants/PageRoutes';
 import { AuthRoute } from '@src/constants/PageRoutes';
 export type NavBarProps = {
@@ -63,7 +58,6 @@ export default function NavBar({ disableNavOptions }: NavBarProps) {
           </Button>
         </Link>
         <SelectLanguage />
-        <ToggleThemeButton />
       </HStack>
     </HStack>
   );

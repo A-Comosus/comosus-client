@@ -10,7 +10,6 @@ export { default as NavBar } from './generics/NavBar';
 export { default as Footer } from './generics/Footer';
 export { default as Error404 } from './generics/Error404';
 export { default as SelectLanguage } from './generics/SelectLanguage';
-export { default as ToggleThemeButton } from './generics/ToggleThemeButton';
 export { default as Sidebar } from './generics/Sidebar/Sidebar';
 export { default as ProfileItem } from './generics/ProfileItem/ProfileItem';
 

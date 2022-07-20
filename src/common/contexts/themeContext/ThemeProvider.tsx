@@ -14,7 +14,7 @@ export const ThemeContextProvider = ({ children }: ThemeProviderProps) => {
       body: `'Montserrat', sans-serif`,
     },
     config: {
-      initialColorMode: 'system',
+      initialColorMode: 'light',
     },
   };
   return (
