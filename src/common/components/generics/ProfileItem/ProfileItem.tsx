@@ -1,20 +1,20 @@
 import React from 'react';
 
-import { Text, VStack } from '@chakra-ui/react';
+import Generic from './ProfileItem.Generic';
+import Video from './ProfileItem.Video';
+import Pinterest from './ProfileItem.Pinterest';
 
 type ProfileItemProps = {
   link: PublicLink;
 };
 export default function ProfileItem({ link }: ProfileItemProps) {
-  const { url, title } = link;
+  const { type, ...linkProps } = link;
 
-  return (
-    <VStack borderRadius="10px" p="10px" bg="white">
-      <a href={url}>
-        <Text textAlign="center" fontSize={15} fontWeight={700}>
-          {title}
-        </Text>
-      </a>
-    </VStack>
-  );
+  const variant = {
+    generic: <Generic {...linkProps} />,
+    video: <Video {...linkProps} />,
+    pinterest: <Pinterest {...linkProps} />,
+  };
+
+  return variant[type as 'generic' | 'video' | 'pinterest'];
 }

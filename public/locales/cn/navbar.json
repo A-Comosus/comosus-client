@@ -1,0 +1,11 @@
+{
+  "menu": {
+    "community": "社区",
+    "team": "团队",
+    "github": "我们的Github"
+  },
+  "auth": {
+    "login": "登录",
+    "sign-up": "注册"
+  }
+}

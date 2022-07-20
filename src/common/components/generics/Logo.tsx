@@ -20,7 +20,7 @@ export default function Logo({
   const variants = {
     block: (
       <Image
-        src="/assets/a-comosus-logo.svg"
+        src="/assets/a-comosus-logo.png"
         alt={siteTitle}
         alignSelf="center"
         height={height}
@@ -30,7 +30,7 @@ export default function Logo({
     inline: (
       <HStack gap={1} {...props}>
         <Image src="/assets/logo.png" alt={siteTitle} alignSelf="center" />
-        <Text>{siteTitle}</Text>
+        <Text color="white">{siteTitle}</Text>
       </HStack>
     ),
   };
