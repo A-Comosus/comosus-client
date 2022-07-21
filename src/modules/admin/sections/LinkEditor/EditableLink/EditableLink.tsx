@@ -8,6 +8,7 @@ import {
 import { useForm } from 'react-hook-form';
 
 import { HStack, VStack, Image, IconButton } from '@chakra-ui/react';
+import { AnimatePresence, useCycle } from 'framer-motion';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LinkQueries } from '@src/constants';
@@ -34,7 +35,7 @@ export default function EditableLink({
   draggableProps: { provided },
 }: EditableLinkProps) {
   const { id, isVisible, title, url } = link;
-  const [showDelete, setShowDelete] = useState(false);
+  const [showDelete, cycleShowDelete] = useCycle(false, true);
 
   useEffect(() => {
     reset({
@@ -107,7 +108,7 @@ export default function EditableLink({
   const handleDelete = () => deleteLink({ payload: { id } });
 
   return (
-    <VStack align="stretch">
+    <VStack flex={1} align="stretch">
       <HStack
         align="stretch"
         gap={5}
@@ -155,7 +156,7 @@ export default function EditableLink({
               onChange={handleSubmit(onSubmit)}
             />
             <IconButton
-              onClick={() => setShowDelete(!showDelete)}
+              onClick={() => cycleShowDelete()}
               isLoading={isDeleting}
               icon={<RiDeleteBin5Line />}
               aria-label="delete link"
@@ -165,12 +166,14 @@ export default function EditableLink({
           </VStack>
         </HStack>
       </HStack>
-      {showDelete ? (
-        <EditableLinkDelete
-          handleDelete={handleDelete}
-          setShowDelete={setShowDelete}
-        />
-      ) : null}
+      <AnimatePresence>
+        {showDelete ? (
+          <EditableLinkDelete
+            handleDelete={handleDelete}
+            cycleShowDelete={cycleShowDelete}
+          />
+        ) : null}
+      </AnimatePresence>
     </VStack>
   );
 }
