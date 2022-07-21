@@ -51,4 +51,4 @@ jobs:
         run: terraform init
 
       - name: Terraform apply
-        run: terraform apply -target module.frontend -var-file=uat-var.tfvars -var="frontend_image_tage=${GITHUB_RUN_NUMBER}" -auto-approve
+        run: terraform apply -target module.frontend -var-file=uat-var.tfvars -var="frontend_image_tag=${GITHUB_RUN_NUMBER}" -auto-approve
