@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - 'develop'
+      - '*Alex'
 
 jobs:
   build:
@@ -39,7 +40,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
         with:
-          repository: A-Comosus/comosus-uat-tf
+          repository: A-Comosus/comosus-uat-module-terraform
           ref: main
           token: ${{ secrets.PAT }}
 
@@ -47,9 +48,7 @@ jobs:
         uses: hashicorp/setup-terraform@v2.0.0
 
       - name: Terraform init && apply
-        working-directory: ./kubernetes-frontend
         run: terraform init
 
       - name: Terraform apply
-        working-directory: ./kubernetes-frontend
-        run: terraform apply -var="frontend-image-tage=${GITHUB_RUN_NUMBER}"  -auto-approve
+        run: terraform apply -var-file=uat-var.tfvars -var="frontend-image-tage=${GITHUB_RUN_NUMBER}"  -auto-approve
