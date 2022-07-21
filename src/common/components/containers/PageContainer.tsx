@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Head from 'next/head';
-import { ColorModeScript, Flex } from '@chakra-ui/react';
+import { ColorModeScript, Flex, Center } from '@chakra-ui/react';
 import { Footer, NavBar, NavBarProps } from '@common/components';
 
 type PageContainerProps = {
@@ -29,9 +29,10 @@ export default function PageContainer({
             <link key={index} rel={rel} href={href} />
           ))}
       </Head>
-
       <ColorModeScript />
-      <NavBar disableNavOptions={disableNavOptions} />
+      <Center marginTop="1rem">
+        <NavBar disableNavOptions={disableNavOptions} />
+      </Center>
       {children}
       <Footer />
     </Flex>

@@ -55,8 +55,8 @@ export default function OnboardingForm({
     <FormControl as="form" onSubmit={handleSubmit(onSubmit)}>
       <VStack align="stretch" gap="60px">
         <VStack align="flex-start" gap={3}>
-          <Text type="h1">{t('heading.main')}</Text>
-          <Text type="h2">{t('heading.sub')}</Text>
+          <Text type="generic.h1">{t('heading.main')}</Text>
+          <Text type="generic.h2">{t('heading.sub')}</Text>
         </VStack>
 
         <DisplayName name="displayName" control={control} />

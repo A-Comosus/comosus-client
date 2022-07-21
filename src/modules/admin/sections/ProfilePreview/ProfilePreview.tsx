@@ -52,7 +52,7 @@ export default function ProfilePreview() {
           gap={20}
           border="5px solid #3B3C46"
           borderRadius="20px"
-          p="40px"
+          p="10px"
           w="300px"
           h="550px"
           bgGradient="linear-gradient(180deg, #465E79 0%, #4B3F4F 97.92%)"
@@ -72,7 +72,10 @@ export default function ProfilePreview() {
 
               <VStack>
                 <Avatar size="lg" src="https://picsum.photos/200" />
-                <Text color="white">{userData?.username}</Text>
+                <Text color="white">
+                  {userData?.displayName || userData?.username}
+                </Text>
+                {userData?.bio && <Text color="white">{userData?.bio}</Text>}
               </VStack>
 
               <VStack alignSelf="stretch" align="stretch" gap={4}>

@@ -8,7 +8,18 @@ import {
   Code,
 } from '@chakra-ui/react';
 
-export type TextTypes = 'h1' | 'h2' | 'h3' | 'p' | 'label' | 'code' | 'span';
+export type TextTypes =
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'generic.h1'
+  | 'generic.h2'
+  | 'section.title'
+  | 'p'
+  | 'label'
+  | 'code'
+  | 'span';
 
 type TextProps = {
   children: React.ReactNode;
@@ -19,19 +30,39 @@ type TextProps = {
 export default function Text({ children, type = 'p', ...props }: TextProps) {
   const types = {
     h1: (
-      <CKHeading as="h1" fontSize={32} {...props}>
+      <CKHeading as="h1" whiteSpace="pre-line" fontSize={80} {...props}>
         {children}
       </CKHeading>
     ),
     h2: (
-      <CKHeading as="h2" fontSize={16} {...props}>
+      <CKHeading as="h2" whiteSpace="pre-line" fontSize={55} {...props}>
         {children}
       </CKHeading>
     ),
     h3: (
-      <CKHeading as="h3" {...props}>
+      <CKHeading as="h3" whiteSpace="pre-line" fontSize={36} {...props}>
         {children}
       </CKHeading>
+    ),
+    h4: (
+      <CKText as="h4" whiteSpace="pre-line" fontSize={18} {...props}>
+        {children}
+      </CKText>
+    ),
+    ['generic.h1']: (
+      <CKText as="h1" fontSize="32px">
+        {children}
+      </CKText>
+    ),
+    ['generic.h2']: (
+      <CKText as="h2" fontSize="16px">
+        {children}
+      </CKText>
+    ),
+    ['section.title']: (
+      <CKText as="h3" fontSize="20px" fontWeight="bold">
+        {children}
+      </CKText>
     ),
     p: (
       <CKText as="p" {...props}>

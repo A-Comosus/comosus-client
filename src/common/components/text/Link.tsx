@@ -8,12 +8,14 @@ type CustomLinkProps = {
   children: React.ReactNode;
   highlight?: boolean;
   href: string | UrlObject;
+  type?: 'default' | 'nav';
 } & LinkProps;
 
 export default function CustomLink({
   children,
   highlight,
   href,
+  type = 'default',
   ...props
 }: CustomLinkProps) {
   const variants = {
@@ -36,7 +38,14 @@ export default function CustomLink({
         </Link>
       </NextLink>
     ),
+    nav: (
+      <NextLink href={href} passHref>
+        <Link color="#55698C" fontWeight={700} {...props}>
+          {children}
+        </Link>
+      </NextLink>
+    ),
   };
 
-  return highlight ? variants.highlight : variants.default;
+  return highlight ? variants.highlight : variants[type];
 }

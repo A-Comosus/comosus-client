@@ -14,6 +14,8 @@ const ToggleThemeButton: React.FC = () => {
       aria-label="toggle theme"
       onClick={toggleColorMode}
       icon={getIcon()}
+      isRound
+      size="sm"
     />
   );
 };

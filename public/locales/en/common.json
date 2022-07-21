@@ -1,16 +1,21 @@
 {
   "site": {
-    "title": "A-Comosus 🍍"
+    "title": "A-Comosus 🍍",
+    "description": "Share more with A-Comosus"
   },
   "button": {
     "disabled": "Disabled"
   },
   "nav": {
-    "home": "Home"
+    "community": "Community",
+    "team": "Our Team",
+    "github": "Our Github",
+    "login": "Login",
+    "sign-up": "Sign up"
   },
   "languages": {
-    "cn": "Chinese",
-    "en": "English"
+    "cn": "CN",
+    "en": "EN"
   },
   "login": {
     "title": "Just Login"

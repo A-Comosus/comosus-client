@@ -7,6 +7,7 @@ mutation CreateNewLink($payload: CreateLinkInput!) {
 query FindLinksOfUserByUserId($payload: FindLinksOfUserByUserIdInput!) {
   findLinksOfUserByUserId(data: $payload) {
     id
+    type
     order
     isDraft
     isVisible
@@ -42,13 +43,23 @@ mutation DeleteLinkById($payload: DeleteLinkInput!) {
 query FindUserByUsername($payload: FindUserByUsernameInput!) {
   findUserByUsername(username: $payload) {
     id
-    displayName
     username
+    displayName
+    bio
     links {
       id
+      type
       title
       url
       logoUrl
     }
+  }
+}
+
+mutation UpdateProfile($payload: UpdateProfileInput!) {
+  updateProfile(data: $payload) {
+    id
+    displayName
+    bio
   }
 }
