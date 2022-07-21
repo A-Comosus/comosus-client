@@ -31,10 +31,11 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: a-comosus-uat-frontend
+          N_P_C_B_URL: ${{ secret.N_P_C_B_URL }}
           N_G_ENDPOINT: ${{ secrets.N_G_ENDPOINT }}
           N_R_SITE_KEY: ${{ secrets.N_R_SITE_KEY }}
         run: |
-          docker build --build-arg N_G_ENDPOINT=$N_G_ENDPOINT --build-arg N_R_SITE_KEY=$N_R_SITE_KEY -t $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_RUN_NUMBER -f Dockerfile.Alex .
+          docker build --build-arg N_P_C_B_URL=$N_P_C_B_URL --build-arg N_G_ENDPOINT=$N_G_ENDPOINT --build-arg N_R_SITE_KEY=$N_R_SITE_KEY -t $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_RUN_NUMBER -f Dockerfile.Alex .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_RUN_NUMBER
 
       - name: Check out code
