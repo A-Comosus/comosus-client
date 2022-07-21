@@ -31,7 +31,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: a-comosus-uat-frontend
-          N_P_C_B_URL: ${{ secret.N_P_C_B_URL }}
+          N_P_C_B_URL: ${{ secrets.N_P_C_B_URL }}
           N_G_ENDPOINT: ${{ secrets.N_G_ENDPOINT }}
           N_R_SITE_KEY: ${{ secrets.N_R_SITE_KEY }}
         run: |
