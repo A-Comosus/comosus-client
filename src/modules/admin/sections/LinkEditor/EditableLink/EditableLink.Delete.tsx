@@ -1,21 +1,38 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useApiClient } from '@common/contexts';
+import { useDeleteLinkByIdMutation } from '@generated/graphql.queries';
 
+import { LinkQueries } from '@src/constants';
 import { Button, Text } from '@src/common/components';
 import { VStack, HStack } from '@chakra-ui/react';
 import { BiChevronUp } from 'react-icons/bi';
 import { motion } from 'framer-motion';
 
 type EditableLinkDeleteProps = {
-  handleDelete: () => void;
   cycleShowDelete: () => void;
+  id: string;
 };
 
 export default function EditableLinkDelete({
-  handleDelete,
+  id,
   cycleShowDelete,
 }: EditableLinkDeleteProps) {
   const { t } = useTranslation('admin');
+  const { gqlClient, queryClient } = useApiClient();
+  const { mutate: deleteLink, isLoading: isDeleting } =
+    useDeleteLinkByIdMutation(gqlClient, {
+      onSettled: (data, error) => {
+        if (error) {
+          // TODO: handle deletion error
+        } else {
+          queryClient.invalidateQueries(LinkQueries.FindAllOfAnUser);
+          queryClient.invalidateQueries(LinkQueries.FindByUsername);
+        }
+      },
+    });
+
+  const handleDelete = () => deleteLink({ payload: { id } });
   return (
     <motion.div
       initial={{ maxHeight: 0 }}
@@ -50,6 +67,7 @@ export default function EditableLinkDelete({
             flex={1}
             py={1}
             size="sm"
+            isLoading={isDeleting}
             borderRadius="10px"
             background="#3B3C46"
             onClick={handleDelete}

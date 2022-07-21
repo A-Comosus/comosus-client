@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import * as yup from 'yup';
 import { useApiClient } from '@common/contexts';
-import {
-  useDeleteLinkByIdMutation,
-  useUpdateLinkMutation,
-} from '@generated/graphql.queries';
+import { useUpdateLinkMutation } from '@generated/graphql.queries';
 import { useForm } from 'react-hook-form';
 
 import { HStack, VStack, Image, IconButton } from '@chakra-ui/react';
@@ -92,21 +89,6 @@ export default function EditableLink({
       },
     });
   };
-
-  const { mutate: deleteLink, isLoading: isDeleting } =
-    useDeleteLinkByIdMutation(gqlClient, {
-      onSettled: (data, error) => {
-        if (error) {
-          // TODO: handle deletion error
-        } else {
-          queryClient.invalidateQueries(LinkQueries.FindAllOfAnUser);
-          queryClient.invalidateQueries(LinkQueries.FindByUsername);
-        }
-      },
-    });
-
-  const handleDelete = () => deleteLink({ payload: { id } });
-
   return (
     <VStack flex={1} align="stretch">
       <HStack
@@ -157,7 +139,6 @@ export default function EditableLink({
             />
             <IconButton
               onClick={() => cycleShowDelete()}
-              isLoading={isDeleting}
               icon={<RiDeleteBin5Line />}
               aria-label="delete link"
               maxH={5}
@@ -168,10 +149,7 @@ export default function EditableLink({
       </HStack>
       <AnimatePresence>
         {showDelete ? (
-          <EditableLinkDelete
-            handleDelete={handleDelete}
-            cycleShowDelete={cycleShowDelete}
-          />
+          <EditableLinkDelete id={id} cycleShowDelete={cycleShowDelete} />
         ) : null}
       </AnimatePresence>
     </VStack>
