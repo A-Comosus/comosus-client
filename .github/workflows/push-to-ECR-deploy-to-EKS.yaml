@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - 'develop'
-      - '*Alex'
+      - 'ci-cd/update-github-action-Alex'
 
 jobs:
   build:
