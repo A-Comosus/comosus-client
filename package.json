@@ -19,6 +19,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@alch/alchemy-web3": "^1.4.6",
     "@chakra-ui/react": "1.8.8",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
