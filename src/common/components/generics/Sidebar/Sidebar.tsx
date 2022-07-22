@@ -25,6 +25,11 @@ function Sidebar() {
       content: t('sidebar.appearance'),
       icon: <TbColorSwatch />,
     },
+    {
+      href: AppRoute.NFTminter,
+      content: t('sidebar.NFT'),
+      icon: <TbColorSwatch />,
+    }
   ];
 
   return (
