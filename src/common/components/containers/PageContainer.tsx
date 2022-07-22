@@ -17,7 +17,7 @@ export default function PageContainer({
   const { title, metas, links } = head;
 
   return (
-    <Flex direction="column" justify="space-between" minH="100vh">
+    <Flex direction="column" justify="center" align="center" minH="100vh">
       <Head>
         <title>{title}</title>
         {metas &&
@@ -30,11 +30,17 @@ export default function PageContainer({
           ))}
       </Head>
       <ColorModeScript />
-      <Center marginTop="1rem">
+      <Center
+        position="fixed"
+        top="0"
+        marginTop="1rem"
+        w="clamp(50%, 1400px, 90%)"
+        zIndex="999"
+      >
         <NavBar disableNavOptions={disableNavOptions} />
       </Center>
       {children}
-      <Footer />
+      {false && <Footer />}
     </Flex>
   );
 }

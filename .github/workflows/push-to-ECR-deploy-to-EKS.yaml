@@ -30,16 +30,17 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: a-comosus-uat-frontend
+          N_P_C_B_URL: ${{ secrets.N_P_C_B_URL }}
           N_G_ENDPOINT: ${{ secrets.N_G_ENDPOINT }}
           N_R_SITE_KEY: ${{ secrets.N_R_SITE_KEY }}
         run: |
-          docker build --build-arg N_G_ENDPOINT=$N_G_ENDPOINT --build-arg N_R_SITE_KEY=$N_R_SITE_KEY -t $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_RUN_NUMBER -f Dockerfile.Alex .
+          docker build --build-arg N_P_C_B_URL=$N_P_C_B_URL --build-arg N_G_ENDPOINT=$N_G_ENDPOINT --build-arg N_R_SITE_KEY=$N_R_SITE_KEY -t $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_RUN_NUMBER -f Dockerfile.Alex .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_RUN_NUMBER
 
       - name: Check out code
         uses: actions/checkout@v3
         with:
-          repository: A-Comosus/comosus-uat-tf
+          repository: A-Comosus/comosus-uat-module-terraform
           ref: main
           token: ${{ secrets.PAT }}
 
@@ -47,9 +48,7 @@ jobs:
         uses: hashicorp/setup-terraform@v2.0.0
 
       - name: Terraform init && apply
-        working-directory: ./kubernetes-frontend
         run: terraform init
 
       - name: Terraform apply
-        working-directory: ./kubernetes-frontend
-        run: terraform apply -var="frontend-image-tage=${GITHUB_RUN_NUMBER}"  -auto-approve
+        run: terraform apply -target module.frontend -var-file=uat-var.tfvars -var="frontend_image_tag=${GITHUB_RUN_NUMBER}" -auto-approve

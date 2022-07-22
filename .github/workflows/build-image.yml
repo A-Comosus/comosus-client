@@ -18,6 +18,7 @@ jobs:
         uses: docker/setup-buildx-action@v2
       - name: Build and push
         env:
+          N_P_C_B_URL: ${{ secrets.N_P_C_B_URL }}
           N_G_ENDPOINT: ${{ secrets.N_G_ENDPOINT }}
           N_R_SITE_KEY: ${{ secrets.N_R_SITE_KEY }}
         uses: docker/build-push-action@v3
@@ -25,6 +26,7 @@ jobs:
           build-args: |
             N_G_ENDPOINT=$N_G_ENDPOINT
             N_R_SITE_KEY=$N_R_SITE_KEY
+            N_P_C_B_URL=$N_P_C_B_URL
           context: .
           file: Dockerfile.Alex
           push: false
