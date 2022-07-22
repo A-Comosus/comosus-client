@@ -7,6 +7,11 @@
       "menu": {
         "add-new-link": "添加新链接",
         "explore": "探索更多选择"
+      },
+      "toggle": {
+        "prompt": "永久删除吗？",
+        "cancel": "取消",
+        "delete": "删除"
       }
     },
     "preview": {
