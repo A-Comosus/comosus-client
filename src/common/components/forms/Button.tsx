@@ -2,18 +2,22 @@ import React from 'react';
 
 import { Button, ButtonProps, Text } from '@chakra-ui/react';
 
+export type variantTypes = 'primary' | 'secondary' | 'accent';
+
 type CustomButtonProps = {
   children: React.ReactNode;
-  highlight?: boolean;
+  variantType?: variantTypes;
+  color?: string;
 } & ButtonProps;
 
 export default function CustomButton({
   children,
-  highlight,
+  variantType = 'primary',
+  color = '#fff',
   ...props
 }: CustomButtonProps) {
   const variants = {
-    highlight: (
+    accent: (
       <Button
         borderRadius="15px"
         py="20px"
@@ -21,14 +25,19 @@ export default function CustomButton({
         boxShadow="0px 10px 10px rgba(251, 68, 109, 0.2)"
         {...props}
       >
-        <Text color="#fff">{children}</Text>
+        <Text color={color}>{children}</Text>
       </Button>
     ),
-    default: (
+    secondary: (
+      <Button py="20px" borderRadius="10px" size="sm" bg="#DADEE0" {...props}>
+        <Text color={color}>{children}</Text>
+      </Button>
+    ),
+    primary: (
       <Button borderRadius="15px" py="20px" bg="#55698C" {...props}>
-        <Text color="#fff">{children}</Text>
+        <Text color={color}>{children}</Text>
       </Button>
     ),
   };
-  return highlight ? variants.highlight : variants.default;
+  return variants[variantType];
 }
