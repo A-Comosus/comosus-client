@@ -22,7 +22,7 @@ pipeline {
     stages {
         stage('Clean workspace and docker space...') {
             steps {
-                sh 'docker system prune -f'
+                sh 'sudo docker system prune -f'
                 cleanWs()
                 checkout scm
             }
@@ -61,11 +61,11 @@ pipeline {
         }
 
         stage('Building and pushing docker image to ECR...') {
-            when {
-                anyOf {
-                    branch 'develop'
-                }
-            }
+            // when {
+            //     anyOf {
+            //         branch 'develop'
+            //     }
+            // }
 
             steps {
                 script{
@@ -79,11 +79,11 @@ pipeline {
         }
 
         stage ('Deploying to ECS...') {
-            when {
-                anyOf {
-                    branch 'develop'
-                }
-            }
+            // when {
+            //     anyOf {
+            //         branch 'develop'
+            //     }
+            // }
 
             steps {
                 withAWS(credentials: 'AWS_CREDENTIAL', region: 'ap-southeast-2') {
