@@ -28,37 +28,37 @@ pipeline {
             }
         }
 
-        stage('Download dependencies...') {
-            steps {
-                sh 'yarn'
-                sh 'yarn codegen'
-            }
-        }
+        // stage('Download dependencies...') {
+        //     steps {
+        //         sh 'yarn'
+        //         sh 'yarn codegen'
+        //     }
+        // }
 
-        stage('Unit testing...') {
-            steps {
-                sh 'yarn test:coverage'
-            }
-        }
+        // stage('Unit testing...') {
+        //     steps {
+        //         sh 'yarn test:coverage'
+        //     }
+        // }
 
-        stage('Linting...') {
-            steps {
-                sh 'yarn lint'
+        // stage('Linting...') {
+        //     steps {
+        //         sh 'yarn lint'
 
-            }
-        }
+        //     }
+        // }
 
-        stage('Building...') {
-            steps {
-                sh 'yarn build'
-            }
-        }
+        // stage('Building...') {
+        //     steps {
+        //         sh 'yarn build'
+        //     }
+        // }
 
-        stage('E2E testing...') {
-            steps {
-                sh 'yarn e2e:start-server:record'
-            }
-        }
+        // stage('E2E testing...') {
+        //     steps {
+        //         sh 'yarn e2e:start-server:record'
+        //     }
+        // }
 
         stage('Building and pushing docker image to ECR...') {
             // when {
