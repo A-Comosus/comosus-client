@@ -82,7 +82,11 @@ export default function OnboardingForm({
               }
             />
 
-            <ReCaptcha onChange={() => setValue('recaptcha', true)} />
+            <ReCaptcha
+              onChange={() =>
+                setValue('recaptcha', true, { shouldValidate: true })
+              }
+            />
 
             <Button
               isDisabled={!isValid}
