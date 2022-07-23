@@ -38,50 +38,52 @@ export default function EditableLinkDelete({
   return (
     <AnimatePresence>
       {showDelete ? (
-        <motion.div
-          initial={{ scaleY: 0 }}
+        <VStack
+          as={motion.div}
+          borderRadius={4}
+          p={[5, 10, 4, 4]}
+          bg="white"
+          overflow="hidden"
+          align="stretch"
+          initial={{ maxHeight: 0 }}
           animate={{
-            scaleY: 1,
+            maxHeight: '100%',
             transition: { duration: 0.4 },
-            transformOrigin: 'top',
             transitionTimingFunction: 'ease-in-out',
           }}
           exit={{
-            scaleY: 0,
+            maxHeight: 0,
             transition: { duration: 0.4 },
-            transformOrigin: 'top',
             transitionTimingFunction: 'ease-in-out',
           }}
         >
-          <VStack borderRadius={4} p={[5, 10, 4, 4]} bg="white" align="stretch">
-            <HStack justify="center">
-              <BiChevronUp />
-            </HStack>
-            <Text alignSelf="center">{t('link.editor.toggle.prompt')}</Text>
-            <HStack gap={5} px={10}>
-              <Button
-                variantType="secondary"
-                flex={1}
-                py={1}
-                color="#000"
-                onClick={() => toggleShowDelete()}
-              >
-                {t('link.editor.toggle.cancel')}
-              </Button>
-              <Button
-                variantType="secondary"
-                flex={1}
-                py={1}
-                isLoading={isDeleting}
-                color="#fff"
-                bg="#55698C"
-                onClick={handleDelete}
-              >
-                {t('link.editor.toggle.delete')}
-              </Button>
-            </HStack>
-          </VStack>
-        </motion.div>
+          <HStack justify="center">
+            <BiChevronUp />
+          </HStack>
+          <Text alignSelf="center">{t('link.editor.toggle.prompt')}</Text>
+          <HStack gap={5} px={10}>
+            <Button
+              variantType="secondary"
+              flex={1}
+              py={1}
+              color="#000"
+              onClick={() => toggleShowDelete()}
+            >
+              {t('link.editor.toggle.cancel')}
+            </Button>
+            <Button
+              variantType="secondary"
+              flex={1}
+              py={1}
+              isLoading={isDeleting}
+              color="#fff"
+              bg="#55698C"
+              onClick={handleDelete}
+            >
+              {t('link.editor.toggle.delete')}
+            </Button>
+          </HStack>
+        </VStack>
       ) : null}
     </AnimatePresence>
   );
