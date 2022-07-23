@@ -90,7 +90,7 @@ export default function EditableLink({
     });
   };
   return (
-    <VStack flex={1} align="stretch">
+    <VStack align="stretch">
       <HStack
         align="stretch"
         gap={5}
