@@ -3,9 +3,10 @@ import * as yup from 'yup';
 import { useApiClient } from '@common/contexts';
 import { useUpdateLinkMutation } from '@generated/graphql.queries';
 import { useForm } from 'react-hook-form';
+import { useToggle } from '@src/utils/hooks';
+
 
 import { HStack, VStack, Image, IconButton } from '@chakra-ui/react';
-import { AnimatePresence, useCycle } from 'framer-motion';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LinkQueries } from '@src/constants';
@@ -32,8 +33,7 @@ export default function EditableLink({
   draggableProps: { provided },
 }: EditableLinkProps) {
   const { id, isVisible, title, url } = link;
-  const [showDelete, cycleShowDelete] = useCycle(false, true);
-
+  const [showDelete, toggleShowDelete] = useToggle();
   useEffect(() => {
     reset({
       isVisible,
@@ -138,7 +138,7 @@ export default function EditableLink({
               onChange={handleSubmit(onSubmit)}
             />
             <IconButton
-              onClick={() => cycleShowDelete()}
+              onClick={() => toggleShowDelete()}
               icon={<RiDeleteBin5Line />}
               aria-label="delete link"
               maxH={5}
@@ -147,11 +147,11 @@ export default function EditableLink({
           </VStack>
         </HStack>
       </HStack>
-      <AnimatePresence>
-        {showDelete ? (
-          <EditableLinkDelete id={id} cycleShowDelete={cycleShowDelete} />
-        ) : null}
-      </AnimatePresence>
+      <EditableLinkDelete
+        id={id}
+        showDelete={showDelete}
+        toggleShowDelete={toggleShowDelete}
+      />
     </VStack>
   );
 }
