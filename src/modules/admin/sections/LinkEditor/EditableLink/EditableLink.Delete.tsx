@@ -39,15 +39,17 @@ export default function EditableLinkDelete({
     <AnimatePresence>
       {showDelete ? (
         <motion.div
-          initial={{ maxHeight: 0 }}
+          initial={{ scaleY: 0 }}
           animate={{
-            maxHeight: 600,
-            transition: { duration: 1 },
+            scaleY: 1,
+            transition: { duration: 0.4 },
+            transformOrigin: 'top',
             transitionTimingFunction: 'ease-in-out',
           }}
           exit={{
-            maxHeight: 0,
-            transition: { duration: 1 },
+            scaleY: 0,
+            transition: { duration: 0.4 },
+            transformOrigin: 'top',
             transitionTimingFunction: 'ease-in-out',
           }}
         >

@@ -5,7 +5,6 @@ import { useUpdateLinkMutation } from '@generated/graphql.queries';
 import { useForm } from 'react-hook-form';
 import { useToggle } from '@src/utils/hooks';
 
-
 import { HStack, VStack, Image, IconButton } from '@chakra-ui/react';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { yupResolver } from '@hookform/resolvers/yup';
