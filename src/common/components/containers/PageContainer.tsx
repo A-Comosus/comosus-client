@@ -17,7 +17,13 @@ export default function PageContainer({
   const { title, metas, links } = head;
 
   return (
-    <Flex direction="column" justify="center" align="center" minH="100vh">
+    <Flex
+      direction="column"
+      justify="center"
+      align="center"
+      minH="100vh"
+      bg="#F5F6F8"
+    >
       <Head>
         <title>{title}</title>
         {metas &&
