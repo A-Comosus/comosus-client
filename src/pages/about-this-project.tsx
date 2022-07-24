@@ -4,6 +4,7 @@ import { LambdaUrl } from '@src/constants';
 
 import { PageContainer, Text } from '@src/common/components';
 import { VStack } from '@chakra-ui/react';
+import { Repositories, Teams } from '@src/modules/about-this-project';
 
 const getProjectInfo = async () => {
   const { data } = await axios.get(LambdaUrl.GetProjectInfo);
@@ -33,45 +34,13 @@ export default function AboutThisProject({
 
   return (
     <PageContainer head={head}>
-      <VStack>
-        <Text>{projectInfo.login}</Text>
+      <VStack border="1px solid red">
+        <Text>{projectInfo.org.login}</Text>
+
+        <Repositories repos={projectInfo.repos} />
+
+        <Teams teams={projectInfo.teams} />
       </VStack>
     </PageContainer>
   );
 }
-
-type ProjectInfo = {
-  avatar_url: string;
-  login: string;
-  url: string;
-  description: string;
-  html_url: string;
-  created_at: string;
-  updated_at: string;
-  teams: {
-    name: string;
-    slug: string;
-    members: {
-      login: string;
-      name: string;
-      avatar_url: string;
-      html_url: string;
-      blog: string;
-      location: string;
-      email: string;
-      bio: string;
-      twitter_username: string;
-      created_at: string;
-      updated_at: string;
-    }[];
-  }[];
-  repos: {
-    name: string;
-    html_url: string;
-    description: string;
-    created_at: string;
-    updated_at: string;
-    pushed_at: string;
-    languages: object;
-  }[];
-};
