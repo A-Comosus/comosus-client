@@ -50,17 +50,17 @@ export default function Text({ children, type = 'p', ...props }: TextProps) {
       </CKText>
     ),
     ['generic.h1']: (
-      <CKText as="h1" fontSize="32px">
+      <CKText as="h1" fontSize="32px" {...props}>
         {children}
       </CKText>
     ),
     ['generic.h2']: (
-      <CKText as="h2" fontSize="16px">
+      <CKText as="h2" fontSize="16px" {...props}>
         {children}
       </CKText>
     ),
     ['section.title']: (
-      <CKText as="h3" fontSize="20px" fontWeight="bold">
+      <CKText as="h3" fontSize="20px" fontWeight="bold" {...props}>
         {children}
       </CKText>
     ),
