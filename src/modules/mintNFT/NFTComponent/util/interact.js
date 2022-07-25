@@ -1,13 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { pinJSONToIPFS } from './pinata.js';
-//require('dotenv').config();
+const alchemyKey =
+  'https://eth-rinkeby.alchemyapi.io/v2/yXXKmWQ6Djjpipq1_2skYvDF_1NIKT2S';
 const contractABI = require('../contract-abi.json');
-const contractAddress = '0xAa7aC0B8D36B2c5794FfD95f7f83D01c24ae103D';
+const contractAddress = '0x1a090F428616CC3B55458b8a542878f72F74ACDb';
 const { createAlchemyWeb3 } = require('@alch/alchemy-web3');
-const alchemyKey = process.env.REACT_APP_ALCHEMY_KEY;
-const web3 = createAlchemyWeb3(
-  'https://eth-rinkeby.alchemyapi.io/v2/yXXKmWQ6Djjpipq1_2skYvDF_1NIKT2S',
-);
+const web3 = createAlchemyWeb3(alchemyKey);
 
 export const connectWallet = async () => {
   if (window.ethereum) {
@@ -95,9 +93,9 @@ export const getCurrentWalletConnected = async () => {
   }
 };
 
-// async function loadContract() {
-//   return new web3.eth.Contract(contractABI, contractAddress);
-// }
+async function loadContract() {
+  return new web3.eth.Contract(contractABI, contractAddress);
+}
 
 export const mintNFT = async (url, name, description) => {
   if (url.trim() == '' || name.trim() == '' || description.trim() == '') {

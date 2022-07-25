@@ -1,10 +1,11 @@
 // import './MintNFT.css';
+import { VStack } from '@chakra-ui/react';
 import Minter from './Minter';
 function MintNFT() {
   return (
-    <div className="Minter">
+    <VStack align="stretch" gap="60px">
       <Minter></Minter>
-    </div>
+    </VStack>
   );
 }
 

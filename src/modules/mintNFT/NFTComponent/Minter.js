@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { VStack } from '@chakra-ui/react';
+import { Button, Text } from '@src/common/components';
 import {
   connectWallet,
   getCurrentWalletConnected,
@@ -68,7 +70,7 @@ const Minter = (props) => {
 
   return (
     <div className="Minter">
-      <button id="walletButton" onClick={connectWalletPressed}>
+      <Button id="walletButton" onClick={connectWalletPressed}>
         {walletAddress > 0 ? (
           'Connected: ' +
           String(walletAddress).substring(0, 6) +
@@ -77,10 +79,10 @@ const Minter = (props) => {
         ) : (
           <span>Connect Wallet</span>
         )}
-      </button>
+      </Button>
 
       <br></br>
-      <h1 id="title">🧙‍♂️ NFT Minter</h1>
+      <Text>🧙‍♂️ NFT Minter</Text>
       <p>
         Simply add your asset's link, name, and description, then press "Mint."
       </p>
@@ -104,9 +106,9 @@ const Minter = (props) => {
           onChange={(event) => setDescription(event.target.value)}
         />
       </form>
-      <button id="mintButton" onClick={onMintPressed}>
+      <Button id="mintButton" onClick={onMintPressed}>
         Mint NFT
-      </button>
+      </Button>
       <p id="status" style={{ color: 'red' }}>
         {status}
       </p>
