@@ -1,11 +1,12 @@
 import React from 'react';
 import { useApiClient } from '@common/contexts';
+import { useTranslation } from 'react-i18next';
 import { useGetServerInfoQuery } from '@generated/graphql.queries';
 
 import { AppContainer } from '@modules/admin/components';
 import { HStack, VStack } from '@chakra-ui/react';
+import { LinkEditor } from '@modules/admin/sections';
 import { Text } from '@common/components';
-import { useTranslation } from 'react-i18next';
 
 export default function Admin() {
   const { t } = useTranslation('admin');
@@ -15,7 +16,8 @@ export default function Admin() {
 
   return (
     <AppContainer head={head}>
-      <HStack>
+      <HStack align="stretch">
+        <LinkEditor />
         <VStack>
           <Text type="h2">{t('admin.title')}</Text>
           <Text>{JSON.stringify(serverData, null, 2)}</Text>
