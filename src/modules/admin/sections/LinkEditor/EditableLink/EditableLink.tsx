@@ -15,6 +15,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LinkQueries } from '@src/constants';
 import EditableLinkSwitch from './EditableLink.Switch';
+import { DraggableProvided } from 'react-beautiful-dnd';
 
 type EditableLinkProps = {
   link: {
@@ -23,9 +24,15 @@ type EditableLinkProps = {
     title?: string | null;
     url?: string | null;
   };
+  draggableProps: {
+    provided: DraggableProvided;
+  };
 };
 
-export default function EditableLink({ link }: EditableLinkProps) {
+export default function EditableLink({
+  link,
+  draggableProps: { provided },
+}: EditableLinkProps) {
   const { id, isVisible, title, url } = link;
 
   useEffect(() => {
@@ -70,6 +77,7 @@ export default function EditableLink({ link }: EditableLinkProps) {
     onSettled: (data) => {
       if (data) {
         queryClient.invalidateQueries(LinkQueries.FindAllOfAnUser);
+        queryClient.invalidateQueries(LinkQueries.FindByUsername);
       }
     },
   });
@@ -90,6 +98,7 @@ export default function EditableLink({ link }: EditableLinkProps) {
           // TODO: handle deletion error
         } else {
           queryClient.invalidateQueries(LinkQueries.FindAllOfAnUser);
+          queryClient.invalidateQueries(LinkQueries.FindByUsername);
         }
       },
     });
@@ -100,17 +109,20 @@ export default function EditableLink({ link }: EditableLinkProps) {
     <HStack
       align="stretch"
       gap={5}
-      maxW="555px"
       borderRadius={4}
       p={[5, 10, 4, 4]}
       bg="white"
+      {...provided.draggableProps}
+      ref={provided.innerRef}
     >
-      <Image
-        src="assets/icons/drag-handle.svg"
-        alt="drag-handle"
-        pr={4}
-        borderRight="1px solid #ADB2C6"
-      />
+      <HStack align="stretch" {...provided.dragHandleProps}>
+        <Image
+          src="/assets/icons/drag-handle.svg"
+          alt="drag-handle"
+          pr={4}
+          borderRight="1px solid #ADB2C6"
+        />
+      </HStack>
 
       <HStack flex={1} justify="space-between" align="stretch" gap={5}>
         <VStack flex={1} align="stretch">

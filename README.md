@@ -4,7 +4,17 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## 🏃‍♂️ How to run this project?
 
-First, you want to make sure you have downloaded all the dependencies used for this project,
+First, set up the development environment
+
+TL;DR You need to set up following environment variables.
+
+| name                             | description                           |
+| -------------------------------- | ------------------------------------- |
+| NEXT_PUBLIC_CLIENT_BASE_URL      | Base URL of client                    |
+| NEXT_PUBLIC_GRAPHQL_ENDPOINT     | URL to backend server                 |
+| \*NEXT_PUBLIC_RECAPTCHA_SITE_KEY | Access key to enable Google ReCaptcha |
+
+Then you want to make sure you have downloaded all the dependencies used for this project,
 
 ```bash
 yarn
@@ -23,6 +33,22 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 🅱️ How to start storybook?
+
+Alright, we have support for storybook now!
+
+To load the storybook when you are in developmetn mode, you can run the following command to spin up a storybook server at port 6006
+
+```sh
+yarn storybook
+```
+
+To build a static storybook website, you can run the following command
+
+```sh
+yarn build-storybook
+```
 
 ## 🧪 How to test this app?
 

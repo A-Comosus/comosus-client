@@ -1,21 +1,27 @@
 import React from 'react';
-import { UserProvider } from '@common/contexts';
+import { UserProvider } from '@src/common/contexts';
 
 import Head from 'next/head';
-import { ColorModeScript, Flex } from '@chakra-ui/react';
+import { ColorModeScript, Flex, HStack } from '@chakra-ui/react';
 import { Sidebar } from '@common/components';
+import { ProfilePreview } from '../sections';
 
 type PageContainerProps = {
   children: React.ReactNode;
   head: Head;
+  disableProfilePreview?: boolean;
 };
 
-export default function PageContainer({ children, head }: PageContainerProps) {
+export default function PageContainer({
+  children,
+  head,
+  disableProfilePreview,
+}: PageContainerProps) {
   const { title, metas, links } = head;
 
   return (
     <UserProvider>
-      <Flex minH="100vh" align="stretch">
+      <Flex h="100vh" align="stretch" overflow="hidden" bg="#F5F6F8">
         <Head>
           <title>{title}</title>
           {metas &&
@@ -29,7 +35,10 @@ export default function PageContainer({ children, head }: PageContainerProps) {
         </Head>
         <ColorModeScript />
         <Sidebar />
-        {children}
+        <HStack flex={1} align="stretch">
+          {children}
+          {disableProfilePreview ? null : <ProfilePreview />}
+        </HStack>
       </Flex>
     </UserProvider>
   );

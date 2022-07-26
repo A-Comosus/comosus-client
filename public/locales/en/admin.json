@@ -1,5 +1,30 @@
 {
   "admin": {
     "title": "A-Comosus 🍍 Admin"
+  },
+  "link": {
+    "editor": {
+      "menu": {
+        "add-new-link": "Add New Link",
+        "explore": "Explore"
+      }
+    },
+    "preview": {
+      "share": "Share your A-Comosus"
+    },
+    "share": {
+      "heading": "Share Your 🍍",
+      "qr-code": "via QR Code"
+    }
+  },
+  "appearance": {
+    "profile": {
+      "title": "Profile",
+      "pick-an-image": "Pick an image",
+      "remove": "Remove",
+      "profile-title": "Profile Title",
+      "bio": "Bio",
+      "bio-placeholder": "Enter a bio description to appear on your Profile"
+    }
   }
 }

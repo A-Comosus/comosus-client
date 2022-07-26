@@ -9,6 +9,7 @@ import { PageContainer } from '@src/common/components';
 import { LoginForm } from '@src/modules/auth';
 import { isNil } from 'lodash';
 import { AppRoute } from '@src/constants/PageRoutes';
+import { UserStatus } from '@src/constants';
 
 export default function Login() {
   const { t } = useTranslation('auth');
@@ -29,8 +30,20 @@ export default function Login() {
       }
 
       if (data) {
-        setAccessToken(data.login.accessToken);
-        router.push(AppRoute.Admin);
+        const {
+          login: {
+            accessToken,
+            user: { id, status },
+          },
+        } = data;
+
+        setAccessToken(accessToken);
+        status === UserStatus.Registered
+          ? router.push({
+              pathname: AppRoute.Onboarding,
+              query: { id },
+            })
+          : router.push(AppRoute.Admin);
       }
     },
   });

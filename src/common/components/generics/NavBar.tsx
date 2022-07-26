@@ -1,45 +1,63 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { HStack, Button } from '@chakra-ui/react';
-import { Link, SelectLanguage, ToggleThemeButton } from '@common/components';
-
-export default function NavBar() {
-  const { t } = useTranslation();
+import { useTranslation } from 'react-i18next';
+import { Logo, Link, SelectLanguage } from '@common/components';
+import { GlobalRoute } from '@src/constants/PageRoutes';
+import { AuthRoute } from '@src/constants/PageRoutes';
+export type NavBarProps = {
+  disableNavOptions?: boolean;
+};
+export default function NavBar({ disableNavOptions }: NavBarProps) {
+  const { t } = useTranslation('common');
 
   const navItems = [
     {
-      href: '/',
-      content: t('nav.home'),
+      href: GlobalRoute.Root,
+      content: t('nav.community'),
     },
     {
-      href: '/login',
-      content: t('auth:login.title'),
+      href: GlobalRoute.Root,
+      content: t('nav.team'),
     },
     {
-      href: '/sign-up',
-      content: t('auth:sign-up.title'),
-    },
-    {
-      href: '/',
-      content: t('button.disabled'),
-      isDisabled: true,
+      href: GlobalRoute.Root,
+      content: t('nav.github'),
     },
   ];
 
   return (
-    <HStack justify="space-between" borderBottom="1px solid #eaeaea" p="1rem">
-      <HStack>
-        {navItems.map(({ href, content, isDisabled }, index) => (
-          <Link key={index} href={href}>
-            <Button isDisabled={isDisabled}>{content}</Button>
-          </Link>
-        ))}
+    <HStack
+      justify="space-between"
+      alignItems="center"
+      borderRadius="999"
+      w="100%"
+      backgroundColor="#fff"
+      padding="0.25rem 2rem"
+    >
+      <HStack gap={4}>
+        <Link href="/">
+          <Logo height="5rem" />
+        </Link>
+
+        {!disableNavOptions &&
+          navItems.map(({ href, content }, index) => (
+            <Link type="nav" key={index} href={href}>
+              {content}
+            </Link>
+          ))}
       </HStack>
 
-      <HStack gap="2rem">
+      <HStack gap="0.5rem">
+        <Link type="nav" href={AuthRoute.Login}>
+          <Button>{t('nav.login')}</Button>
+        </Link>
+        <Link type="nav" href={AuthRoute.SignUp}>
+          <Button color="#fff" backgroundColor="#FB446C">
+            {t('nav.sign-up')}
+          </Button>
+        </Link>
         <SelectLanguage />
-        <ToggleThemeButton />
       </HStack>
     </HStack>
   );

@@ -1,5 +1,5 @@
 overwrite: true
-schema: ${GRAPHQL_ENDPOINT}
+schema: ${NEXT_PUBLIC_GRAPHQL_ENDPOINT}
 
 documents: './src/**/*.gql'
 generates:

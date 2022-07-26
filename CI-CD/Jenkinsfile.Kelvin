@@ -1,0 +1,104 @@
+pipeline {
+    
+    agent any
+    
+    options { 
+        disableConcurrentBuilds() 
+        timeout(time: 1, unit: 'HOURS')
+    }
+    
+    environment {
+        CYPRESS_RECORD_KEY = credentials('CYPRESS_RECORD_KEY')
+        N_G_ENDPOINT = credentials('N_G_ENDPOINT')
+        ECR_URL = credentials('ECR_REGISTRY_URL')
+        AWS_ECR_URL = credentials('AWS_ECR_URL')
+        ECS_CLUSTER = "a-comosus"
+        ECS_SERVICE = "Client"
+        
+        CYPRESS_CACHE_FOLDER = '/var/lib/jenkins/.cache/Cypress/10.1.0/Cypress'
+    }
+
+    stages {
+        stage('Clean workspace and docker space...') {
+            steps {
+                sh 'docker system prune -f'
+                cleanWs()
+                checkout scm
+            }
+        }
+
+        stage('Download dependencies...') {
+            steps {
+                sh 'yarn'
+                sh 'yarn codegen'
+            }
+        }
+
+        stage('Unit testing...') {
+            steps {
+                sh 'yarn test:coverage'
+            }
+        }
+
+        stage('Linting...') {
+            steps {
+                sh 'yarn lint'
+
+            }
+        }
+
+        stage('Building...') {
+            steps {
+                sh 'yarn build'
+            }
+        }
+
+        stage('E2E testing...') {
+            steps {
+                sh 'yarn e2e:start-server:record'
+            }
+        }
+
+        stage('Building and pushing docker image to ECR...') {
+            when {
+                anyOf {
+                    branch 'develop'
+                }
+            }
+
+            steps {
+                script{
+                    docker.withRegistry("https://${AWS_ECR_URL}", 'ecr:ap-southeast-2:AWS_CREDENTIAL') {
+                        app = docker.build("${ECR_URL}:${env.BUILD_NUMBER}", "--build-arg N_G_ENDPOINT=${N_G_ENDPOINT} -f Dockerfile.Kelvin .")
+                        app.push("latest")
+                    }
+                }
+            }
+        }
+
+        stage ('Deploying to ECS...') {
+            when {
+                anyOf {
+                    branch 'develop'
+                }
+            }
+
+            steps {
+                withAWS(credentials: 'AWS_CREDENTIAL', region: 'ap-southeast-2') {
+                    sh 'aws ecs update-service --cluster ${ECS_CLUSTER} --service ${ECS_SERVICE} --force-new-deployment'
+                } 
+            }
+        }
+    
+    }
+
+    post {  
+        success {  
+            echo 'All process done successfully!'  
+        }  
+        failure {  
+            mail bcc: '', body: "<b>Something went wrong...</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "project.a.comosus@gmail.com";
+        }  
+    }  
+
+}

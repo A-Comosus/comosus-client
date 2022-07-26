@@ -1,0 +1,11 @@
+{
+  "menu": {
+    "community": "Community",
+    "team": "Our Team",
+    "github": "Our Github"
+  },
+  "auth": {
+    "login": "Login",
+    "sign-up": "Sign up"
+  }
+}

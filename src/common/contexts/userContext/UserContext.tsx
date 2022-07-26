@@ -22,7 +22,7 @@ export function UserProvider({ children }: UserProdiverProps) {
 
   const payload = useRef({ id: '' });
   const enabled = useMemo(() => {
-    if (_.isNil(accessToken)) return false;
+    if (_.isNil(accessToken) || _.isNil(payload.current.id)) return false;
     payload.current = { id: parseJwt(accessToken).sub };
     return true;
   }, [accessToken]);

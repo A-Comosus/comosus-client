@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
-
+import '@fontsource/black-han-sans';
 import '@fontsource/montserrat';
 
 type ThemeProviderProps = {
@@ -10,13 +10,13 @@ type ThemeProviderProps = {
 export const ThemeContextProvider = ({ children }: ThemeProviderProps) => {
   const chakraTheme = {
     fonts: {
-      body: 'Montserrat, sans-serif',
+      heading: `'black han sans', sans-serif`,
+      body: `'Montserrat', sans-serif`,
     },
     config: {
-      initialColorMode: 'system',
+      initialColorMode: 'light',
     },
   };
-
   return (
     <ChakraProvider resetCSS={true} theme={extendTheme(chakraTheme)}>
       {children}

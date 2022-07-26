@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import useStorage from '@utils/hooks/useStorage';
+import { useStorage } from '@utils/hooks';
 import { AuthKey, StorageType } from '@src/constants/StorageKey';
 import { GlobalRoute } from '@src/constants/PageRoutes';
 
@@ -19,7 +19,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const router = useRouter();
   const [accessToken, setAccessToken] = useStorage(
     AuthKey.AccessToken,
-    StorageType.Session,
+    StorageType.Local,
   );
 
   const logout = () => {
