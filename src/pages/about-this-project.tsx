@@ -4,7 +4,12 @@ import { LambdaUrl } from '@src/constants';
 
 import { PageContainer, Text } from '@src/common/components';
 import { VStack } from '@chakra-ui/react';
-import { Repositories, Teams } from '@src/modules/about-this-project';
+import {
+  Organisation,
+  Repositories,
+  Teams,
+} from '@src/modules/about-this-project';
+import { useTranslation } from 'react-i18next';
 
 const getProjectInfo = async () => {
   const { data } = await axios.get(LambdaUrl.GetProjectInfo);
@@ -26,20 +31,26 @@ type AboutThisProjectProps = {
   projectInfo: ProjectInfo;
 };
 export default function AboutThisProject({
-  projectInfo,
+  projectInfo: { org, repos, teams },
 }: AboutThisProjectProps) {
+  const { t } = useTranslation('project');
   const head = {
     title: 'About this project',
   };
 
   return (
-    <PageContainer head={head}>
-      <VStack border="1px solid red">
-        <Text>{projectInfo.org.login}</Text>
+    <PageContainer head={head} disableFixedNavBar>
+      <VStack gap="100px" my="100px" w="clamp(50%, 1600px, 90%)">
+        <VStack>
+          <Text type="h1">{`${t('header.heading-1')} ${org.login}`}</Text>
+          <Text type="h4">{t('header.heading-2')}</Text>
+        </VStack>
 
-        <Repositories repos={projectInfo.repos} />
+        <Organisation org={org} />
 
-        <Teams teams={projectInfo.teams} />
+        <Repositories repos={repos} />
+
+        <Teams teams={teams} />
       </VStack>
     </PageContainer>
   );

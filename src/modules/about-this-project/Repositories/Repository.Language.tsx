@@ -27,17 +27,20 @@ export default function Language({ languages }: LanguageProps) {
             <WrapItem key={index}>
               <HStack>
                 <svg
-                  viewBox="0 0 16 16"
-                  height="16"
-                  width="16"
+                  viewBox="0 0 12 12"
+                  width="12px"
+                  height="12px"
                   fill={defaultColor}
                 >
                   <circle cx="50%" cy="50%" r="50%" />
                 </svg>
-                <Text>{`${language} ${weight.toLocaleString(undefined, {
-                  style: 'percent',
-                  minimumFractionDigits: 1,
-                })}`}</Text>
+                <Text fontSize={12}>{`${language} ${weight.toLocaleString(
+                  undefined,
+                  {
+                    style: 'percent',
+                    minimumFractionDigits: 1,
+                  },
+                )}`}</Text>
               </HStack>
             </WrapItem>
           ))}
