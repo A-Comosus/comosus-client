@@ -86,7 +86,7 @@ export default function LoginForm({
               ),
             )}
             <FormErrorMessage testId="login.error" error={t('login.error')} />
-            <Button highlight type="submit" isLoading={isLoading}>
+            <Button variantType="accent" type="submit" isLoading={isLoading}>
               {t('login.button')}
             </Button>
             <Link href={AuthRoute.forgetPassword} textAlign="center">
