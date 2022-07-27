@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { pinJSONToIPFS } from './pinata.js';
 const alchemyKey =
   'https://eth-rinkeby.alchemyapi.io/v2/yXXKmWQ6Djjpipq1_2skYvDF_1NIKT2S';
 const contractABI = require('../contract-abi.json');
-const contractAddress = '0x1a090F428616CC3B55458b8a542878f72F74ACDb';
+const contractAddress = '0xf63F71584d0cF62592f1e077ceB2527a43ca91d9';
 const { createAlchemyWeb3 } = require('@alch/alchemy-web3');
 const web3 = createAlchemyWeb3(alchemyKey);
 
@@ -97,28 +96,9 @@ async function loadContract() {
   return new web3.eth.Contract(contractABI, contractAddress);
 }
 
-export const mintNFT = async (url, name, description) => {
-  if (url.trim() == '' || name.trim() == '' || description.trim() == '') {
-    return {
-      success: false,
-      status: '❗Please make sure all fields are completed before minting.',
-    };
-  }
-
-  //make metadata
-  const metadata = new Object();
-  metadata.name = name;
-  metadata.image = url;
-  metadata.description = description;
-
-  const pinataResponse = await pinJSONToIPFS(metadata);
-  if (!pinataResponse.success) {
-    return {
-      success: false,
-      status: '😢 Something went wrong while uploading your tokenURI.',
-    };
-  }
-  const tokenURI = pinataResponse.pinataUrl;
+export const mintNFT = async () => {
+  // const tokenURI =
+  //   'https://gateway.pinata.cloud/ipfs/QmfMawKGkxVyoyeMthAgSsi1BsqJKkRnR6xUM58QCpdx1f';
 
   window.contract = await new web3.eth.Contract(contractABI, contractAddress);
 
@@ -126,7 +106,7 @@ export const mintNFT = async (url, name, description) => {
     to: contractAddress, // Required except during contract publications.
     from: window.ethereum.selectedAddress, // must match user's active address.
     data: window.contract.methods
-      .mintNFT(window.ethereum.selectedAddress, tokenURI)
+      .mint(window.ethereum.selectedAddress, 1)
       .encodeABI(),
   };
 

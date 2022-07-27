@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { VStack } from '@chakra-ui/react';
-import { Button, Text } from '@src/common/components';
+import { Button } from '@src/common/components';
 import {
   connectWallet,
   getCurrentWalletConnected,
@@ -10,10 +9,6 @@ import {
 const Minter = (props) => {
   const [walletAddress, setWallet] = useState('');
   const [status, setStatus] = useState('');
-
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [url, setURL] = useState('');
 
   useEffect(() => {
     const { address, status } = async () => await getCurrentWalletConnected();
@@ -59,13 +54,8 @@ const Minter = (props) => {
   };
 
   const onMintPressed = async () => {
-    const { success, status } = await mintNFT(url, name, description);
+    const { status } = await mintNFT();
     setStatus(status);
-    if (success) {
-      setName('');
-      setDescription('');
-      setURL('');
-    }
   };
 
   return (
@@ -80,32 +70,6 @@ const Minter = (props) => {
           <span>Connect Wallet</span>
         )}
       </Button>
-
-      <br></br>
-      <Text>🧙‍♂️ NFT Minter</Text>
-      <p>
-        Simply add your asset's link, name, and description, then press "Mint."
-      </p>
-      <form>
-        <h2>🖼 Link to asset: </h2>
-        <input
-          type="text"
-          placeholder="e.g. https://gateway.pinata.cloud/ipfs/<hash>"
-          onChange={(event) => setURL(event.target.value)}
-        />
-        <h2>🤔 Name: </h2>
-        <input
-          type="text"
-          placeholder="e.g. My first NFT!"
-          onChange={(event) => setName(event.target.value)}
-        />
-        <h2>✍️ Description: </h2>
-        <input
-          type="text"
-          placeholder="e.g. Even cooler than cryptokitties ;)"
-          onChange={(event) => setDescription(event.target.value)}
-        />
-      </form>
       <Button id="mintButton" onClick={onMintPressed}>
         Mint NFT
       </Button>
