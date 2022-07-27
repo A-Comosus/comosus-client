@@ -114,7 +114,7 @@ export const mintNFT = async () => {
     return {
       success: true,
       status:
-        '✅ Check out your transaction on Etherscan: https://ropsten.etherscan.io/tx/ and your NFT at: https://testnets.opensea.io/' +
+        '✅ Check out your NFT at: https://testnets.opensea.io/ and transaction on Etherscan: https://ropsten.etherscan.io/tx/ and ' +
         txHash,
     };
   } catch (error) {
