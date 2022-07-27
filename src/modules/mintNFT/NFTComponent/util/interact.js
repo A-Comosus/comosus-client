@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+import { pinJSONToIPFS } from './pinata.js';
 const alchemyKey =
   'https://eth-rinkeby.alchemyapi.io/v2/yXXKmWQ6Djjpipq1_2skYvDF_1NIKT2S';
-const abi = require('../contract-abi.json');
-const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
-const privateKey = process.env.NEXT_PUBLIC_PRIVATE_KEY;
+const contractABI = require('../contract-abi.json');
+const contractAddress = '0x1a090F428616CC3B55458b8a542878f72F74ACDb';
 const { createAlchemyWeb3 } = require('@alch/alchemy-web3');
-const signer = new ethers.Wallet(privateKey, provider);
 const web3 = createAlchemyWeb3(alchemyKey);
 
 export const connectWallet = async () => {
@@ -97,24 +96,55 @@ export const getCurrentWalletConnected = async () => {
 async function loadContract() {
   return new web3.eth.Contract(contractABI, contractAddress);
 }
-const myNftContract = new ethers.Contract(contractAddress, abi, signer);
 
-// Get the NFT Metadata IPFS URL
-const tokenUri =
-  'https://gateway.pinata.cloud/ipfs/QmYueiuRNmL4MiA2GwtVMm6ZagknXnSpQnB3z2gWbz36hP';
+export const mintNFT = async (url, name, description) => {
+  if (url.trim() == '' || name.trim() == '' || description.trim() == '') {
+    return {
+      success: false,
+      status: '❗Please make sure all fields are completed before minting.',
+    };
+  }
 
-// Call mintNFT function
-const mintNFT = async () => {
-  let nftTxn = await myNftContract.mintNFT(signer.address, tokenUri);
-  await nftTxn.wait();
-  console.log(
-    `NFT Minted! Check it out at: https://goerli.etherscan.io/tx/${nftTxn.hash}`,
-  );
+  //make metadata
+  const metadata = new Object();
+  metadata.name = name;
+  metadata.image = url;
+  metadata.description = description;
+
+  const pinataResponse = await pinJSONToIPFS(metadata);
+  if (!pinataResponse.success) {
+    return {
+      success: false,
+      status: '😢 Something went wrong while uploading your tokenURI.',
+    };
+  }
+  const tokenURI = pinataResponse.pinataUrl;
+
+  window.contract = await new web3.eth.Contract(contractABI, contractAddress);
+
+  const transactionParameters = {
+    to: contractAddress, // Required except during contract publications.
+    from: window.ethereum.selectedAddress, // must match user's active address.
+    data: window.contract.methods
+      .mintNFT(window.ethereum.selectedAddress, tokenURI)
+      .encodeABI(),
+  };
+
+  try {
+    const txHash = await window.ethereum.request({
+      method: 'eth_sendTransaction',
+      params: [transactionParameters],
+    });
+    return {
+      success: true,
+      status:
+        '✅ Check out your transaction on Etherscan: https://ropsten.etherscan.io/tx/' +
+        txHash,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      status: '😥 Something went wrong: ' + error.message,
+    };
+  }
 };
-
-mintNFT()
-  .then(() => process.exit(0))
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
-  });
