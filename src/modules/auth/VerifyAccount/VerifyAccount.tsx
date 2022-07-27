@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
-import { GlobalRoute } from '@src/constants/PageRoutes';
+import { AppRoute } from '@src/constants/PageRoutes';
 import { VStack, Spinner } from '@chakra-ui/react';
 import { Button, Text } from '@common/components';
 
@@ -28,7 +28,7 @@ export default function VerifyAccount({ isVerifying }: VerifyAccountProps) {
           <VStack align="stretch">
             <Text type="h2">{t('verify-account.page.title')}</Text>
           </VStack>
-          <Button type="button" onClick={() => router.push(GlobalRoute.Root)}>
+          <Button type="button" onClick={() => router.push(AppRoute.Admin)}>
             {t('verify-account.page.button')}
           </Button>
         </VStack>
