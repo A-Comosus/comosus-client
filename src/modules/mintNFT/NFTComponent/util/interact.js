@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const alchemyKey =
-  'https://eth-rinkeby.alchemyapi.io/v2/yXXKmWQ6Djjpipq1_2skYvDF_1NIKT2S';
+const alchemyKey = process.env.NEXT_PUBLIC_ALCHEMY_KEY;
 const contractABI = require('../contract-abi.json');
 const contractAddress = '0xf63F71584d0cF62592f1e077ceB2527a43ca91d9';
 const { createAlchemyWeb3 } = require('@alch/alchemy-web3');
@@ -13,7 +12,7 @@ export const connectWallet = async () => {
         method: 'eth_requestAccounts',
       });
       const obj = {
-        status: '👆🏽 Write a message in the text-field above.',
+        status: 'Connected!!',
         address: addressArray[0],
       };
       return obj;
@@ -55,7 +54,7 @@ export const getCurrentWalletConnected = async () => {
       if (addressArray.length > 0) {
         return {
           address: addressArray[0],
-          status: '👆🏽 Write a message in the text-field above.',
+          status: '👆🏽 Connected!!',
         };
       } else {
         return {
@@ -91,15 +90,12 @@ export const getCurrentWalletConnected = async () => {
     };
   }
 };
-
+//This would keep the contract in case if we need further calls
 async function loadContract() {
   return new web3.eth.Contract(contractABI, contractAddress);
 }
 
 export const mintNFT = async () => {
-  // const tokenURI =
-  //   'https://gateway.pinata.cloud/ipfs/QmfMawKGkxVyoyeMthAgSsi1BsqJKkRnR6xUM58QCpdx1f';
-
   window.contract = await new web3.eth.Contract(contractABI, contractAddress);
 
   const transactionParameters = {
@@ -118,7 +114,7 @@ export const mintNFT = async () => {
     return {
       success: true,
       status:
-        '✅ Check out your transaction on Etherscan: https://ropsten.etherscan.io/tx/' +
+        '✅ Check out your transaction on Etherscan: https://ropsten.etherscan.io/tx/ and your NFT at: https://testnets.opensea.io/' +
         txHash,
     };
   } catch (error) {

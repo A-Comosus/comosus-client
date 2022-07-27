@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+/*This is for future pinata functions. Do not delete please. */
 const key = '8ff788c041f7eb3ca186';
 const secret =
   '2830c6d10389a171d7d772a5ba7c6224b02dbd14344fdeab7f72d53cdf5a112b';

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@src/common/components';
+import { VStack } from '@chakra-ui/react';
 import {
   connectWallet,
   getCurrentWalletConnected,
@@ -23,7 +24,6 @@ const Minter = (props) => {
       window.ethereum.on('accountsChanged', (accounts) => {
         if (accounts.length > 0) {
           setWallet(accounts[0]);
-          setStatus('👆🏽 Write a message in the text-field above.');
         } else {
           setWallet('');
           setStatus('🦊 Connect to Metamask using the top right button.');
@@ -59,7 +59,7 @@ const Minter = (props) => {
   };
 
   return (
-    <div className="Minter">
+    <VStack align="stretch" gap={'20px'}>
       <Button id="walletButton" onClick={connectWalletPressed}>
         {walletAddress > 0 ? (
           'Connected: ' +
@@ -76,7 +76,7 @@ const Minter = (props) => {
       <p id="status" style={{ color: 'red' }}>
         {status}
       </p>
-    </div>
+    </VStack>
   );
 };
 
