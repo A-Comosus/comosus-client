@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { IoLinkSharp } from 'react-icons/io5';
-import { TbColorSwatch } from 'react-icons/tb';
+import { TbColorSwatch, TbCurrencyEthereum } from 'react-icons/tb';
 
 import { AppRoute } from '@src/constants/PageRoutes';
 import { Avatar, VStack } from '@chakra-ui/react';
@@ -28,7 +28,7 @@ function Sidebar() {
     {
       href: AppRoute.NFTminter,
       content: t('sidebar.NFT'),
-      icon: <TbColorSwatch />,
+      icon: <TbCurrencyEthereum />,
     }
   ];
 
