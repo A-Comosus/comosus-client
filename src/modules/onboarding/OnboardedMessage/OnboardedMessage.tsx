@@ -17,8 +17,8 @@ export default function OnboardedMessage({
   return (
     <VStack align="stretch" gap="60px">
       <VStack align="flex-start" gap={3}>
-        <Text type="h1">{t('onboarded.heading.main')}</Text>
-        <Text type="h2">{t('onboarded.heading.sub', { email })}</Text>
+        <Text type="generic.h1">{t('onboarded.heading.main')}</Text>
+        <Text type="generic.h2">{t('onboarded.heading.sub', { email })}</Text>
       </VStack>
 
       <Button onClick={onContinue}>{t('onboarded.continue')}</Button>

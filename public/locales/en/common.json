@@ -8,8 +8,7 @@
   },
   "nav": {
     "community": "Community",
-    "team": "Our Team",
-    "github": "Our Github",
+    "project": "About Project",
     "login": "Login",
     "sign-up": "Sign up"
   },
