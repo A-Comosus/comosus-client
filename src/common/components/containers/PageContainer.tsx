@@ -7,17 +7,25 @@ import { Footer, NavBar, NavBarProps } from '@common/components';
 type PageContainerProps = {
   children: React.ReactNode;
   head: Head;
+  disableFixedNavBar?: boolean;
 } & NavBarProps;
 
 export default function PageContainer({
   children,
   head,
   disableNavOptions,
+  disableFixedNavBar,
 }: PageContainerProps) {
   const { title, metas, links } = head;
 
   return (
-    <Flex direction="column" justify="center" align="center" minH="100vh">
+    <Flex
+      direction="column"
+      justify="center"
+      align="center"
+      minH="100vh"
+      bg="#F5F6F8"
+    >
       <Head>
         <title>{title}</title>
         {metas &&
@@ -31,7 +39,7 @@ export default function PageContainer({
       </Head>
       <ColorModeScript />
       <Center
-        position="fixed"
+        position={disableFixedNavBar ? 'relative' : 'fixed'}
         top="0"
         marginTop="1rem"
         w="clamp(50%, 1400px, 90%)"

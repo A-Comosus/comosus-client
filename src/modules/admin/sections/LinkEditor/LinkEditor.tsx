@@ -56,13 +56,14 @@ export default function LinkEditor() {
   };
   return (
     <VStack flex={2} borderRight="1px solid #E7E8EE">
-      <VStack minW="600px" align="stretch">
+      <VStack flex={1} align="stretch" minW="600px">
         <LinkEditorMenu isReordering={isReordering} />
 
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="linklist">
             {(provided) => (
               <VStack
+                flex={1}
                 gap={5}
                 align="stretch"
                 overflowY="auto"

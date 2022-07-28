@@ -17,12 +17,8 @@ export default function NavBar({ disableNavOptions }: NavBarProps) {
       content: t('nav.community'),
     },
     {
-      href: GlobalRoute.Root,
-      content: t('nav.team'),
-    },
-    {
-      href: GlobalRoute.Root,
-      content: t('nav.github'),
+      href: GlobalRoute.Project,
+      content: t('nav.project'),
     },
   ];
 
