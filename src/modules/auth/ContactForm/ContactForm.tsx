@@ -1,27 +1,29 @@
-import React from 'react';
+import { React } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-
 import {
-  VStack,
-  Flex,
-  FormControl,
-  FormLabel,
-  Textarea,
-} from '@chakra-ui/react';
+  AiOutlineMail,
+  AiOutlineUser,
+  AiOutlinePhone,
+  AiOutlineMessage,
+} from 'react-icons/ai';
+
+import { VStack, FormControl } from '@chakra-ui/react';
 import { Input, Button, Text } from '@common/components';
 
 type ContactFormPropsValues = {
-  onSubmit: (values: ContactFormPropsValues) => void;
+  onSubmit: (values: ContactFormValuesTypes) => void;
   isLoading: boolean;
   isInvalid: boolean;
+  emailSent: boolean;
 };
 export default function ContactForm({
   onSubmit,
   isLoading,
   isInvalid,
+  emailSent,
 }: ContactFormPropsValues) {
   const { t } = useTranslation('auth');
 
@@ -30,18 +32,26 @@ export default function ContactForm({
       {
         type: 'text',
         name: 'customerName',
+        placeholder: t('contact-form.page.customerName.placeholder'),
+        leftElement: <AiOutlineUser />,
       },
       {
         type: 'email',
         name: 'email',
+        placeholder: t('contact-form.page.email.placeholder'),
+        leftElement: <AiOutlineMail />,
       },
       {
         type: 'number',
         name: 'phone',
+        placeholder: t('contact-form.page.phone.placeholder'),
+        leftElement: <AiOutlinePhone />,
       },
       {
         type: 'textarea',
         name: 'message',
+        placeholder: t('contact-form.page.message.placeholder'),
+        leftElement: <AiOutlineMessage />,
       },
     ],
     defaultValues: {
@@ -80,79 +90,34 @@ export default function ContactForm({
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl isInvalid={isInvalid}>
-          <VStack align="stretch" gap="10px">
-            <FormControl isRequired>
-              <Flex gap="20px">
-                <VStack align="stretch">
-                  <FormLabel htmlFor="email">
-                    {t('contact-form.page.customerName.label')}
-                  </FormLabel>
+          <VStack align="stretch" gap="20px">
+            {formValues.inputs.map(
+              ({ type, name, placeholder, leftElement }, index) => {
+                return (
                   <Input
-                    id="customerName"
-                    type="text"
-                    width="370px"
-                    name="customerName"
+                    isUnderline
+                    key={index}
+                    type={type}
+                    name={name}
                     control={control}
-                    border="0px"
-                    bg="rgba(173, 178, 198, 0.2)"
-                    placeholder={t(
-                      'contact-form.page.customerName.placeholder',
-                    )}
+                    placeholder={placeholder}
+                    leftElement={leftElement}
                   />
-                </VStack>
-
-                <VStack align="stretch">
-                  <FormLabel htmlFor="email">
-                    {t('contact-form.page.email.label')}
-                  </FormLabel>
-                  <Input
-                    id="email"
-                    type="email"
-                    width="370px"
-                    name="email"
-                    control={control}
-                    bg="rgba(173, 178, 198, 0.2)"
-                    border="none"
-                    placeholder={t('contact-form.page.email.placeholder')}
-                  />
-                </VStack>
-              </Flex>
-            </FormControl>
-
-            <VStack align="stretch">
-              <FormLabel htmlFor="phone">
-                {t('contact-form.page.phone.label')}
-              </FormLabel>
-              <Input
-                id="phone"
-                type="number"
-                name="phone"
-                control={control}
-                bg="rgba(173, 178, 198, 0.2)"
-                border="none"
-                placeholder={t('contact-form.page.phone.placeholder')}
-              />
-            </VStack>
-
-            <Text mb="8px">{t('contact-form.page.message.label')}</Text>
-            <Textarea
-              size="sm"
-              bg="rgba(173, 178, 198, 0.2)"
-              border="0px"
-              borderRadius="15px"
-              placeholder={t('contact-form.page.message.placeholder')}
-            />
-
+                );
+              },
+            )}
             <Button
               bg="rgba(26, 32, 44)"
               boxShadow="0px 10px 10px rgba(26, 32, 44, 0.2)"
-              width="400px"
               highlight
               type="submit"
               isLoading={isLoading}
             >
               {t('contact-form.page.button')}
             </Button>
+            {emailSent && (
+              <Text color=" #FF3F66">We have received your message!</Text>
+            )}
           </VStack>
         </FormControl>
       </form>

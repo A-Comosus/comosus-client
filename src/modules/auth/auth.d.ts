@@ -20,7 +20,7 @@ type ResetPasswordFormTypes = {
   resetToken: string;
 };
 
-type ContactFormPropsValues = {
+type ContactFormValuesTypes = {
   customerName: string;
   email: string;
   phone: string;

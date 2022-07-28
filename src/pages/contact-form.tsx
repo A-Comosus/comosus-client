@@ -1,17 +1,15 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { isNil } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import { PageContainer } from '@src/common/components';
 import { ContactForm } from '@src/modules/auth';
-import { useRouter } from 'next/router';
 import { useApiClient } from '@common/contexts';
 import { useContactFormMutation } from '@generated/graphql.queries';
-import { AppRoute } from '@src/constants/PageRoutes';
 
 export default function SendContactForm() {
   const { t } = useTranslation('auth');
   const head = { title: t('contact-form.title') };
-  const router = useRouter();
+  const [emailSent, setEmailSent] = useState(false);
 
   const { gqlClient } = useApiClient();
   const {
@@ -24,14 +22,14 @@ export default function SendContactForm() {
         // @ts-ignore
         console.error(error);
       } else if (data) {
-        router.push(AppRoute.Admin);
+        setEmailSent(true);
       }
     },
   });
-  const onSubmit = (value: ContactFormPropsValues) => {
+  const onSubmit = (values: ContactFormValuesTypes) => {
     contactForm({
-      payload: {
-        ...value,
+      detail: {
+        ...values,
       },
     });
   };
@@ -41,6 +39,7 @@ export default function SendContactForm() {
         onSubmit={onSubmit}
         isInvalid={!isNil(error)}
         isLoading={isSendingEmail}
+        emailSent={emailSent}
       />
     </PageContainer>
   );
