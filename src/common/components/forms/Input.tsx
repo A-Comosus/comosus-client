@@ -1,6 +1,6 @@
 /* eslint-disable react/no-children-prop */
 import React from 'react';
-import { Controller, Control, ControllerRenderProps } from 'react-hook-form';
+import { Controller, ControllerRenderProps } from 'react-hook-form';
 
 import {
   InputGroup,
@@ -14,7 +14,7 @@ import { FormErrorMessage } from '@common/components';
 
 type CustomInputProps = {
   name: string;
-  control: Control<any, any>;
+  control: any;
   leftElement?: React.ReactNode;
   rightElement?: React.ReactNode;
   isUnderline?: boolean;
