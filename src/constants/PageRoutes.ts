@@ -11,7 +11,6 @@ export enum AuthRoute {
   forgetPasswordSuccess = '/forget-password-success',
 }
 
-
 export enum AppRoute {
   Onboarding = '/onboarding',
   Admin = '/admin',

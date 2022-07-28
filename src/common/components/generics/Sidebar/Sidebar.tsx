@@ -29,7 +29,7 @@ function Sidebar() {
       href: AppRoute.NFTminter,
       content: t('sidebar.NFT'),
       icon: <TbCurrencyEthereum />,
-    }
+    },
   ];
 
   return (
