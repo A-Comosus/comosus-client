@@ -109,14 +109,15 @@ export default function ContactForm({
             <Button
               bg="rgba(26, 32, 44)"
               boxShadow="0px 10px 10px rgba(26, 32, 44, 0.2)"
-              highlight
               type="submit"
               isLoading={isLoading}
             >
               {t('contact-form.page.button')}
             </Button>
             {emailSent && (
-              <Text color=" #FF3F66">We have received your message!</Text>
+              <Text color=" #FF3F66">
+                {t('contact-form.page.successMessage')}
+              </Text>
             )}
           </VStack>
         </FormControl>
