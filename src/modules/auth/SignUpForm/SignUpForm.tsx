@@ -103,7 +103,12 @@ export default function SignUpForm({
               testId="sign-up.error"
               error={t('sign-up.error.user-exist')}
             />
-            <Button variantType="accent" type="submit" isLoading={isLoading}>
+            <Button
+              variantType="accent"
+              type="submit"
+              isLoading={isLoading}
+              data-testid="register"
+            >
               {t('sign-up.button')}
             </Button>
           </VStack>

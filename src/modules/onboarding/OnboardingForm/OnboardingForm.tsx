@@ -68,6 +68,7 @@ export default function OnboardingForm({
               _.isNil(getFieldState('displayName').error) &&
                 toggleIsDisplayNameFilled();
             }}
+            data-testid="continue-btn"
           >
             {t('continue')}
           </Button>
