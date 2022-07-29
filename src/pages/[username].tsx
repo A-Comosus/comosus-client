@@ -101,7 +101,7 @@ export default function PublicProfile({ userData }: PublicProfileProps) {
         alignItems="stretch"
       >
         <VStack flex={1} justify="space-between" gap="60px" maxW="670px">
-          <VStack gap={5}>
+          <VStack alignSelf="stretch" align="stretch" gap={5}>
             <VStack>
               <Avatar size="lg" src="https://picsum.photos/200" />
               <Text color="white">
@@ -109,7 +109,7 @@ export default function PublicProfile({ userData }: PublicProfileProps) {
               </Text>
             </VStack>
 
-            <VStack alignSelf="stretch" align="stretch" gap={4}>
+            <VStack align="stretch" gap={4}>
               {userData &&
                 userData.links.map((link, index) => (
                   <ProfileItem key={index} link={link} />
