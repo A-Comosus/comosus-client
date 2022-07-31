@@ -12,7 +12,7 @@ export default function ForgetPasswordSuccess() {
   return (
     <VStack flex={1} justify="center" align="stretch" gap="60px">
       <VStack align="stretch">
-        <Text type="h2">{t('forget-password-success.page.title')}</Text>
+        <Text type="generic.h1">{t('forget-password-success.page.title')}</Text>
         <Text type="p">{t('forget-password-success.page.subtitle')}</Text>
       </VStack>
       <Button type="button" onClick={() => router.push(GlobalRoute.Root)}>

@@ -83,9 +83,7 @@ export default function ContactForm({
   return (
     <VStack minW="800px" padding="20px" align="stretch" gap="60px">
       <VStack align="stretch" width="380px">
-        <Text fontSize="32px" fontWeight="600">
-          {t('contact-form.page.title')}
-        </Text>
+        <Text type="generic.h1">{t('contact-form.page.title')}</Text>
       </VStack>
 
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -106,12 +104,7 @@ export default function ContactForm({
                 );
               },
             )}
-            <Button
-              bg="rgba(26, 32, 44)"
-              boxShadow="0px 10px 10px rgba(26, 32, 44, 0.2)"
-              type="submit"
-              isLoading={isLoading}
-            >
+            <Button type="submit" isLoading={isLoading}>
               {t('contact-form.page.button')}
             </Button>
             {emailSent && (
