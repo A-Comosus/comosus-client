@@ -21,7 +21,9 @@ export default function OnboardedMessage({
         <Text type="generic.h2">{t('onboarded.heading.sub', { email })}</Text>
       </VStack>
 
-      <Button onClick={onContinue}>{t('onboarded.continue')}</Button>
+      <Button onClick={onContinue} data-testid="start-building-btn">
+        {t('onboarded.continue')}
+      </Button>
     </VStack>
   );
 }
