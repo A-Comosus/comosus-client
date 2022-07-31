@@ -93,6 +93,7 @@ export default function OnboardingForm({
               isDisabled={!isValid}
               isLoading={isOnboarding}
               type="submit"
+              data-testid="recaptcha-continue-btn"
             >
               {t('continue')}
             </Button>
