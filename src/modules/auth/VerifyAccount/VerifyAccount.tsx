@@ -26,7 +26,7 @@ export default function VerifyAccount({ isVerifying }: VerifyAccountProps) {
           maxWidth="640px"
         >
           <VStack align="stretch">
-            <Text type="h2">{t('verify-account.page.title')}</Text>
+            <Text type="generic.h1">{t('verify-account.page.title')}</Text>
           </VStack>
           <Button type="button" onClick={() => router.push(AppRoute.Admin)}>
             {t('verify-account.page.button')}
