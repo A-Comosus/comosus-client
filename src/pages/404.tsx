@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { VStack } from '@chakra-ui/react';
 import { PageContainer, Error404 } from '@src/common/components';
 
 export default function CustomErrorPage() {
@@ -9,9 +8,7 @@ export default function CustomErrorPage() {
 
   return (
     <PageContainer head={head}>
-      <VStack flex={1} padding="1rem">
-        <Error404 />
-      </VStack>
+      <Error404 />
     </PageContainer>
   );
 }
