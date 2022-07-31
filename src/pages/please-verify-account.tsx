@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useApiClient } from '@common/contexts';
 import { useVerifyAccountSendEmailMutation } from '@generated/graphql.queries';
 import { useTranslation } from 'react-i18next';
-import { VStack, Button } from '@chakra-ui/react';
-import { PageContainer, Text } from '@src/common/components';
+import { VStack } from '@chakra-ui/react';
+import { PageContainer, Text, Button } from '@src/common/components';
 
 type OnboardingStaticProps = {
   query: { id: string };
@@ -49,15 +49,10 @@ export default function PleaseVerifyAccount({ id }: PleaseVerifyAccountProps) {
   return (
     <PageContainer head={head}>
       <VStack>
-        <Text type="h3" maxWidth="640px" mb="1rem">
+        <Text type="generic.h1" maxWidth="640px" mb="1rem">
           {t('please-verify-account.page.title')}
         </Text>
-        <Button
-          color="#fff"
-          backgroundColor="#FB446C"
-          width="100%"
-          onClick={handleClick}
-        >
+        <Button variantType="accent" onClick={handleClick} width="100%">
           {t('please-verify-account.page.button')}
         </Button>
         <Text>{message}</Text>
