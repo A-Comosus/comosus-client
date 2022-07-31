@@ -17,7 +17,7 @@ export default function Policy({ name, control }: PolicyProps) {
       render={({ field, fieldState: { invalid, error } }) => (
         <FormControl id={name} isInvalid={invalid}>
           <HStack alignItems="flex-start">
-            <Checkbox mt="4px" {...field} />
+            <Checkbox mt="4px" {...field} data-testid="checkbox" />
             <Text>{t('sign-up.policy.description')}</Text>
           </HStack>
           {error && (
