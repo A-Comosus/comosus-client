@@ -4,7 +4,7 @@ import axios, { AxiosInstance } from 'axios';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
-import { useAuth } from '@common/contexts';
+import { useAuth } from '@src/stores';
 
 const apiEndpoint = {
   gql:

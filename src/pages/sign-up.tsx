@@ -1,7 +1,8 @@
 import React from 'react';
 import { isNil } from 'lodash';
 import { useTranslation } from 'react-i18next';
-import { useApiClient, useAuth } from '@common/contexts';
+import { useApiClient } from '@common/contexts';
+import { useAuth } from '@src/stores';
 import { useRegisterMutation } from '@generated/graphql.queries';
 import { useRouter } from 'next/router';
 
@@ -16,7 +17,7 @@ export default function SignUp() {
 
   const toast = useToast();
   const router = useRouter();
-  const { setAccessToken } = useAuth();
+  const { initStore } = useAuth();
   const { gqlClient } = useApiClient();
   const {
     mutate: register,
@@ -29,7 +30,10 @@ export default function SignUp() {
         console.error(error.message);
       } else if (data) {
         const {
-          register: { id, accessToken },
+          register: {
+            user: { id },
+            accessToken,
+          },
         } = data;
 
         toast({
@@ -37,7 +41,7 @@ export default function SignUp() {
           description: t('sign-up.success.message'),
           variant: 'subtle',
         });
-        setAccessToken(accessToken);
+        initStore({ id, accessToken });
         router.push({ pathname: AppRoute.Onboarding, query: { id } });
       }
     },
