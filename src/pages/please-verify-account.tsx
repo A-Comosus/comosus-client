@@ -48,11 +48,11 @@ export default function PleaseVerifyAccount({ id }: PleaseVerifyAccountProps) {
 
   return (
     <PageContainer head={head}>
-      <VStack>
+      <VStack align="stretch">
         <Text type="generic.h1" maxWidth="640px" mb="1rem">
           {t('please-verify-account.page.title')}
         </Text>
-        <Button variantType="accent" onClick={handleClick} width="100%">
+        <Button variantType="accent" onClick={handleClick}>
           {t('please-verify-account.page.button')}
         </Button>
         <Text>{message}</Text>
