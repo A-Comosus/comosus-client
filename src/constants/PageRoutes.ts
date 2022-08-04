@@ -9,11 +9,12 @@ export enum AuthRoute {
   Login = '/login',
   forgetPassword = '/forget-password',
   forgetPasswordSuccess = '/forget-password-success',
-  contactForm = '/contact-form',
 }
 
 export enum AppRoute {
   Onboarding = '/onboarding',
+  PromptVerify = '/please-verify-account',
   Admin = '/admin',
   Appearance = '/admin/appearance',
+  Contact = '/contact-us',
 }

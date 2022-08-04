@@ -2,16 +2,12 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { VStack } from '@chakra-ui/react';
-import { Text, Button } from '@src/common/components';
+import { Text } from '@src/common/components';
 
 type OnboardedMessageProps = {
-  onContinue: () => void;
   email: string;
 };
-export default function OnboardedMessage({
-  onContinue,
-  email,
-}: OnboardedMessageProps) {
+export default function OnboardedMessage({ email }: OnboardedMessageProps) {
   const { t } = useTranslation('onboarding');
 
   return (
@@ -20,7 +16,6 @@ export default function OnboardedMessage({
         <Text type="generic.h1">{t('onboarded.heading.main')}</Text>
         <Text type="generic.h2">{t('onboarded.heading.sub', { email })}</Text>
       </VStack>
-
       <Button onClick={onContinue} data-testid="start-building-btn">
         {t('onboarded.continue')}
       </Button>

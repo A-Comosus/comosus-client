@@ -3,8 +3,7 @@ import React from 'react';
 import { HStack, Button } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { Logo, Link, SelectLanguage } from '@common/components';
-import { GlobalRoute } from '@src/constants/PageRoutes';
-import { AuthRoute } from '@src/constants/PageRoutes';
+import { GlobalRoute, AuthRoute, AppRoute } from '@src/constants/PageRoutes';
 export type NavBarProps = {
   disableNavOptions?: boolean;
 };
@@ -19,6 +18,10 @@ export default function NavBar({ disableNavOptions }: NavBarProps) {
     {
       href: GlobalRoute.Project,
       content: t('nav.project'),
+    },
+    {
+      href: AppRoute.Contact,
+      content: t('nav.contact'),
     },
   ];
 
