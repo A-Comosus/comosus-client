@@ -2,13 +2,13 @@
 
 describe('Auth Feature', function () {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/login');
     cy.fixture('auth').then((data) => {
       this.authData = data;
     });
   });
 
   it('displays two input field by default', () => {
+    cy.visit('http://localhost:3000/login');
     cy.get('form').within(() => {
       cy.get('input').should('have.length', 2);
     });
