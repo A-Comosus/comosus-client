@@ -16,9 +16,6 @@ export default function OnboardedMessage({ email }: OnboardedMessageProps) {
         <Text type="generic.h1">{t('onboarded.heading.main')}</Text>
         <Text type="generic.h2">{t('onboarded.heading.sub', { email })}</Text>
       </VStack>
-      <Button onClick={onContinue} data-testid="start-building-btn">
-        {t('onboarded.continue')}
-      </Button>
     </VStack>
   );
 }
