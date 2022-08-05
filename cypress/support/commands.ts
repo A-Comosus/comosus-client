@@ -25,9 +25,9 @@ Cypress.Commands.add(
     cy.visit('http://localhost:3000/sign-up');
     cy.get('form').within(() => {
       const randomStr = (Math.random() + 1).toString(36).substring(7);
-      cy.get('#username').type(`KevinLu${randomStr}`);
-      cy.get('#email').type(`turnkevin${randomStr}@gmail.com`);
-      cy.get('#password').type('admin123');
+      cy.get('[id="username"]').type(`KevinLu${randomStr}`);
+      cy.get('[id="email"]').type(`turnkevin${randomStr}@gmail.com`);
+      cy.get('[id="password"]').type('admin123');
     });
   },
 );
