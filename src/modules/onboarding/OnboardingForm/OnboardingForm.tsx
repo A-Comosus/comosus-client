@@ -68,6 +68,7 @@ export default function OnboardingForm({
               _.isNil(getFieldState('displayName').error) &&
                 toggleIsDisplayNameFilled();
             }}
+            data-testid="continue-btn"
           >
             {t('continue')}
           </Button>
@@ -92,6 +93,7 @@ export default function OnboardingForm({
               isDisabled={!isValid}
               isLoading={isOnboarding}
               type="submit"
+              data-testid="recaptcha-continue-btn"
             >
               {t('continue')}
             </Button>

@@ -20,6 +20,7 @@ export default function DisplayName({ name, control }: DisplayNameProps) {
         control={control}
         placeholder={t('display-name.placeholder')}
         borderRadius={15}
+        data-testid="display-name"
       />
     </VStack>
   );

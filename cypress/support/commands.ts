@@ -19,6 +19,31 @@ Cypress.Commands.add('login', (username: string, password: string) => {
   });
 });
 
+Cypress.Commands.add(
+  'signup',
+  (username: string, email: string, password: string) => {
+    cy.visit('http://localhost:3000/sign-up');
+    cy.get('form').within(() => {
+      const randomStr = (Math.random() + 1).toString(36).substring(7);
+      cy.get('[id="username"]').type(`KevinLu${randomStr}`);
+      cy.get('[id="email"]').type(`turnkevin${randomStr}@gmail.com`);
+      cy.get('[id="password"]').type('admin123');
+    });
+  },
+);
+
+Cypress.Commands.add('recaptcha', () => {
+  cy.get('iframe')
+    .first()
+    .its('0.contentDocument.body')
+    .should('not.be.undefined')
+    .and('not.be.empty')
+    .then(cy.wrap)
+    .find('#recaptcha-anchor')
+    .should('be.visible')
+    .click();
+});
+
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 //
