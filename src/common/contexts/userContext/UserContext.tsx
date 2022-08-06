@@ -1,6 +1,7 @@
 import React, { useMemo, useRef, useState } from 'react';
 import * as _ from 'lodash';
-import { useApiClient, useAuth } from '@common/contexts';
+import { useApiClient } from '@common/contexts';
+import { useAuth } from '@src/stores';
 
 import { User, useFindUserByIdQuery } from '@generated/graphql.queries';
 import { parseJwt } from '@src/utils/parse-jwt';
