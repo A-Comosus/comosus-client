@@ -44,6 +44,11 @@ export default function Login() {
               pathname: AppRoute.Onboarding,
               query: { id },
             })
+          : status === UserStatus.Onboarded
+          ? router.push({
+              pathname: AppRoute.PromptVerify,
+              query: { id },
+            })
           : router.push(AppRoute.Admin);
       }
     },
