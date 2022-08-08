@@ -16,5 +16,6 @@ export enum AppRoute {
   PromptVerify = '/please-verify-account',
   Admin = '/admin',
   Appearance = '/admin/appearance',
+  Settings = '/admin/settings',
   Contact = '/contact-us',
 }

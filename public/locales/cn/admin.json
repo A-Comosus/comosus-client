@@ -31,5 +31,12 @@
       "bio": "简介",
       "bio-placeholder": "输入个人简介以显示在您的个人资料中"
     }
+  },
+  "settings": {
+    "danger-zone": {
+      "title": "危险区域",
+      "action": "删除账号",
+      "message": "真的吗? 你真的舍得离开我们吗? "
+    }
   }
 }

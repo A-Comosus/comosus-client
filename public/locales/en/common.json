@@ -4,7 +4,9 @@
     "description": "Share more with A-Comosus"
   },
   "button": {
-    "disabled": "Disabled"
+    "disabled": "Disabled",
+    "close": "Close",
+    "delete": "Delete"
   },
   "nav": {
     "community": "Community",

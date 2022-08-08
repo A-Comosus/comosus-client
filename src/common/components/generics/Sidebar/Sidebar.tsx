@@ -1,8 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { IoLinkSharp } from 'react-icons/io5';
-import { TbColorSwatch } from 'react-icons/tb';
+import { TbLink, TbColorSwatch, TbSettings } from 'react-icons/tb';
 
 import { AppRoute } from '@src/constants/PageRoutes';
 import { Avatar, VStack } from '@chakra-ui/react';
@@ -18,12 +17,17 @@ function Sidebar() {
     {
       href: AppRoute.Admin,
       content: t('sidebar.link'),
-      icon: <IoLinkSharp />,
+      icon: <TbLink />,
     },
     {
       href: AppRoute.Appearance,
       content: t('sidebar.appearance'),
       icon: <TbColorSwatch />,
+    },
+    {
+      href: AppRoute.Settings,
+      content: t('sidebar.settings'),
+      icon: <TbSettings />,
     },
   ];
 
