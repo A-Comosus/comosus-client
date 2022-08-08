@@ -16,6 +16,8 @@ export type TextTypes =
   | 'generic.h1'
   | 'generic.h2'
   | 'section.title'
+  | 'admin.h2'
+  | 'admin.normal'
   | 'p'
   | 'label'
   | 'code'
@@ -61,6 +63,16 @@ export default function Text({ children, type = 'p', ...props }: TextProps) {
     ),
     ['section.title']: (
       <CKText as="h3" fontSize="20px" fontWeight="bold" {...props}>
+        {children}
+      </CKText>
+    ),
+    ['admin.h2']: (
+      <CKText as="h2" fontSize="20px" fontWeight="bold" {...props}>
+        {children}
+      </CKText>
+    ),
+    ['admin.normal']: (
+      <CKText as="p" fontSize="16px" {...props}>
         {children}
       </CKText>
     ),
