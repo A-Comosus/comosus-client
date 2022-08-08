@@ -63,3 +63,7 @@ mutation UpdateProfile($payload: UpdateProfileInput!) {
     bio
   }
 }
+
+mutation DeleteAccount($id: String!) {
+  deleteAccount(id: $id)
+}
