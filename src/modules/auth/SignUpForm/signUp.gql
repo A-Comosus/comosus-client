@@ -1,6 +1,11 @@
 mutation Register($payload: RegisterDetailInput!) {
   register(detail: $payload) {
-    id
     accessToken
+    user {
+      id
+      status
+      username
+      email
+    }
   }
 }

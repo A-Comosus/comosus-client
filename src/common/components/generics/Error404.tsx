@@ -6,7 +6,7 @@ export default function Error404() {
   const { t } = useTranslation('auth');
 
   return (
-    <VStack height="1342px" align="center">
+    <VStack align="center">
       <VStack
         background="rgba(173, 178, 198, 0.2)"
         borderRadius="10px"

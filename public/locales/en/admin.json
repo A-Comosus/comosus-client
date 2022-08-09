@@ -9,10 +9,11 @@
         "explore": "Explore"
       },
       "toggle": {
-        "prompt": "Delete this forever?", 
+        "prompt": "Delete this forever?",
         "cancel": "Cancel",
         "delete": "Delete"
-      }    },
+      }
+    },
     "preview": {
       "share": "Share your A-Comosus"
     },
@@ -29,6 +30,13 @@
       "profile-title": "Profile Title",
       "bio": "Bio",
       "bio-placeholder": "Enter a bio description to appear on your Profile"
+    }
+  },
+  "settings": {
+    "danger-zone": {
+      "title": "Danger Zone",
+      "action": "Delete Account",
+      "message": "Are you sure? You can't undo this action afterwards."
     }
   }
 }

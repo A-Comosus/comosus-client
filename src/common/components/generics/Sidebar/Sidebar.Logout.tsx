@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useAuth } from '@src/common/contexts';
+import { useAuth } from '@src/stores';
 
 import { HStack, useToast } from '@chakra-ui/react';
 import { MdLogout } from 'react-icons/md';
