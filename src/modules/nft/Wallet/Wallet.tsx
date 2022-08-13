@@ -1,44 +1,54 @@
 import { useState } from 'react';
-import { Button } from '@src/common/components';
-import { useToast, VStack } from '@chakra-ui/react';
+import { Button, Text } from '@src/common/components';
+import { useToast } from '@chakra-ui/react';
 import { connectWallet, mintNFT } from '../util/interact';
+import {
+  AdminSectionContainer,
+  AdminSectionItemCard,
+} from '@src/modules/admin/components';
 
 export function Wallet() {
   const toast = useToast();
 
   const [walletAddress, setWalletAddress] = useState<string | null>();
-  const [status, setStatus] = useState<boolean>();
 
-  const connectWalletPressed = async () => {
-    const { address, status } = await connectWallet();
-    setStatus(status);
+  const onConnect = async () => {
+    const { address } = await connectWallet();
     setWalletAddress(address);
   };
 
-  const onMintPressed = async () => {
+  const onMint = async () => {
     const { status, description } = await mintNFT();
     toast({ status, description });
-    setStatus(status === 'success' ? true : false);
   };
 
+  const truncatedWalletAddress = walletAddress
+    ? String(walletAddress).substring(0, 6) +
+      '...' +
+      String(walletAddress).substring(38)
+    : '???';
+
   return (
-    <VStack align="stretch" gap={'20px'}>
-      <Button id="walletButton" onClick={connectWalletPressed}>
+    <AdminSectionContainer heading="Wallet">
+      <AdminSectionItemCard>
+        <Text as="h3" color="#F8F5F1" fontWeight={600} fontSize="1.6rem">
+          Connect Your Crypto Wallet
+        </Text>
+
+        <Text as="p" color="#F8F5F1" fontSize="1.4rem">
+          {`Wallet Address: ${truncatedWalletAddress.toUpperCase()}`}
+        </Text>
+
         {walletAddress ? (
-          'Connected: ' +
-          String(walletAddress).substring(0, 6) +
-          '...' +
-          String(walletAddress).substring(38)
+          <Button id="mintButton" onClick={onMint}>
+            Mint NFT
+          </Button>
         ) : (
-          <span>Connect Wallet</span>
+          <Button id="walletButton" onClick={onConnect}>
+            Connect
+          </Button>
         )}
-      </Button>
-      <Button id="mintButton" onClick={onMintPressed}>
-        Mint NFT
-      </Button>
-      <p id="status" style={{ color: 'red' }}>
-        {status ?? 'error connecting to metamask'}
-      </p>
-    </VStack>
+      </AdminSectionItemCard>
+    </AdminSectionContainer>
   );
 }
