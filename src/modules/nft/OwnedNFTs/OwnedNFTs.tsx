@@ -10,8 +10,10 @@ import { Text } from '@src/common/components';
 import { isNil } from 'lodash';
 import { useGetNFTsQuery } from '@src/services';
 import SkeletonCard from './OwnedNFTs.SkeletonCard';
+import { useTranslation } from 'react-i18next';
 
 export function OwnedNFTs() {
+  const { t } = useTranslation('admin');
   const { nfts, error, isLoading } = useGetNFTsQuery();
 
   const content = useMemo(() => {
@@ -21,7 +23,7 @@ export function OwnedNFTs() {
       return (
         <AdminSectionItemCard border="2px solid #A2FF2A">
           <Text as="p" color="#F8F5F1" fontSize="1.6rem">
-            {'Connect your wallet to show the list of NFTs you own!'}
+            {t('nft.owned-nfts.message')}
           </Text>
         </AdminSectionItemCard>
       );
@@ -42,7 +44,9 @@ export function OwnedNFTs() {
 
   return (
     <AdminSectionContainer
-      heading={`Owned NFTs ${nfts ? `(Total ${nfts.length})` : ''}`}
+      heading={t('nft.owned-nfts.heading', {
+        value: nfts ? `(${nfts.length})` : '',
+      })}
     >
       {content}
     </AdminSectionContainer>

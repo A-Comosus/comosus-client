@@ -7,7 +7,7 @@ import { VStack } from '@chakra-ui/react';
 
 export default function NFT() {
   const { t } = useTranslation('admin');
-  const head = { title: t('admin.NFT') };
+  const head = { title: t('admin.title') };
 
   return (
     <AppContainer head={head}>

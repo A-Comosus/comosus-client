@@ -6,8 +6,10 @@ import {
   AdminSectionContainer,
   AdminSectionItemCard,
 } from '@src/modules/admin/components';
+import { useTranslation } from 'react-i18next';
 
 export function Wallet() {
+  const { t } = useTranslation('admin');
   const { error, walletAddress, connectWallet, mintNFT } = useWeb3();
 
   const truncatedWalletAddress = useMemo(
@@ -21,21 +23,21 @@ export function Wallet() {
   );
 
   return (
-    <AdminSectionContainer heading="Wallet">
+    <AdminSectionContainer heading={t('nft.wallet.heading')}>
       <AdminSectionItemCard>
         <Text as="h3" color="#F8F5F1" fontWeight={600} fontSize="1.6rem">
-          Connect Your Crypto Wallet
+          {t('nft.wallet.message')}
         </Text>
 
         <Text as="p" color="#F8F5F1" fontSize="1.4rem">
-          {`Wallet Address: ${truncatedWalletAddress.toUpperCase()}`}
+          {`${t(
+            'nft.wallet.address-label',
+          )} ${truncatedWalletAddress.toUpperCase()}`}
         </Text>
 
         {walletAddress ? (
           <>
-            <Button id="mintButton" onClick={mintNFT}>
-              Mint NFT
-            </Button>
+            <Button onClick={mintNFT}>{t('nft.wallet.action.mint')}</Button>
             {error.mintNFT && (
               <Text as="p" color="red" fontSize="1.4rem">
                 {error.mintNFT}
@@ -44,8 +46,8 @@ export function Wallet() {
           </>
         ) : (
           <>
-            <Button id="walletButton" onClick={connectWallet}>
-              Connect
+            <Button onClick={connectWallet}>
+              {t('nft.wallet.action.connect')}
             </Button>
             {error.connectWallet && (
               <Text as="p" color="red" fontSize="1.4rem">

@@ -32,6 +32,25 @@
       "bio-placeholder": "Enter a bio description to appear on your Profile"
     }
   },
+  "nft": {
+    "wallet": {
+      "heading": "Wallet",
+      "message": "Connect your crypto wallet.",
+      "address-label": "Wallet Address:",
+      "action": {
+        "connect": "Connect",
+        "mint": "Mint NFT"
+      }
+    },
+    "owned-nfts": {
+      "heading": "Owned NFTs {{value}}",
+      "message": "Connect your wallet to show the list of NFTs you own!",
+      "action": {
+        "view": "View On OpeaSea",
+        "set-avatar": "Set as Avatar"
+      }
+    }
+  },
   "settings": {
     "danger-zone": {
       "title": "Danger Zone",
