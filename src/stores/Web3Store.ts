@@ -30,9 +30,11 @@ export enum Web3Store {
   ResetStore = 'ResetStore',
 }
 
-const contractAddress = '0xf63F71584d0cF62592f1e077ceB2527a43ca91d9';
-const alchemyKey = process.env.NEXT_PUBLIC_ALCHEMY_KEY;
-const web3 = createAlchemyWeb3(alchemyKey || '');
+const contractAddress = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
+const alchemyApiKey = process.env.NEXT_PUBLIC_ALCHEMY_API_KEY;
+const alchemyAppUrl = process.env.NEXT_PUBLIC_ALCHEMY_APP_URL;
+
+const web3 = createAlchemyWeb3(`https://${alchemyAppUrl}/v2/${alchemyApiKey}`);
 
 const name = Web3Store.Name;
 const initialState: Web3StoreState = {
