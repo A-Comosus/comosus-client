@@ -1,5 +1,4 @@
 import React from 'react';
-import { User } from '@generated/graphql.queries';
 
 import {
   Avatar as CKAvatar,
@@ -7,7 +6,8 @@ import {
 } from '@chakra-ui/react';
 
 type AvatarProps = {
-  user: User;
+  // TODO: this is bad
+  user: any;
 } & CKAvatarProps;
 export function Avatar({ user }: AvatarProps) {
   return (
