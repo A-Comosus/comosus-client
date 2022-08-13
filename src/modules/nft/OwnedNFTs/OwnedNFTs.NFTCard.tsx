@@ -10,6 +10,12 @@ type NFTCardProps = {
 export function NFTCard({ nft }: NFTCardProps) {
   if (!nft.metadata.image) return <></>;
 
+  const redirectToOpensea = () =>
+    window.open(
+      `${process.env.NEXT_PUBLIC_OPENSEA_URL}/${nft.contract.address}/${nft.metadata.edition}`,
+      '_ blank',
+    );
+
   const imageSrc = `https://gateway.pinata.cloud/ipfs/${nft.metadata.image.replace(
     'ipfs://',
     '',
@@ -51,8 +57,12 @@ export function NFTCard({ nft }: NFTCardProps) {
           </VStack>
 
           <HStack spacing="2rem">
-            <Button flex={1}>Sell on OpenSea</Button>
-            <Button flex={1}>Set as Avatar</Button>
+            <Button onClick={redirectToOpensea} flex={1}>
+              View on OpenSea
+            </Button>
+            <Button disabled flex={1}>
+              Set as Avatar
+            </Button>
           </HStack>
         </VStack>
       </HStack>

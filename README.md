@@ -12,6 +12,8 @@ TL;DR You need to set up following environment variables.
 | -------------------------------- | ------------------------------------------------------------- |
 | **#Google ReCaptcha**            |                                                               |
 | \*NEXT_PUBLIC_RECAPTCHA_SITE_KEY | Access key to enable Google ReCaptcha                         |
+| **#Opensea**                     |                                                               |
+| NEXT_PUBLIC_OPENSEA_URL          | Base Url to view NFT on opensea                               |
 | **#Alchemy**                     |                                                               |
 | NEXT_PUBLIC_ALCHEMY_APP_URL      | Alchemy supported app url to create the Alchemy web3 instance |
 | \*NEXT_PUBLIC_ALCHEMY_API_KEY    | Key to access Alchemy API                                     |
