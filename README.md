@@ -8,11 +8,23 @@ First, set up the development environment
 
 TL;DR You need to set up following environment variables.
 
-| name                             | description                           |
-| -------------------------------- | ------------------------------------- |
-| NEXT_PUBLIC_CLIENT_BASE_URL      | Base URL of client                    |
-| NEXT_PUBLIC_GRAPHQL_ENDPOINT     | URL to backend server                 |
-| \*NEXT_PUBLIC_RECAPTCHA_SITE_KEY | Access key to enable Google ReCaptcha |
+| Name                             | Description                                                   |
+| -------------------------------- | ------------------------------------------------------------- |
+| **#Google ReCaptcha**            |                                                               |
+| \*NEXT_PUBLIC_RECAPTCHA_SITE_KEY | Access key to enable Google ReCaptcha                         |
+| **#Opensea**                     |                                                               |
+| NEXT_PUBLIC_OPENSEA_URL          | Base Url to view NFT on opensea                               |
+| **#Alchemy**                     |                                                               |
+| NEXT_PUBLIC_ALCHEMY_APP_URL      | Alchemy supported app url to create the Alchemy web3 instance |
+| \*NEXT_PUBLIC_ALCHEMY_API_KEY    | Key to access Alchemy API                                     |
+| NEXT_PUBLIC_ALCHEMY_NETWORK      | Alchemy supported network to fetch nfts from                  |
+| NEXT_PUBLIC_CONTRACT_ADDRESS     | Smart Contract address where the nfts will be mint from       |
+| **#Pinata**                      |                                                               |
+| NEXT_PUBLIC_PINATA_KEY           | I don't know what this is yet, ask Max if you want to know    |
+| NEXT_PUBLIC_PINATA_SECRET        | I don't know what this is yet, ask Max if you want to know    |
+| **#A-Comosus**                   |                                                               |
+| NEXT_PUBLIC_CLIENT_BASE_URL      | Base URL of client                                            |
+| NEXT_PUBLIC_GRAPHQL_ENDPOINT     | URL to backend server                                         |
 
 Then you want to make sure you have downloaded all the dependencies used for this project,
 

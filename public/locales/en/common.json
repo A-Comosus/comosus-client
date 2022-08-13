@@ -31,6 +31,7 @@
     "support": "Support",
     "new": "What's new",
     "my-account": "My Account",
-    "logout": "Logout"
+    "logout": "Logout",
+    "NFT":"My NFT Minter"
   }
 }

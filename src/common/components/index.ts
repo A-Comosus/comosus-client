@@ -19,6 +19,7 @@ export { default as FormErrorMessage } from './forms/FormErrorMessage';
 export { default as FormSuccessMessage } from './forms/FormSuccessMessage';
 export { default as FormSuccessAction } from './forms/FormSuccessAction';
 export { default as Textarea } from './forms/Textarea';
+export * from './generics/Avatar/Avatar';
 
 // Text Components
 export { default as Text } from './text/Text';
