@@ -10,6 +10,13 @@ type ThemeProviderProps = {
 
 export const ThemeContextProvider = ({ children }: ThemeProviderProps) => {
   const chakraTheme = {
+    styles: {
+      global: {
+        'html, body': {
+          fontSize: '62.5%',
+        },
+      },
+    },
     fonts: {
       heading: `'black han sans', sans-serif`,
       body: `'Montserrat', sans-serif`,
