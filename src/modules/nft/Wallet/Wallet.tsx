@@ -1,32 +1,24 @@
-import { useState } from 'react';
+import React, { useMemo } from 'react';
+import { useWeb3 } from '@src/stores';
+
 import { Button, Text } from '@src/common/components';
-import { useToast } from '@chakra-ui/react';
-import { connectWallet, mintNFT } from '@utils/nft/interact';
 import {
   AdminSectionContainer,
   AdminSectionItemCard,
 } from '@src/modules/admin/components';
 
 export function Wallet() {
-  const toast = useToast();
+  const { error, walletAddress, connectWallet, mintNFT } = useWeb3();
 
-  const [walletAddress, setWalletAddress] = useState<string | null>();
-
-  const onConnect = async () => {
-    const { address } = await connectWallet();
-    setWalletAddress(address);
-  };
-
-  const onMint = async () => {
-    const { status, description } = await mintNFT();
-    toast({ status, description });
-  };
-
-  const truncatedWalletAddress = walletAddress
-    ? String(walletAddress).substring(0, 6) +
-      '...' +
-      String(walletAddress).substring(38)
-    : '???';
+  const truncatedWalletAddress = useMemo(
+    () =>
+      walletAddress
+        ? String(walletAddress).substring(0, 6) +
+          '...' +
+          String(walletAddress).substring(38)
+        : '???',
+    [walletAddress],
+  );
 
   return (
     <AdminSectionContainer heading="Wallet">
@@ -40,13 +32,27 @@ export function Wallet() {
         </Text>
 
         {walletAddress ? (
-          <Button id="mintButton" onClick={onMint}>
-            Mint NFT
-          </Button>
+          <>
+            <Button id="mintButton" onClick={mintNFT}>
+              Mint NFT
+            </Button>
+            {error.mintNFT && (
+              <Text as="p" color="red" fontSize="1.4rem">
+                {error.mintNFT}
+              </Text>
+            )}
+          </>
         ) : (
-          <Button id="walletButton" onClick={onConnect}>
-            Connect
-          </Button>
+          <>
+            <Button id="walletButton" onClick={connectWallet}>
+              Connect
+            </Button>
+            {error.connectWallet && (
+              <Text as="p" color="red" fontSize="1.4rem">
+                {error.connectWallet}
+              </Text>
+            )}
+          </>
         )}
       </AdminSectionItemCard>
     </AdminSectionContainer>

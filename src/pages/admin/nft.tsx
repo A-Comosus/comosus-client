@@ -5,8 +5,6 @@ import { AppContainer } from '@modules/admin/components';
 import { Wallet, OwnedNFTs } from '@modules/nft';
 import { VStack } from '@chakra-ui/react';
 
-import nftData from '@modules/nft/fakeNFTs.json';
-
 export default function NFT() {
   const { t } = useTranslation('admin');
   const head = { title: t('admin.NFT') };
@@ -22,7 +20,7 @@ export default function NFT() {
         overflowY="scroll"
       >
         <Wallet />
-        <OwnedNFTs nfts={nftData.ownedNfts} />
+        <OwnedNFTs />
       </VStack>
     </AppContainer>
   );
