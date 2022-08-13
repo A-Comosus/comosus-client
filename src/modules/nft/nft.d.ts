@@ -16,7 +16,7 @@ type NFT = {
   id: {
     tokenId: string;
     tokenMetadata: {
-      tokenType: 'ERC721';
+      tokenType: string;
     };
   };
   balance: string;
@@ -31,17 +31,17 @@ type NFT = {
     gateway: string;
   }[];
   metadata: {
-    date: number;
-    image: string;
-    dna: string;
-    name: string;
-    description: string;
-    edition: number;
-    attributes: {
+    date?: number;
+    image?: string;
+    dna?: string;
+    name?: string;
+    description?: string;
+    edition?: number;
+    attributes?: {
       value: string;
       trait_type: string;
     }[];
-    compiler: string;
+    compiler?: string;
   };
   timeLastUpdated: string;
   error?: string;

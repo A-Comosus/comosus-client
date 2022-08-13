@@ -8,7 +8,7 @@ type NFTCardProps = {
   nft: NFT;
 };
 export function NFTCard({ nft }: NFTCardProps) {
-  if (nft.error) return <></>;
+  if (!nft.metadata.image) return <></>;
 
   const imageSrc = `https://gateway.pinata.cloud/ipfs/${nft.metadata.image.replace(
     'ipfs://',

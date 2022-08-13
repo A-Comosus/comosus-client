@@ -1,4 +1,4 @@
-import contractABI from '../contract-abi.json';
+import contractABI from './contract-abi.json';
 import { createAlchemyWeb3 } from '@alch/alchemy-web3';
 import { AbiItem } from 'web3-utils';
 

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Text } from '@src/common/components';
 import { useToast } from '@chakra-ui/react';
-import { connectWallet, mintNFT } from '../util/interact';
+import { connectWallet, mintNFT } from '@utils/nft/interact';
 import {
   AdminSectionContainer,
   AdminSectionItemCard,
