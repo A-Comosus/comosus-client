@@ -1,5 +1,6 @@
 export * from './createStore';
 export * from './AuthStore';
+export * from './Web3Store';
 
 type Set<T extends object> = (
   partial: T | Partial<T> | ((state: T) => T | Partial<T>),
