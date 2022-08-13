@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import _ from 'lodash';
 import { useTranslation } from 'react-i18next';
 import { useApiClient, useUser } from '@src/common/contexts';
@@ -6,33 +6,27 @@ import { useFindUserByUsernameQuery } from '@generated/graphql.queries';
 
 import {
   useDisclosure,
-  Avatar,
   HStack,
   IconButton,
   Spinner,
   VStack,
 } from '@chakra-ui/react';
 import Link from 'next/link';
-import { Logo, Text, ProfileItem } from '@src/common/components';
+import { Logo, Avatar, Text, ProfileItem } from '@src/common/components';
 import { BsShareFill } from 'react-icons/bs';
 import { FaShareSquare } from 'react-icons/fa';
 import SharePanel from './ProfilePreview.SharePanel';
 
 export default function ProfilePreview() {
   const { t } = useTranslation('admin');
-  const {
-    user: { username },
-  } = useUser();
+  const { user } = useUser();
 
-  const enabled = useMemo(() => {
-    return !_.isNil(username);
-  }, [username]);
   const { gqlClient } = useApiClient();
   const { data: userData, isLoading } = useFindUserByUsernameQuery(
     gqlClient,
-    { payload: { username } },
+    { payload: { username: user.username } },
     {
-      enabled,
+      enabled: !_.isNil(user.username),
       select: (data) => data.findUserByUsername,
     },
   );
@@ -71,7 +65,7 @@ export default function ProfilePreview() {
               />
 
               <VStack>
-                <Avatar size="lg" src="https://picsum.photos/200" />
+                <Avatar user={user} />
                 <Text color="white">
                   {userData?.displayName || userData?.username}
                 </Text>

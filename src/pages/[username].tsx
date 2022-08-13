@@ -1,8 +1,8 @@
 import React from 'react';
 import { request } from 'graphql-request';
 
-import { Avatar, Center, VStack } from '@chakra-ui/react';
-import { Text, ProfileItem, Logo } from '@src/common/components';
+import { Center, VStack } from '@chakra-ui/react';
+import { Avatar, Text, ProfileItem, Logo } from '@src/common/components';
 import Head from 'next/head';
 import { useTranslation } from 'react-i18next';
 
@@ -19,6 +19,7 @@ export async function getServerSideProps(context: ServerSideContextType) {
       query FindByUsername($payload: FindUserByUsernameInput!) {
         findUserByUsername(username: $payload) {
           id
+          avatarUrl
           username
           displayName
           bio
@@ -47,6 +48,7 @@ export async function getServerSideProps(context: ServerSideContextType) {
 type PublicProfileProps = {
   userData: {
     id: string;
+    avatarUrl?: string;
     username: string;
     displayName?: string;
     bio?: string;
@@ -103,7 +105,7 @@ export default function PublicProfile({ userData }: PublicProfileProps) {
         <VStack flex={1} justify="space-between" gap="60px" maxW="670px">
           <VStack alignSelf="stretch" align="stretch" gap={5}>
             <VStack>
-              <Avatar size="lg" src="https://picsum.photos/200" />
+              <Avatar user={userData} />
               <Text color="white">
                 {userData?.displayName ?? userData?.username}
               </Text>

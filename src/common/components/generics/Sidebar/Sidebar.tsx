@@ -8,16 +8,21 @@ import {
   TbCurrencyEthereum,
 } from 'react-icons/tb';
 
-import { AppRoute } from '@src/constants/PageRoutes';
-import { Avatar, VStack } from '@chakra-ui/react';
-import { Logo } from '@common/components';
+import { AppRoute, GlobalRoute } from '@src/constants/PageRoutes';
+import { VStack } from '@chakra-ui/react';
+import { Logo, Avatar } from '@common/components';
 import SidebarMenuItem from './Sidebar.MenuItem';
 import SidebarLogout from './Sidebar.Logout';
 
 import styles from './Sidebar.module.scss';
+import { useUser } from '@src/common/contexts';
+import { useRouter } from 'next/router';
 
 function Sidebar() {
   const { t } = useTranslation();
+  const { push } = useRouter();
+  const { user } = useUser();
+
   const navItems = [
     {
       href: AppRoute.Admin,
@@ -41,10 +46,12 @@ function Sidebar() {
     },
   ];
 
+  if (!user) push(GlobalRoute.Error);
+
   return (
     <nav className={styles.sidebar}>
       <VStack flex={1} gap={10}>
-        <Avatar size="xl" src="https://picsum.photos/200" />
+        <Avatar user={user} />
 
         <ul className={styles.sidebar__menu}>
           {navItems.map(({ href, content, icon }, index) => (
