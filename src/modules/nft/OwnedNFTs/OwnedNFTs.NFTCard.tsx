@@ -3,11 +3,14 @@ import React from 'react';
 import { AdminSectionItemCard } from '@src/modules/admin/components';
 import { HStack, Image, VStack } from '@chakra-ui/react';
 import { Button, Text } from '@src/common/components';
+import { useUpdateAvatarApi } from '@src/services';
 
 type NFTCardProps = {
   nft: NFT;
 };
 export function NFTCard({ nft }: NFTCardProps) {
+  const { updateAvatar, isUpdating } = useUpdateAvatarApi();
+
   if (!nft.metadata.image) return <></>;
 
   const redirectToOpensea = () =>
@@ -60,7 +63,11 @@ export function NFTCard({ nft }: NFTCardProps) {
             <Button onClick={redirectToOpensea} flex={1}>
               View on OpenSea
             </Button>
-            <Button disabled flex={1}>
+            <Button
+              isLoading={isUpdating}
+              onClick={() => updateAvatar({ url: imageSrc })}
+              flex={1}
+            >
               Set as Avatar
             </Button>
           </HStack>
