@@ -16,7 +16,7 @@ export enum AppRoute {
   PromptVerify = '/please-verify-account',
   Admin = '/admin',
   Appearance = '/admin/appearance',
-  NFTminter = '/admin/NFTminter',
+  NFT = '/admin/nft',
   Settings = '/admin/settings',
   Contact = '/contact-us',
 }

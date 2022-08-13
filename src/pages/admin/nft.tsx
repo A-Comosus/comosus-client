@@ -2,17 +2,17 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { AppContainer } from '@modules/admin/components';
-import { MintNFT } from '@modules/mintNFT';
+import { Wallet } from '@modules/nft';
 import { VStack } from '@chakra-ui/react';
 
-export default function Appearance() {
+export default function NFT() {
   const { t } = useTranslation('admin');
   const head = { title: t('admin.NFT') };
 
   return (
     <AppContainer head={head}>
       <VStack flex={2} gap="1.6rem" borderRight="1px solid #E7E8EE" pt="5rem">
-        <MintNFT />
+        <Wallet />
       </VStack>
     </AppContainer>
   );

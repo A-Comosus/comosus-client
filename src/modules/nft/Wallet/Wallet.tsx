@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { Button } from '@src/common/components';
-import { VStack } from '@chakra-ui/react';
-import { connectWallet, mintNFT } from './util/interact';
+import { useToast, VStack } from '@chakra-ui/react';
+import { connectWallet, mintNFT } from '../util/interact';
 
-const Minter = () => {
+export function Wallet() {
+  const toast = useToast();
+
   const [walletAddress, setWalletAddress] = useState<string | null>();
   const [status, setStatus] = useState<boolean>();
 
@@ -14,8 +16,9 @@ const Minter = () => {
   };
 
   const onMintPressed = async () => {
-    const { status } = await mintNFT();
-    setStatus(status);
+    const { status, description } = await mintNFT();
+    toast({ status, description });
+    setStatus(status === 'success' ? true : false);
   };
 
   return (
@@ -38,6 +41,4 @@ const Minter = () => {
       </p>
     </VStack>
   );
-};
-
-export default Minter;
+}

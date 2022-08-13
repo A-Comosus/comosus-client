@@ -30,7 +30,7 @@ function Sidebar() {
       icon: <TbColorSwatch />,
     },
     {
-      href: AppRoute.NFTminter,
+      href: AppRoute.NFT,
       content: t('sidebar.NFT'),
       icon: <TbCurrencyEthereum />,
     },

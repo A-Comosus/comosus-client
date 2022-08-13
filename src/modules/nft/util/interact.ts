@@ -36,7 +36,10 @@ export const connectWallet = async () => {
 //   return new web3.eth.Contract(contractABI, contractAddress);
 // }
 
-export const mintNFT = async () => {
+export async function mintNFT(): Promise<{
+  status: 'success' | 'error';
+  description: string;
+}> {
   window.contract = await new web3.eth.Contract(
     contractABI as AbiItem[],
     contractAddress,
@@ -56,15 +59,15 @@ export const mintNFT = async () => {
       params: [transactionParameters],
     });
     return {
-      status: true,
-      message:
+      status: 'success',
+      description:
         '✅ Check out your NFT at: https://testnets.opensea.io/ and transaction on Etherscan: https://ropsten.etherscan.io/tx/ and ' +
         txHash,
     };
   } catch (error) {
     return {
-      status: false,
-      message: '😥 Something went wrong: ' + (error as Error).message,
+      status: 'error',
+      description: '😥 Something went wrong: ' + (error as Error).message,
     };
   }
-};
+}
