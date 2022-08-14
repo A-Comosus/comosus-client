@@ -18,7 +18,7 @@ export { default as Input } from './forms/Input/Input';
 export * from './forms/FormErrorMessage/FormErrorMessage';
 export { default as FormSuccessMessage } from './forms/FormSuccessMessage';
 export { default as FormSuccessAction } from './forms/FormSuccessAction';
-export { default as Textarea } from './forms/Textarea';
+export * from './forms/Textarea/Textarea';
 export * from './generics/Avatar/Avatar';
 
 // Text Components
