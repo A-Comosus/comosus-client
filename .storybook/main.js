@@ -15,22 +15,13 @@ module.exports = {
     emotionAlias: false,
   },
   framework: '@storybook/react',
-  core: {
-    builder: '@storybook/builder-webpack5',
-  },
   staticDirs: ['../public'],
   webpackFinal: async (config, { configType }) => {
     config.resolve = {
       ...config.resolve,
       plugins: [new TsconfigPathsPlugin()],
-      fallback: {
-        crypto: false,
-        os: false,
-        http: false,
-        https: false,
-        stream: false,
-      },
     };
+
     config.module.rules.push({
       test: /\.scss$/,
       use: ['style-loader', 'css-loader', 'sass-loader'],
