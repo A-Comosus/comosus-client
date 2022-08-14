@@ -22,6 +22,9 @@ export { default as FormSuccessAction } from './forms/FormSuccessAction';
 export * from './forms/Textarea/Textarea';
 export * from './generics/Avatar/Avatar';
 
+// Display Components
+export * from './display/Icon/Icon';
+
 // Text Components
 export { default as Text } from './text/Text';
 export { default as Link } from './text/Link';
