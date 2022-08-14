@@ -18,6 +18,7 @@ type InputProps = {
   type?: string;
   name: string;
   control: any;
+  onBlur?: () => void;
   label?: string;
   placeholder?: string;
   leftElement?: React.ReactNode;
@@ -28,6 +29,7 @@ type InputProps = {
 export default function Input({
   name,
   control,
+  onBlur,
   label,
   placeholder = 'Placeholder',
   leftElement,
@@ -39,6 +41,10 @@ export default function Input({
     field: { value, onChange },
     fieldState: { error },
   } = useController({ name, control });
+
+  const handleOnBlur = () => {
+    if (onBlur && isNil(error)) onBlur();
+  };
 
   const propsVariant = {
     underline: {
@@ -93,6 +99,7 @@ export default function Input({
             id={name}
             value={value}
             onChange={onChange}
+            onBlur={handleOnBlur}
             placeholder={placeholder}
             color="#F8F5F1"
             fontSize="1.6rem"
