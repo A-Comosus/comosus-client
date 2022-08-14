@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { useForm } from 'react-hook-form';
 
-import { FiImage } from 'react-icons/fi';
+import { Icon } from '@src/common/components';
 import Input from './Input';
 import { VStack } from '@chakra-ui/react';
 
@@ -33,7 +33,7 @@ export const Error: ComponentStory<typeof Input> = (args) => {
   return (
     <VStack spacing="2rem">
       <Input {...args} name="input" control={control} />
-      <Input name="input" control={control} leftElement={<FiImage />} />
+      <Input name="input" control={control} leftElement={<Icon />} />
     </VStack>
   );
 };
@@ -56,7 +56,7 @@ export const Variants: ComponentStory<typeof Input> = (args) => {
         name="underline"
         control={control}
         variant="underline"
-        leftElement={<FiImage />}
+        leftElement={<Icon />}
       />
       <Input {...args} name="outline" control={control} variant="outline" />
     </VStack>

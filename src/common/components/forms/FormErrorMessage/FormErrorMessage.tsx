@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MdError } from 'react-icons/md';
+import { Icon } from '@src/common/components';
 import {
   FormErrorMessage as CKFormError,
   FormErrorMessageProps as CKFormErrorProps,
@@ -24,7 +24,7 @@ export function FormErrorMessage({
       fontSize="1.6rem"
       {...props}
     >
-      <MdError />
+      <Icon variant="error" />
       {error ?? 'Undefined'}
     </CKFormError>
   );

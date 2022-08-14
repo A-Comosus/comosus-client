@@ -7,6 +7,7 @@ import { AuthRoute } from '@src/constants/PageRoutes';
 
 import {
   Logo,
+  Icon,
   Input,
   Checkbox,
   Button,
@@ -14,9 +15,6 @@ import {
   Link,
 } from '@src/common/components';
 import { FormControl, VStack, Text } from '@chakra-ui/react';
-import { AiOutlineMail, AiOutlineUser } from 'react-icons/ai';
-import { RiLockPasswordLine } from 'react-icons/ri';
-
 type SignUpFormProps = {
   onSubmit: (values: SignUpFormTypes) => void;
   isInvalid: boolean;
@@ -36,19 +34,19 @@ export default function SignUpForm({
         type: 'text',
         name: 'username',
         placeholder: t('sign-up.username.placeholder'),
-        leftElement: <AiOutlineUser />,
+        leftElement: <Icon variant="account" />,
       },
       {
         type: 'email',
         name: 'email',
         placeholder: t('sign-up.email.placeholder'),
-        leftElement: <AiOutlineMail />,
+        leftElement: <Icon variant="email" />,
       },
       {
         type: 'password',
         name: 'password',
         placeholder: t('sign-up.password.placeholder'),
-        leftElement: <RiLockPasswordLine />,
+        leftElement: <Icon variant="password" />,
       },
     ],
     defaultValues: {

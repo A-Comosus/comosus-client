@@ -4,9 +4,8 @@ import { useApiClient } from '@common/contexts';
 import { useDeleteLinkByIdMutation } from '@generated/graphql.queries';
 
 import { LinkQueries } from '@src/constants';
-import { Button, Text } from '@src/common/components';
+import { Button, Icon, Text } from '@src/common/components';
 import { VStack, HStack } from '@chakra-ui/react';
-import { BiChevronUp } from 'react-icons/bi';
 import { AnimatePresence, motion } from 'framer-motion';
 
 type EditableLinkDeleteProps = {
@@ -58,7 +57,7 @@ export default function EditableLinkDelete({
           }}
         >
           <HStack justify="center">
-            <BiChevronUp />
+            <Icon variant="arrow-up" />
           </HStack>
           <Text alignSelf="center">{t('link.editor.toggle.prompt')}</Text>
           <HStack gap={5} px={10}>

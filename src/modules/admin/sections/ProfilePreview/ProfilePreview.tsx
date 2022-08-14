@@ -12,9 +12,7 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import Link from 'next/link';
-import { Logo, Avatar, Text, ProfileItem } from '@src/common/components';
-import { BsShareFill } from 'react-icons/bs';
-import { FaShareSquare } from 'react-icons/fa';
+import { Logo, Icon, Avatar, Text, ProfileItem } from '@src/common/components';
 import SharePanel from './ProfilePreview.SharePanel';
 
 export default function ProfilePreview() {
@@ -58,7 +56,7 @@ export default function ProfilePreview() {
               <IconButton
                 onClick={onOpen}
                 aria-label={t('link.preview.share')}
-                icon={<FaShareSquare />}
+                icon={<Icon variant="share-btn" />}
                 position="absolute"
                 top={5}
                 right={2.5}
@@ -85,7 +83,7 @@ export default function ProfilePreview() {
         </VStack>
 
         <HStack>
-          <BsShareFill />
+          <Icon variant="share" />
           <Text textDecoration="underline">
             <Link href={`/${userData?.username}`} passHref>
               <a target="_blank" rel="noreferrer">

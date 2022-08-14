@@ -3,15 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import {
-  AiOutlineMail,
-  AiOutlineUser,
-  AiOutlinePhone,
-  AiOutlineMessage,
-} from 'react-icons/ai';
 
 import { VStack, FormControl } from '@chakra-ui/react';
-import { Input, Button, Text } from '@common/components';
+import { Icon, Input, Button, Text } from '@common/components';
 
 type ContactFormPropsValues = {
   onSubmit: (values: ContactFormValuesTypes) => void;
@@ -33,25 +27,25 @@ export default function ContactForm({
         type: 'text',
         name: 'customerName',
         placeholder: t('contact-form.page.customerName.placeholder'),
-        leftElement: <AiOutlineUser />,
+        leftElement: <Icon variant="account" />,
       },
       {
         type: 'email',
         name: 'email',
         placeholder: t('contact-form.page.email.placeholder'),
-        leftElement: <AiOutlineMail />,
+        leftElement: <Icon variant="email" />,
       },
       {
         type: 'number',
         name: 'phone',
         placeholder: t('contact-form.page.phone.placeholder'),
-        leftElement: <AiOutlinePhone />,
+        leftElement: <Icon variant="phone" />,
       },
       {
         type: 'textarea',
         name: 'message',
         placeholder: t('contact-form.page.message.placeholder'),
-        leftElement: <AiOutlineMessage />,
+        leftElement: <Icon variant="message" />,
       },
     ],
     defaultValues: {

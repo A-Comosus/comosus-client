@@ -1,16 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import {
-  TbLink,
-  TbColorSwatch,
-  TbSettings,
-  TbCurrencyEthereum,
-} from 'react-icons/tb';
-
 import { AppRoute, GlobalRoute } from '@src/constants/PageRoutes';
 import { VStack } from '@chakra-ui/react';
-import { Logo, Avatar } from '@common/components';
+import { Icon, Logo, Avatar } from '@common/components';
 import SidebarMenuItem from './Sidebar.MenuItem';
 import SidebarLogout from './Sidebar.Logout';
 
@@ -27,22 +20,22 @@ function Sidebar() {
     {
       href: AppRoute.Admin,
       content: t('sidebar.link'),
-      icon: <TbLink />,
+      icon: <Icon variant="link" />,
     },
     {
       href: AppRoute.Appearance,
       content: t('sidebar.appearance'),
-      icon: <TbColorSwatch />,
+      icon: <Icon variant="color-swatch" />,
     },
     {
       href: AppRoute.NFT,
       content: t('sidebar.NFT'),
-      icon: <TbCurrencyEthereum />,
+      icon: <Icon variant="eth" />,
     },
     {
       href: AppRoute.Settings,
       content: t('sidebar.settings'),
-      icon: <TbSettings />,
+      icon: <Icon variant="settings" />,
     },
   ];
 

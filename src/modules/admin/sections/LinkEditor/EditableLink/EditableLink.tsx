@@ -6,7 +6,6 @@ import { useForm } from 'react-hook-form';
 import { useToggle } from '@src/utils/hooks';
 
 import { HStack, VStack, Image, IconButton } from '@chakra-ui/react';
-import { RiDeleteBin5Line } from 'react-icons/ri';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LinkQueries } from '@src/constants';
 import { DraggableProvided } from 'react-beautiful-dnd';
@@ -14,6 +13,7 @@ import EditableLinkInput from './EditableLink.Input';
 import EditableLinkButton from './EditableLink.Button';
 import EditableLinkDelete from './EditableLink.Delete';
 import EditableLinkSwitch from './EditableLink.Switch';
+import { Icon } from '@src/common/components';
 
 type EditableLinkProps = {
   link: {
@@ -138,7 +138,7 @@ export default function EditableLink({
             />
             <IconButton
               onClick={() => toggleShowDelete()}
-              icon={<RiDeleteBin5Line />}
+              icon={<Icon variant="delete" />}
               aria-label="delete link"
               maxH={5}
               bg="none"

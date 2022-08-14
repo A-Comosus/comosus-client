@@ -2,14 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 
 import { HStack, IconButton, VStack } from '@chakra-ui/react';
-import { Text } from '@src/common/components';
-import {
-  FaGithub,
-  FaLinkedin,
-  FaMapMarkerAlt,
-  FaTwitter,
-} from 'react-icons/fa';
-import { MdOutlineEmail } from 'react-icons/md';
+import { Icon, Text } from '@src/common/components';
 
 type MemberDetailProps = {
   member: Member;
@@ -38,7 +31,7 @@ export default function MemberDetail({
 
       {location && (
         <HStack>
-          <FaMapMarkerAlt />
+          <Icon variant="location" />
           <Text textAlign="center" fontSize={20} fontWeight={500}>
             {location}
           </Text>
@@ -57,7 +50,7 @@ export default function MemberDetail({
           onClick={() => router.push(`mailto:${email}`)}
           _hover={{ borderBottom: '1px solid white' }}
         >
-          <MdOutlineEmail />
+          <Icon variant="email" />
           <Text textAlign="center" fontSize={16} fontWeight={500}>
             {email}
           </Text>
@@ -68,7 +61,7 @@ export default function MemberDetail({
         <IconButton
           isDisabled={!twitter_username}
           onClick={() => router.push(`https://twitter.com/${twitter_username}`)}
-          icon={<FaTwitter />}
+          icon={<Icon variant="twitter" />}
           aria-label="twitter"
           rounded="full"
           bg={color}
@@ -76,15 +69,15 @@ export default function MemberDetail({
         <IconButton
           isDisabled={!blog}
           onClick={() => router.push(blog)}
-          icon={<FaLinkedin />}
-          aria-label="twitter"
+          icon={<Icon variant="linkedin" />}
+          aria-label="linkedin"
           rounded="full"
           bg={color}
         />
         <IconButton
           onClick={() => router.push(html_url)}
-          icon={<FaGithub />}
-          aria-label="twitter"
+          icon={<Icon variant="github" />}
+          aria-label="github"
           rounded="full"
           bg={color}
         />

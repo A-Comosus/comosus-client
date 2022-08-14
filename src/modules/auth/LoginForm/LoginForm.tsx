@@ -6,10 +6,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { AuthRoute } from '@src/constants/PageRoutes';
 
 import { VStack, FormControl } from '@chakra-ui/react';
-import { AiOutlineUser } from 'react-icons/ai';
-import { RiLockPasswordLine } from 'react-icons/ri';
 import {
   Logo,
+  Icon,
   Input,
   Button,
   Text,
@@ -36,13 +35,13 @@ export default function LoginForm({
         type: 'text',
         name: 'username',
         placeholder: t('login.username.placeholder'),
-        leftElement: <AiOutlineUser />,
+        leftElement: <Icon variant="account" />,
       },
       {
         type: 'password',
         name: 'password',
         placeholder: t('login.password.placeholder'),
-        leftElement: <RiLockPasswordLine />,
+        leftElement: <Icon variant="password" />,
       },
     ],
     defaultValues: {
