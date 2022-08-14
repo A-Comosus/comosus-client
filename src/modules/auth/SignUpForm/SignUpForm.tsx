@@ -6,16 +6,16 @@ import * as yup from 'yup';
 import { AuthRoute } from '@src/constants/PageRoutes';
 
 import {
-  Link,
-  FormErrorMessage,
   Logo,
   Input,
+  Checkbox,
   Button,
+  FormErrorMessage,
+  Link,
 } from '@src/common/components';
 import { FormControl, VStack, Text } from '@chakra-ui/react';
 import { AiOutlineMail, AiOutlineUser } from 'react-icons/ai';
 import { RiLockPasswordLine } from 'react-icons/ri';
-import Policy from './Policy';
 
 type SignUpFormProps = {
   onSubmit: (values: SignUpFormTypes) => void;
@@ -97,7 +97,11 @@ export default function SignUpForm({
               },
             )}
 
-            <Policy name="acceptPolicy" control={control} />
+            <Checkbox
+              name="acceptPolicy"
+              control={control}
+              content={t('sign-up.policy.description')}
+            />
             <FormErrorMessage
               testId="sign-up.error"
               error={t('sign-up.error.user-exist')}
