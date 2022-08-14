@@ -10,7 +10,7 @@ import { LinkQueries } from '@src/constants';
 import { VStack } from '@chakra-ui/react';
 import EditableProfileAvatar from './EditableProfile.Avatar';
 import EditableProfileInput from './EditableProfile.Input';
-import EditableProfileTextarea from './EditableProfile.Textarea';
+import { Textarea } from '@src/common/components';
 
 type EditableProfileProps = {
   profile: {
@@ -83,13 +83,13 @@ export default function EditableProfile({ profile }: EditableProfileProps) {
         control={control}
         onBlur={handleSubmit(onSubmit)}
       />
-      <EditableProfileTextarea
+      <Textarea
         name="bio"
-        label={t('appearance.profile.bio')}
-        placeholder={t('appearance.profile.bio-placeholder')}
-        maxLength={100}
         control={control}
         onBlur={handleSubmit(onSubmit)}
+        maxLength={100}
+        label={t('appearance.profile.bio')}
+        placeholder={t('appearance.profile.bio-placeholder')}
       />
     </VStack>
   );
