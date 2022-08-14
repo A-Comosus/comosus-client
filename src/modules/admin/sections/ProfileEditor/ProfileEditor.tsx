@@ -5,6 +5,10 @@ import { useFindUserByUsernameQuery } from '@generated/graphql.queries';
 
 import { Text } from '@common/components';
 import { VStack, Box, SkeletonCircle, SkeletonText } from '@chakra-ui/react';
+import {
+  AdminSectionContainer,
+  AdminSectionItemCard,
+} from '@src/modules/admin/components';
 import EditableProfile from './EditableProfile/EditableProfile';
 import _ from 'lodash';
 
@@ -37,9 +41,15 @@ export default function ProfileEditor() {
   }
 
   return (
-    <VStack align="flex-start">
-      <Text type="section.title">{t('appearance.profile.title')}</Text>
-      <EditableProfile profile={userData} />
-    </VStack>
+    <AdminSectionContainer heading="Profile Editor">
+      <AdminSectionItemCard>
+        <VStack align="flex-start">
+          <Text type="section.title" color="#F8F5F1">
+            {t('appearance.profile.title')}
+          </Text>
+          <EditableProfile profile={userData} />
+        </VStack>
+      </AdminSectionItemCard>
+    </AdminSectionContainer>
   );
 }
