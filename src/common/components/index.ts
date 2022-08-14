@@ -13,7 +13,7 @@ export { default as Sidebar } from './generics/Sidebar/Sidebar';
 export { default as ProfileItem } from './generics/ProfileItem/ProfileItem';
 
 // Form Components
-export { default as Button } from './forms/Button';
+export * from './forms/Button/Button';
 export { default as Input } from './forms/Input';
 export { default as FormErrorMessage } from './forms/FormErrorMessage';
 export { default as FormSuccessMessage } from './forms/FormSuccessMessage';
