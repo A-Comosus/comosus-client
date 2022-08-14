@@ -81,10 +81,7 @@ const Home: NextPage = () => {
               <Text type="h4" color="#F0F435">
                 {hero.subtitle}
               </Text>
-              <Button
-                onClick={() => router.push(hero.link)}
-                background="linear-gradient(180deg, #FF3F66 0%, #E75784 100%)"
-              >
+              <Button onClick={() => router.push(hero.link)} variant="accent">
                 {hero.cta}
               </Button>
             </VStack>

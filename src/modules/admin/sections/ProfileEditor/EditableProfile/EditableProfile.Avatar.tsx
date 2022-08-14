@@ -10,12 +10,8 @@ export default function ProfileEditorAvatar() {
     <HStack>
       <Avatar size="xl" mx="2rem" src="https://picsum.photos/200" />
       <HStack flex={1} gap="1rem">
-        <Button flex={1} borderRadius="10px">
-          {t('appearance.profile.pick-an-image')}
-        </Button>
-        <Button flex={1} borderRadius="10px">
-          {t('appearance.profile.remove')}
-        </Button>
+        <Button>{t('appearance.profile.pick-an-image')}</Button>
+        <Button>{t('appearance.profile.remove')}</Button>
       </HStack>
     </HStack>
   );

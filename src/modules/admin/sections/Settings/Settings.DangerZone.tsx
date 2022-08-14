@@ -20,7 +20,7 @@ export function DangerZone() {
 
   return (
     <>
-      <Button onClick={toggleOpen} variantType="accent">
+      <Button onClick={toggleOpen} variant="accent">
         {t('settings.danger-zone.action')}
       </Button>
 
@@ -37,9 +37,9 @@ export function DangerZone() {
           <ModalFooter gap="20px">
             <Button onClick={toggleOpen}>{t('common:button.close')}</Button>
             <Button
-              variantType="accent"
-              isLoading={isDeleting}
               onClick={deleteAccount}
+              isLoading={isDeleting}
+              variant="accent"
             >
               {t('common:button.delete')}
             </Button>

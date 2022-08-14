@@ -73,7 +73,7 @@ export default function ForgetPasswordForm({
               testId="forget-password.error"
               error={t('forget-password.error')}
             />
-            <Button type="submit" isLoading={isLoading}>
+            <Button type="submit" isLoading={isLoading} size="lg">
               {t('forget-password.button')}
             </Button>
           </VStack>

@@ -60,13 +60,10 @@ export function NFTCard({ nft }: NFTCardProps) {
           </VStack>
 
           <HStack spacing="2rem">
-            <Button onClick={redirectToOpensea} flex={1}>
-              View on OpenSea
-            </Button>
+            <Button onClick={redirectToOpensea}>View on OpenSea</Button>
             <Button
-              isLoading={isUpdating}
               onClick={() => updateAvatar({ url: imageSrc })}
-              flex={1}
+              isLoading={isUpdating}
             >
               Set as Avatar
             </Button>

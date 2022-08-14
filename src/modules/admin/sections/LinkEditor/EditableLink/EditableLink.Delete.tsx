@@ -63,17 +63,17 @@ export default function EditableLinkDelete({
           <Text alignSelf="center">{t('link.editor.toggle.prompt')}</Text>
           <HStack gap={5} px={10}>
             <Button
-              variantType="primary"
               onClick={() => toggleShowDelete()}
-              flex={1}
+              variant="primary"
+              size="sm"
             >
               {t('link.editor.toggle.cancel')}
             </Button>
             <Button
-              variantType="accent"
-              isLoading={isDeleting}
+              variant="accent"
               onClick={handleDelete}
-              flex={1}
+              isLoading={isDeleting}
+              size="sm"
             >
               {t('link.editor.toggle.delete')}
             </Button>
