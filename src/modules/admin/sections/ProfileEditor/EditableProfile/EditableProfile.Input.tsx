@@ -32,7 +32,7 @@ export default function EditableProfileInput({
   };
   return (
     <VStack>
-      <Text type="p" alignSelf="flex-start">
+      <Text type="p" alignSelf="flex-start" color="#F8F5F1">
         {label}
       </Text>
       <Input
@@ -44,6 +44,7 @@ export default function EditableProfileInput({
         variant="unstyled"
         borderBottom="1px solid #ADB2C6"
         borderRadius="0"
+        color="#F8F5F1"
       />
     </VStack>
   );

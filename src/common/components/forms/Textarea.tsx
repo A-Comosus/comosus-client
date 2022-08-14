@@ -22,7 +22,7 @@ export default function CustomTextarea({
   const variants = {
     default: (
       <VStack>
-        <Text type="p" alignSelf="flex-start">
+        <Text type="p" alignSelf="flex-start" color="#F8F5F1">
           {label}
         </Text>
         <Textarea
@@ -30,9 +30,10 @@ export default function CustomTextarea({
           borderRadius="5"
           value={value}
           maxLength={maxLength}
+          color="#F8F5F1"
           {...props}
         />
-        <Text type="p" alignSelf="flex-end">
+        <Text type="p" alignSelf="flex-end" color="#F8F5F1">
           {`${value.length}/${maxLength}`}
         </Text>
       </VStack>
