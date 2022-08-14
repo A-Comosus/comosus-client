@@ -75,7 +75,6 @@ export default function LoginForm({
             {formValues.inputs.map(
               ({ type, name, placeholder, leftElement }, index) => (
                 <Input
-                  isUnderline
                   key={index}
                   type={type}
                   name={name}

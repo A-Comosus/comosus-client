@@ -93,7 +93,6 @@ export default function ContactForm({
               ({ type, name, placeholder, leftElement }, index) => {
                 return (
                   <Input
-                    isUnderline
                     key={index}
                     type={type}
                     name={name}

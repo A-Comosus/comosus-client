@@ -56,9 +56,6 @@ export default function ForgetPasswordForm({
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl isInvalid={isInvalid}>
-          <Text fontWeight="600" mb={2}>
-            {t('forget-password.email.label')}
-          </Text>
           <VStack align="stretch" gap="30px">
             {formValues.inputs.map(({ type, name, placeholder }, index) => (
               <Input
@@ -66,6 +63,7 @@ export default function ForgetPasswordForm({
                 type={type}
                 name={name}
                 control={control}
+                label={t('forget-password.email.label')}
                 placeholder={placeholder}
               />
             ))}
