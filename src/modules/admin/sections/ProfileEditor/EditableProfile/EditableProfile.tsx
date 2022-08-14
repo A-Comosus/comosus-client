@@ -9,8 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { LinkQueries } from '@src/constants';
 import { VStack } from '@chakra-ui/react';
 import EditableProfileAvatar from './EditableProfile.Avatar';
-import EditableProfileInput from './EditableProfile.Input';
-import { Textarea } from '@src/common/components';
+import { Input, Textarea } from '@src/common/components';
 
 type EditableProfileProps = {
   profile: {
@@ -76,12 +75,12 @@ export default function EditableProfile({ profile }: EditableProfileProps) {
       backgroundColor="#FFFFFF"
     >
       <EditableProfileAvatar />
-      <EditableProfileInput
+      <Input
         name="displayName"
-        label={t('appearance.profile.profile-title')}
-        placeholder={t('appearance.profile.profile-title')}
         control={control}
         onBlur={handleSubmit(onSubmit)}
+        label={t('appearance.profile.profile-title')}
+        placeholder={t('appearance.profile.profile-title')}
       />
       <Textarea
         name="bio"
