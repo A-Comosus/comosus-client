@@ -15,6 +15,10 @@ export const ThemeContextProvider = ({ children }: ThemeProviderProps) => {
         'html, body': {
           fontSize: '62.5%',
           background: '#1B181E',
+          color: '#F8F5F1',
+        },
+        p: {
+          fontSize: '1.6rem',
         },
       },
     },
