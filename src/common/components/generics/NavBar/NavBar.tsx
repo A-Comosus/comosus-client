@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { Link, HStack } from '@chakra-ui/react';
+import NextLink from 'next/link';
+import { HStack } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import { Logo, Button, SelectLanguage } from '@common/components';
+import { Logo, Link, Button, SelectLanguage } from '@common/components';
 import { GlobalRoute, AuthRoute, AppRoute } from '@src/constants/PageRoutes';
 export type NavBarProps = {
   disableNavOptions?: boolean;
@@ -33,38 +34,23 @@ export function NavBar({ disableNavOptions }: NavBarProps) {
       padding="1.2rem"
       w="100%"
     >
-      <Link href="/">
+      <NextLink href="/">
         <Logo height="8rem" />
-      </Link>
+      </NextLink>
 
       <HStack spacing="5rem">
         {!disableNavOptions &&
           navItems.map(({ href, content }) => (
-            <Link
-              key={href}
-              href={href}
-              color="#F8F5F1"
-              fontSize="1.6rem"
-              fontWeight={600}
-              whiteSpace="nowrap"
-            >
+            <Link key={href} href={href}>
               {content}
             </Link>
           ))}
-        <Link
-          href={AuthRoute.Login}
-          color="#F8F5F1"
-          fontSize="1.6rem"
-          fontWeight={600}
-          whiteSpace="nowrap"
-        >
-          {t('nav.login')}
-        </Link>
-        <Link type="nav" href={AuthRoute.SignUp}>
+        <Link href={AuthRoute.Login}>{t('nav.login')}</Link>
+        <NextLink href={AuthRoute.SignUp}>
           <Button variant="gradient" size="lg">
             {t('nav.sign-up')}
           </Button>
-        </Link>
+        </NextLink>
         <SelectLanguage />
       </HStack>
     </HStack>

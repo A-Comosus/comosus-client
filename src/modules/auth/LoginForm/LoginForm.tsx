@@ -92,7 +92,7 @@ export default function LoginForm({
             >
               {t('login.button')}
             </Button>
-            <Link href={AuthRoute.forgetPassword} textAlign="center">
+            <Link href={AuthRoute.forgetPassword} variant="accent">
               {t('login.forget-password')}
             </Link>
           </VStack>
@@ -100,7 +100,7 @@ export default function LoginForm({
       </form>
       <Text textAlign="center">
         {t('login.no-account.description')}
-        <Link highlight href={AuthRoute.SignUp}>
+        <Link href={AuthRoute.SignUp} variant="highlight">
           {t('login.no-account.action')}
         </Link>
       </Text>

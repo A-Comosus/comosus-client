@@ -117,7 +117,7 @@ export default function SignUpForm({
       </form>
       <Text textAlign="center">
         {t('sign-up.have-account.description')}
-        <Link highlight href={AuthRoute.Login}>
+        <Link href={AuthRoute.Login} variant="highlight">
           {t('sign-up.have-account.action')}
         </Link>
       </Text>
