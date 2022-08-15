@@ -10,7 +10,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { LinkQueries } from '@src/constants';
 import { DraggableProvided } from 'react-beautiful-dnd';
 import EditableLinkInput from './EditableLink.Input';
-import EditableLinkButton from './EditableLink.Button';
 import EditableLinkDelete from './EditableLink.Delete';
 import EditableLinkSwitch from './EditableLink.Switch';
 import { Icon } from '@src/common/components';

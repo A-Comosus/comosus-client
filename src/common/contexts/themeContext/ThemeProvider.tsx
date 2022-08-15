@@ -37,6 +37,7 @@ export const ThemeContextProvider = ({ children }: ThemeProviderProps) => {
   );
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const colors = {
   font: {
     light: '#F8F5F1',
