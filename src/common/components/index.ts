@@ -26,5 +26,5 @@ export * from './generics/Avatar/Avatar';
 export * from './display/Icon/Icon';
 
 // Text Components
-export { default as Text } from './text/Text';
-export { default as Link } from './text/Link';
+export { default as Text } from './typography/Text';
+export * from './typography/Link/Link';
