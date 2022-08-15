@@ -37,7 +37,7 @@ const Home: NextPage = () => {
       subtitle: t('banner.subtitle'),
       cta: t('banner.cta'),
       link: AuthRoute.SignUp,
-      src: 'assets/heros/shapes.svg',
+      src: 'assets/heros/phone.svg',
       alt: t('banner.alt'),
     },
     {
@@ -45,7 +45,7 @@ const Home: NextPage = () => {
       subtitle: t('custome-profile.subtitle'),
       cta: t('custome-profile.cta'),
       link: AuthRoute.SignUp,
-      src: 'assets/heros/phone.svg',
+      src: 'assets/heros/shapes.svg',
       alt: t('custome-profile.alt'),
     },
     {
@@ -75,13 +75,14 @@ const Home: NextPage = () => {
             flexDirection={index % 2 === 0 ? 'row' : 'row-reverse'}
           >
             <VStack alignItems="flex-start" gap="1rem">
-              <Text type={index === 0 ? 'h1' : 'h2'} color="#F0F435">
-                {hero.title}
-              </Text>
-              <Text type="h4" color="#F0F435">
-                {hero.subtitle}
-              </Text>
-              <Button onClick={() => router.push(hero.link)} variant="accent">
+              <Text type="h2">{hero.title}</Text>
+              {index === 0 && (
+                <Text type="h1" color="#FB446C">
+                  {t('headline')}
+                </Text>
+              )}
+              <Text type="h4">{hero.subtitle}</Text>
+              <Button onClick={() => router.push(hero.link)} variant="gradient">
                 {hero.cta}
               </Button>
             </VStack>

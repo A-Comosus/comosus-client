@@ -1,5 +1,19 @@
-<svg width="612" height="600" viewBox="0 0 612 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-<ellipse cx="484" cy="219" rx="128" ry="125" fill="#B9D77B"/>
-<rect x="146" width="300" height="600" rx="20" fill="#F0F435"/>
-<rect y="254" width="250" height="250" rx="20" fill="white"/>
+<svg width="370" height="644" viewBox="0 0 370 644" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="70" y="70.103" width="300" height="572" rx="20" fill="#2A1A31"/>
+<rect x="35" y="35.103" width="300" height="572" rx="20" fill="#362440"/>
+<rect y="0.103027" width="300" height="572" rx="20" fill="url(#paint0_linear_1637_3555)"/>
+<circle cx="150" cy="86.103" r="50" fill="#FB446C"/>
+<rect x="47" y="166.103" width="206" height="50" rx="10" fill="#55698C"/>
+<rect x="47" y="246.103" width="206" height="50" rx="10" fill="#55698C"/>
+<rect x="47" y="326.103" width="206" height="50" rx="10" fill="#55698C"/>
+<rect x="47" y="406.103" width="206" height="50" rx="10" fill="#55698C"/>
+<circle cx="80" cy="511.103" r="25" fill="#3396F1"/>
+<circle cx="150" cy="511.103" r="25" fill="#3396F1"/>
+<circle cx="220" cy="511.103" r="25" fill="#3396F1"/>
+<defs>
+<linearGradient id="paint0_linear_1637_3555" x1="150" y1="0.103027" x2="150" y2="572.103" gradientUnits="userSpaceOnUse">
+<stop stop-color="#465E79"/>
+<stop offset="0.979167" stop-color="#4B3F4F"/>
+</linearGradient>
+</defs>
 </svg>

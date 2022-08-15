@@ -2230,6 +2230,11 @@
   resolved "https://registry.yarnpkg.com/@fontsource/black-han-sans/-/black-han-sans-4.5.7.tgz#6691e1de249af08076236175c3507e9336f6fc5e"
   integrity sha512-CwDJFri5s4+neGhu6pp+f/ARTkLu+G5k3+5rcJ8q4+AeiZ4tbOWZ7eDD3ma//K5vthEZTedvbsJVNmGqwU+PWw==
 
+"@fontsource/blinker@^4.5.8":
+  version "4.5.8"
+  resolved "https://registry.yarnpkg.com/@fontsource/blinker/-/blinker-4.5.8.tgz#54a6f3b51149c63c902f916095e8ead4dbc23242"
+  integrity sha512-5WlBizSLjXHr0epohAU/C3LIoSkdwy/+2SGF3DXmqNZVTMJv/3pK0bcKTJOMCzgOU97M+mY+qizniv9yrfWJJQ==
+
 "@fontsource/montserrat@^4.5.10":
   version "4.5.11"
   resolved "https://registry.yarnpkg.com/@fontsource/montserrat/-/montserrat-4.5.11.tgz#9dff8e7bdcd0680789353e2632683e8ae82bd002"

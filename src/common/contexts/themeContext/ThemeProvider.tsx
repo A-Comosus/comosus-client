@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
-import '@fontsource/black-han-sans';
+import '@fontsource/blinker';
 import '@fontsource/montserrat';
 import '@fontsource/nanum-brush-script';
 
@@ -23,7 +23,7 @@ export const ThemeContextProvider = ({ children }: ThemeProviderProps) => {
       },
     },
     fonts: {
-      heading: `'black han sans', sans-serif`,
+      heading: `"Blinker", sans-serif`,
       body: `'Montserrat', sans-serif`,
     },
     config: {
