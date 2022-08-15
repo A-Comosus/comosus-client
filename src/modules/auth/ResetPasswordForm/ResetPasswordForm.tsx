@@ -4,8 +4,8 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { VStack, FormControl, Heading, Text } from '@chakra-ui/react';
-import { Button, FormErrorMessage, Input } from '@common/components';
+import { VStack, FormControl } from '@chakra-ui/react';
+import { Button, FormErrorMessage, Input, Text } from '@common/components';
 
 type ResetPasswordFormProps = {
   onSubmit: (values: ResetPasswordFormTypes) => void;
@@ -60,13 +60,12 @@ export default function ResetPasswordForm({
     <VStack flex={1} minW="480px" justify="center" align="stretch">
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl isInvalid={isInvalid}>
-          <Heading as="h1" size="lg" fontWeight="500" mb={1}>
+          <Text type="h2" mb={1}>
             {t('reset-password.page.title')}
-          </Heading>
-          <Text mb={10}>{t('reset-password.page.subtitle')}</Text>
-          {/* <Text fontWeight="600" mb={2}>
-            {t('reset-password.form.password.label')}
-          </Text> */}
+          </Text>
+          <Text type="p" mb={10}>
+            {t('reset-password.page.subtitle')}
+          </Text>
           <VStack align="stretch" gap="30px">
             {formValues.inputs.map(({ type, name, placeholder }, index) => (
               <Input
@@ -81,7 +80,7 @@ export default function ResetPasswordForm({
               testId="reset-password.error"
               error={t('reset-password.error')}
             />
-            <Button type="submit" isLoading={isLoading}>
+            <Button type="submit" isLoading={isLoading} size="lg">
               {t('reset-password.button')}
             </Button>
           </VStack>

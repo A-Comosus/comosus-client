@@ -4,9 +4,8 @@ import { useApiClient } from '@common/contexts';
 import { useDeleteLinkByIdMutation } from '@generated/graphql.queries';
 
 import { LinkQueries } from '@src/constants';
-import { Button, Text } from '@src/common/components';
+import { Button, Icon, Text } from '@src/common/components';
 import { VStack, HStack } from '@chakra-ui/react';
-import { BiChevronUp } from 'react-icons/bi';
 import { AnimatePresence, motion } from 'framer-motion';
 
 type EditableLinkDeleteProps = {
@@ -40,11 +39,13 @@ export default function EditableLinkDelete({
       {showDelete ? (
         <VStack
           as={motion.div}
-          borderRadius={4}
-          p={[5, 10, 4, 4]}
-          bg="white"
           overflow="hidden"
-          align="stretch"
+          align="center"
+          spacing="2rem"
+          borderRadius="1rem"
+          p="1rem 1.6rem"
+          bg="#272429"
+          fontSize="1.6rem"
           initial={{ maxHeight: 0 }}
           animate={{
             maxHeight: '100%',
@@ -57,28 +58,23 @@ export default function EditableLinkDelete({
             transitionTimingFunction: 'ease-in-out',
           }}
         >
-          <HStack justify="center">
-            <BiChevronUp />
-          </HStack>
-          <Text alignSelf="center">{t('link.editor.toggle.prompt')}</Text>
+          <VStack>
+            <Icon variant="arrow-up" />
+            <Text alignSelf="center">{t('link.editor.toggle.prompt')}</Text>
+          </VStack>
           <HStack gap={5} px={10}>
             <Button
-              variantType="secondary"
-              flex={1}
-              py={1}
-              color="#000"
               onClick={() => toggleShowDelete()}
+              variant="primary"
+              size="sm"
             >
               {t('link.editor.toggle.cancel')}
             </Button>
             <Button
-              variantType="secondary"
-              flex={1}
-              py={1}
-              isLoading={isDeleting}
-              color="#fff"
-              bg="#55698C"
+              variant="accent"
               onClick={handleDelete}
+              isLoading={isDeleting}
+              size="sm"
             >
               {t('link.editor.toggle.delete')}
             </Button>

@@ -11,15 +11,16 @@ export default function Generic({ title, url }: GenericProps) {
     <LinkBox
       borderRadius="10px"
       p="10px"
-      bg="white"
+      bg="#F8F5F1"
+      color="#3B3C46"
       _hover={{
         boxShadow: 'inset 0 0 0 2px white',
         bg: 'transparent',
-        color: 'white',
+        color: '#F8F5F1',
       }}
     >
       <LinkOverlay href={url}>
-        <Text textAlign="center" fontSize={15} fontWeight={700}>
+        <Text textAlign="center" fontSize="1.6rem" fontWeight={700}>
           {title}
         </Text>
       </LinkOverlay>

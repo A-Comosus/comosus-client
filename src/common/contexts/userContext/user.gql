@@ -1,7 +1,9 @@
 query FindUserById($payload: FindByIdInput!) {
   findUserById(data: $payload) {
     id
+    avatarUrl
     username
+    displayName
     email
   }
 }

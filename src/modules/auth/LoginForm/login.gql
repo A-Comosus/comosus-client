@@ -4,6 +4,8 @@ mutation Login($payload: LoginDetailInput!) {
     user {
       id
       status
+      username
+      email
     }
   }
 }

@@ -68,6 +68,7 @@ export default function OnboardingForm({
               _.isNil(getFieldState('displayName').error) &&
                 toggleIsDisplayNameFilled();
             }}
+            size="lg"
           >
             {t('continue')}
           </Button>
@@ -89,9 +90,10 @@ export default function OnboardingForm({
             />
 
             <Button
+              type="submit"
               isDisabled={!isValid}
               isLoading={isOnboarding}
-              type="submit"
+              size="lg"
             >
               {t('continue')}
             </Button>

@@ -3,8 +3,7 @@ import { isNil } from 'lodash';
 import { useController, Control } from 'react-hook-form';
 
 import { FormControl, Input, VStack, HStack } from '@chakra-ui/react';
-import { AiOutlineEdit } from 'react-icons/ai';
-import { FormErrorMessage } from '@src/common/components';
+import { Icon, FormErrorMessage } from '@src/common/components';
 
 type EditableLinkInputProps = {
   placeholder: string;
@@ -48,7 +47,7 @@ export default function EditableLinkInput({
             _focus={{ border: 'none' }}
             _invalid={{ border: 'none', color: 'red.500' }}
           />
-          <AiOutlineEdit />
+          <Icon variant="edit" />
         </HStack>
         {error && (
           <FormErrorMessage

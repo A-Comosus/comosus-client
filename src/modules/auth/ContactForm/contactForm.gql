@@ -1,0 +1,3 @@
+mutation ContactForm($detail: ContactFormInput!) {
+  contactForm(detail: $detail)
+}

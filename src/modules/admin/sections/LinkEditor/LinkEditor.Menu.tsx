@@ -32,13 +32,12 @@ export default function LinkEditorMenu({ isReordering }: LinkEditorMenuProps) {
   return (
     <HStack justify="space-around" pt={20} px={6} gap={5}>
       <Button
-        flex={1}
         onClick={handleAddNewLink}
         isLoading={isAddingNewLink || isReordering}
       >
         {t('link.editor.menu.add-new-link')}
       </Button>
-      <Button isDisabled flex={1} isLoading={isReordering}>
+      <Button isDisabled isLoading={isReordering}>
         {t('link.editor.menu.explore')}
       </Button>
     </HStack>

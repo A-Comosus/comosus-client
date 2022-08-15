@@ -1,36 +1,50 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { IoLinkSharp } from 'react-icons/io5';
-import { TbColorSwatch } from 'react-icons/tb';
-
-import { AppRoute } from '@src/constants/PageRoutes';
-import { Avatar, VStack } from '@chakra-ui/react';
-import { Logo } from '@common/components';
+import { AppRoute, GlobalRoute } from '@src/constants/PageRoutes';
+import { VStack } from '@chakra-ui/react';
+import { Icon, Logo, Avatar } from '@common/components';
 import SidebarMenuItem from './Sidebar.MenuItem';
 import SidebarLogout from './Sidebar.Logout';
 
 import styles from './Sidebar.module.scss';
+import { useUser } from '@src/common/contexts';
+import { useRouter } from 'next/router';
 
-function Sidebar() {
+export function Sidebar() {
   const { t } = useTranslation();
+  const { push } = useRouter();
+  const { user } = useUser();
+
   const navItems = [
     {
       href: AppRoute.Admin,
       content: t('sidebar.link'),
-      icon: <IoLinkSharp />,
+      icon: <Icon variant="link" />,
     },
     {
       href: AppRoute.Appearance,
       content: t('sidebar.appearance'),
-      icon: <TbColorSwatch />,
+      icon: <Icon variant="color-swatch" />,
+    },
+    {
+      href: AppRoute.NFT,
+      content: t('sidebar.nft'),
+      icon: <Icon variant="eth" />,
+    },
+    {
+      href: AppRoute.Settings,
+      content: t('sidebar.settings'),
+      icon: <Icon variant="settings" />,
     },
   ];
+
+  if (!user) push(GlobalRoute.Error);
 
   return (
     <nav className={styles.sidebar}>
       <VStack flex={1} gap={10}>
-        <Avatar size="xl" src="https://picsum.photos/200" />
+        <Avatar user={user} />
 
         <ul className={styles.sidebar__menu}>
           {navItems.map(({ href, content, icon }, index) => (
@@ -49,5 +63,3 @@ function Sidebar() {
     </nav>
   );
 }
-
-export default Sidebar;

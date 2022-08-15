@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 import { Box } from '@chakra-ui/react';
-import { FiChevronDown } from 'react-icons/fi';
+import { Icon } from '@src/common/components';
 
 type DropdownProps = {
   toggle: () => void;
@@ -22,11 +22,12 @@ export default function Dropdown({
       boxSizing="border-box"
       borderRadius={isDropped ? '10px 10px 0 0' : '10px'}
       p="10px 40px"
-      bg="white"
+      bg="#F8F5F1"
+      color="#3B3C46"
       _hover={{
         boxShadow: 'inset 0 0 0 2px white',
         bg: 'transparent',
-        color: 'white',
+        color: '#F8F5F1',
       }}
     >
       {children}
@@ -37,7 +38,7 @@ export default function Dropdown({
         transform="translate(0, -50%)"
       >
         <Box as={motion.div} animate={{ rotate: isDropped ? 180 : 0 }}>
-          <FiChevronDown />
+          <Icon variant="arrow-down" />
         </Box>
       </Box>
     </Box>

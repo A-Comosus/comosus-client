@@ -4,13 +4,16 @@
     "description": "Share more with A-Comosus"
   },
   "button": {
-    "disabled": "Disabled"
+    "disabled": "Disabled",
+    "close": "Close",
+    "delete": "Delete"
   },
   "nav": {
     "community": "Community",
     "project": "About Project",
     "login": "Login",
-    "sign-up": "Sign up"
+    "sign-up": "Sign up",
+    "contact": "Contact Us"
   },
   "languages": {
     "cn": "CN",
@@ -28,6 +31,7 @@
     "support": "Support",
     "new": "What's new",
     "my-account": "My Account",
-    "logout": "Logout"
+    "logout": "Logout",
+    "nft": "NFT"
   }
 }

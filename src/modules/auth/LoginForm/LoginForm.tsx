@@ -6,10 +6,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { AuthRoute } from '@src/constants/PageRoutes';
 
 import { VStack, FormControl } from '@chakra-ui/react';
-import { AiOutlineUser } from 'react-icons/ai';
-import { RiLockPasswordLine } from 'react-icons/ri';
 import {
   Logo,
+  Icon,
   Input,
   Button,
   Text,
@@ -36,13 +35,13 @@ export default function LoginForm({
         type: 'text',
         name: 'username',
         placeholder: t('login.username.placeholder'),
-        leftElement: <AiOutlineUser />,
+        leftElement: <Icon variant="account" />,
       },
       {
         type: 'password',
         name: 'password',
         placeholder: t('login.password.placeholder'),
-        leftElement: <RiLockPasswordLine />,
+        leftElement: <Icon variant="password" />,
       },
     ],
     defaultValues: {
@@ -75,7 +74,6 @@ export default function LoginForm({
             {formValues.inputs.map(
               ({ type, name, placeholder, leftElement }, index) => (
                 <Input
-                  isUnderline
                   key={index}
                   type={type}
                   name={name}
@@ -86,10 +84,15 @@ export default function LoginForm({
               ),
             )}
             <FormErrorMessage testId="login.error" error={t('login.error')} />
-            <Button variantType="accent" type="submit" isLoading={isLoading}>
+            <Button
+              type="submit"
+              isLoading={isLoading}
+              variant="accent"
+              size="lg"
+            >
               {t('login.button')}
             </Button>
-            <Link href={AuthRoute.forgetPassword} textAlign="center">
+            <Link href={AuthRoute.forgetPassword} variant="accent">
               {t('login.forget-password')}
             </Link>
           </VStack>
@@ -97,7 +100,7 @@ export default function LoginForm({
       </form>
       <Text textAlign="center">
         {t('login.no-account.description')}
-        <Link highlight href={AuthRoute.SignUp}>
+        <Link href={AuthRoute.SignUp} variant="highlight">
           {t('login.no-account.action')}
         </Link>
       </Text>
