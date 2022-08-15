@@ -1,0 +1,6 @@
+myNextApplication:
+  component: "@sls-next/serverless-component@3.7.0"
+  inputs:
+    domain: "a-comosus.link"
+    bucketRegion: "ap-southeast-2"
+    certificateArn: "arn:aws:acm:us-east-1:997730026610:certificate/85e53e66-ab5a-4e81-b8d6-ba1f1bae3279"
