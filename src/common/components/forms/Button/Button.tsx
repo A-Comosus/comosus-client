@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Button as CKButton, Text } from '@chakra-ui/react';
 
-export type ButtonVariants = 'primary' | 'accent';
+export type ButtonVariants = 'primary' | 'accent' | 'gradient';
 
 type ButtonProps = {
   children: React.ReactNode;
@@ -53,6 +53,21 @@ export function Button({
         _active: {
           bg: 'linear-gradient(180deg, #AE2F4B 0%, #AE2F4B 100%)',
           boxShadow: 'none',
+        },
+      },
+      text: {
+        fontWeight: 700,
+      },
+    },
+    gradient: {
+      button: {
+        minW: '10rem',
+        bg: 'linear-gradient(90deg, #465E79 0%, #4B3F4F 100%)',
+        _hover: {
+          boxShadow: '0px 0px 10px #475E79',
+        },
+        _active: {
+          boxShadow: '0px 0px 4px #475E79',
         },
       },
       text: {
