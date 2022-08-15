@@ -39,11 +39,13 @@ export default function EditableLinkDelete({
       {showDelete ? (
         <VStack
           as={motion.div}
-          borderRadius={4}
-          p={[5, 10, 4, 4]}
-          bg="white"
           overflow="hidden"
-          align="stretch"
+          align="center"
+          spacing="2rem"
+          borderRadius="1rem"
+          p="1rem 1.6rem"
+          bg="#272429"
+          fontSize="1.6rem"
           initial={{ maxHeight: 0 }}
           animate={{
             maxHeight: '100%',
@@ -56,10 +58,10 @@ export default function EditableLinkDelete({
             transitionTimingFunction: 'ease-in-out',
           }}
         >
-          <HStack justify="center">
+          <VStack>
             <Icon variant="arrow-up" />
-          </HStack>
-          <Text alignSelf="center">{t('link.editor.toggle.prompt')}</Text>
+            <Text alignSelf="center">{t('link.editor.toggle.prompt')}</Text>
+          </VStack>
           <HStack gap={5} px={10}>
             <Button
               onClick={() => toggleShowDelete()}

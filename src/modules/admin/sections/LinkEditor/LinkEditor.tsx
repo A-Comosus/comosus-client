@@ -56,7 +56,7 @@ export default function LinkEditor() {
   };
   return (
     <VStack flex={2} borderRight="1px solid #E7E8EE">
-      <VStack flex={1} align="stretch" minW="600px">
+      <VStack flex={1} align="stretch" spacing="2rem" minW="600px">
         <LinkEditorMenu isReordering={isReordering} />
 
         <DragDropContext onDragEnd={onDragEnd}>
@@ -64,8 +64,9 @@ export default function LinkEditor() {
             {(provided) => (
               <VStack
                 flex={1}
-                gap={5}
                 align="stretch"
+                spacing="0"
+                gap="2rem"
                 overflowY="auto"
                 __css={{
                   '&::-webkit-scrollbar': { width: '3px' },

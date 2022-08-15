@@ -89,13 +89,14 @@ export default function EditableLink({
     });
   };
   return (
-    <VStack align="stretch">
+    <VStack align="stretch" spacing="2rem">
       <HStack
         align="stretch"
-        gap={5}
-        borderRadius={4}
-        p={[5, 10, 4, 4]}
-        bg="white"
+        spacing="2rem"
+        borderRadius="1rem"
+        p="2rem 1.6rem"
+        bg="#272429"
+        fontSize="1.6rem"
         {...provided.draggableProps}
         ref={provided.innerRef}
       >
@@ -108,26 +109,17 @@ export default function EditableLink({
           />
         </HStack>
 
-        <HStack flex={1} justify="space-between" align="stretch" gap={5}>
+        <HStack flex={1} justify="space-between" align="center" gap={5}>
           <VStack flex={1} align="stretch">
-            <VStack align="stretch">
-              {formValues.inputs.map(({ name, placeholder }, index) => (
-                <EditableLinkInput
-                  key={index}
-                  name={name as keyof EditableLinkFormType}
-                  control={control}
-                  placeholder={placeholder}
-                  onBlur={handleSubmit(onSubmit)}
-                />
-              ))}
-            </VStack>
-
-            <HStack gap={2}>
-              <EditableLinkButton />
-              <EditableLinkButton />
-              <EditableLinkButton />
-              <EditableLinkButton />
-            </HStack>
+            {formValues.inputs.map(({ name, placeholder }, index) => (
+              <EditableLinkInput
+                key={index}
+                name={name as keyof EditableLinkFormType}
+                control={control}
+                placeholder={placeholder}
+                onBlur={handleSubmit(onSubmit)}
+              />
+            ))}
           </VStack>
 
           <VStack justify="space-between">
@@ -140,7 +132,7 @@ export default function EditableLink({
               onClick={() => toggleShowDelete()}
               icon={<Icon variant="delete" />}
               aria-label="delete link"
-              maxH={5}
+              fontSize="1.6rem"
               bg="none"
             />
           </VStack>
