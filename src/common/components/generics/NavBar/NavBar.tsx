@@ -1,13 +1,14 @@
 import React from 'react';
 
-import { HStack, Button } from '@chakra-ui/react';
+import NextLink from 'next/link';
+import { HStack } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import { Logo, Link, SelectLanguage } from '@common/components';
+import { Logo, Link, Button, SelectLanguage } from '@common/components';
 import { GlobalRoute, AuthRoute, AppRoute } from '@src/constants/PageRoutes';
 export type NavBarProps = {
   disableNavOptions?: boolean;
 };
-export default function NavBar({ disableNavOptions }: NavBarProps) {
+export function NavBar({ disableNavOptions }: NavBarProps) {
   const { t } = useTranslation('common');
 
   const navItems = [
@@ -29,33 +30,27 @@ export default function NavBar({ disableNavOptions }: NavBarProps) {
     <HStack
       justify="space-between"
       alignItems="center"
-      borderRadius="999"
+      spacing="0"
+      padding="1.2rem"
       w="100%"
-      backgroundColor="#fff"
-      padding="0.25rem 2rem"
     >
-      <HStack gap={4}>
-        <Link href="/">
-          <Logo height="5rem" />
-        </Link>
+      <NextLink href="/">
+        <Logo height="8rem" />
+      </NextLink>
 
+      <HStack spacing="5rem">
         {!disableNavOptions &&
-          navItems.map(({ href, content }, index) => (
-            <Link type="nav" key={index} href={href}>
+          navItems.map(({ href, content }) => (
+            <Link key={href} href={href}>
               {content}
             </Link>
           ))}
-      </HStack>
-
-      <HStack gap="0.5rem">
-        <Link type="nav" href={AuthRoute.Login}>
-          <Button>{t('nav.login')}</Button>
-        </Link>
-        <Link type="nav" href={AuthRoute.SignUp}>
-          <Button color="#fff" backgroundColor="#FB446C">
+        <Link href={AuthRoute.Login}>{t('nav.login')}</Link>
+        <NextLink href={AuthRoute.SignUp}>
+          <Button variant="gradient" size="lg">
             {t('nav.sign-up')}
           </Button>
-        </Link>
+        </NextLink>
         <SelectLanguage />
       </HStack>
     </HStack>

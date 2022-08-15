@@ -57,43 +57,45 @@ export default function ProfileEditorAvatar() {
     }
   };
   return (
-    <HStack>
-      <Avatar user={user} />
-      <HStack flex={1} gap="1rem">
-        <Button flex={1} borderRadius="10px" onClick={onOpen}>
-          {t('appearance.profile.pick-an-image')}
-        </Button>
-        <Modal isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Modal Title</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              <form onSubmit={handleSubmit}>
-                <input
-                  id="avatar"
-                  type="file"
-                  accept="image/*"
-                  name="avatar"
-                  onChange={(event) => {
-                    if (!isNil(event.target.files)) {
-                      setAvatarFile(event.target.files[0]);
-                    }
-                  }}
-                />
-                <Button type="submit">{t('appearance.profile.upload')}</Button>
-                <p>{avatarUploadedMsg}</p>
-              </form>
-            </ModalBody>
-            <ModalFooter>
-              <Button onClick={onClose}>Close</Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-        <Button flex={1} borderRadius="10px" onClick={handleAvatarRemoveClick}>
-          {t('appearance.profile.remove')}
-        </Button>
+    <>
+      <HStack>
+        <Avatar user={user} />
+        <HStack flex={1} gap="1rem">
+          <Button onClick={onOpen}>
+            {t('appearance.profile.pick-an-image')}
+          </Button>
+          <Button onClick={handleAvatarRemoveClick}>
+            {t('appearance.profile.remove')}
+          </Button>
+        </HStack>
       </HStack>
-    </HStack>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Modal Title</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <form onSubmit={handleSubmit}>
+              <input
+                id="avatar"
+                type="file"
+                accept="image/*"
+                name="avatar"
+                onChange={(event) => {
+                  if (!isNil(event.target.files)) {
+                    setAvatarFile(event.target.files[0]);
+                  }
+                }}
+              />
+              <Button type="submit">{t('appearance.profile.upload')}</Button>
+              <p>{avatarUploadedMsg}</p>
+            </form>
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={onClose}>Close</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
   );
 }

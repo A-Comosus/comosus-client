@@ -16,7 +16,7 @@ export default function Pinterest({ title, url }: PinterestProps) {
   return (
     <VStack align="strech">
       <Dropdown toggle={togglePinOpen} isDropped={isPinOpen}>
-        <Text textAlign="center" fontSize={15} fontWeight={700}>
+        <Text textAlign="center" fontSize="1.6rem" fontWeight={700}>
           {title}
         </Text>
       </Dropdown>

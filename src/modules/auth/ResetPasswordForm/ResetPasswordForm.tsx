@@ -80,7 +80,7 @@ export default function ResetPasswordForm({
               testId="reset-password.error"
               error={t('reset-password.error')}
             />
-            <Button type="submit" isLoading={isLoading}>
+            <Button type="submit" isLoading={isLoading} size="lg">
               {t('reset-password.button')}
             </Button>
           </VStack>

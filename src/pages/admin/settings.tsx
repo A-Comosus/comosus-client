@@ -1,13 +1,12 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { AppContainer } from '@src/modules/admin/components';
-import { HStack, VStack } from '@chakra-ui/react';
 import {
-  SettingMenuOption,
-  SettingsSection,
-  DangerZone,
-} from '@src/modules/admin/sections';
+  AdminSectionContainer,
+  AppContainer,
+} from '@src/modules/admin/components';
+import { HStack, VStack } from '@chakra-ui/react';
+import { SettingMenuOption, DangerZone } from '@src/modules/admin/sections';
 
 export default function Settings() {
   const { t } = useTranslation('admin');
@@ -40,10 +39,10 @@ export default function Settings() {
         </VStack>
 
         <VStack alignSelf="stretch" flex={1} align="stretch" spacing="55px">
-          {options.map(({ title, section }, index) => (
-            <SettingsSection key={index} title={title}>
+          {options.map(({ title, section }) => (
+            <AdminSectionContainer key={title} heading={title}>
               {section}
-            </SettingsSection>
+            </AdminSectionContainer>
           ))}
         </VStack>
       </HStack>

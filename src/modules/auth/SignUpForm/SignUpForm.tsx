@@ -6,17 +6,15 @@ import * as yup from 'yup';
 import { AuthRoute } from '@src/constants/PageRoutes';
 
 import {
-  Link,
-  FormErrorMessage,
   Logo,
+  Icon,
   Input,
+  Checkbox,
   Button,
+  FormErrorMessage,
+  Link,
 } from '@src/common/components';
 import { FormControl, VStack, Text } from '@chakra-ui/react';
-import { AiOutlineMail, AiOutlineUser } from 'react-icons/ai';
-import { RiLockPasswordLine } from 'react-icons/ri';
-import Policy from './Policy';
-
 type SignUpFormProps = {
   onSubmit: (values: SignUpFormTypes) => void;
   isInvalid: boolean;
@@ -36,19 +34,19 @@ export default function SignUpForm({
         type: 'text',
         name: 'username',
         placeholder: t('sign-up.username.placeholder'),
-        leftElement: <AiOutlineUser />,
+        leftElement: <Icon variant="account" />,
       },
       {
         type: 'email',
         name: 'email',
         placeholder: t('sign-up.email.placeholder'),
-        leftElement: <AiOutlineMail />,
+        leftElement: <Icon variant="email" />,
       },
       {
         type: 'password',
         name: 'password',
         placeholder: t('sign-up.password.placeholder'),
-        leftElement: <RiLockPasswordLine />,
+        leftElement: <Icon variant="password" />,
       },
     ],
     defaultValues: {
@@ -86,7 +84,6 @@ export default function SignUpForm({
               ({ type, name, placeholder, leftElement }, index) => {
                 return (
                   <Input
-                    isUnderline
                     key={index}
                     type={type}
                     name={name}
@@ -98,12 +95,21 @@ export default function SignUpForm({
               },
             )}
 
-            <Policy name="acceptPolicy" control={control} />
+            <Checkbox
+              name="acceptPolicy"
+              control={control}
+              content={t('sign-up.policy.description')}
+            />
             <FormErrorMessage
               testId="sign-up.error"
               error={t('sign-up.error.user-exist')}
             />
-            <Button variantType="accent" type="submit" isLoading={isLoading}>
+            <Button
+              type="submit"
+              isLoading={isLoading}
+              variant="accent"
+              size="lg"
+            >
               {t('sign-up.button')}
             </Button>
           </VStack>
@@ -111,7 +117,7 @@ export default function SignUpForm({
       </form>
       <Text textAlign="center">
         {t('sign-up.have-account.description')}
-        <Link highlight href={AuthRoute.Login}>
+        <Link href={AuthRoute.Login} variant="highlight">
           {t('sign-up.have-account.action')}
         </Link>
       </Text>

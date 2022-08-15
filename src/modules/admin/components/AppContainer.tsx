@@ -21,7 +21,7 @@ export default function PageContainer({
 
   return (
     <UserProvider>
-      <Flex h="100vh" align="stretch" overflow="hidden" bg="#F5F6F8">
+      <Flex h="100vh" align="stretch" overflow="hidden">
         <Head>
           <title>{title}</title>
           {metas &&

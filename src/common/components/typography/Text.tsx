@@ -32,12 +32,12 @@ type TextProps = {
 export default function Text({ children, type = 'p', ...props }: TextProps) {
   const types = {
     h1: (
-      <CKHeading as="h1" whiteSpace="pre-line" fontSize={80} {...props}>
+      <CKHeading as="h1" whiteSpace="pre-line" fontSize="9rem" {...props}>
         {children}
       </CKHeading>
     ),
     h2: (
-      <CKHeading as="h2" whiteSpace="pre-line" fontSize={55} {...props}>
+      <CKHeading as="h2" whiteSpace="pre-line" fontSize="6rem" {...props}>
         {children}
       </CKHeading>
     ),
