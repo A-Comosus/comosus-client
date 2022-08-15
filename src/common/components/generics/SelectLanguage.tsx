@@ -24,13 +24,19 @@ export default function SelectLanguage() {
 
   return (
     <Select
-      isFullWidth={false}
-      focusBorderColor="#fff"
       value={language}
       onChange={handleChangeLanguage}
+      variant="unstyled"
+      color="#F8F5F1"
+      fontSize="1.6rem"
+      fontWeight={600}
     >
-      <option value="cn">{t('languages.cn')}</option>
-      <option value="en">{t('languages.en')}</option>
+      <option style={{ background: '#1B181E' }} value="cn">
+        {t('languages.cn')}
+      </option>
+      <option style={{ background: '#1B181E' }} value="en">
+        {t('languages.en')}
+      </option>
     </Select>
   );
 }
