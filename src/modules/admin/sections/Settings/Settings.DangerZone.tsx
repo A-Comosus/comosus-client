@@ -12,6 +12,7 @@ import { Button, Text } from '@src/common/components';
 import { useDeleteAccountAPI } from '@src/services';
 import { useToggle } from '@src/utils/hooks';
 import { useTranslation } from 'react-i18next';
+import { AdminSectionItemCard } from '../../components';
 
 export function DangerZone() {
   const { t } = useTranslation('admin');
@@ -19,7 +20,7 @@ export function DangerZone() {
   const [isOpen, toggleOpen] = useToggle();
 
   return (
-    <>
+    <AdminSectionItemCard>
       <Button onClick={toggleOpen} variant="accent">
         {t('settings.danger-zone.action')}
       </Button>
@@ -46,6 +47,6 @@ export function DangerZone() {
           </ModalFooter>
         </ModalContent>
       </Modal>
-    </>
+    </AdminSectionItemCard>
   );
 }
