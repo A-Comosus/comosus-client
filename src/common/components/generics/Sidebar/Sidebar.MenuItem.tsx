@@ -1,9 +1,9 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
+import NextLink from 'next/link';
 
-import { HStack } from '@chakra-ui/react';
-import styles from './Sidebar.module.scss';
+import { maskElement } from './Sidebar';
+import { HStack, Text, Link, Box } from '@chakra-ui/react';
 
 interface MenuInfo {
   href: string;
@@ -15,19 +15,20 @@ export default function SidebarMenuItem({ href, content, icon }: MenuInfo) {
   const isActive = router.pathname === href;
 
   return (
-    <li
-      className={`${styles.sidebar__menu__item} ${
-        isActive ? styles.sidebar__menu__item_active : ''
-      }`}
-    >
-      <Link href={href} passHref>
-        <HStack as="a" p={'10px 20px'}>
-          <span className={styles.sidebar__menu__item__link__icon}>{icon}</span>
-          <span className={styles.sidebar__menu__item__link__title}>
-            {content}
-          </span>
-        </HStack>
+    <NextLink href={href} passHref>
+      <Link
+        position="relative"
+        _focus={{ outline: '2px double #1b181e' }}
+        {...(isActive ? maskElement : {})}
+        borderRadius="2rem 0 0 2rem"
+      >
+        <Box _hover={maskElement} p="1rem 2rem">
+          <HStack pl="2rem">
+            {icon}
+            <Text>{content}</Text>
+          </HStack>
+        </Box>
       </Link>
-    </li>
+    </NextLink>
   );
 }
