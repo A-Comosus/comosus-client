@@ -60,6 +60,8 @@ export default function ProfilePreview() {
                 position="absolute"
                 top={5}
                 right={2.5}
+                color="#3B3C46"
+                fontSize="1.6rem"
               />
 
               <VStack>
@@ -79,7 +81,7 @@ export default function ProfilePreview() {
             </VStack>
           )}
 
-          <Logo color="white" variant="inline" />
+          <Logo color="#F8F5F1" variant="inline" />
         </VStack>
 
         <HStack>

@@ -22,11 +22,12 @@ export default function Dropdown({
       boxSizing="border-box"
       borderRadius={isDropped ? '10px 10px 0 0' : '10px'}
       p="10px 40px"
-      bg="white"
+      bg="#F8F5F1"
+      color="#3B3C46"
       _hover={{
         boxShadow: 'inset 0 0 0 2px white',
         bg: 'transparent',
-        color: 'white',
+        color: '#F8F5F1',
       }}
     >
       {children}
