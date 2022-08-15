@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { HStack, Button } from '@chakra-ui/react';
+import { Link, HStack } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import { Logo, Link, SelectLanguage } from '@common/components';
+import { Logo, Button, SelectLanguage } from '@common/components';
 import { GlobalRoute, AuthRoute, AppRoute } from '@src/constants/PageRoutes';
 export type NavBarProps = {
   disableNavOptions?: boolean;
 };
-export default function NavBar({ disableNavOptions }: NavBarProps) {
+export function NavBar({ disableNavOptions }: NavBarProps) {
   const { t } = useTranslation('common');
 
   const navItems = [
@@ -29,30 +29,39 @@ export default function NavBar({ disableNavOptions }: NavBarProps) {
     <HStack
       justify="space-between"
       alignItems="center"
-      borderRadius="999"
+      spacing="0"
+      padding="1.2rem"
       w="100%"
-      backgroundColor="#fff"
-      padding="0.25rem 2rem"
     >
-      <HStack gap={4}>
-        <Link href="/">
-          <Logo height="5rem" />
-        </Link>
+      <Link href="/">
+        <Logo height="8rem" />
+      </Link>
 
+      <HStack spacing="5rem">
         {!disableNavOptions &&
-          navItems.map(({ href, content }, index) => (
-            <Link type="nav" key={index} href={href}>
+          navItems.map(({ href, content }) => (
+            <Link
+              key={href}
+              href={href}
+              color="#F8F5F1"
+              fontSize="1.6rem"
+              fontWeight={600}
+              whiteSpace="nowrap"
+            >
               {content}
             </Link>
           ))}
-      </HStack>
-
-      <HStack gap="0.5rem">
-        <Link type="nav" href={AuthRoute.Login}>
-          <Button>{t('nav.login')}</Button>
+        <Link
+          href={AuthRoute.Login}
+          color="#F8F5F1"
+          fontSize="1.6rem"
+          fontWeight={600}
+          whiteSpace="nowrap"
+        >
+          {t('nav.login')}
         </Link>
         <Link type="nav" href={AuthRoute.SignUp}>
-          <Button color="#fff" backgroundColor="#FB446C">
+          <Button variant="gradient" size="lg">
             {t('nav.sign-up')}
           </Button>
         </Link>

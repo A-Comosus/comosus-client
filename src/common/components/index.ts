@@ -4,8 +4,8 @@ export { default as SectionHContainer } from './containers/SectionHContainer';
 
 // Generic Components
 export { default as Logo } from './generics/Logo';
-export type { NavBarProps } from './generics/NavBar';
-export { default as NavBar } from './generics/NavBar';
+export type { NavBarProps } from './generics/NavBar/NavBar';
+export * from './generics/NavBar/NavBar';
 export { default as Footer } from './generics/Footer';
 export { default as Error404 } from './generics/Error404';
 export { default as SelectLanguage } from './generics/SelectLanguage';
