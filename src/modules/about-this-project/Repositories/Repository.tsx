@@ -15,12 +15,12 @@ export default function Repository({
     <LinkBox as={motion.div} whileHover={{ y: '-5px', x: '-2px' }}>
       <VStack
         align="stretch"
-        gap="16px"
+        spacing="2rem"
         borderRadius="15px"
-        p="20px 32px"
+        p="2rem 3.2rem"
         boxShadow="4px 4px 2px rgba(0, 0, 0, 0.05)"
-        w="372px"
-        bg="#ffffff"
+        w="37.2rem"
+        bg="#272429"
       >
         <VStack align="stretch">
           <LinkOverlay href={html_url}>

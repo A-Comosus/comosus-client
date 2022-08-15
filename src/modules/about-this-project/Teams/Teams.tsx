@@ -20,10 +20,9 @@ export default function Teams({ teams }: TeamsProps) {
       <Wrap
         justify="center"
         spacing="0"
-        borderRadius="15px"
-        p="45px"
-        bg="#ffffff"
-        boxShadow="2px 2px 2px #00000010"
+        borderRadius="1rem"
+        p="4.5rem"
+        bg="#272429"
       >
         {teams.map((team, index) => (
           <Team key={index} team={team} index={index} />

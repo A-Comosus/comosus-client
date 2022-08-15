@@ -13,12 +13,12 @@ export default function Repos({ repos }: ReposProps) {
   const { t } = useTranslation('project');
 
   return (
-    <VStack align="stretch" gap="30px">
+    <VStack align="stretch" gap="3rem">
       <Text type="generic.h1" fontWeight={700}>
         {t('repos.heading')}
       </Text>
 
-      <Wrap justify="center" spacing="40px">
+      <Wrap justify="center" spacing="4rem">
         {repos.map((repo, index) => (
           <WrapItem key={index}>
             <Repository repo={repo} />

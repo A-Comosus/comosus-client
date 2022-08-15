@@ -27,7 +27,7 @@ export default function Video({ title, url }: VideoProps) {
         </>
       ) : (
         <Dropdown toggle={toggleVideoOpen} isDropped={isVideoOpen}>
-          <Text textAlign="center" fontSize={15} fontWeight={700}>
+          <Text textAlign="center" fontSize="1.6rem" fontWeight={700}>
             {title}
           </Text>
         </Dropdown>

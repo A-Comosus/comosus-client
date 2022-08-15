@@ -15,7 +15,11 @@ export default function ForgetPasswordSuccess() {
         <Text type="generic.h1">{t('forget-password-success.page.title')}</Text>
         <Text type="p">{t('forget-password-success.page.subtitle')}</Text>
       </VStack>
-      <Button type="button" onClick={() => router.push(GlobalRoute.Root)}>
+      <Button
+        type="button"
+        onClick={() => router.push(GlobalRoute.Root)}
+        size="lg"
+      >
         {t('forget-password-success.button')}
       </Button>
     </VStack>

@@ -3,6 +3,15 @@ import { RouterContext } from 'next/dist/shared/lib/router-context';
 import { chakraTheme } from '../src/common/contexts/themeContext/ThemeProvider';
 
 export const parameters = {
+  backgrounds: {
+    default: 'Dark',
+    values: [
+      {
+        name: 'Dark',
+        value: '#1B181E',
+      },
+    ],
+  },
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {

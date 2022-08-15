@@ -52,7 +52,7 @@ export default function PleaseVerifyAccount({ id }: PleaseVerifyAccountProps) {
         <Text type="generic.h1" maxWidth="640px" mb="1rem">
           {t('please-verify-account.page.title')}
         </Text>
-        <Button variantType="accent" onClick={handleClick}>
+        <Button onClick={handleClick} variant="accent" size="lg">
           {t('please-verify-account.page.button')}
         </Button>
         <Text>{message}</Text>

@@ -16,10 +16,10 @@ const getProjectInfo = async () => {
   return data;
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   try {
     const projectInfo = await getProjectInfo();
-    return { props: { projectInfo } };
+    return { props: { projectInfo }, revalidate: 24 * 60 * 60 };
   } catch (err) {
     return {
       notFound: true,

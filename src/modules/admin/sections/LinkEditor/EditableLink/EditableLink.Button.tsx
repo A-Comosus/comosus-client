@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { IconButton } from '@chakra-ui/react';
-import { AiOutlineHeart } from 'react-icons/ai';
+import { Icon } from '@src/common/components';
 
 export default function EditableLinkButton() {
   return (
@@ -9,7 +9,7 @@ export default function EditableLinkButton() {
       isDisabled
       minW="20px"
       maxH="20px"
-      icon={<AiOutlineHeart />}
+      icon={<Icon variant="heart" />}
       aria-label="placeholder"
     />
   );

@@ -6,14 +6,13 @@ import { useForm } from 'react-hook-form';
 import { useToggle } from '@src/utils/hooks';
 
 import { HStack, VStack, Image, IconButton } from '@chakra-ui/react';
-import { RiDeleteBin5Line } from 'react-icons/ri';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LinkQueries } from '@src/constants';
 import { DraggableProvided } from 'react-beautiful-dnd';
 import EditableLinkInput from './EditableLink.Input';
-import EditableLinkButton from './EditableLink.Button';
 import EditableLinkDelete from './EditableLink.Delete';
 import EditableLinkSwitch from './EditableLink.Switch';
+import { Icon } from '@src/common/components';
 
 type EditableLinkProps = {
   link: {
@@ -89,13 +88,14 @@ export default function EditableLink({
     });
   };
   return (
-    <VStack align="stretch">
+    <VStack align="stretch" spacing="2rem">
       <HStack
         align="stretch"
-        gap={5}
-        borderRadius={4}
-        p={[5, 10, 4, 4]}
-        bg="white"
+        spacing="2rem"
+        borderRadius="1rem"
+        p="2rem 1.6rem"
+        bg="#272429"
+        fontSize="1.6rem"
         {...provided.draggableProps}
         ref={provided.innerRef}
       >
@@ -108,26 +108,17 @@ export default function EditableLink({
           />
         </HStack>
 
-        <HStack flex={1} justify="space-between" align="stretch" gap={5}>
+        <HStack flex={1} justify="space-between" align="center" gap={5}>
           <VStack flex={1} align="stretch">
-            <VStack align="stretch">
-              {formValues.inputs.map(({ name, placeholder }, index) => (
-                <EditableLinkInput
-                  key={index}
-                  name={name as keyof EditableLinkFormType}
-                  control={control}
-                  placeholder={placeholder}
-                  onBlur={handleSubmit(onSubmit)}
-                />
-              ))}
-            </VStack>
-
-            <HStack gap={2}>
-              <EditableLinkButton />
-              <EditableLinkButton />
-              <EditableLinkButton />
-              <EditableLinkButton />
-            </HStack>
+            {formValues.inputs.map(({ name, placeholder }, index) => (
+              <EditableLinkInput
+                key={index}
+                name={name as keyof EditableLinkFormType}
+                control={control}
+                placeholder={placeholder}
+                onBlur={handleSubmit(onSubmit)}
+              />
+            ))}
           </VStack>
 
           <VStack justify="space-between">
@@ -138,9 +129,9 @@ export default function EditableLink({
             />
             <IconButton
               onClick={() => toggleShowDelete()}
-              icon={<RiDeleteBin5Line />}
+              icon={<Icon variant="delete" />}
               aria-label="delete link"
-              maxH={5}
+              fontSize="1.6rem"
               bg="none"
             />
           </VStack>
