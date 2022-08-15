@@ -29,7 +29,7 @@ export function Sidebar() {
     },
     {
       href: AppRoute.NFT,
-      content: t('sidebar.NFT'),
+      content: t('sidebar.nft'),
       icon: <Icon variant="eth" />,
     },
     {
