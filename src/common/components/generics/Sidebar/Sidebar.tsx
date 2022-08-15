@@ -11,7 +11,7 @@ import styles from './Sidebar.module.scss';
 import { useUser } from '@src/common/contexts';
 import { useRouter } from 'next/router';
 
-function Sidebar() {
+export function Sidebar() {
   const { t } = useTranslation();
   const { push } = useRouter();
   const { user } = useUser();
@@ -63,5 +63,3 @@ function Sidebar() {
     </nav>
   );
 }
-
-export default Sidebar;
