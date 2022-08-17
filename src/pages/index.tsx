@@ -68,7 +68,7 @@ const Home: NextPage = () => {
 
   return (
     <PageContainer head={head}>
-      <VStack alignSelf="stretch" align="stretch">
+      <VStack align="stretch" spacing="0">
         {heros.map((hero, index) => (
           <SectionHContainer
             key={index}

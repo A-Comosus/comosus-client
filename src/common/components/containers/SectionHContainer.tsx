@@ -11,11 +11,11 @@ export default function SectionHContainer({
   flexDirection,
 }: SectionHContainerProps) {
   return (
-    <Center height="100vh">
+    <Center height="95vh">
       <HStack
+        flex={1}
         flexDirection={flexDirection}
         justify="space-between"
-        width="clamp(50%, 140rem, 90%)"
         gap="12rem"
       >
         {children}
