@@ -1,6 +1,6 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 
-import NextLink from 'next/link';
 import { HStack } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { Logo, Link, Button, SelectLanguage } from '@common/components';
@@ -10,6 +10,7 @@ export type NavBarProps = {
 };
 export function NavBar({ disableNavOptions }: NavBarProps) {
   const { t } = useTranslation('common');
+  const { push } = useRouter();
 
   const navItems = [
     {
@@ -34,9 +35,7 @@ export function NavBar({ disableNavOptions }: NavBarProps) {
       padding="1.2rem"
       w="100%"
     >
-      <NextLink href="/">
-        <Logo height="8rem" />
-      </NextLink>
+      <Logo />
 
       <HStack spacing="5rem">
         {!disableNavOptions &&
@@ -46,11 +45,13 @@ export function NavBar({ disableNavOptions }: NavBarProps) {
             </Link>
           ))}
         <Link href={AuthRoute.Login}>{t('nav.login')}</Link>
-        <NextLink href={AuthRoute.SignUp}>
-          <Button variant="gradient" size="lg">
-            {t('nav.sign-up')}
-          </Button>
-        </NextLink>
+        <Button
+          onClick={() => push(AuthRoute.SignUp)}
+          variant="gradient"
+          size="lg"
+        >
+          {t('nav.sign-up')}
+        </Button>
         <SelectLanguage />
       </HStack>
     </HStack>
