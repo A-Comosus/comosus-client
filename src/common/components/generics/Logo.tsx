@@ -1,8 +1,9 @@
 import React from 'react';
+import NextLink from 'next/link';
 import { useTranslation } from 'react-i18next';
+import { GlobalRoute } from '@src/constants';
 
-import { Image, HStack, BoxProps } from '@chakra-ui/react';
-import { Text } from '@common/components';
+import { Image, BoxProps, Link } from '@chakra-ui/react';
 
 type LogoPropsType = {
   variant?: 'block' | 'inline';
@@ -17,23 +18,21 @@ export default function Logo({
   const { t } = useTranslation();
   const siteTitle = t('site.title');
 
-  const variants = {
-    block: (
-      <Image
-        src="/assets/a-comosus-logo.png"
-        alt={siteTitle}
-        alignSelf="center"
-        height={height}
-        {...props}
-      />
-    ),
-    inline: (
-      <HStack gap={1} {...props}>
-        <Image src="/assets/logo.png" alt={siteTitle} alignSelf="center" />
-        <Text color="white">{siteTitle}</Text>
-      </HStack>
-    ),
+  const sources = {
+    block: '/assets/logo_block.svg',
+    inline: '/assets/logo_inline.svg',
   };
 
-  return variants[variant];
+  return (
+    <NextLink href={GlobalRoute.Root} passHref>
+      <Link>
+        <Image
+          src={sources[variant]}
+          alt={siteTitle}
+          height={height}
+          {...props}
+        />
+      </Link>
+    </NextLink>
+  );
 }
