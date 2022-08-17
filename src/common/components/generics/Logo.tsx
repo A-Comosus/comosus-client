@@ -3,18 +3,13 @@ import NextLink from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { GlobalRoute } from '@src/constants';
 
-import { Image, BoxProps, Link } from '@chakra-ui/react';
+import { Image, Link } from '@chakra-ui/react';
 
 type LogoPropsType = {
   variant?: 'block' | 'inline';
-  height?: string;
-} & BoxProps;
+};
 
-export default function Logo({
-  variant = 'block',
-  height,
-  ...props
-}: LogoPropsType) {
+export default function Logo({ variant = 'block' }: LogoPropsType) {
   const { t } = useTranslation();
   const siteTitle = t('site.title');
 
@@ -26,12 +21,7 @@ export default function Logo({
   return (
     <NextLink href={GlobalRoute.Root} passHref>
       <Link>
-        <Image
-          src={sources[variant]}
-          alt={siteTitle}
-          height={height}
-          {...props}
-        />
+        <Image src={sources[variant]} alt={siteTitle} />
       </Link>
     </NextLink>
   );
