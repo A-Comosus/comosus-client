@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { VStack, Wrap, WrapItem } from '@chakra-ui/react';
+import { Box, VStack } from '@chakra-ui/react';
 import { Text } from '@common/components';
 
 import Repository from './Repository';
@@ -18,13 +18,15 @@ export default function Repos({ repos }: ReposProps) {
         {t('repos.heading')}
       </Text>
 
-      <Wrap justify="center" spacing="4rem">
-        {repos.map((repo, index) => (
-          <WrapItem key={index}>
-            <Repository repo={repo} />
-          </WrapItem>
+      <Box
+        display="grid"
+        gridTemplateColumns="repeat(auto-fit, minmax(37.2rem, 1fr))"
+        gap="4rem"
+      >
+        {repos.map((repo) => (
+          <Repository key={repo.name} repo={repo} />
         ))}
-      </Wrap>
+      </Box>
     </VStack>
   );
 }

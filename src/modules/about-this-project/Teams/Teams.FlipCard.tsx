@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useToggle } from '@src/utils/hooks';
 
-import { Box, Center } from '@chakra-ui/react';
+import { AspectRatio, Box, Center } from '@chakra-ui/react';
 import { Text } from '@src/common/components';
 
 type FlipCardProps = {
@@ -31,40 +31,40 @@ export default function FlipCard({
   };
 
   return (
-    <Box
-      overflow="hidden"
-      position="relative"
-      w="350px"
-      h="350px"
-      bg={bgColor}
-      bgImage={bgImage}
-      bgSize="cover"
-      bgRepeat="no-repeat"
-      color="white"
-      textAlign="center"
-    >
+    <AspectRatio ratio={1}>
       <Box
-        as={motion.div}
-        variants={variants}
-        animate={isHovered ? 'shown' : 'hidden'}
-        onHoverStart={() => toggleHovered()}
-        onHoverEnd={() => toggleHovered()}
-        position="absolute"
-        w="100%"
-        h="100%"
+        overflow="hidden"
+        position="relative"
+        bg={bgColor}
+        bgImage={bgImage}
+        bgSize="cover"
+        bgRepeat="no-repeat"
+        color="white"
+        textAlign="center"
       >
-        <Box w="100%" h="100%" bg={bgColor} textTransform="uppercase">
-          <Center w="100%" h="100%">
-            <Text fontSize={30} fontWeight={700} letterSpacing="3px">
-              {title}
-            </Text>
+        <Box
+          as={motion.div}
+          variants={variants}
+          animate={isHovered ? 'shown' : 'hidden'}
+          onHoverStart={() => toggleHovered()}
+          onHoverEnd={() => toggleHovered()}
+          position="absolute"
+          w="100%"
+          h="100%"
+        >
+          <Box w="100%" h="100%" bg={bgColor} textTransform="uppercase">
+            <Center w="100%" h="100%">
+              <Text fontSize={30} fontWeight={700} letterSpacing="3px">
+                {title}
+              </Text>
+            </Center>
+          </Box>
+
+          <Center w="100%" h="100%" bg={bgColor} p="20px">
+            {children}
           </Center>
         </Box>
-
-        <Center w="100%" h="100%" bg={bgColor} p="20px">
-          {children}
-        </Center>
       </Box>
-    </Box>
+    </AspectRatio>
   );
 }

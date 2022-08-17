@@ -39,8 +39,8 @@ export default function AboutThisProject({
   };
 
   return (
-    <PageContainer head={head} disableFixedNavBar>
-      <VStack gap="100px" my="100px" w="clamp(50%, 1600px, 90%)">
+    <PageContainer head={head}>
+      <VStack align="stretch" spacing="10rem">
         <VStack>
           <Text type="h1">{`${t('header.heading-1')} ${org.login}`}</Text>
           <Text type="h4">{t('header.heading-2')}</Text>

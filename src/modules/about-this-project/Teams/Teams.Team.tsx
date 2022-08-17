@@ -22,24 +22,21 @@ export default function Team({ team, index }: TeamProps) {
 
   return (
     <>
-      <WrapItem>
-        <FlipCard title={team.name} bgColor={colors[index]}>
-          <Text textAlign="center" fontSize={16} fontWeight={700}>
-            {team.description ||
-              'Well.... There supposed to be descriptions here... 😥'}
-          </Text>
+      <FlipCard title={team.name} bgColor={colors[index]}>
+        <Text textAlign="center" fontSize={16} fontWeight={700}>
+          {team.description ||
+            'Well.... There supposed to be descriptions here... 😥'}
+        </Text>
+      </FlipCard>
+      {team.members.map((member) => (
+        <FlipCard
+          key={member.login}
+          title={member.name ?? member.login}
+          bgColor={`${colors[index]}B3`}
+          bgImage={member.avatar_url}
+        >
+          <MemberDetail member={member} color={colors[index]} />
         </FlipCard>
-      </WrapItem>
-      {team.members.map((member, _index) => (
-        <WrapItem key={_index}>
-          <FlipCard
-            title={member.name ?? member.login}
-            bgColor={`${colors[index]}B3`}
-            bgImage={member.avatar_url}
-          >
-            <MemberDetail member={member} color={colors[index]} />
-          </FlipCard>
-        </WrapItem>
       ))}
     </>
   );
