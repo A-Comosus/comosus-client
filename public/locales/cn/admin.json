@@ -24,6 +24,7 @@
   },
   "appearance": {
     "profile": {
+      "heading": "用户信息",
       "title": "资料",
       "pick-an-image": "选择图像",
       "upload": "上传",
