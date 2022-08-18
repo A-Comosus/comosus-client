@@ -32,7 +32,12 @@ export default function PageContainer({
       <ColorModeScript />
 
       <NavBar disableNavOptions={disableNavOptions} />
-      <VStack alignSelf="center" align="stretch" w="clamp(62.5%, 120rem, 90%)">
+      <VStack
+        as="main"
+        alignSelf="center"
+        align="stretch"
+        w="clamp(62.5%, 120rem, 90%)"
+      >
         {children}
       </VStack>
       <Footer />
