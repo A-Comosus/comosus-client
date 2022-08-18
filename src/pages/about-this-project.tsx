@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { LambdaUrl } from '@src/constants';
 
 import { PageContainer, Text } from '@src/common/components';
 import { VStack } from '@chakra-ui/react';
@@ -12,7 +11,9 @@ import {
 import { useTranslation } from 'react-i18next';
 
 const getProjectInfo = async () => {
-  const { data } = await axios.get(LambdaUrl.GetProjectInfo);
+  const { data } = await axios.get(
+    process.env.NEXT_PUBLIC_LAMBDA_GET_PROJECT_INFO as string,
+  );
   return data;
 };
 
