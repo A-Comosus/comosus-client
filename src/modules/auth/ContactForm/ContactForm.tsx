@@ -110,7 +110,12 @@ export default function ContactForm({
                   />
                 ),
             )}
-            <Button type="submit" isLoading={isLoading}>
+            <Button
+              type="submit"
+              isLoading={isLoading}
+              variant="accent"
+              size="lg"
+            >
               {t('contact-form.page.button')}
             </Button>
             {emailSent && (

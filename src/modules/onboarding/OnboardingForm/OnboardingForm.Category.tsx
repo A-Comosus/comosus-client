@@ -23,7 +23,7 @@ export default function Category({ value, onChange }: CategoryProps) {
   );
 
   return (
-    <VStack align="stretch" gap="20px">
+    <VStack align="stretch" gap="2rem">
       <Text type="label">{t('category.label')}</Text>
 
       <Wrap>
@@ -31,17 +31,19 @@ export default function Category({ value, onChange }: CategoryProps) {
           categories.map(({ type, id }, index) => (
             <WrapItem key={index}>
               <Box
-                p="10px 20px"
-                borderRadius="20px"
+                p="1rem 2rem"
+                borderRadius="2rem"
                 bg={id === value ? '#FB446C' : '#ADB2C620'}
-                color={id === value ? '#FFFFFF' : '#000000'}
+                color="#F8F5F1"
                 onClick={() => onChange(id)}
                 _hover={{
-                  outline: '2px solid #FB446C',
+                  boxShadow: '0 0 0 .2rem #FB446C inset',
                   cursor: 'pointer',
                 }}
               >
-                <label>{t(`category.option.${type}`)}</label>
+                <Text fontSize={['1.2rem', '1.6rem']}>
+                  {t(`category.option.${type}`)}
+                </Text>
               </Box>
             </WrapItem>
           ))

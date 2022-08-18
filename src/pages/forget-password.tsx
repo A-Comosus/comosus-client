@@ -1,20 +1,19 @@
 import React from 'react';
 import { isNil } from 'lodash';
 import { useForgetPasswordMutation } from '@generated/graphql.queries';
-import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
 import { useApiClient } from '@common/contexts';
-import { AuthRoute } from '@src/constants/PageRoutes';
 
-import { VStack } from '@chakra-ui/react';
+import { Center } from '@chakra-ui/react';
 import { PageContainer } from '@src/common/components';
-import { ForgetPasswordForm } from '@src/modules/auth';
+import { ForgetPasswordForm, ForgetPasswordSuccess } from '@src/modules/auth';
+import { useToggle } from '@src/utils/hooks';
 
 export default function ForgetPassword() {
   const { t } = useTranslation('auth');
   const head = { title: t('forget-password.title') };
-  const router = useRouter();
 
+  const [isEmailSent, toggleEmailSent] = useToggle();
   const { gqlClient } = useApiClient();
   const {
     mutate: forgetPasswordSendEmail,
@@ -27,7 +26,7 @@ export default function ForgetPassword() {
         console.error(error);
       }
       if (data) {
-        router.push(AuthRoute.forgetPasswordSuccess);
+        toggleEmailSent();
       }
     },
   });
@@ -37,13 +36,17 @@ export default function ForgetPassword() {
 
   return (
     <PageContainer head={head}>
-      <VStack flex={1} padding="1rem">
-        <ForgetPasswordForm
-          onSubmit={onSubmit}
-          isLoading={isSendingEmail}
-          isInvalid={!isNil(error)}
-        />
-      </VStack>
+      <Center flex={1}>
+        {isEmailSent ? (
+          <ForgetPasswordSuccess />
+        ) : (
+          <ForgetPasswordForm
+            onSubmit={onSubmit}
+            isLoading={isSendingEmail}
+            isInvalid={!isNil(error)}
+          />
+        )}
+      </Center>
     </PageContainer>
   );
 }

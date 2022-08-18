@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Head from 'next/head';
-import { ColorModeScript, VStack } from '@chakra-ui/react';
+import { Box, ColorModeScript, VStack } from '@chakra-ui/react';
 import { Footer, NavBar, NavBarProps } from '@common/components';
 
 type PageContainerProps = {
@@ -37,7 +37,7 @@ export default function PageContainer({
         flex={1}
         alignSelf="center"
         align="stretch"
-        py="6rem"
+        py={['3rem', '6rem']}
         w="clamp(62.5%, 120rem, 90%)"
         maxW="120rem"
       >
