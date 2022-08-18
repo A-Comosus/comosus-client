@@ -13,19 +13,21 @@ export default function Logo({ variant = 'block' }: LogoPropsType) {
   const { t } = useTranslation();
   const siteTitle = t('site.title');
 
-  const sources = {
-    block: '/assets/logo_block.svg',
-    inline: '/assets/logo_inline.svg',
+  const propVariants = {
+    block: {
+      src: '/assets/logo_block.svg',
+      maxH: ['5rem', '13rem'],
+    },
+    inline: {
+      src: '/assets/logo_inline.svg',
+      maxH: ['2rem', '5rem'],
+    },
   };
 
   return (
     <NextLink href={GlobalRoute.Root} passHref>
       <Link>
-        <Image
-          maxH={['5rem', '13rem']}
-          src={sources[variant]}
-          alt={siteTitle}
-        />
+        <Image alt={siteTitle} {...propVariants[variant]} />
       </Link>
     </NextLink>
   );
