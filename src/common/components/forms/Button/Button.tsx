@@ -12,6 +12,7 @@ type ButtonProps = {
   onClick?: () => void;
   variant?: ButtonVariants;
   flex?: number;
+  width?: string;
   size?: 'lg' | 'md' | 'sm';
 };
 
