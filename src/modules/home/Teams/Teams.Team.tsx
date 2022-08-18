@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { WrapItem } from '@chakra-ui/react';
-
 import { Text } from '@src/common/components';
 import FlipCard from './Teams.FlipCard';
 import MemberDetail from './Teams.MemberDetail';

@@ -21,7 +21,7 @@ export default function Repository({
           align="stretch"
           spacing="2rem"
           borderRadius="1rem"
-          p="2rem 3.2rem"
+          p={['1rem 1.6rem', '2rem 3.2rem']}
           boxShadow="4px 4px 2px rgba(0, 0, 0, 0.05)"
           bg="#272429"
         >

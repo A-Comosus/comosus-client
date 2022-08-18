@@ -27,7 +27,7 @@ export function HomeHeroCard({ hero, isReversed }: HomeHeroCardProps) {
       <VStack alignItems={['stretch', 'flex-start']} gap="1rem">
         <Text
           as="h2"
-          fontSize="4rem"
+          fontSize={['4rem', '6rem']}
           fontWeight={600}
           fontFamily="Blinker"
           lineHeight="100%"

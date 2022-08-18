@@ -12,7 +12,7 @@ export function Teams({ teams }: TeamsProps) {
   const { t } = useTranslation('project');
 
   return (
-    <VStack align="stretch" gap="30px">
+    <VStack align="stretch" gap="3rem">
       <Text type="generic.h1" fontWeight={700}>
         {t('teams.heading')}
       </Text>
@@ -20,9 +20,6 @@ export function Teams({ teams }: TeamsProps) {
       <Box
         display="grid"
         gridTemplateColumns="repeat(auto-fit, minmax(27rem, 1fr))"
-        borderRadius="1rem"
-        p="4.5rem"
-        bg="#272429"
       >
         {teams.map((team, index) => (
           <Team key={index} team={team} index={index} />

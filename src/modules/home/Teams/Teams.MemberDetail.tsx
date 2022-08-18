@@ -24,22 +24,22 @@ export default function MemberDetail({
   const router = useRouter();
 
   return (
-    <VStack justify="space-between">
-      <Text textAlign="center" fontSize={24} fontWeight={600}>
+    <VStack justify="space-between" fontSize="1.6rem">
+      <Text textAlign="center" fontSize="2.4rem" fontWeight={600}>
         {name || login}
       </Text>
 
       {location && (
         <HStack>
           <Icon variant="location" />
-          <Text textAlign="center" fontSize={20} fontWeight={500}>
+          <Text textAlign="center" fontSize="2rem" fontWeight={500}>
             {location}
           </Text>
         </HStack>
       )}
 
       {bio && (
-        <Text textAlign="center" fontSize={16} fontWeight={500}>
+        <Text textAlign="center" fontSize="1.6rem" fontWeight={500}>
           {bio}
         </Text>
       )}
@@ -48,10 +48,10 @@ export default function MemberDetail({
         <HStack
           as="button"
           onClick={() => router.push(`mailto:${email}`)}
-          _hover={{ borderBottom: '1px solid white' }}
+          _hover={{ borderBottom: '.1rem solid white' }}
         >
           <Icon variant="email" />
-          <Text textAlign="center" fontSize={16} fontWeight={500}>
+          <Text textAlign="center" fontSize="1.6rem" fontWeight={500}>
             {email}
           </Text>
         </HStack>
@@ -64,6 +64,9 @@ export default function MemberDetail({
           icon={<Icon variant="twitter" />}
           aria-label="twitter"
           rounded="full"
+          w="4rem"
+          h="4rem"
+          fontSize="1.6rem"
           bg={color}
         />
         <IconButton
@@ -72,6 +75,9 @@ export default function MemberDetail({
           icon={<Icon variant="linkedin" />}
           aria-label="linkedin"
           rounded="full"
+          w="4rem"
+          h="4rem"
+          fontSize="1.6rem"
           bg={color}
         />
         <IconButton
@@ -79,6 +85,9 @@ export default function MemberDetail({
           icon={<Icon variant="github" />}
           aria-label="github"
           rounded="full"
+          w="4rem"
+          h="4rem"
+          fontSize="1.6rem"
           bg={color}
         />
       </HStack>

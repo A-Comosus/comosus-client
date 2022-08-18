@@ -48,19 +48,20 @@ export default function FlipCard({
           animate={isHovered ? 'shown' : 'hidden'}
           onHoverStart={() => toggleHovered()}
           onHoverEnd={() => toggleHovered()}
+          onTap={() => toggleHovered()}
           position="absolute"
           w="100%"
           h="100%"
         >
           <Box w="100%" h="100%" bg={bgColor} textTransform="uppercase">
             <Center w="100%" h="100%">
-              <Text fontSize={30} fontWeight={700} letterSpacing="3px">
+              <Text fontSize="2.4rem" fontWeight={700} letterSpacing="0.3rem">
                 {title}
               </Text>
             </Center>
           </Box>
 
-          <Center w="100%" h="100%" bg={bgColor} p="20px">
+          <Center w="100%" h="100%" bg={bgColor} p="2rem">
             {children}
           </Center>
         </Box>
