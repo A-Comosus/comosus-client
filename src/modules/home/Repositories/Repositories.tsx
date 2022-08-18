@@ -6,10 +6,10 @@ import { Text } from '@common/components';
 import Repository from './Repository';
 import { useTranslation } from 'react-i18next';
 
-type ReposProps = {
+type RepositoriesProps = {
   repos: Repository[];
 };
-export default function Repos({ repos }: ReposProps) {
+export function Repositories({ repos }: RepositoriesProps) {
   const { t } = useTranslation('project');
 
   return (

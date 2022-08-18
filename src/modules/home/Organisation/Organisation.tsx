@@ -6,9 +6,7 @@ import { useTranslation } from 'react-i18next';
 type OrganisationProps = {
   org: Organisation;
 };
-export default function Organisation({
-  org: { avatar_url },
-}: OrganisationProps) {
+export function Organisation({ org: { avatar_url } }: OrganisationProps) {
   const { t } = useTranslation('project');
 
   return (

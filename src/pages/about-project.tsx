@@ -4,11 +4,7 @@ import { LambdaUrl } from '@src/constants';
 
 import { PageContainer, Text } from '@src/common/components';
 import { VStack } from '@chakra-ui/react';
-import {
-  Organisation,
-  Repositories,
-  Teams,
-} from '@src/modules/about-this-project';
+import { Organisation, Repositories, Teams } from '@src/modules/home';
 import { useTranslation } from 'react-i18next';
 
 const getProjectInfo = async () => {

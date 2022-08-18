@@ -66,7 +66,7 @@ const Home: NextPage = () => {
         <HomeHeroCard
           key={hero.title}
           hero={hero}
-          isReversed={index % 2 === 0}
+          isReversed={index % 2 !== 0}
         />
       ))}
     </PageContainer>

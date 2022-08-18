@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, VStack, Wrap } from '@chakra-ui/react';
+import { Box, VStack } from '@chakra-ui/react';
 import { Text } from '@src/common/components';
 import Team from './Teams.Team';
 import { useTranslation } from 'react-i18next';
@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 type TeamsProps = {
   teams: Team[];
 };
-export default function Teams({ teams }: TeamsProps) {
+export function Teams({ teams }: TeamsProps) {
   const { t } = useTranslation('project');
 
   return (
