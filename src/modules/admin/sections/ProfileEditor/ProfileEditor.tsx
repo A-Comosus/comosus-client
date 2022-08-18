@@ -3,7 +3,6 @@ import { useApiClient, useUser } from '@src/common/contexts';
 import { useTranslation } from 'react-i18next';
 import { useFindUserByUsernameQuery } from '@generated/graphql.queries';
 
-import { Text } from '@common/components';
 import { VStack, Box, SkeletonCircle, SkeletonText } from '@chakra-ui/react';
 import {
   AdminSectionContainer,
@@ -41,12 +40,9 @@ export default function ProfileEditor() {
   }
 
   return (
-    <AdminSectionContainer heading="Profile Editor">
+    <AdminSectionContainer heading={t('appearance.profile.heading')}>
       <AdminSectionItemCard>
         <VStack align="flex-start">
-          <Text type="section.title" color="#F8F5F1">
-            {t('appearance.profile.title')}
-          </Text>
           <EditableProfile profile={userData} />
         </VStack>
       </AdminSectionItemCard>
