@@ -33,10 +33,12 @@ export default function PageContainer({
 
       <NavBar disableNavOptions={disableNavOptions} />
       <VStack
+        flex={1}
         as="main"
         alignSelf="center"
         align="stretch"
         w="clamp(62.5%, 120rem, 90%)"
+        maxW="120rem"
       >
         {children}
       </VStack>

@@ -35,6 +35,7 @@ export function NavBar({ disableNavOptions }: NavBarProps) {
         spacing="0"
         padding="1.2rem"
         w="clamp(62.5%, 120rem, 90%)"
+        maxW="120rem"
       >
         <Logo />
 
