@@ -21,7 +21,6 @@ export function HomeHeroCard({ hero, isReversed }: HomeHeroCardProps) {
       justify="space-between"
       align="center"
       gap="4rem"
-      pb={['12rem', '4rem']}
       minH={['auto', '70vh']}
     >
       <VStack alignItems={['stretch', 'flex-start']} gap="1rem">

@@ -5,6 +5,7 @@ import { AuthRoute } from '@src/constants/PageRoutes';
 
 import { PageContainer } from '@src/common/components';
 import { HomeHeroCard } from '@src/modules/home';
+import { VStack } from '@chakra-ui/react';
 
 const Home: NextPage = () => {
   const { t } = useTranslation('home');
@@ -62,13 +63,15 @@ const Home: NextPage = () => {
 
   return (
     <PageContainer head={head}>
-      {heros.map((hero, index) => (
-        <HomeHeroCard
-          key={hero.title}
-          hero={hero}
-          isReversed={index % 2 !== 0}
-        />
-      ))}
+      <VStack spacing={['12rem', '0rem']}>
+        {heros.map((hero, index) => (
+          <HomeHeroCard
+            key={hero.title}
+            hero={hero}
+            isReversed={index % 2 !== 0}
+          />
+        ))}
+      </VStack>
     </PageContainer>
   );
 };

@@ -28,7 +28,6 @@ export function Link({ children, href, variant = 'default' }: LinkProps) {
   return (
     <NextLink href={href} passHref>
       <CKLink
-        as="li"
         color="#F8F5F1"
         fontSize="1.6rem"
         textAlign="center"

@@ -70,6 +70,7 @@ export function NavBar({ disableNavOptions }: NavBarProps) {
                   </Link>
                 ) : (
                   <Button
+                    key={href}
                     onClick={() => push(href)}
                     variant="gradient"
                     size="lg"

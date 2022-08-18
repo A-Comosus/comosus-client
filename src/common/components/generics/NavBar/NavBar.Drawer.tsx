@@ -47,6 +47,7 @@ export function NavDrawer({
                   </Link>
                 ) : (
                   <Button
+                    key={href}
                     onClick={() => push(href)}
                     variant="gradient"
                     size="lg"
