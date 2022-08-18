@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import { VStack, FormControl } from '@chakra-ui/react';
-import { Icon, Input, Button, Text } from '@common/components';
+import { Icon, Input, Button, Text, Textarea } from '@common/components';
 
 type ContactFormPropsValues = {
   onSubmit: (values: ContactFormValuesTypes) => void;
@@ -44,8 +44,8 @@ export default function ContactForm({
       {
         type: 'textarea',
         name: 'message',
+        label: 'Message',
         placeholder: t('contact-form.page.message.placeholder'),
-        leftElement: <Icon variant="message" />,
       },
     ],
     defaultValues: {
@@ -75,27 +75,40 @@ export default function ContactForm({
   });
 
   return (
-    <VStack minW="800px" padding="20px" align="stretch" gap="60px">
-      <VStack align="stretch" width="380px">
-        <Text type="generic.h1">{t('contact-form.page.title')}</Text>
-      </VStack>
+    <VStack
+      flex={1}
+      align="stretch"
+      w="clamp(62.5%, 60rem, 90%)"
+      maxW="60rem"
+      gap="6rem"
+    >
+      <Text type="generic.h1" whiteSpace="break-spaces">
+        {t('contact-form.page.title')}
+      </Text>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl isInvalid={isInvalid}>
-          <VStack align="stretch" gap="20px">
+          <VStack align="stretch" gap="2rem">
             {formValues.inputs.map(
-              ({ type, name, placeholder, leftElement }, index) => {
-                return (
+              ({ type, name, label, placeholder, leftElement }) =>
+                type !== 'textarea' ? (
                   <Input
-                    key={index}
+                    key={name}
                     type={type}
                     name={name}
                     control={control}
                     placeholder={placeholder}
                     leftElement={leftElement}
                   />
-                );
-              },
+                ) : (
+                  <Textarea
+                    key={name}
+                    name={name}
+                    control={control}
+                    label={label}
+                    placeholder={placeholder}
+                  />
+                ),
             )}
             <Button type="submit" isLoading={isLoading}>
               {t('contact-form.page.button')}
