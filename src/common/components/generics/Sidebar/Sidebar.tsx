@@ -78,7 +78,7 @@ export function Sidebar() {
       fontSize="1.6rem"
     >
       <VStack alignSelf="stretch" spacing="2rem">
-        <Avatar user={user} />
+        <Avatar user={user} size="xl" />
 
         <VStack
           alignSelf="stretch"
