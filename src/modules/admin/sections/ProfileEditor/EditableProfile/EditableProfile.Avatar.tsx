@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Avatar, Button } from '@src/common/components';
+import { Avatar, Button, Text } from '@src/common/components';
 import { useUser } from '@common/contexts';
 import { useUpdateAvatarApi } from '@src/services';
 import {
@@ -17,15 +17,14 @@ import {
 import axios from 'axios';
 import { isNil } from 'lodash';
 
+const baseUrl = process.env.NEXT_PUBLIC_LAMBDA_UPLOAD_FILE_ENDPOINT;
+
 export default function ProfileEditorAvatar() {
   const { t } = useTranslation('admin');
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { user } = useUser();
   const { updateAvatar } = useUpdateAvatarApi();
-
-  const LAMBDA_UPLOAD_FILE_URL =
-    'https://53nraoptli.execute-api.ap-southeast-2.amazonaws.com/dev/file-upload';
 
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
   const [avatarUploadedMsg, setAvatartUploadedMsg] = useState('');
@@ -39,9 +38,11 @@ export default function ProfileEditorAvatar() {
     try {
       const {
         data: { link },
-      } = await axios.post(LAMBDA_UPLOAD_FILE_URL, formData);
+      } = await axios.post(baseUrl as string, formData);
       updateAvatar({ url: link });
-      setAvatartUploadedMsg('Avatar Uploaded Successfully');
+      setAvatartUploadedMsg(
+        `Avatar Uploaded Successfully, please refresh the page if you can't see it`,
+      );
     } catch (err) {
       console.error(err);
     }
@@ -50,7 +51,7 @@ export default function ProfileEditorAvatar() {
   const handleAvatarRemoveClick = async () => {
     const params = { user_id: user.id };
     try {
-      await axios.delete(LAMBDA_UPLOAD_FILE_URL, { data: params });
+      await axios.delete(baseUrl as string, { data: params });
       updateAvatar({ url: '' });
     } catch (err) {
       console.error(err);
@@ -58,8 +59,8 @@ export default function ProfileEditorAvatar() {
   };
   return (
     <>
-      <HStack>
-        <Avatar user={user} />
+      <HStack spacing="3rem">
+        <Avatar user={user} size="2xl" />
         <HStack flex={1} gap="1rem">
           <Button onClick={onOpen}>
             {t('appearance.profile.pick-an-image')}
@@ -71,9 +72,11 @@ export default function ProfileEditorAvatar() {
       </HStack>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
-          <ModalCloseButton />
+        <ModalContent display="flex" flexDirection="column">
+          <ModalHeader color="#3E4C65">
+            {t('appearance.profile.pick-an-image')}
+          </ModalHeader>
+          <ModalCloseButton color="#3E4C65" />
           <ModalBody>
             <form onSubmit={handleSubmit}>
               <input
@@ -86,13 +89,30 @@ export default function ProfileEditorAvatar() {
                     setAvatarFile(event.target.files[0]);
                   }
                 }}
+                style={{
+                  fontSize: '1.6rem',
+                  color: '#3E4C65',
+                  marginBottom: '1rem',
+                  width: '100%',
+                }}
               />
-              <Button type="submit">{t('appearance.profile.upload')}</Button>
-              <p>{avatarUploadedMsg}</p>
+              <Button type="submit" variant="accent" width="100%">
+                {t('appearance.profile.upload')}
+              </Button>
+              <Text type="p" color="#3E4C65">
+                {avatarUploadedMsg}
+              </Text>
             </form>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
+            <Button
+              onClick={() => {
+                setAvatartUploadedMsg('');
+                onClose();
+              }}
+            >
+              Close
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
