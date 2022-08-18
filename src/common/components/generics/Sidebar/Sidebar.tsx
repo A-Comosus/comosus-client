@@ -44,7 +44,7 @@ export function Sidebar() {
   return (
     <nav className={styles.sidebar}>
       <VStack flex={1} gap={10}>
-        <Avatar user={user} />
+        <Avatar user={user} size="xl" />
 
         <ul className={styles.sidebar__menu}>
           {navItems.map(({ href, content, icon }, index) => (

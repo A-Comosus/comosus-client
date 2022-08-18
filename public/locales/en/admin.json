@@ -24,8 +24,10 @@
   },
   "appearance": {
     "profile": {
+      "heading": "Profile",
       "title": "Profile",
       "pick-an-image": "Pick an image",
+      "upload": "Upload",
       "remove": "Remove",
       "profile-title": "Profile Title",
       "bio": "Bio",

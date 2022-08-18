@@ -7,12 +7,13 @@ import {
 
 type AvatarProps = {
   // TODO: this is bad
+  size: string;
   user: any;
 } & CKAvatarProps;
-export function Avatar({ user }: AvatarProps) {
+export function Avatar({ size, user }: AvatarProps) {
   return (
     <CKAvatar
-      size="xl"
+      size={size as string}
       name={user.displayName as string}
       src={user.avatarUrl as string}
     />
