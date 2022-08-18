@@ -21,7 +21,11 @@ export default function Logo({ variant = 'block' }: LogoPropsType) {
   return (
     <NextLink href={GlobalRoute.Root} passHref>
       <Link>
-        <Image src={sources[variant]} alt={siteTitle} />
+        <Image
+          maxH={['5rem', '13rem']}
+          src={sources[variant]}
+          alt={siteTitle}
+        />
       </Link>
     </NextLink>
   );

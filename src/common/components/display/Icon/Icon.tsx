@@ -1,7 +1,11 @@
 import React from 'react';
 
 import { BsShareFill } from 'react-icons/bs';
-import { RiDeleteBin5Line, RiLockPasswordLine } from 'react-icons/ri';
+import {
+  RiDeleteBin5Line,
+  RiLockPasswordLine,
+  RiMenuFoldLine,
+} from 'react-icons/ri';
 
 import {
   AiOutlineUser,
@@ -24,6 +28,7 @@ import {
 
 const icons = {
   default: <FiImage />,
+  menu: <RiMenuFoldLine />,
   share: <BsShareFill />,
   'share-btn': <FaShareSquare />,
   heart: <AiOutlineHeart />,
