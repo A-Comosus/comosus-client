@@ -5,7 +5,7 @@ import { useAuth } from '@src/stores';
 import { useApiClient } from '@common/contexts';
 import { useLoginMutation } from '@generated/graphql.queries';
 
-import { Center, VStack } from '@chakra-ui/react';
+import { Center } from '@chakra-ui/react';
 import { PageContainer } from '@src/common/components';
 import { LoginForm } from '@src/modules/auth';
 import { isNil } from 'lodash';

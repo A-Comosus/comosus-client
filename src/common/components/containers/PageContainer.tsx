@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Head from 'next/head';
-import { Box, ColorModeScript, VStack } from '@chakra-ui/react';
+import { ColorModeScript, VStack } from '@chakra-ui/react';
 import { Footer, NavBar, NavBarProps } from '@common/components';
 
 type PageContainerProps = {

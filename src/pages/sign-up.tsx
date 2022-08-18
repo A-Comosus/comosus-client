@@ -7,7 +7,7 @@ import { useRegisterMutation } from '@generated/graphql.queries';
 import { useRouter } from 'next/router';
 
 import { PageContainer } from '@src/common/components';
-import { Center, useToast, VStack } from '@chakra-ui/react';
+import { Center, useToast } from '@chakra-ui/react';
 import { SignUpForm } from '@src/modules/auth';
 import { AppRoute } from '@src/constants';
 
