@@ -28,8 +28,9 @@ export function NavBar({ disableNavOptions }: NavBarProps) {
   ];
 
   return (
-    <Center zIndex={999} position="sticky" top={0} bg="#1B181E">
+    <Center as="header" zIndex={999} position="sticky" top={0} bg="#1B181E">
       <HStack
+        as="nav"
         justify="space-between"
         spacing="0"
         padding="1.2rem"
@@ -37,7 +38,7 @@ export function NavBar({ disableNavOptions }: NavBarProps) {
       >
         <Logo />
 
-        <HStack spacing="5rem">
+        <HStack as="ul" spacing="5rem" listStyleType="none">
           {!disableNavOptions &&
             navItems.map(({ href, content }) => (
               <Link key={href} href={href}>
