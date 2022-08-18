@@ -8,6 +8,7 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LinkQueries } from '@src/constants';
 import { VStack } from '@chakra-ui/react';
+
 import EditableProfileAvatar from './EditableProfile.Avatar';
 import { Input, Textarea } from '@src/common/components';
 
@@ -72,7 +73,6 @@ export default function EditableProfile({ profile }: EditableProfileProps) {
       px="2.2rem"
       py="1.6rem"
       minWidth="670px"
-      backgroundColor="#FFFFFF"
     >
       <EditableProfileAvatar />
       <Input

@@ -3,8 +3,11 @@ import { useApiClient, useUser } from '@src/common/contexts';
 import { useTranslation } from 'react-i18next';
 import { useFindUserByUsernameQuery } from '@generated/graphql.queries';
 
-import { Text } from '@common/components';
 import { VStack, Box, SkeletonCircle, SkeletonText } from '@chakra-ui/react';
+import {
+  AdminSectionContainer,
+  AdminSectionItemCard,
+} from '@src/modules/admin/components';
 import EditableProfile from './EditableProfile/EditableProfile';
 import _ from 'lodash';
 
@@ -37,9 +40,12 @@ export default function ProfileEditor() {
   }
 
   return (
-    <VStack align="flex-start">
-      <Text type="section.title">{t('appearance.profile.title')}</Text>
-      <EditableProfile profile={userData} />
-    </VStack>
+    <AdminSectionContainer heading={t('appearance.profile.heading')}>
+      <AdminSectionItemCard>
+        <VStack align="flex-start">
+          <EditableProfile profile={userData} />
+        </VStack>
+      </AdminSectionItemCard>
+    </AdminSectionContainer>
   );
 }

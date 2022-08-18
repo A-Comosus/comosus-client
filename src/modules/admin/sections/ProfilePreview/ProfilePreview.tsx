@@ -65,7 +65,7 @@ export default function ProfilePreview() {
               />
 
               <VStack>
-                <Avatar user={user} />
+                <Avatar user={user} size="xl" />
                 <Text color="white">
                   {userData?.displayName || userData?.username}
                 </Text>

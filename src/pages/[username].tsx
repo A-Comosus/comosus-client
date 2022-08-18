@@ -105,7 +105,7 @@ export default function PublicProfile({ userData }: PublicProfileProps) {
         <VStack flex={1} justify="space-between" gap="60px" maxW="670px">
           <VStack alignSelf="stretch" align="stretch" gap={5}>
             <VStack>
-              <Avatar user={userData} />
+              <Avatar user={userData} size="xl" />
               <Text color="white">
                 {userData?.displayName ?? userData?.username}
               </Text>
