@@ -15,7 +15,12 @@ import {
   AiOutlineEdit,
 } from 'react-icons/ai';
 import { FiImage, FiChevronDown, FiChevronUp } from 'react-icons/fi';
-import { MdError, MdLogout, MdOutlineEmail } from 'react-icons/md';
+import {
+  MdCheckCircle,
+  MdError,
+  MdLogout,
+  MdOutlineEmail,
+} from 'react-icons/md';
 import { TbLink, TbColorSwatch, TbSettings } from 'react-icons/tb';
 import {
   FaShareSquare,
@@ -33,7 +38,8 @@ const icons = {
   'share-btn': <FaShareSquare />,
   heart: <AiOutlineHeart />,
   edit: <AiOutlineEdit />,
-  error: <MdError />,
+  check: <MdCheckCircle color="#0ACF83" />,
+  error: <MdError color="#F5483D" />,
   delete: <RiDeleteBin5Line />,
   'arrow-up': <FiChevronUp />,
   'arrow-down': <FiChevronDown />,
