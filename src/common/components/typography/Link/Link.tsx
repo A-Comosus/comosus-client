@@ -28,17 +28,29 @@ export function Link({ children, href, variant = 'default', icon }: LinkProps) {
 
   return (
     <NextLink href={href} passHref>
-      <HStack fontSize="1.6rem">
-        {icon}
+      {icon ? (
+        <HStack fontSize="1.6rem">
+          {icon}
+          <CKLink
+            color="#F8F5F1"
+            textAlign="center"
+            whiteSpace="nowrap"
+            {...propVariants[variant]}
+          >
+            {children}
+          </CKLink>
+        </HStack>
+      ) : (
         <CKLink
           color="#F8F5F1"
+          fontSize="1.6rem"
           textAlign="center"
           whiteSpace="nowrap"
           {...propVariants[variant]}
         >
           {children}
         </CKLink>
-      </HStack>
+      )}
     </NextLink>
   );
 }

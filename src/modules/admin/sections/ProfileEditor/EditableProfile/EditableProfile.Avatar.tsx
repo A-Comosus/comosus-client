@@ -4,7 +4,6 @@ import { Avatar, Button, Text } from '@src/common/components';
 import { useUser } from '@common/contexts';
 import { useUpdateAvatarApi } from '@src/services';
 import {
-  HStack,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -13,6 +12,7 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
+  Stack,
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { isNil } from 'lodash';
@@ -59,17 +59,22 @@ export default function ProfileEditorAvatar() {
   };
   return (
     <>
-      <HStack spacing="3rem">
+      <Stack direction={['column', 'row']} alignItems="center" spacing="3rem">
         <Avatar user={user} size="2xl" />
-        <HStack flex={1} gap="1rem">
+        <Stack
+          alignSelf="stretch"
+          direction={['column', 'row']}
+          flex={1}
+          gap="1rem"
+        >
           <Button onClick={onOpen}>
             {t('appearance.profile.pick-an-image')}
           </Button>
           <Button onClick={handleAvatarRemoveClick}>
             {t('appearance.profile.remove')}
           </Button>
-        </HStack>
-      </HStack>
+        </Stack>
+      </Stack>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent display="flex" flexDirection="column">

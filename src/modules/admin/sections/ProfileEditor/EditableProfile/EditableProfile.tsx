@@ -66,14 +66,7 @@ export default function EditableProfile({ profile }: EditableProfileProps) {
     });
   };
   return (
-    <VStack
-      align="stretch"
-      gap="1.6rem"
-      borderRadius="15px"
-      px="2.2rem"
-      py="1.6rem"
-      minWidth="670px"
-    >
+    <VStack alignSelf="stretch" align="stretch" gap="1.6rem">
       <EditableProfileAvatar />
       <Input
         name="displayName"
