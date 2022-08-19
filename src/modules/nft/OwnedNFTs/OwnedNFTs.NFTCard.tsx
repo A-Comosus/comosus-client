@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { AdminSectionItemCard } from '@src/modules/admin/components';
-import { HStack, Image, VStack } from '@chakra-ui/react';
+import { Image, Stack, VStack } from '@chakra-ui/react';
 import { Button, Text } from '@src/common/components';
 import { useUpdateAvatarApi } from '@src/services';
 
@@ -26,13 +26,18 @@ export function NFTCard({ nft }: NFTCardProps) {
 
   return (
     <AdminSectionItemCard>
-      <HStack alignSelf="stretch" alignItems="flex-start" spacing="2rem">
+      <Stack
+        direction={['column', 'row']}
+        alignSelf="stretch"
+        alignItems={['stretch', 'flex-start']}
+        spacing="2rem"
+      >
         <Image
           fallbackSrc="https://via.placeholder.com/150"
           src={imageSrc}
           alt="nft"
           borderRadius="1.6rem"
-          boxSize="150px"
+          boxSize={['100%', '150px']}
         />
 
         <VStack
@@ -59,7 +64,7 @@ export function NFTCard({ nft }: NFTCardProps) {
             </Text>
           </VStack>
 
-          <HStack spacing="2rem">
+          <Stack direction={['column', 'row']} spacing="2rem">
             <Button onClick={redirectToOpensea}>View on OpenSea</Button>
             <Button
               onClick={() => updateAvatar({ url: imageSrc })}
@@ -67,9 +72,9 @@ export function NFTCard({ nft }: NFTCardProps) {
             >
               Set as Avatar
             </Button>
-          </HStack>
+          </Stack>
         </VStack>
-      </HStack>
+      </Stack>
     </AdminSectionItemCard>
   );
 }

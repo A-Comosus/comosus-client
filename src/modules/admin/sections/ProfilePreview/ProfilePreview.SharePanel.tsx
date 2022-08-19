@@ -25,9 +25,9 @@ export default function SharePanel({ isOpen, onClose }: SharePanelProps) {
   const { t } = useTranslation('admin');
 
   return (
-    <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
+    <Drawer isOpen={isOpen} size="md" onClose={onClose}>
       <DrawerOverlay />
-      <DrawerContent>
+      <DrawerContent bg="#272429">
         <DrawerCloseButton />
         <DrawerHeader>{t('link.share.heading')}</DrawerHeader>
 

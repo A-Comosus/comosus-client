@@ -93,7 +93,7 @@ export default function EditableLink({
         align="stretch"
         spacing="2rem"
         borderRadius="1rem"
-        p="2rem 1.6rem"
+        p={['1.25rem', '2.5rem']}
         bg="#272429"
         fontSize="1.6rem"
         {...provided.draggableProps}
@@ -103,13 +103,13 @@ export default function EditableLink({
           <Image
             src="/assets/icons/drag-handle.svg"
             alt="drag-handle"
-            pr={4}
+            pr="1rem"
             borderRight="1px solid #ADB2C6"
           />
         </HStack>
 
-        <HStack flex={1} justify="space-between" align="center" gap={5}>
-          <VStack flex={1} align="stretch">
+        <HStack flex={1} justify="space-between" align="stretch" gap="2rem">
+          <VStack flex={1} justify="space-between" align="space">
             {formValues.inputs.map(({ name, placeholder }, index) => (
               <EditableLinkInput
                 key={index}
@@ -121,7 +121,7 @@ export default function EditableLink({
             ))}
           </VStack>
 
-          <VStack justify="space-between">
+          <VStack justify="space-between" spacing="1rem">
             <EditableLinkSwitch
               name="isVisible"
               control={control}

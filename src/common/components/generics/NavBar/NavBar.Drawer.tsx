@@ -26,7 +26,7 @@ export function NavDrawer({
   const { push } = useRouter();
 
   return (
-    <Drawer isOpen={isOpen} placement="right" onClose={toggleOpen}>
+    <Drawer isOpen={isOpen} size="md" onClose={toggleOpen}>
       <DrawerOverlay />
       <DrawerContent bg="#272429">
         <DrawerCloseButton />

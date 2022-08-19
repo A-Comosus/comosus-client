@@ -33,7 +33,7 @@ export function Textarea({
   };
 
   return (
-    <VStack align="stretch">
+    <VStack alignSelf="stretch" align="stretch">
       <Text color="#ADB2C6" fontSize="1.2rem">
         {label}
       </Text>

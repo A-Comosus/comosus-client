@@ -55,54 +55,39 @@ export default function LinkEditor() {
     });
   };
   return (
-    <VStack flex={2} borderRight="1px solid #E7E8EE">
-      <VStack flex={1} align="stretch" spacing="2rem" minW="600px">
-        <LinkEditorMenu isReordering={isReordering} />
+    <VStack align="stretch" spacing="2rem">
+      <LinkEditorMenu isReordering={isReordering} />
 
-        <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable droppableId="linklist">
-            {(provided) => (
-              <VStack
-                flex={1}
-                align="stretch"
-                spacing="0"
-                gap="2rem"
-                overflowY="auto"
-                __css={{
-                  '&::-webkit-scrollbar': { width: '3px' },
-                  '&::-webkit-scrollbar-thumb': {
-                    background: '#ADB2C6',
-                  },
-                }}
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-              >
-                {isLoadingLinks ? (
-                  <Spinner />
-                ) : _.isNil(links) ? (
-                  <>Create your first</>
-                ) : (
-                  links.map((link, index) => (
-                    <Draggable
-                      key={link.id}
-                      draggableId={link.id}
-                      index={index}
-                    >
-                      {(provided) => (
-                        <EditableLink
-                          link={link}
-                          draggableProps={{ provided }}
-                        />
-                      )}
-                    </Draggable>
-                  ))
-                )}
-                {provided.placeholder}
-              </VStack>
-            )}
-          </Droppable>
-        </DragDropContext>
-      </VStack>
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable droppableId="linklist">
+          {(provided) => (
+            <VStack
+              flex={1}
+              align="stretch"
+              spacing="0"
+              gap="2rem"
+              overflowY="auto"
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
+              {isLoadingLinks ? (
+                <Spinner />
+              ) : _.isNil(links) ? (
+                <>Create your first</>
+              ) : (
+                links.map((link, index) => (
+                  <Draggable key={link.id} draggableId={link.id} index={index}>
+                    {(provided) => (
+                      <EditableLink link={link} draggableProps={{ provided }} />
+                    )}
+                  </Draggable>
+                ))
+              )}
+              {provided.placeholder}
+            </VStack>
+          )}
+        </Droppable>
+      </DragDropContext>
     </VStack>
   );
 }

@@ -27,7 +27,7 @@ export function DangerZone() {
 
       <Modal isOpen={isOpen} onClose={toggleOpen}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent p={['1rem', '2rem']} maxW={['md', '2xl']} bg="#272429">
           <ModalHeader>
             <Text type="admin.h2">{t('settings.danger-zone.action')}</Text>
           </ModalHeader>
@@ -35,7 +35,7 @@ export function DangerZone() {
             <Text type="admin.normal">{t('settings.danger-zone.message')}</Text>
           </ModalBody>
 
-          <ModalFooter gap="20px">
+          <ModalFooter gap="2rem">
             <Button onClick={toggleOpen}>{t('common:button.close')}</Button>
             <Button
               onClick={deleteAccount}
