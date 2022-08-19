@@ -108,7 +108,7 @@ export function Sidebar() {
       <HStack
         display={['flex', 'none']}
         justifyContent="space-between"
-        borderBottom="0.1rem solid #F8F5F1"
+        borderBottom="0.2rem solid #F8F5F1"
         p="1rem"
       >
         <Logo variant="inline" />

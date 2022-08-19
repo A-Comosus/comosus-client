@@ -21,7 +21,12 @@ export default function PageContainer({
 
   return (
     <UserProvider>
-      <Flex direction={['column', 'row']} minH="100vh" align="stretch">
+      <Flex
+        direction={['column', 'row']}
+        minH="100vh"
+        gap="0.1rem"
+        align="stretch"
+      >
         <Head>
           <title>{title}</title>
           {metas &&
@@ -45,6 +50,7 @@ export default function PageContainer({
             flex={1.5}
             alignItems="stretch"
             spacing="4rem"
+            gap="4rem"
             p={['3rem 1rem', '8rem 5.5rem']}
             maxH="100vh"
             overflowY="scroll"
