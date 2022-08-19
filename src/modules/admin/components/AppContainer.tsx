@@ -2,7 +2,7 @@ import React from 'react';
 import { UserProvider } from '@src/common/contexts';
 
 import Head from 'next/head';
-import { ColorModeScript, Flex, HStack } from '@chakra-ui/react';
+import { ColorModeScript, Flex, Stack, VStack } from '@chakra-ui/react';
 import { Sidebar } from '@common/components';
 import { ProfilePreview } from '../sections';
 
@@ -21,7 +21,7 @@ export default function PageContainer({
 
   return (
     <UserProvider>
-      <Flex h="100vh" align="stretch" overflow="hidden">
+      <Flex direction={['column', 'row']} minH="100vh" align="stretch">
         <Head>
           <title>{title}</title>
           {metas &&
@@ -35,10 +35,32 @@ export default function PageContainer({
         </Head>
         <ColorModeScript />
         <Sidebar />
-        <HStack flex={1} align="stretch">
-          {children}
+        <Stack
+          direction={['column', 'row']}
+          flex={1}
+          align="stretch"
+          spacing="0"
+        >
+          <VStack
+            flex={1.5}
+            alignItems="stretch"
+            spacing="4rem"
+            p={['3rem 1rem', '8rem 5.5rem']}
+            maxH="100vh"
+            overflowY="scroll"
+            __css={{
+              '&::-webkit-scrollbar': {
+                width: '.3rem',
+              },
+              '&::-webkit-scrollbar-thumb': {
+                background: '#ADB2C6',
+              },
+            }}
+          >
+            {children}
+          </VStack>
           {disableProfilePreview ? null : <ProfilePreview />}
-        </HStack>
+        </Stack>
       </Flex>
     </UserProvider>
   );
