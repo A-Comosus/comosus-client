@@ -81,7 +81,7 @@ export default function ProfilePreview() {
             </VStack>
           )}
 
-          <Logo color="#F8F5F1" variant="inline" />
+          <Logo variant="inline" />
         </VStack>
 
         <HStack>

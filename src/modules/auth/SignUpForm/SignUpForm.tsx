@@ -5,8 +5,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { AuthRoute } from '@src/constants/PageRoutes';
 
+import { FormControl, VStack, Text } from '@chakra-ui/react';
 import {
-  Logo,
   Icon,
   Input,
   Checkbox,
@@ -14,7 +14,7 @@ import {
   FormErrorMessage,
   Link,
 } from '@src/common/components';
-import { FormControl, VStack, Text } from '@chakra-ui/react';
+
 type SignUpFormProps = {
   onSubmit: (values: SignUpFormTypes) => void;
   isInvalid: boolean;
@@ -60,7 +60,8 @@ export default function SignUpForm({
         username: yup
           .string()
           .required(t('sign-up.username.error.required'))
-          .min(6, t('sign-up.username.error.min-length')),
+          .min(6, t('sign-up.username.error.min-length'))
+          .lowercase('username must be lowercase'),
         email: yup.string().email().required(t('sign-up.email.error.required')),
         password: yup.string().required(t('sign-up.password.error.required')),
         acceptPolicy: yup.boolean().isTrue(t('sign-up.policy.error.required')),
@@ -75,11 +76,15 @@ export default function SignUpForm({
   });
 
   return (
-    <VStack maxW="480px" align="stretch" gap="60px">
-      <Logo />
+    <VStack
+      align="stretch"
+      gap="6rem"
+      w="clamp(62.5%, 48rem, 100%)"
+      maxW="48rem"
+    >
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl isInvalid={isInvalid}>
-          <VStack align="stretch" gap="30px">
+          <VStack align="stretch" gap="3rem">
             {formValues.inputs.map(
               ({ type, name, placeholder, leftElement }, index) => {
                 return (

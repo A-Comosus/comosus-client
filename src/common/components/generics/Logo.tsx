@@ -1,39 +1,34 @@
 import React from 'react';
+import NextLink from 'next/link';
 import { useTranslation } from 'react-i18next';
+import { GlobalRoute } from '@src/constants';
 
-import { Image, HStack, BoxProps } from '@chakra-ui/react';
-import { Text } from '@common/components';
+import { Image, Link } from '@chakra-ui/react';
 
 type LogoPropsType = {
   variant?: 'block' | 'inline';
-  height?: string;
-} & BoxProps;
+};
 
-export default function Logo({
-  variant = 'block',
-  height,
-  ...props
-}: LogoPropsType) {
+export default function Logo({ variant = 'block' }: LogoPropsType) {
   const { t } = useTranslation();
   const siteTitle = t('site.title');
 
-  const variants = {
-    block: (
-      <Image
-        src="/assets/a-comosus-logo.png"
-        alt={siteTitle}
-        alignSelf="center"
-        height={height}
-        {...props}
-      />
-    ),
-    inline: (
-      <HStack gap={1} {...props}>
-        <Image src="/assets/logo.png" alt={siteTitle} alignSelf="center" />
-        <Text color="white">{siteTitle}</Text>
-      </HStack>
-    ),
+  const propVariants = {
+    block: {
+      src: '/assets/logo_block.svg',
+      maxH: ['5rem', '13rem'],
+    },
+    inline: {
+      src: '/assets/logo_inline.svg',
+      maxH: ['2rem', '5rem'],
+    },
   };
 
-  return variants[variant];
+  return (
+    <NextLink href={GlobalRoute.Root} passHref>
+      <Link>
+        <Image alt={siteTitle} {...propVariants[variant]} />
+      </Link>
+    </NextLink>
+  );
 }
