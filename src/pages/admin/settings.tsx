@@ -5,7 +5,7 @@ import {
   AdminSectionContainer,
   AppContainer,
 } from '@src/modules/admin/components';
-import { HStack, VStack } from '@chakra-ui/react';
+import { Stack, VStack } from '@chakra-ui/react';
 import { SettingMenuOption, DangerZone } from '@src/modules/admin/sections';
 
 export default function Settings() {
@@ -25,14 +25,8 @@ export default function Settings() {
 
   return (
     <AppContainer head={head}>
-      <HStack
-        flex={2}
-        align="flex-start"
-        spacing="50px"
-        borderRight="1px solid #E7E8EE"
-        p="80px"
-      >
-        <VStack>
+      <Stack direction="row" spacing={['0', '5rem']}>
+        <VStack display={['none', 'flex']}>
           {options.map(({ title, href }, index) => (
             <SettingMenuOption key={index} title={title} href={href} />
           ))}
@@ -45,7 +39,7 @@ export default function Settings() {
             </AdminSectionContainer>
           ))}
         </VStack>
-      </HStack>
+      </Stack>
     </AppContainer>
   );
 }
