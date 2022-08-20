@@ -9,6 +9,10 @@ on:
 jobs:
  storybook-deploy:
     environment: uat-deployment
+
+    permissions:
+      id-token: write
+
     name: deploy storybook static web site to s3
     runs-on: ubuntu-latest
     steps:
