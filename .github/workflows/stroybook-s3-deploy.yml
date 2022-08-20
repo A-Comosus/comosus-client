@@ -8,6 +8,7 @@ on:
 
 jobs:
  storybook-deploy:
+    environment: uat-deployment
     name: deploy storybook static web site to s3
     runs-on: ubuntu-latest
     steps:
@@ -32,6 +33,7 @@ jobs:
 
 
       - name: Build story book
+        timeout-minutes: 3
         run: yarn build-storybook
       - run: echo "story book has been build"
 
