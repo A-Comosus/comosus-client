@@ -1,10 +1,10 @@
 name: build docker image
 
 on:
-  workflow_run:
-    workflows: [Cypress Tests]
-    types:
-      - completed
+  push:
+    branches:
+      - 'develop'
+      - 'serverless-frontend'
 
 jobs:
  storybook-deploy:
