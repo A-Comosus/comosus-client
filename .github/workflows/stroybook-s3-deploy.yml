@@ -25,6 +25,12 @@ jobs:
       - run: echo "🚚 All dependencies listed has been installed on the runner."
       - run: echo "🤖 The workflow will now generate api hooks from the backend server."
 
+      - name: Generate query hooks based on backend graphql schema
+        run: yarn codegen
+      - run: echo "🤖 All query hooks has been generated."
+      - run: echo "🧪 Workflow will be running tests available in this branch."
+
+
       - name: Build story book
         run: yarn build-storybook
       - run: echo "story book has been build"
@@ -32,7 +38,7 @@ jobs:
       - name: Configure AWS credentials from Test account
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::997730026610:policy/Github-Action-S3-Storybook
+          role-to-assume: ${{ secrets.ASSUME_ROLE }}        
           aws-region: ap-southeast-2
 
       - name: Copy files to the test website with the AWS CLI
