@@ -106,10 +106,15 @@ export function Sidebar() {
         <Logo />
       </VStack>
       <HStack
+        zIndex={999}
+        position="absolute"
+        top="0"
         display={['flex', 'none']}
         justifyContent="space-between"
         borderBottom="0.2rem solid #F8F5F1"
         p="1rem"
+        w="100%"
+        bg="#1B181E"
       >
         <Logo variant="inline" />
 

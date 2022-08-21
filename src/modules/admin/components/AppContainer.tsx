@@ -48,10 +48,7 @@ export default function PageContainer({
         >
           <VStack
             flex={1.5}
-            alignItems="stretch"
-            spacing="4rem"
-            gap="4rem"
-            p={['3rem 1rem', '8rem 5.5rem']}
+            p={['6rem 1rem 7rem', '8rem 5.5rem']}
             maxH="100vh"
             overflowY="scroll"
             __css={{
@@ -63,7 +60,15 @@ export default function PageContainer({
               },
             }}
           >
-            {children}
+            <VStack
+              alignItems="stretch"
+              spacing="4rem"
+              gap="4rem"
+              w="clamp(62.5%, 68rem, 90%)"
+              maxW="68rem"
+            >
+              {children}
+            </VStack>
           </VStack>
           {disableProfilePreview ? null : <ProfilePreview />}
         </Stack>

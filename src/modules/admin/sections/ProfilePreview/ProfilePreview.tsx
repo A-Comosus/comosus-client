@@ -37,10 +37,11 @@ export default function ProfilePreview() {
   return (
     <>
       <Center
+        zIndex={999}
         position="absolute"
         bottom="0"
         display={['flex', 'none']}
-        p="2rem"
+        pb="2rem"
         w="100%"
       >
         <Button flex={0.4} onClick={togglePreview}>
