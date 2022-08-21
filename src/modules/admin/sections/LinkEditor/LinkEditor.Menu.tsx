@@ -30,7 +30,11 @@ export default function LinkEditorMenu({ isReordering }: LinkEditorMenuProps) {
   const handleAddNewLink = () => addNewLink({ payload: { userId } });
 
   return (
-    <HStack justify="space-around" pt={20} px={6} gap={5}>
+    <HStack
+      justify="space-between"
+      gap={['2rem', '5rem']}
+      px={['2rem', '4rem']}
+    >
       <Button
         onClick={handleAddNewLink}
         isLoading={isAddingNewLink || isReordering}

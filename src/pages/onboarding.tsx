@@ -9,7 +9,7 @@ import { useApiClient } from '@src/common/contexts';
 import { useRouter } from 'next/router';
 import { GlobalRoute } from '@src/constants';
 
-import { VStack } from '@chakra-ui/react';
+import { Center } from '@chakra-ui/react';
 import { PageContainer } from '@src/common/components';
 import { OnboardedMessage, OnboardingForm } from '@src/modules/onboarding';
 
@@ -78,13 +78,14 @@ export default function Onboarding({ id }: OnboardingProps) {
 
   return (
     <PageContainer head={head} disableNavOptions>
-      <VStack alignSelf="center" width="670px" align="stretch" gap="60px">
+      {/* <VStack alignSelf="center" width="670px" align="stretch" gap="60px"> */}
+      <Center flex={1}>
         {isOnboarded ? (
           <OnboardedMessage email={email} />
         ) : (
           <OnboardingForm onSubmit={onSubmit} isOnboarding={isOnboarding} />
         )}
-      </VStack>
+      </Center>
     </PageContainer>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { VStack, Wrap } from '@chakra-ui/react';
+import { Box, VStack } from '@chakra-ui/react';
 import { Text } from '@src/common/components';
 import Team from './Teams.Team';
 import { useTranslation } from 'react-i18next';
@@ -8,26 +8,23 @@ import { useTranslation } from 'react-i18next';
 type TeamsProps = {
   teams: Team[];
 };
-export default function Teams({ teams }: TeamsProps) {
+export function Teams({ teams }: TeamsProps) {
   const { t } = useTranslation('project');
 
   return (
-    <VStack align="stretch" gap="30px">
+    <VStack align="stretch" gap="3rem">
       <Text type="generic.h1" fontWeight={700}>
         {t('teams.heading')}
       </Text>
 
-      <Wrap
-        justify="center"
-        spacing="0"
-        borderRadius="1rem"
-        p="4.5rem"
-        bg="#272429"
+      <Box
+        display="grid"
+        gridTemplateColumns="repeat(auto-fit, minmax(27rem, 1fr))"
       >
         {teams.map((team, index) => (
           <Team key={index} team={team} index={index} />
         ))}
-      </Wrap>
+      </Box>
     </VStack>
   );
 }

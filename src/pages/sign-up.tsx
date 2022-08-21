@@ -7,7 +7,7 @@ import { useRegisterMutation } from '@generated/graphql.queries';
 import { useRouter } from 'next/router';
 
 import { PageContainer } from '@src/common/components';
-import { useToast, VStack } from '@chakra-ui/react';
+import { Center, useToast } from '@chakra-ui/react';
 import { SignUpForm } from '@src/modules/auth';
 import { AppRoute } from '@src/constants';
 
@@ -58,13 +58,13 @@ export default function SignUp() {
 
   return (
     <PageContainer head={head}>
-      <VStack justify="center">
+      <Center flex={1}>
         <SignUpForm
           onSubmit={onSubmit}
           isInvalid={!isNil(error)}
           isLoading={isRegistering}
         />
-      </VStack>
+      </Center>
     </PageContainer>
   );
 }

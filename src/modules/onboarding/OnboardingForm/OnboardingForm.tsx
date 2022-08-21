@@ -52,8 +52,13 @@ export default function OnboardingForm({
   });
 
   return (
-    <FormControl as="form" onSubmit={handleSubmit(onSubmit)}>
-      <VStack align="stretch" gap="60px">
+    <FormControl
+      as="form"
+      onSubmit={handleSubmit(onSubmit)}
+      w="clamp(62.5%, 60rem, 100%)"
+      maxW="60rem"
+    >
+      <VStack align="stretch" gap={['3rem', '6rem']}>
         <VStack align="flex-start" gap={3}>
           <Text type="generic.h1">{t('heading.main')}</Text>
           <Text type="generic.h2">{t('heading.sub')}</Text>

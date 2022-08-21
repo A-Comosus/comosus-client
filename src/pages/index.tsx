@@ -1,16 +1,11 @@
 import React from 'react';
-import { useRouter } from 'next/router';
 import type { NextPage } from 'next';
 import { useTranslation } from 'react-i18next';
 import { AuthRoute } from '@src/constants/PageRoutes';
 
-import { VStack, Image } from '@chakra-ui/react';
-import {
-  SectionHContainer,
-  Button,
-  Text,
-  PageContainer,
-} from '@src/common/components';
+import { PageContainer } from '@src/common/components';
+import { HomeHeroCard } from '@src/modules/home';
+import { VStack } from '@chakra-ui/react';
 
 const Home: NextPage = () => {
   const { t } = useTranslation('home');
@@ -30,10 +25,10 @@ const Home: NextPage = () => {
     ],
   };
 
-  const router = useRouter();
   const heros = [
     {
       title: t('banner.title'),
+      headline: t('headline'),
       subtitle: t('banner.subtitle'),
       cta: t('banner.cta'),
       link: AuthRoute.SignUp,
@@ -68,31 +63,13 @@ const Home: NextPage = () => {
 
   return (
     <PageContainer head={head}>
-      <VStack alignSelf="stretch" align="stretch">
+      <VStack spacing={['12rem', '0rem']}>
         {heros.map((hero, index) => (
-          <SectionHContainer
-            key={index}
-            flexDirection={index % 2 === 0 ? 'row' : 'row-reverse'}
-          >
-            <VStack alignItems="flex-start" gap="1rem">
-              <Text type="h2">{hero.title}</Text>
-              {index === 0 && (
-                <Text type="h1" color="#FB446C">
-                  {t('headline')}
-                </Text>
-              )}
-              <Text type="h4">{hero.subtitle}</Text>
-              <Button onClick={() => router.push(hero.link)} variant="gradient">
-                {hero.cta}
-              </Button>
-            </VStack>
-
-            <Image
-              marginInlineStart="0 !important"
-              src={hero.src}
-              alt={hero.alt}
-            />
-          </SectionHContainer>
+          <HomeHeroCard
+            key={hero.title}
+            hero={hero}
+            isReversed={index % 2 !== 0}
+          />
         ))}
       </VStack>
     </PageContainer>

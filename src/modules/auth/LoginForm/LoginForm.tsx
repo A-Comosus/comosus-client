@@ -7,7 +7,6 @@ import { AuthRoute } from '@src/constants/PageRoutes';
 
 import { VStack, FormControl } from '@chakra-ui/react';
 import {
-  Logo,
   Icon,
   Input,
   Button,
@@ -66,11 +65,15 @@ export default function LoginForm({
   });
 
   return (
-    <VStack minW="480px" align="stretch" gap="60px">
-      <Logo />
+    <VStack
+      align="stretch"
+      gap="6rem"
+      w="clamp(62.5%, 48rem, 100%)"
+      maxW="48rem"
+    >
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl isInvalid={isInvalid}>
-          <VStack align="stretch" gap="30px">
+          <VStack align="stretch" gap="3rem">
             {formValues.inputs.map(
               ({ type, name, placeholder, leftElement }, index) => (
                 <Input

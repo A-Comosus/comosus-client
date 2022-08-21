@@ -4,16 +4,18 @@ import { useTranslation } from 'react-i18next';
 import { useApiClient, useUser } from '@src/common/contexts';
 import { useFindUserByUsernameQuery } from '@generated/graphql.queries';
 
-import {
-  useDisclosure,
-  HStack,
-  IconButton,
-  Spinner,
-  VStack,
-} from '@chakra-ui/react';
+import { HStack, IconButton, Spinner, VStack, Center } from '@chakra-ui/react';
 import Link from 'next/link';
-import { Logo, Icon, Avatar, Text, ProfileItem } from '@src/common/components';
+import {
+  Logo,
+  Icon,
+  Avatar,
+  Text,
+  ProfileItem,
+  Button,
+} from '@src/common/components';
 import SharePanel from './ProfilePreview.SharePanel';
+import { useToggle } from '@src/utils/hooks';
 
 export default function ProfilePreview() {
   const { t } = useTranslation('admin');
@@ -29,11 +31,31 @@ export default function ProfilePreview() {
     },
   );
 
-  const { isOpen: isSharing, onOpen, onClose } = useDisclosure();
+  const [isPreview, togglePreview] = useToggle();
+  const [isSharing, toggleSharing] = useToggle();
 
   return (
     <>
-      <VStack flex={1} justify="center" align="center" p="20px">
+      <Center
+        position="absolute"
+        bottom="0"
+        display={['flex', 'none']}
+        p="2rem"
+        w="100%"
+      >
+        <Button flex={0.4} onClick={togglePreview}>
+          Open Preview
+        </Button>
+      </Center>
+      <VStack
+        position={isPreview ? 'absolute' : 'relative'}
+        display={isPreview ? 'flex' : ['none', 'flex']}
+        flex={1}
+        justify="center"
+        p="2rem"
+        w="100%"
+        borderLeft={['none', '.1rem solid #4F4F58']}
+      >
         <VStack
           position="relative"
           justify="space-between"
@@ -41,7 +63,7 @@ export default function ProfilePreview() {
           __css={{
             '&::-webkit-scrollbar': { display: 'none' },
           }}
-          gap={20}
+          gap="2rem"
           border="5px solid #3B3C46"
           borderRadius="20px"
           p="10px"
@@ -50,11 +72,13 @@ export default function ProfilePreview() {
           bgGradient="linear-gradient(180deg, #465E79 0%, #4B3F4F 97.92%)"
         >
           {isLoading ? (
-            <Spinner />
+            <Center flex={1}>
+              <Spinner size="xl" />
+            </Center>
           ) : (
             <VStack alignSelf="stretch" gap={5}>
               <IconButton
-                onClick={onOpen}
+                onClick={toggleSharing}
                 aria-label={t('link.preview.share')}
                 icon={<Icon variant="share-btn" />}
                 position="absolute"
@@ -65,7 +89,7 @@ export default function ProfilePreview() {
               />
 
               <VStack>
-                <Avatar user={user} />
+                <Avatar user={user} size="xl" />
                 <Text color="white">
                   {userData?.displayName || userData?.username}
                 </Text>
@@ -81,7 +105,7 @@ export default function ProfilePreview() {
             </VStack>
           )}
 
-          <Logo color="#F8F5F1" variant="inline" />
+          <Logo variant="inline" />
         </VStack>
 
         <HStack>
@@ -95,7 +119,7 @@ export default function ProfilePreview() {
           </Text>
         </HStack>
       </VStack>
-      {isSharing && <SharePanel isOpen={isSharing} onClose={onClose} />}
+      {isSharing && <SharePanel isOpen={isSharing} onClose={toggleSharing} />}
     </>
   );
 }

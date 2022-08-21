@@ -12,6 +12,7 @@ type ButtonProps = {
   onClick?: () => void;
   variant?: ButtonVariants;
   flex?: number;
+  width?: string;
   size?: 'lg' | 'md' | 'sm';
 };
 
@@ -81,7 +82,7 @@ export function Button({
       flex={1}
       borderRadius="1rem"
       p="1.2rem"
-      minW="18rem"
+      minW={{ base: '0rem', sm: '14rem', '2xl': '18rem' }}
       h={sizes[size]}
       color="#F8F5F1"
       _disabled={{

@@ -7,9 +7,9 @@ import { isNil } from 'lodash';
 type TextareaProps = {
   name: string;
   control: any;
-  onBlur: () => void;
+  onBlur?: () => void;
   maxLength?: number;
-  label: string;
+  label?: string;
   placeholder?: string;
 };
 
@@ -27,13 +27,13 @@ export function Textarea({
   } = useController({ name, control });
 
   const handleOnBlur = () => {
-    if (isNil(error)) {
+    if (isNil(error) && onBlur) {
       onBlur();
     }
   };
 
   return (
-    <VStack align="stretch">
+    <VStack alignSelf="stretch" align="stretch">
       <Text color="#ADB2C6" fontSize="1.2rem">
         {label}
       </Text>

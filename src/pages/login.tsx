@@ -5,7 +5,7 @@ import { useAuth } from '@src/stores';
 import { useApiClient } from '@common/contexts';
 import { useLoginMutation } from '@generated/graphql.queries';
 
-import { VStack } from '@chakra-ui/react';
+import { Center } from '@chakra-ui/react';
 import { PageContainer } from '@src/common/components';
 import { LoginForm } from '@src/modules/auth';
 import { isNil } from 'lodash';
@@ -60,13 +60,13 @@ export default function Login() {
 
   return (
     <PageContainer head={head}>
-      <VStack justify="center">
+      <Center flex={1}>
         <LoginForm
           onSubmit={onSubmit}
           isLoading={isLoggingIn}
           isInvalid={!isNil(error)}
         />
-      </VStack>
+      </Center>
     </PageContainer>
   );
 }

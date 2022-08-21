@@ -1,25 +1,23 @@
 import React from 'react';
 
 import Head from 'next/head';
-import { ColorModeScript, Flex, Center } from '@chakra-ui/react';
+import { ColorModeScript, VStack } from '@chakra-ui/react';
 import { Footer, NavBar, NavBarProps } from '@common/components';
 
 type PageContainerProps = {
   children: React.ReactNode;
   head: Head;
-  disableFixedNavBar?: boolean;
 } & NavBarProps;
 
 export default function PageContainer({
   children,
   head,
   disableNavOptions,
-  disableFixedNavBar,
 }: PageContainerProps) {
   const { title, metas, links } = head;
 
   return (
-    <Flex direction="column" justify="center" align="center" minH="100vh">
+    <VStack justify="space-between" align="stretch" spacing="0" minH="100vh">
       <Head>
         <title>{title}</title>
         {metas &&
@@ -32,17 +30,20 @@ export default function PageContainer({
           ))}
       </Head>
       <ColorModeScript />
-      <Center
-        position={disableFixedNavBar ? 'relative' : 'fixed'}
-        top="0"
-        marginTop="1rem"
-        w="clamp(50%, 1400px, 90%)"
-        zIndex="999"
+
+      <NavBar disableNavOptions={disableNavOptions} />
+      <VStack
+        as="main"
+        flex={1}
+        alignSelf="center"
+        align="stretch"
+        py={['3rem', '6rem']}
+        w="clamp(62.5%, 120rem, 90%)"
+        maxW="120rem"
       >
-        <NavBar disableNavOptions={disableNavOptions} />
-      </Center>
-      {children}
-      {false && <Footer />}
-    </Flex>
+        {children}
+      </VStack>
+      <Footer />
+    </VStack>
   );
 }
