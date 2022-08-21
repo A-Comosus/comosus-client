@@ -1,0 +1,19 @@
+mutation Register($payload: RegisterInput!) {
+  register(detail: $payload) {
+    __typename
+    ... on RegisterSuccess {
+      accessToken
+      user {
+        id
+        status
+        username
+        email
+      }
+    }
+    ... on RegisterError {
+      code
+      message
+      key
+    }
+  }
+}
