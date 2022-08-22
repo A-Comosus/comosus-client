@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
 import { useToast } from '@chakra-ui/react';
+import LogRocket from 'logrocket';
 
 import { useApiClient } from '@src/common/contexts';
 import { useAuth } from '@src/stores';
@@ -11,7 +13,6 @@ import {
   useRegisterMutation,
 } from '@generated/graphql.queries';
 import { AppRoute, UserStatus } from '@src/constants';
-import { useState } from 'react';
 
 export function useRegisterApi() {
   const { t } = useTranslation('auth');
@@ -63,10 +64,16 @@ export function useLoginApi() {
         if (login.__typename === 'LoginSuccess') {
           const {
             accessToken,
-            user: { id, status },
+            user: { id, status, username, email },
           } = login;
 
           initStore({ id, accessToken });
+
+          LogRocket.identify(id, {
+            name: username,
+            email,
+          });
+
           status === UserStatus.Registered
             ? router.push({
                 pathname: AppRoute.Onboarding,
