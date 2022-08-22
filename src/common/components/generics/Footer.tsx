@@ -14,6 +14,7 @@ export default function Footer() {
       position="relative"
       borderTop="2px solid #eaeaea"
       p={['3rem', '5rem']}
+      bg="#1B181E"
     >
       <Logo variant="inline" />
       <HStack position="absolute" right="2rem" fontSize="1.6rem">
