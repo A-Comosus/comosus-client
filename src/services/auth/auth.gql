@@ -17,3 +17,23 @@ mutation Register($payload: RegisterInput!) {
     }
   }
 }
+
+mutation Login($payload: LoginInput!) {
+  login(detail: $payload) {
+    __typename
+    ... on LoginSuccess {
+      accessToken
+      user {
+        id
+        status
+        username
+        email
+      }
+    }
+    ... on LoginError {
+      code
+      message
+      key
+    }
+  }
+}

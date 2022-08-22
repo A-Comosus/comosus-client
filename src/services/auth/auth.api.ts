@@ -4,8 +4,13 @@ import { useToast } from '@chakra-ui/react';
 
 import { useApiClient } from '@src/common/contexts';
 import { useAuth } from '@src/stores';
-import { RegisterError, useRegisterMutation } from '@generated/graphql.queries';
-import { AppRoute } from '@src/constants';
+import {
+  LoginError,
+  RegisterError,
+  useLoginMutation,
+  useRegisterMutation,
+} from '@generated/graphql.queries';
+import { AppRoute, UserStatus } from '@src/constants';
 import { useState } from 'react';
 
 export function useRegisterApi() {
@@ -41,4 +46,42 @@ export function useRegisterApi() {
   );
 
   return { register, error, isRegistering };
+}
+
+export function useLoginApi() {
+  const router = useRouter();
+  const { initStore } = useAuth();
+  const { gqlClient } = useApiClient();
+
+  const [error, setError] = useState<LoginError | null>(null);
+  const { mutate: login, isLoading: isLoggingIn } = useLoginMutation(
+    gqlClient,
+    {
+      onSuccess: ({ login }) => {
+        if (login.__typename === 'LoginError') setError(login);
+
+        if (login.__typename === 'LoginSuccess') {
+          const {
+            accessToken,
+            user: { id, status },
+          } = login;
+
+          initStore({ id, accessToken });
+          status === UserStatus.Registered
+            ? router.push({
+                pathname: AppRoute.Onboarding,
+                query: { id },
+              })
+            : status === UserStatus.Onboarded
+            ? router.push({
+                pathname: AppRoute.PromptVerify,
+                query: { id },
+              })
+            : router.push(AppRoute.Admin);
+        }
+      },
+    },
+  );
+
+  return { login, error, isLoggingIn };
 }
