@@ -13,7 +13,7 @@ export default function Footer() {
       as="footer"
       position="relative"
       borderTop="2px solid #eaeaea"
-      p="2rem"
+      p={['3rem', '5rem']}
     >
       <Logo variant="inline" />
       <HStack position="absolute" right="2rem" fontSize="1.6rem">
