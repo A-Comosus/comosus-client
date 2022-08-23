@@ -12,8 +12,8 @@
 //
 // -- This is a parent command --
 Cypress.Commands.add('login', (username: string, password: string) => {
-  cy.get('[id="username"]').type(username);
-  cy.get('[id="password"]').type(`${password}{enter}`);
+  cy.get('[id="username"]').type(username, { force: true });
+  cy.get('[id="password"]').type(`${password}{enter}`, { force: true });
 });
 
 // -- This is a child command --
