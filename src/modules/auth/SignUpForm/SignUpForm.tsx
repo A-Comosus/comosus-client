@@ -63,7 +63,7 @@ export default function SignUpForm({
           .string()
           .required(t('sign-up.username.error.required'))
           .min(3, t('sign-up.username.error.min-length'))
-          .matches(/^[a-z0-9-]*$/g, t('sign-up.username.error.regex')),
+          .matches(/^[a-z0-9]*$/g, t('sign-up.username.error.regex')),
         email: yup
           .string()
           .email()
