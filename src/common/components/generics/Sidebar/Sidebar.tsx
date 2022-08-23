@@ -23,7 +23,7 @@ export const maskElement = {
     right: 0,
     bottom: '100%',
     borderRadius: '0 0 2rem',
-    boxShadow: '0rem 2rem  #1b181e',
+    boxShadow: '0rem 1.6rem  #1b181e',
   },
   _after: {
     position: 'absolute',
@@ -33,7 +33,7 @@ export const maskElement = {
     right: 0,
     top: '100%',
     borderRadius: '0 2rem 0 0',
-    boxShadow: '0 -2rem #1b181e',
+    boxShadow: '0 -1.6rem #1b181e',
   },
 };
 
@@ -106,10 +106,15 @@ export function Sidebar() {
         <Logo />
       </VStack>
       <HStack
+        zIndex={999}
+        position="absolute"
+        top="0"
         display={['flex', 'none']}
         justifyContent="space-between"
         borderBottom="0.2rem solid #F8F5F1"
         p="1rem"
+        w="100%"
+        bg="#1B181E"
       >
         <Logo variant="inline" />
 

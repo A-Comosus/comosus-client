@@ -12,11 +12,8 @@
 //
 // -- This is a parent command --
 Cypress.Commands.add('login', (username: string, password: string) => {
-  cy.visit('http://localhost:3000/login');
-  cy.get('form').within(() => {
-    cy.get('[id="username"]').type(username);
-    cy.get('[id="password"]').type(`${password}{enter}`);
-  });
+  cy.get('[id="username"]').type(username, { force: true });
+  cy.get('[id="password"]').type(`${password}{enter}`, { force: true });
 });
 
 // -- This is a child command --
@@ -29,14 +26,3 @@ Cypress.Commands.add('login', (username: string, password: string) => {
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-//
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }

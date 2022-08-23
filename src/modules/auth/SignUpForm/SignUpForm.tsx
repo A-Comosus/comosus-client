@@ -14,16 +14,18 @@ import {
   FormErrorMessage,
   Link,
 } from '@src/common/components';
+import { isNil } from 'lodash';
+import { RegisterError } from '@generated/graphql.queries';
 
 type SignUpFormProps = {
   onSubmit: (values: SignUpFormTypes) => void;
-  isInvalid: boolean;
+  error: RegisterError | null;
   isLoading: boolean;
 };
 
 export default function SignUpForm({
   onSubmit,
-  isInvalid,
+  error,
   isLoading,
 }: SignUpFormProps) {
   const { t } = useTranslation('auth');
@@ -60,10 +62,21 @@ export default function SignUpForm({
         username: yup
           .string()
           .required(t('sign-up.username.error.required'))
-          .min(6, t('sign-up.username.error.min-length'))
-          .lowercase('username must be lowercase'),
-        email: yup.string().email().required(t('sign-up.email.error.required')),
-        password: yup.string().required(t('sign-up.password.error.required')),
+          .min(3, t('sign-up.username.error.min-length'))
+          .matches(/^[a-z0-9-]*$/g, t('sign-up.username.error.regex')),
+        email: yup
+          .string()
+          .email()
+          .required(t('sign-up.email.error.required'))
+          .lowercase(),
+        password: yup
+          .string()
+          .required(t('sign-up.password.error.required'))
+          .min(8, t('sign-up.password.error.min-length'))
+          .matches(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/g,
+            t('sign-up.password.error.regex'),
+          ),
         acceptPolicy: yup.boolean().isTrue(t('sign-up.policy.error.required')),
       })
       .required(),
@@ -72,6 +85,7 @@ export default function SignUpForm({
   const { handleSubmit, control } = useForm({
     defaultValues: formValues.defaultValues,
     resolver: yupResolver(formValues.schema),
+    mode: 'onChange',
     reValidateMode: 'onBlur',
   });
 
@@ -83,7 +97,7 @@ export default function SignUpForm({
       maxW="48rem"
     >
       <form onSubmit={handleSubmit(onSubmit)}>
-        <FormControl isInvalid={isInvalid}>
+        <FormControl isInvalid={!isNil(error)}>
           <VStack align="stretch" gap="3rem">
             {formValues.inputs.map(
               ({ type, name, placeholder, leftElement }, index) => {
@@ -107,7 +121,7 @@ export default function SignUpForm({
             />
             <FormErrorMessage
               testId="sign-up.error"
-              error={t('sign-up.error.user-exist')}
+              error={t(`sign-up.error.${error?.key}`)}
             />
             <Button
               type="submit"
