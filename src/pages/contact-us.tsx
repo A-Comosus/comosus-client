@@ -5,6 +5,7 @@ import { PageContainer } from '@src/common/components';
 import { ContactForm } from '@src/modules/auth';
 import { useApiClient } from '@common/contexts';
 import { useContactFormMutation } from '@generated/graphql.queries';
+import { Center } from '@chakra-ui/react';
 
 export default function SendContactForm() {
   const { t } = useTranslation('auth');
@@ -35,12 +36,14 @@ export default function SendContactForm() {
   };
   return (
     <PageContainer head={head}>
-      <ContactForm
-        onSubmit={onSubmit}
-        isInvalid={!isNil(error)}
-        isLoading={isSendingEmail}
-        emailSent={emailSent}
-      />
+      <Center>
+        <ContactForm
+          onSubmit={onSubmit}
+          isInvalid={!isNil(error)}
+          isLoading={isSendingEmail}
+          emailSent={emailSent}
+        />
+      </Center>
     </PageContainer>
   );
 }

@@ -3,8 +3,11 @@ import { useApiClient, useUser } from '@src/common/contexts';
 import { useTranslation } from 'react-i18next';
 import { useFindUserByUsernameQuery } from '@generated/graphql.queries';
 
-import { Text } from '@common/components';
-import { VStack, Box, SkeletonCircle, SkeletonText } from '@chakra-ui/react';
+import { SkeletonCircle, SkeletonText } from '@chakra-ui/react';
+import {
+  AdminSectionContainer,
+  AdminSectionItemCard,
+} from '@src/modules/admin/components';
 import EditableProfile from './EditableProfile/EditableProfile';
 import _ from 'lodash';
 
@@ -27,19 +30,18 @@ export default function ProfileEditor() {
     },
   );
 
-  if (!username || isLoading || !userData) {
-    return (
-      <Box minWidth="670px" padding="6" boxShadow="lg" bg="white">
-        <SkeletonCircle size="10" />
-        <SkeletonText mt="4" noOfLines={4} gap="4" />
-      </Box>
-    );
-  }
-
   return (
-    <VStack align="flex-start">
-      <Text type="section.title">{t('appearance.profile.title')}</Text>
-      <EditableProfile profile={userData} />
-    </VStack>
+    <AdminSectionContainer heading={t('appearance.profile.heading')}>
+      <AdminSectionItemCard>
+        {!username || isLoading || !userData ? (
+          <>
+            <SkeletonCircle size="10" />
+            <SkeletonText w="100%" mt="4" noOfLines={4} gap="4" />
+          </>
+        ) : (
+          <EditableProfile profile={userData} />
+        )}
+      </AdminSectionItemCard>
+    </AdminSectionContainer>
   );
 }

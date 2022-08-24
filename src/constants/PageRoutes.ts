@@ -1,7 +1,7 @@
 export enum GlobalRoute {
   Root = '/',
   Error = '/error',
-  Project = '/about-this-project',
+  Project = '/about-project',
 }
 
 export enum AuthRoute {

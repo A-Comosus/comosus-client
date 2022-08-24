@@ -7,7 +7,6 @@ import { AuthRoute } from '@src/constants/PageRoutes';
 
 import { VStack, FormControl } from '@chakra-ui/react';
 import {
-  Logo,
   Icon,
   Input,
   Button,
@@ -15,16 +14,18 @@ import {
   Link,
   FormErrorMessage,
 } from '@common/components';
+import { LoginError } from '@generated/graphql.queries';
+import { isNil } from 'lodash';
 
 type LoginFormProps = {
   onSubmit: (values: LoginFormTypes) => void;
   isLoading: boolean;
-  isInvalid: boolean;
+  error: LoginError | null;
 };
 export default function LoginForm({
   onSubmit,
   isLoading,
-  isInvalid,
+  error,
 }: LoginFormProps) {
   const { t } = useTranslation('auth');
 
@@ -66,11 +67,15 @@ export default function LoginForm({
   });
 
   return (
-    <VStack minW="480px" align="stretch" gap="60px">
-      <Logo />
+    <VStack
+      align="stretch"
+      gap="6rem"
+      w="clamp(62.5%, 48rem, 100%)"
+      maxW="48rem"
+    >
       <form onSubmit={handleSubmit(onSubmit)}>
-        <FormControl isInvalid={isInvalid}>
-          <VStack align="stretch" gap="30px">
+        <FormControl isInvalid={!isNil(error)}>
+          <VStack align="stretch" gap="3rem">
             {formValues.inputs.map(
               ({ type, name, placeholder, leftElement }, index) => (
                 <Input
@@ -83,7 +88,10 @@ export default function LoginForm({
                 />
               ),
             )}
-            <FormErrorMessage testId="login.error" error={t('login.error')} />
+            <FormErrorMessage
+              testId="login.error"
+              error={t(`login.error.${error?.key}`)}
+            />
             <Button
               type="submit"
               isLoading={isLoading}

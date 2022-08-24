@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useApiClient } from '@common/contexts';
 import { useVerifyUserEmailMutation } from '@generated/graphql.queries';
 import { useTranslation } from 'react-i18next';
-import { VStack } from '@chakra-ui/react';
+import { Center } from '@chakra-ui/react';
 import { PageContainer } from '@src/common/components';
 import { VerifyAccount } from '@src/modules/auth';
 
@@ -39,9 +39,9 @@ export default function VerifyAccountPage() {
 
   return (
     <PageContainer head={head}>
-      <VStack flex={1} padding="1rem">
+      <Center flex={1}>
         <VerifyAccount isVerifying={isVerifying} />
-      </VStack>
+      </Center>
     </PageContainer>
   );
 }

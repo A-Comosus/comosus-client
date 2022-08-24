@@ -2,19 +2,46 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { AppRoute, GlobalRoute } from '@src/constants/PageRoutes';
-import { VStack } from '@chakra-ui/react';
+import { HStack, IconButton, VStack } from '@chakra-ui/react';
 import { Icon, Logo, Avatar } from '@common/components';
 import SidebarMenuItem from './Sidebar.MenuItem';
 import SidebarLogout from './Sidebar.Logout';
 
-import styles from './Sidebar.module.scss';
 import { useUser } from '@src/common/contexts';
 import { useRouter } from 'next/router';
+import { useToggle } from '@src/utils/hooks';
+import { SidebarDrawer } from './Sidebar.Drawer';
+
+export const maskElement = {
+  bg: '#1b181e',
+  borderRadius: '2rem 0 0 2rem',
+  _before: {
+    position: 'absolute',
+    content: '""',
+    w: '3rem',
+    h: '4rem',
+    right: 0,
+    bottom: '100%',
+    borderRadius: '0 0 2rem',
+    boxShadow: '0rem 1.6rem  #1b181e',
+  },
+  _after: {
+    position: 'absolute',
+    content: '""',
+    w: '3rem',
+    h: '4rem',
+    right: 0,
+    top: '100%',
+    borderRadius: '0 2rem 0 0',
+    boxShadow: '0 -1.6rem #1b181e',
+  },
+};
 
 export function Sidebar() {
   const { t } = useTranslation();
   const { push } = useRouter();
   const { user } = useUser();
+  const [isOpen, toggleOpen] = useToggle();
 
   const navItems = [
     {
@@ -42,24 +69,74 @@ export function Sidebar() {
   if (!user) push(GlobalRoute.Error);
 
   return (
-    <nav className={styles.sidebar}>
-      <VStack flex={1} gap={10}>
-        <Avatar user={user} />
+    <>
+      <VStack
+        display={['none', 'flex']}
+        justifyContent="space-between"
+        spacing="4rem"
+        m="1rem"
+        borderRadius="1rem"
+        maxW="21rem"
+        p="4rem 0 6rem"
+        bg="linear-gradient(179deg, #465d78, #4a4050)"
+        color="#F8F5F1"
+        fontSize="1.6rem"
+      >
+        <VStack alignSelf="stretch" spacing="2rem">
+          <Avatar user={user} size="xl" />
 
-        <ul className={styles.sidebar__menu}>
-          {navItems.map(({ href, content, icon }, index) => (
-            <SidebarMenuItem
-              key={index}
-              href={href}
-              content={content}
-              icon={icon}
-            />
-          ))}
-          <SidebarLogout />
-        </ul>
+          <VStack
+            alignSelf="stretch"
+            alignItems="stretch"
+            spacing="4rem"
+            pl="2rem"
+          >
+            {navItems.map(({ href, content, icon }, index) => (
+              <SidebarMenuItem
+                key={index}
+                href={href}
+                content={content}
+                icon={icon}
+              />
+            ))}
+            <SidebarLogout />
+          </VStack>
+        </VStack>
+
+        <Logo />
       </VStack>
+      <HStack
+        zIndex={999}
+        position="absolute"
+        top="0"
+        display={['flex', 'none']}
+        justifyContent="space-between"
+        borderBottom="0.2rem solid #F8F5F1"
+        p="1rem"
+        w="100%"
+        bg="#1B181E"
+      >
+        <Logo variant="inline" />
 
-      <Logo w="160px" />
-    </nav>
+        <IconButton
+          display={{
+            base: 'relative',
+            sm: 'none',
+          }}
+          onClick={toggleOpen}
+          icon={<Icon variant="menu" />}
+          bg="none"
+          aria-label="nav-menu"
+          color="#F8F5F1"
+          fontSize="1.6rem"
+        />
+      </HStack>
+      <SidebarDrawer
+        isOpen={isOpen}
+        toggleOpen={toggleOpen}
+        sidebarItems={navItems}
+        user={user}
+      />
+    </>
   );
 }

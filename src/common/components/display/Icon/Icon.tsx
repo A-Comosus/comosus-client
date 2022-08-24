@@ -1,7 +1,11 @@
 import React from 'react';
 
 import { BsShareFill } from 'react-icons/bs';
-import { RiDeleteBin5Line, RiLockPasswordLine } from 'react-icons/ri';
+import {
+  RiDeleteBin5Line,
+  RiLockPasswordLine,
+  RiMenuFoldLine,
+} from 'react-icons/ri';
 
 import {
   AiOutlineUser,
@@ -11,7 +15,12 @@ import {
   AiOutlineEdit,
 } from 'react-icons/ai';
 import { FiImage, FiChevronDown, FiChevronUp } from 'react-icons/fi';
-import { MdError, MdLogout, MdOutlineEmail } from 'react-icons/md';
+import {
+  MdCheckCircle,
+  MdError,
+  MdLogout,
+  MdOutlineEmail,
+} from 'react-icons/md';
 import { TbLink, TbColorSwatch, TbSettings } from 'react-icons/tb';
 import {
   FaShareSquare,
@@ -24,11 +33,13 @@ import {
 
 const icons = {
   default: <FiImage />,
+  menu: <RiMenuFoldLine />,
   share: <BsShareFill />,
   'share-btn': <FaShareSquare />,
   heart: <AiOutlineHeart />,
   edit: <AiOutlineEdit />,
-  error: <MdError />,
+  check: <MdCheckCircle color="#0ACF83" />,
+  error: <MdError color="#F5483D" />,
   delete: <RiDeleteBin5Line />,
   'arrow-up': <FiChevronUp />,
   'arrow-down': <FiChevronDown />,

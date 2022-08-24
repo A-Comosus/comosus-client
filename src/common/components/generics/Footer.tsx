@@ -1,37 +1,32 @@
 import React from 'react';
+import { useServer } from '@src/services';
 
-import {
-  LinkBox,
-  Flex,
-  LinkOverlay,
-  Image,
-  useColorModeValue,
-} from '@chakra-ui/react';
+import { Center, HStack, Spinner, Text } from '@chakra-ui/react';
+import { Icon } from '@src/common/components';
+import Logo from './Logo';
 
 export default function Footer() {
-  const filter = useColorModeValue('invert(0%)', 'invert(100%)');
+  const { error, isFetchingServerInfo } = useServer();
 
   return (
-    <LinkBox>
-      <Flex
-        justify="center"
-        align="center"
-        gap="1rem"
-        py="2rem"
-        borderTop="1px solid"
-        borderColor="#eaeaea"
-      >
-        <LinkOverlay href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app">
-          {'Power By '}
-        </LinkOverlay>
-        <Image
-          src="/vercel.svg"
-          alt="Vercel Logo"
-          w="72px"
-          h="16px"
-          filter={filter}
-        />
-      </Flex>
-    </LinkBox>
+    <Center
+      as="footer"
+      position="relative"
+      borderTop="2px solid #eaeaea"
+      p={['3rem', '5rem']}
+      bg="#1B181E"
+    >
+      <Logo variant="inline" />
+      <HStack position="absolute" right="2rem" fontSize="1.6rem">
+        <Text>Server:</Text>
+        {isFetchingServerInfo ? (
+          <Spinner />
+        ) : error ? (
+          <Icon variant="error" />
+        ) : (
+          <Icon variant="check" />
+        )}
+      </HStack>
+    </Center>
   );
 }
