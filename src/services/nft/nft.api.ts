@@ -32,7 +32,7 @@ export function useGetNFTsQuery() {
     },
     {
       enabled: !isNil(walletAddress),
-      select: (data) => data.data.ownedNfts,
+      select: (data) => data.data.ownedNfts.filter((nft) => nft.metadata.image),
     },
   );
 
