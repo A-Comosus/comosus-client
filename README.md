@@ -1,3 +1,5 @@
+> ## ⚠️⚠️⚠️ Deprecating this repo and moving everything to [🚝 comosus-turbo 💫](https://github.com/A-Comosus/comosus-turbo)
+
 # 🍍 A.Comosus Client Side NextJS Application
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
